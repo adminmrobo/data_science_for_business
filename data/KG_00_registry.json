@@ -1,6 +1,6 @@
 {
  "series": "비즈니스를 위한 데이터 과학 연구실",
- "version": "314",
+ "version": "330",
  "concepts": [
   {
    "id": "lab:analogy/airport",
@@ -260,6 +260,22 @@
    ]
   },
   {
+   "id": "lab:analogy/party",
+   "type": "Analogy",
+   "label": {
+    "ko": "파티장의 자연스러운 무리 ↔ 군집",
+    "en": "party groups ↔ clustering"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:analogy/planes-customers",
    "type": "Analogy",
    "label": {
@@ -337,6 +353,22 @@
    ],
    "pages": [
     "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:analogy/rulers",
+   "type": "Analogy",
+   "label": {
+    "ko": "직선 자 여러 개로 원 만들기 ↔ 은닉 뉴런",
+    "en": "many rulers ↔ hidden units"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -628,6 +660,22 @@
    ]
   },
   {
+   "id": "lab:claim/lexicon-limit",
+   "type": "Claim",
+   "label": {
+    "ko": "규칙 기반 감성 분석은 해석이 쉽지만 문맥을 충분히 고려하지 못한다",
+    "en": "lexicon methods miss context"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:claim/lift-125",
    "type": "Claim",
    "label": {
@@ -769,6 +817,22 @@
    ],
    "pages": [
     "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:claim/rules-thresholds",
+   "type": "Claim",
+   "label": {
+    "ko": "최소 지지도·신뢰도 임계값으로 노이즈를 제거하고 가치 높은 규칙만 선별",
+    "en": "thresholds filter noisy rules"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -1800,6 +1864,22 @@
    ]
   },
   {
+   "id": "lab:concept/representation-learning",
+   "type": "Concept",
+   "label": {
+    "ko": "표현 학습",
+    "en": "representation learning"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:concept/reproducibility",
    "type": "Concept",
    "label": {
@@ -2094,7 +2174,8 @@
     "biz"
    ],
    "pages": [
-    "dsb_w04_analysis_concepts"
+    "dsb_w04_analysis_concepts",
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -2143,6 +2224,22 @@
    ],
    "pages": [
     "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:dataset/customers-150",
+   "type": "Dataset",
+   "label": {
+    "ko": "예시 고객 150명(최근성·구매액)",
+    "en": "synthetic customers (150)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -2530,6 +2627,22 @@
    ]
   },
   {
+   "id": "lab:limitation/handmade-features",
+   "type": "Limitation",
+   "label": {
+    "ko": "사람이 정한 특성뿐",
+    "en": "hand-made features only"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:limitation/hard-to-explain",
    "type": "Limitation",
    "label": {
@@ -2786,6 +2899,22 @@
    ]
   },
   {
+   "id": "lab:limitation/no-feeling",
+   "type": "Limitation",
+   "label": {
+    "ko": "고객의 느낌은 모른다",
+    "en": "no feelings"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:limitation/no-forecast",
    "type": "Limitation",
    "label": {
@@ -2850,6 +2979,22 @@
    ]
   },
   {
+   "id": "lab:limitation/no-product-link",
+   "type": "Limitation",
+   "label": {
+    "ko": "상품 관계는 모른다",
+    "en": "no product relations"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:limitation/no-spread",
    "type": "Limitation",
    "label": {
@@ -2863,6 +3008,22 @@
    ],
    "pages": [
     "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:limitation/no-topic",
+   "type": "Limitation",
+   "label": {
+    "ko": "무엇에 대한 말인지 모른다",
+    "en": "no topic"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -3245,7 +3406,8 @@
     "ai"
    ],
    "pages": [
-    "dsb_w04_analysis_concepts"
+    "dsb_w04_analysis_concepts",
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -3487,6 +3649,22 @@
    ]
   },
   {
+   "id": "lab:method/kmeans",
+   "type": "Method",
+   "label": {
+    "ko": "K-means 군집",
+    "en": "K-means clustering"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:method/knn",
    "type": "Method",
    "label": {
@@ -3627,6 +3805,22 @@
    ]
   },
   {
+   "id": "lab:method/neural-network",
+   "type": "Method",
+   "label": {
+    "ko": "신경망(MLP)",
+    "en": "neural network (MLP)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:method/outlier-detection",
    "type": "Method",
    "label": {
@@ -3737,6 +3931,22 @@
    ]
   },
   {
+   "id": "lab:method/sentiment-lexicon",
+   "type": "Method",
+   "label": {
+    "ko": "규칙 기반 감성 분석",
+    "en": "lexicon-based sentiment"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:method/standardization",
    "type": "Method",
    "label": {
@@ -3795,6 +4005,22 @@
    ],
    "pages": [
     "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:method/tfidf",
+   "type": "Method",
+   "label": {
+    "ko": "TF-IDF",
+    "en": "TF-IDF"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -4228,7 +4454,8 @@
     "dsb_w10_regression_2",
     "dsb_w11_time_series",
     "dsb_w12_visualization",
-    "dsb_w13_bi_kpi"
+    "dsb_w13_bi_kpi",
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -4255,7 +4482,8 @@
     "dsb_w10_regression_2",
     "dsb_w11_time_series",
     "dsb_w12_visualization",
-    "dsb_w13_bi_kpi"
+    "dsb_w13_bi_kpi",
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -4410,6 +4638,22 @@
    ],
    "pages": [
     "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:task/customer-insight",
+   "type": "Task",
+   "label": {
+    "ko": "고객 이해와 인사이트 도출",
+    "en": "customer insight"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -4746,6 +4990,22 @@
    ]
   },
   {
+   "id": "lab:work/ahn-dsb-w14",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 14주차",
+    "en": "Ahn, DSB lecture notes week 14"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
    "id": "lab:work/cs231n",
    "type": "Work",
    "label": {
@@ -4953,7 +5213,8 @@
    "pages": [
     "dsb_w06_classification_2",
     "dsb_w09_regression_1",
-    "dsb_w10_regression_2"
+    "dsb_w10_regression_2",
+    "dsb_w14_advanced_analytics"
    ]
   },
   {
@@ -4987,7 +5248,8 @@
    "pages": [
     "dsb_w11_time_series",
     "dsb_w12_visualization",
-    "dsb_w13_bi_kpi"
+    "dsb_w13_bi_kpi",
+    "dsb_w14_advanced_analytics"
    ]
   },
   {

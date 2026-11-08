@@ -78,6 +78,11 @@ PAGES = {
    meta='three gauge needles pulling against each other, and a funnel narrowing from many dots at the top to a few coins at the bottom',
    pose=('at the back center in the pilot seat looking at the gauges', 'plugging three different cables into one hub', 'on the left facing right, scattering many small light dots into the top of the funnel', 'on the right facing left, catching coins at the bottom of the funnel with the abacus'),
    alt='네 캐릭터가 항공기 조종석 같은 계기판 앞에서 깔때기 모양 광고 퍼널과 창고 선반을 살피는 표지', duel='C(조건부: 도달은 CPM, ROAS는 CPC)', prev='12주차: 꼬리 긴 막대그래프와 시소'),
+ '14': dict(title='14주차 · 정답 없이, 글 속에서, 층을 쌓아', key='w14', anchor='B 연구실: 구슬 무리와 말풍선과 신경망 탑',
+   place='a night lab with three clusters of glowing marbles on a table, a pile of speech-bubble cards on the floor, and a tower of connected glowing circles in layers',
+   meta='marbles gathering by themselves into colored groups, speech bubbles sorted into a green tray and a red tray, and a layered tower of circles drawing a round boundary',
+   pose=('at the back center looking up at the layered tower', 'sorting speech-bubble cards into green and red trays', 'on the left facing right, stacking one more layer of glowing circles on the tower', 'on the right facing left, drawing one straight line with a ruler across a sheet'),
+   alt='네 캐릭터가 색깔별로 모인 구슬 무리, 말풍선 리뷰 더미, 층층이 쌓인 신경망 탑을 둘러보는 표지', duel='D(무승부, 직선 문제: 신경망 89.75% 대 로지스틱 89.50%)', prev='13주차: 조종석 계기판'),
 }
 
 def prompt(p):
@@ -133,7 +138,8 @@ OUTRO = {'01': ('fly_arms', 'robo_sigh', 'a relaxed fruit fly researcher with ar
          '10': ('fly_arms', 'robo_sigh', 'a calm curve on the chalkboard behind the fruit fly researcher with arms crossed, a wildly spiking curve behind the sighing robot, the scientist giving a thumbs-up, the girl smiling', '차분한 곡선 앞에서 팔짱 낀 초파리 연구원과 튀어 오른 곡선 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수'),
          '11': ('fly_coffee', 'robo_happy', 'the robot cheering with last year\'s ledger open, the fruit fly researcher sipping coffee and looking at the calendar, the scientist giving a thumbs-up, the girl smiling', '작년 장부를 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수'),
          '12': ('fly_arms', 'robo_sigh', 'the fruit fly researcher with arms crossed beside the middle figurine, the robot sighing as the seesaw tips under the heavy weight, the scientist giving a thumbs-up, the girl smiling', '가운데 인형 옆에서 팔짱 낀 초파리 연구원과 기운 시소 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수'),
-         '13': ('fly_coffee', 'robo_calc', 'two dashboards side by side, one showing reach and one showing coins, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both', '두 계기판을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수')}
+         '13': ('fly_coffee', 'robo_calc', 'two dashboards side by side, one showing reach and one showing coins, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both', '두 계기판을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수'),
+         '14': ('fly_coffee', 'robo_meh', 'two identical score cards side by side, one beside the layered tower and one beside a single ruler, the fruit fly researcher sipping coffee, the robot shrugging, the scientist nodding, the girl smiling', '같은 점수 카드 두 장 앞에서 커피를 든 초파리 연구원과 어깨를 으쓱하는 주판봇, 고개를 끄덕이는 박사와 웃는 조수')}
 
 def img_md(k, p):
     n = p['key']; fo, ro, scene, alt = OUTRO[k]

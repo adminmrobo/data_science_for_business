@@ -18,7 +18,7 @@ WEEKS = [
  (11, '데이터 모델 최적화와 시계열 모형', '시간이 기억하는 숫자', '차트 선택 · ACF·PACF · 시계열 분해 · 차분 · ARIMA', '📅', 'week11_time_series.html', True, '주판봇 승'),
  (12, '효과적인 비즈니스 데이터 시각화', '숫자의 얼굴', '대표값 · 분산도·변동계수 · 왜도·첨도 · 상관 · 차트 선택', '📊', 'week12_visualization.html', True, '초파리 승'),
  (13, '비즈니스 인텔리전스와 KPI 설계', '계기판을 설계하다', 'ETL · 재고 KPI · 광고 퍼널 · 어트리뷰션 · CLV : CAC', '🧭', 'week13_bi_kpi.html', True, '조건부'),
- (14, '비즈니스를 위한 고급 분석 기법', '', '군집·연관 규칙 · 자연어 처리·감성 분석 · 딥러닝', '🧠', '', False, ''),
+ (14, '비즈니스를 위한 고급 분석 기법', '정답 없이, 글 속에서, 층을 쌓아', 'K-means · 연관 규칙 · 감성 분석 · TF-IDF · 신경망', '🧠', 'week14_advanced_analytics.html', True, '무승부'),
  (15, '기말고사', '', '', '📝', '', None, ''),
 ]
 
@@ -77,7 +77,7 @@ a.wk:hover{{border-color:var(--seq)}}
 <section class="level" id="weeks"><div class="wrap stack">
   <h2>주차별 해설</h2>
   <div class="weeks">{cards}</div>
-  <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 지금까지: 초파리 승 4 · 주판봇 승 4 · 무승부 1 · 조건부 3.</p>
+  <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 전체 13편: 초파리 승 4 · 주판봇 승 4 · 무승부 2 · 조건부 3.</p>
 </div></section>
 <section class="level" id="practice"><div class="wrap stack">
   <h2>실습 사례 <span class="lvtag">추가 예정</span></h2>

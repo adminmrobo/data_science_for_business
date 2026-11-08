@@ -8,7 +8,7 @@ COVER_ALT = '네 캐릭터가 항공기 조종석 같은 계기판 앞에서 깔
 COVER_PROP = '🧭'
 SEARCH_PH = '예: ETL, 재고회전율, CPC, ROAS, 어트리뷰션, CLV'
 NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① ETL'), ('#lv2', '② 재고 KPI'), ('#lv3', '③ 광고 퍼널'), ('#lv4', '④ 어트리뷰션'), ('#lv5', '⑤ CLV : CAC'), ('#duel', '대결'), ('#sum', '정리')]
-PREVNEXT = '<a href="week12_visualization.html"><small>← 이전 · 12주차</small>숫자의 얼굴</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="index.html"><small>다음 · 14주차</small>준비 중</a>'
+PREVNEXT = '<a href="week12_visualization.html"><small>← 이전 · 12주차</small>숫자의 얼굴</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week14_advanced_analytics.html"><small>다음 · 14주차</small>정답 없이, 글 속에서, 층을 쌓아 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:method/etl', 'lab:metric/inventory-kpi', 'lab:metric/ad-funnel', 'lab:method/attribution', 'lab:metric/clv-cac']
 KGPATH = ['method/etl', 'limitation/what-to-watch', 'metric/inventory-kpi', 'limitation/demand-side', 'metric/ad-funnel', 'limitation/multi-touch', 'method/attribution', 'limitation/single-purchase', 'metric/clv-cac']
