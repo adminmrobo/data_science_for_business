@@ -1,0 +1,282 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 3주차 · 데이터 분석을 위한 준비</span>
+      <h1>분석 전에 데이터를 손보다</h1>
+      <p class="q">분석에 들어가기 전, 무엇을 정하고 데이터를 얼마나 손봐야 할까?</p>
+      <p class="lead">모델을 돌리기 전에 할 일이 더 많습니다. 교안은 전처리가 분석 프로젝트 시간의 약 80%를 차지한다고 말합니다.<sup>[1]</sup> 이 페이지에서는 문제를 SMART 목표로 바꾸고, 빠진 값(결측값)과 튀는 값(이상값)과 겹친 기록(중복)을 직접 손본 뒤, 품질 점수를 매기고, 탐색적 데이터 분석(EDA)으로 데이터를 처음 들여다봅니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi a"><b>약 80%</b><span>전처리가 차지하는 시간<sup>[1]</sup></span></div>
+        <div class="kpi i"><b>4가지</b><span>문제 유형: 분류·예측·최적화·탐색<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>3가지</b><span>결측 메커니즘 MCAR·MAR·MNAR<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>6차원</b><span>데이터 품질<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>3가지</b><span>무결성: 개체·참조·도메인<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroMiss">–</b><span>MAR에서 행 삭제의 평균 소득 오차<sup>예시</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w03_hero" alt="네 캐릭터가 구멍 난 표와 튀어나온 막대, 겹친 카드를 정리하는 연구실 작업대 장면" hidden>
+      <div class="hero-stage" data-img="sc_w03_hero"><canvas id="heroArt" aria-label="밤의 연구실. 작업대 위 표에 빈칸과 빨간 칸이 있고, 칸이 하나씩 초록으로 고쳐진다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="point" alt=""><img data-who="doc" data-mood="board" alt=""><img data-who="asst" data-mood="firm" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="board" data-img="doc_board" alt="" aria-hidden="true"><div><b class="name">박사</b><p>요리사가 칼질보다 재료 손질에 시간을 더 쓰는 것과 같아요. 오늘은 손질하는 날입니다.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p>고객 200명 소득표에는 빈칸이, 구매액에는 튀는 값이, 주문표에는 겹친 기록이 있어요. 하나씩 고쳐 볼게요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>빈칸 있는 줄은 그냥 지우면 되잖아. 그게 제일 안전하지.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>지우긴 왜 지워. 데이터 한 줄이 다 자산이야. 채워서 다 쓰자고.</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">데이터를 손보고 숫자를 발표합니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">의심하는 쪽. 의심스러운 줄은 지우고 단순하게 갑니다.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">확신하는 쪽. 한 줄도 버리지 않고 채워서 씁니다.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 숫자 옆 <sup>[n]</sup>은 바닥글 출처 번호이고, 고객·구매·주문·매장 데이터는 모두 시드를 고정해 만든 장난감 데이터입니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 분석 전에 준비가 필요한가</h2></div>
+  <div class="steps">
+    <div><b>1. 문제가 흐리면 분석도 흐리다</b><p>"매출을 올리자"는 분석할 수 없습니다. 비즈니스 목표와 분석 목표 사이에 분명한 연결고리를 만들어야 합니다. 교안은 5W1H로 문제를 구체화하라고 합니다.<sup>[1]</sup></p></div>
+    <div><b>2. 원자료는 늘 지저분하다</b><p>빠진 값, 잘못 입력된 값, 같은 고객이 두 번 들어간 기록이 섞여 있습니다. 1주차의 걸러진 비행기처럼, 이런 흠은 결론을 조용히 비틉니다.</p></div>
+    <div><b>3. 손질 방법이 결론을 바꾼다</b><p>빈칸을 지울지 채울지, 튀는 값을 버릴지 따로 볼지에 따라 평균이 달라집니다. ②·③칸에서 직접 확인합니다.</p></div>
+  </div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 문제 유형과 전처리 흐름</h2></div>
+  <div class="steps four">
+    <div><b>분류 문제</b><p>범주를 나눈다. 고객 세분화(RFM), 품질 분류, 텍스트·감정 분류, 스팸 필터링.<sup>[1]</sup></p></div>
+    <div><b>예측 문제</b><p>미래 값·상태를 맞힌다. 수요 예측, 고객 행동·이탈 예측, 신용·보험사기 리스크.<sup>[1]</sup></p></div>
+    <div><b>최적화 문제</b><p>제약 안에서 목표를 최대·최소로. 동적 가격, 배송 경로, 인력 배치, 재고(EOQ·안전재고), 광고 예산.<sup>[1]</sup></p></div>
+    <div><b>탐색 문제</b><p>패턴을 발견한다. 연관 규칙, 군집 분석, 이상 탐지, 네트워크 분석.<sup>[1]</sup></p></div>
+  </div>
+  <div class="flowchips" aria-label="전처리 프로세스"><span>데이터 수집</span><i>→</i><span>통합 (ETL·스키마 매핑)</span><i>→</i><span class="lim">정제 (결측·이상·중복)</span><i>→</i><span>변환</span><i>→</i><span>검증 (품질 6차원)</span></div>
+  <p class="lead">교안의 전처리 프로세스입니다.<sup>[1]</sup> 단계마다 품질을 점검하고 다음 단계로 갈지 정하며, 반복적·점진적으로 품질을 높입니다. ETL은 Extract(추출) → Transform(변환) → Load(적재)입니다.</p>
+</div></section>
+
+<!-- ① 문제 정의와 SMART -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>정의</small></div><h2>문제 정의 — 막연한 바람을 SMART 목표로</h2></div>
+    <p class="sub"><span class="lvtag g">틀: SMART · 문제 유형 4가지</span><span class="lvtag">업무: 고객 이탈 줄이기</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">회사에서는</div><p>"고객 만족도를 높이자"는 회의는 쉽게 끝나지만, 석 달 뒤 성공했는지 아무도 모릅니다. 무엇을, 얼마나, 언제까지, 어떻게 잴지 빠져 있기 때문입니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>목표를 Specific · Measurable · Achievable · Relevant · Time-bound로 바꾸면, 분석할 데이터와 성공 지표(KPI)가 정해집니다. 교안의 예: "3개월 내 고객 이탈률을 15%에서 10%로 감소시켜 연간 매출 5% 증대".<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="SMART 목표 조립기">
+    <h3>목표 조립기 — 조각을 골라 SMART 다섯 글자를 모두 켜 보기</h3>
+    <div class="ctrl" style="flex-direction:column;align-items:flex-start">
+      <div class="group" id="sm0" role="group" aria-label="무엇을"><span class="glabel">무엇을</span></div>
+      <div class="group" id="sm1" role="group" aria-label="얼마나"><span class="glabel">얼마나</span></div>
+      <div class="group" id="sm2" role="group" aria-label="어떻게 잴까"><span class="glabel">어떻게 잴까</span></div>
+      <div class="group" id="sm3" role="group" aria-label="왜"><span class="glabel">왜(사업과 연결)</span></div>
+      <div class="group" id="sm4" role="group" aria-label="언제까지"><span class="glabel">언제까지</span></div>
+    </div>
+    <div class="eq" id="smOut" style="white-space:normal"></div>
+    <div class="chk" id="smChk" aria-live="polite"></div>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <section class="panel" aria-label="문제 유형 분류">
+    <h3>이 질문은 어떤 문제일까 — 분류 · 예측 · 최적화 · 탐색</h3>
+    <div id="typeBox" class="stack" style="gap:10px"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>목표에 숫자(15% → 10%)와 기한(3개월)과 측정 방법(월별 이탈률)이 들어가야 Measurable·Time-bound가 켜집니다.</li>
+    <li>"0%로"처럼 비현실적인 숫자는 Achievable을 끕니다. 교안은 현실적이면서 도전적인 목표를 권합니다.<sup>[1]</sup></li>
+    <li>Relevant는 비즈니스 전략(매출, 비용)과 연결될 때 켜집니다.</li>
+    <li>문제 유형이 정해지면 모델 종류(5주차 이후 분류·회귀)와 평가 지표(정확도, MAE 등)가 따라 정해집니다.</li>
+  </ol><p class="limit">이 칸의 한계: 목표가 분명해도, 그 목표를 잴 데이터에 빈칸이 많으면 숫자 자체가 틀립니다. → ②칸</p></div>
+  <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p>잴 수 없는 목표는 달성했는지도 알 수 없어요. 숫자와 기한부터 적읍시다.</p></div></div>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② 결측값 -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>정제</small></div><h2>결측값 — 빈칸을 지울까, 채울까</h2></div>
+    <p class="sub"><span class="lvtag g">방법: 삭제 · 평균 대체 · KNN 대체</span><span class="lvtag">데이터: 고객 200명 나이와 연소득</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">현장에서는</div><p>설문에서 소득 칸을 비워 둔 사람이 30% 있습니다. 누가 비웠을까요? 아무나 비웠다면 지워도 괜찮지만, 젊은 사람이 주로 비웠다면 지우는 순간 표본이 나이 든 쪽으로 기웁니다.</p></div>
+    <div><div class="tag nn">통계로는</div><p>교안의 결측 메커니즘 셋입니다.<sup>[1]</sup> <b>MCAR</b>(완전 무작위 결측) · <b>MAR</b>(다른 관측 변수에 따라 빠짐, 예: 나이) · <b>MNAR</b>(빠진 값 자체 때문에 빠짐, 예: 고소득자가 소득을 숨김). 처리 방법은 메커니즘에 맞춰 골라야 합니다.</p></div>
+  </div>
+  <section class="panel" aria-label="결측값 처리 실험">
+    <h3>평균 연소득 추정 — 결측 메커니즘과 처리 방법을 바꿔 보기</h3>
+    <div class="ctrl">
+      <div class="group" id="mechBtns" role="group" aria-label="결측 메커니즘"><span class="glabel">누가 비웠나</span></div>
+      <div class="group" id="impBtns" role="group" aria-label="처리 방법"><span class="glabel">처리</span></div>
+      <div class="group"><label class="glabel" for="kk">KNN의 k</label><input type="range" id="kk" min="1" max="25" step="1" value="5"><span class="val" id="kkv">5</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c2" class="wide" aria-label="나이와 연소득 산점도. 관측된 점, 빠진 점(진짜 값), 채운 값이 다른 색으로 표시되고 오른쪽에 참값 평균과 추정 평균 막대가 있다"></canvas></div>
+    <section class="kpis k4" id="k2"></section>
+    <div class="eq" id="eq2"></div>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>장난감 세계에서는 빈칸의 진짜 값(속 빈 회색 점)을 알고 있어서, 추정이 얼마나 틀렸는지 잴 수 있습니다. 현실에서는 알 수 없습니다.</li>
+    <li><b>MCAR</b>: 삭제·평균 대체·KNN 모두 평균이 거의 맞습니다. 다만 평균 대체는 빈칸에 같은 값을 넣어 퍼짐(표준편차)을 줄입니다.</li>
+    <li><b>MAR</b>(젊은 고객이 주로 비움): 삭제하면 젊고 소득이 낮은 사람이 빠져 평균이 높게 나옵니다. 나이가 비슷한 이웃의 소득으로 채우는 KNN이 편향을 크게 줄입니다.</li>
+    <li><b>MNAR</b>(고소득자가 숨김): 어떤 방법도 완전히 고치지 못합니다. 빈칸의 이유를 따로 조사해야 합니다.</li>
+  </ol><p class="limit">이 칸의 한계: 빈칸은 채웠지만, 채워 있는 값 중에 틀린 값(입력 실수)이나 극단값이 섞여 있으면 평균은 여전히 흔들립니다. → ③칸</p></div>
+  <details class="math"><summary>KNN 대체를 식으로 보기</summary><div>
+    <p class="num">빈칸 i의 대체값 = (나이가 가장 가까운 관측된 k명의 소득) 평균 = (1/k) Σ<sub>j∈N<sub>k</sub>(i)</sub> 소득<sub>j</sub></p>
+    <p class="muted">교안의 KNN 그림처럼 k = 3이면 가까운 3명, k = 7이면 7명을 씁니다.<sup>[1]</sup> k가 너무 작으면 이웃 한두 명의 우연에 흔들리고, 너무 크면 나이와 상관없는 전체 평균에 가까워집니다.</p>
+  </div></details>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ 이상값 -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>정제</small></div><h2>이상값 — 오류일까, VIP일까</h2></div>
+    <p class="sub"><span class="lvtag g">방법: IQR · Z-score · 수정 Z-score</span><span class="lvtag">데이터: 고객 120명 1회 구매액</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">현장에서는</div><p>구매액 목록에 999만 9,999원과 −5만 원이 있습니다. 입력 실수입니다. 120만 원짜리 구매 세 건도 있습니다. 이건 진짜 VIP 고객일 수 있습니다. 둘을 똑같이 지우면 중요한 고객을 잃습니다.</p></div>
+    <div><div class="tag nn">통계로는</div><p>통계적 방법(Z-score, IQR, 수정 Z-score)으로 후보를 찾고, 처리(제거·변환·캡핑·별도 분석)는 도메인 지식으로 정합니다. 교안은 이상값 자체가 중요한 의미를 가지면 별도로 분석하라고 합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="이상값 탐지 실험">
+    <h3>구매액 120건 — 탐지 규칙과 처리 방법 바꿔 보기</h3>
+    <div class="ctrl">
+      <div class="group" id="olBtns" role="group" aria-label="탐지 규칙"><span class="glabel">탐지 규칙</span></div>
+      <div class="group" id="otBtns" role="group" aria-label="처리"><span class="glabel">처리</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="구매액 점 그림과 박스플롯. 탐지 규칙에 걸린 점이 빨간색으로 표시된다"></canvas></div>
+    <section class="kpis k4" id="k3"></section>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li><b>Z-score</b>(|z| &gt; 3): 평균과 표준편차로 잽니다. 그런데 999만 원짜리 오류 하나가 평균과 표준편차를 크게 부풀려, 정작 다른 이상값을 가립니다(가림 효과).</li>
+    <li><b>IQR</b>(Q1 − 1.5×IQR, Q3 + 1.5×IQR 밖): 사분위수로 재므로 극단값에 덜 흔들립니다. 박스플롯의 수염이 이 기준입니다.</li>
+    <li><b>수정 Z-score</b>(중앙값과 MAD 사용, |값| &gt; 3.5): 역시 극단값에 강건합니다.</li>
+    <li>'도메인 규칙'으로 처리하면 음수·불가능한 값은 오류로 지우고, VIP 구매는 남겨 두고 따로 분석합니다.</li>
+  </ol><p class="limit">이 칸의 한계: 값 하나하나는 손봤지만, 같은 주문이 세 번 들어갔거나 형식이 제각각인 기록은 아직 그대로입니다. → ④칸</p></div>
+  <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="magnify" data-img="fly_magnify" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>규칙에 걸렸다고 다 범인은 아니야. VIP를 오류로 지우면 그게 진짜 사고지.</p></div></div>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 중복과 품질 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>품질</small></div><h2>중복과 품질 점수 — 품질 6차원으로 재기</h2></div>
+    <p class="sub"><span class="lvtag g">지표: 정확성·완전성·일관성·적시성·유효성·유일성</span><span class="lvtag">교안 예시: 주문 기록, 도서관 회원·대출</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">도서관에서는</div><p>교안의 도서관 비유입니다.<sup>[1]</sup> 모든 책은 고유한 번호가 있어야 하고(개체 무결성), 없는 책은 대출할 수 없고(참조 무결성), 나이는 0~150 사이, 성별은 정해진 값만 들어가야 합니다(도메인 무결성).</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>데이터 품질은 데이터가 의도된 목적에 얼마나 맞는지의 척도입니다. 교안은 6차원으로 재고, 정확도 비율·필드 완전성·참조 무결성 비율 같은 지표를 씁니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="중복 제거와 품질 점수 실험">
+    <h3>주문 기록 12줄 — 정제 단계를 하나씩 켜 보기</h3>
+    <div class="ctrl"><div class="group" id="fixBtns" role="group" aria-label="정제 단계"><span class="glabel">정제 단계</span></div></div>
+    <div class="tw"><table class="dt" id="qTable" aria-label="주문 기록 표. 문제 있는 칸은 빨강, 빈칸은 노랑, 고친 칸은 초록, 지운 중복 줄은 취소선"></table></div>
+    <div class="cwrap"><canvas id="c4" class="wide" aria-label="품질 6차원 점수 막대"></canvas></div>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li><b>완전 중복</b>: 주문 ORD001이 세 번 들어 있습니다(교안 예시). 하나만 남깁니다 → 유일성.</li>
+    <li><b>부분 중복</b>: 고객 12345가 전화번호·주소가 다른 두 줄로 있습니다. 가장 완전하고 최신인 기록을 남기고 정보를 통합합니다.</li>
+    <li><b>유사 중복·형식</b>: 무게가 kg과 lb로 섞여 있습니다. 단위를 통일합니다 → 일관성.</li>
+    <li><b>규칙 위반</b>: 나이 999, 성별 '외계인', 존재하지 않는 상품 B999 → 유효성·참조 무결성. 빈 이메일은 외부 데이터로 보완합니다 → 완전성.</li>
+  </ol><p class="limit">이 칸의 한계: 깨끗해진 데이터가 무엇을 말하는지는 아직 들여다보지 않았습니다. → ⑤칸 탐색적 데이터 분석</p></div>
+  <details class="math"><summary>품질 지표 식 (교안)</summary><div>
+    <p class="num">필드 완전성 = null이 아닌 값 수 / 전체 행 수 × 100 · 유일성 = 고유 레코드 수 / 전체 레코드 수 × 100</p>
+    <p class="num">참조 무결성 비율 = 유효한 참조 / 전체 참조 × 100 · 형식 일관성 비율 = 일관된 형식 / 전체 × 100</p>
+    <p class="muted">정확성은 참조 데이터(원장)와 대조해야 잴 수 있고, 적시성은 마지막 갱신 시점으로 잽니다. 이 페이지의 정확성은 원장과 맞춘 결과라고 가정한 값입니다.</p>
+  </div></details>
+  <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>중복 두 줄만 지웠는데 유일성이 확 올라가요. 숫자로 보니까 어디부터 고칠지가 보여요.</p></div></div>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- ⑤ EDA -->
+<section class="level" id="lv5"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">5<small>탐색</small></div><h2>탐색적 데이터 분석(EDA) — 처음 들여다보기</h2></div>
+    <p class="sub"><span class="lvtag g">단변량: 평균·중앙값·왜도 · 이변량: 피어슨·스피어만</span><span class="lvtag">데이터: 매장 60곳 광고비와 매출</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">현장에서는</div><p>깨끗해진 데이터를 받으면 바로 모델에 넣고 싶어집니다. 그 전에 그림부터 그립니다. 한 변수의 모양(단변량), 두 변수의 관계(이변량), 여러 변수의 패턴(다변량) 순서입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로는</div><p>치우친 분포에서는 평균과 중앙값이 갈립니다. 피어슨 상관계수는 직선 관계를, 스피어만 상관계수는 순위 기반이라 휘어진 단조 관계와 극단값에 강합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="탐색적 데이터 분석 실험">
+    <h3>매장 60곳 — 분포와 관계를 그려 보기</h3>
+    <div class="ctrl">
+      <div class="group" id="edaBtns" role="group" aria-label="보기"><span class="glabel">보기</span></div>
+      <div class="group"><button class="bt" type="button" id="addOut" aria-pressed="false">극단값 매장 1곳 추가</button></div>
+    </div>
+    <div class="cwrap"><canvas id="c5" class="wide" aria-label="단변량 보기에서는 매출 히스토그램과 평균·중앙값 선, 이변량 보기에서는 광고비와 매출의 산점도"></canvas></div>
+    <section class="kpis k4" id="k5"></section>
+    <div class="insight" id="ins5" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>매출은 오른쪽 꼬리가 긴 분포입니다. 평균이 중앙값보다 크게 나옵니다. 이럴 때 "평균 매장"은 대표값으로 부족합니다.</li>
+    <li>광고비와 매출은 함께 오르지만 직선이 아니라 점점 완만해지는 곡선입니다. 그래서 스피어만이 피어슨보다 큽니다.</li>
+    <li>극단값 매장 하나를 넣으면 피어슨은 크게 흔들리고, 스피어만은 거의 그대로입니다.</li>
+    <li>상관이 높아도 1주차 ③칸처럼 원인이라는 뜻은 아닙니다(목이 좋은 매장이 광고도 많이 할 수 있음).</li>
+  </ol><p class="limit">이 칸의 한계: 두 변수씩만 보았습니다. 교안의 다변량 기법(상관 히트맵, 페어플롯, PCA, 군집)과 분석 도구는 4주차 '데이터 분석 개념의 이해'로 이어집니다.</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>전처리 체크리스트: ① 결측 비율과 패턴(누가 비웠나) ② 이상값 후보와 도메인 판정 ③ 중복 규칙 문서화 ④ 품질 6차원 점수표 ⑤ 처리 전후 분포 비교. 교안은 처리 전후의 분포 변화를 반드시 확인하라고 합니다.<sup>[1]</sup></p><p class="lim">한계: 실무 데이터는 여러 시스템에서 와서(ERP·CRM·API·웹) 통합 단계의 스키마 매핑 오류가 정제보다 먼저 문제를 일으키기도 합니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>언어 모델을 학습시키는 회사도 같은 일을 합니다. 중복 문서를 지우고(유일성), 깨진 글을 걸러내고(유효성), 개인정보를 가립니다. 생성 AI에게 데이터 정제 코드를 맡길 때도 '누가 비웠나', 'VIP인가 오류인가'는 사람이 판단해야 합니다.</p><p class="lim">비유의 한계: 대규모 텍스트 정제는 규칙과 모델을 섞어 자동으로 하며, 사람이 한 줄씩 보지 않습니다.</p></div>
+  </div>
+  <div class="quiz" data-quiz="lv5"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 빈칸 있는 줄은 지우는 게 안전할까?</h2><p class="lead">②칸의 고객 200명, 젊은 고객이 소득을 주로 비운 경우(MAR). 평균 연소득을 얼마나 정확히 추정하는지로 겨룹니다. 오차가 작을수록 이깁니다.</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 결측 행 삭제</b><p>"모르는 값을 지어내느니 빈 줄은 지우자. 그게 정직하지."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · KNN 대체(k = 5)</b><p>"200줄이 다 자산이야. 나이 비슷한 이웃으로 채워서 전부 쓴다."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+      <p class="muted" style="font-size:14px">조건 메모: 이 결과는 MAR(나이에 따라 빠짐)에서의 결과입니다. ②칸에서 MCAR로 바꾸면 두 방법의 차이가 거의 없고, MNAR에서는 둘 다 크게 틀립니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 다섯 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 문제 정의·SMART</b></td><td>잴 수 있는 목표와 문제 유형을 정한다</td><td>데이터에 빈칸이 많으면 숫자가 틀린다</td><td>결측값 처리</td></tr>
+      <tr><td><b>② 결측값</b></td><td>결측 메커니즘에 맞춰 삭제·대체를 고른다</td><td>채워진 값 속 오류·극단값</td><td>이상값 처리</td></tr>
+      <tr><td><b>③ 이상값</b></td><td>강건한 규칙으로 찾고 도메인으로 판정한다</td><td>겹친 기록, 제각각 형식</td><td>중복 제거와 품질 점수</td></tr>
+      <tr><td><b>④ 중복·품질 6차원</b></td><td>무결성 규칙으로 고치고 점수로 관리한다</td><td>데이터가 무엇을 말하는지는 모른다</td><td>EDA</td></tr>
+      <tr><td><b>⑤ EDA</b></td><td>분포와 관계를 그려 대표값·상관을 고른다</td><td>두 변수까지만, 상관은 인과가 아니다</td><td>4주차: 분석 도구와 알고리즘</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>교안 정리 1</b><p>문제 정의는 비즈니스 목표와 분석 목표를 잇는다(5W1H). 분류·예측·최적화 문제. SMART 목표.</p></div>
+    <div><b>교안 정리 2</b><p>전처리로 분석 품질을 높인다. 결측값은 대체, 이상값은 제거(또는 별도 분석), 중복은 선택하거나 통합. EDA는 단변량·이변량·다변량.</p></div>
+    <div><b>교안 정리 3</b><p>품질은 정확성·완전성·일관성·적시성·유효성·유일성. 자동화·통계·비즈니스 규칙으로 검증하고, 프로파일링과 개선 프로세스로 관리.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w03_outro" hidden><img alt="빈칸이 채워진 표 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>분석은 잴 수 있는 목표에서 시작한다.</li><li>빈칸·튀는 값·중복은 '왜 그런지'를 보고 처리 방법을 고른다.</li><li>손본 뒤에는 품질 점수와 그림으로 다시 확인한다.</li></ul></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>숫자가 말해 줬잖아. 한 줄도 안 버린 게 수익이었다고.</p></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>지우는 것도 결정이었구나. 누가 비웠는지부터 봤어야 했어.</p></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>다음 주에는 이렇게 준비한 데이터를 어떤 도구와 알고리즘으로 분석하는지 볼게요. ②칸에서 MNAR도 꼭 눌러 보세요.</p></div></div>
+  </div>
+</div></section>

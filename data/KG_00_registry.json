@@ -1,0 +1,1882 @@
+{
+ "series": "비즈니스를 위한 데이터 과학 연구실",
+ "version": "120",
+ "concepts": [
+  {
+   "id": "lab:analogy/buy-vs-rent",
+   "type": "Analogy",
+   "label": {
+    "ko": "차를 살까 빌릴까 ↔ 온프레미스 대 클라우드",
+    "en": "buy vs rent ↔ on-prem vs cloud"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:analogy/lab-instruments",
+   "type": "Analogy",
+   "label": {
+    "ko": "실험 장비 고르기 ↔ 수집 방법 고르기",
+    "en": "choosing lab instruments ↔ collection methods"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:analogy/library",
+   "type": "Analogy",
+   "label": {
+    "ko": "도서관 책 번호·대출·회원 정보 ↔ 무결성",
+    "en": "library ↔ integrity constraints"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:analogy/planes-customers",
+   "type": "Analogy",
+   "label": {
+    "ko": "돌아온 비행기 ↔ 남아 있는 고객",
+    "en": "returned planes ↔ retained customers"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:analogy/umbrella",
+   "type": "Analogy",
+   "label": {
+    "ko": "편의점 우산 발주 ↔ DIKW",
+    "en": "umbrella orders ↔ DIKW"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:analogy/vip-error",
+   "type": "Analogy",
+   "label": {
+    "ko": "VIP 고객과 입력 실수 ↔ 이상값 판정",
+    "en": "VIP vs typo ↔ outlier judgment"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:claim/api-more-stable",
+   "type": "Claim",
+   "label": {
+    "ko": "API 수집은 웹 스크래핑보다 안정적이고 효율적",
+    "en": "API is more stable than scraping"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:claim/data-growth-2500x",
+   "type": "Claim",
+   "label": {
+    "ko": "데이터 총량 약 20EB → 약 50,000EB(약 2,500배)",
+    "en": "global data ~2,500x"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:claim/factory-sensor-rate",
+   "type": "Claim",
+   "label": {
+    "ko": "스마트팩토리 센서는 초당 수백~수천 건의 데이터를 만든다",
+    "en": "factory sensors generate hundreds+ records per second"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:claim/obama-ab",
+   "type": "Claim",
+   "label": {
+    "ko": "오바마 캠프 이메일 제목 테스트로 기부율 10% 이상 증가",
+    "en": "Obama campaign email A/B test"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:claim/pipa-2020-pseudonym",
+   "type": "Claim",
+   "label": {
+    "ko": "2020년 개정 개인정보보호법으로 가명정보 처리 근거 마련",
+    "en": "2020 PIPA amendment enabled pseudonymized data"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:claim/planes-story",
+   "type": "Claim",
+   "label": {
+    "ko": "돌아온 비행기만 보고 장갑 위치를 정하면 틀린다",
+    "en": "returned-planes survivorship story"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:claim/prep-80",
+   "type": "Claim",
+   "label": {
+    "ko": "전처리는 분석 프로젝트 시간의 약 80%",
+    "en": "preprocessing ≈ 80% of project time"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:claim/smart-example",
+   "type": "Claim",
+   "label": {
+    "ko": "분석 목표 예: 3개월 내 이탈률 15% → 10%, 연간 매출 5% 증대",
+    "en": "SMART goal example"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:claim/tripitaka-99mb",
+   "type": "Claim",
+   "label": {
+    "ko": "팔만대장경 5,200만 자는 약 99MB",
+    "en": "Tripitaka Koreana ≈ 99MB"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/batch-vs-stream",
+   "type": "Concept",
+   "label": {
+    "ko": "배치 처리와 스트림 처리",
+    "en": "batch vs stream processing"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/big-data-5v",
+   "type": "Concept",
+   "label": {
+    "ko": "빅데이터 3V·5V",
+    "en": "big data 3V/5V"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/business-data-science",
+   "type": "Concept",
+   "label": {
+    "ko": "비즈니스 데이터 과학",
+    "en": "business data science"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/cloud-vs-onprem",
+   "type": "Concept",
+   "label": {
+    "ko": "클라우드 대 온프레미스",
+    "en": "cloud vs on-premises"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/confirmation-bias",
+   "type": "Concept",
+   "label": {
+    "ko": "확증 편향",
+    "en": "confirmation bias"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/confounder",
+   "type": "Concept",
+   "label": {
+    "ko": "교란 변수",
+    "en": "confounding variable"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/correlation-vs-causation",
+   "type": "Concept",
+   "label": {
+    "ko": "상관과 인과",
+    "en": "correlation vs causation"
+   },
+   "domain": [
+    "stats",
+    "ai",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/data",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터",
+    "en": "data"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/data-collection-method",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 수집 방법",
+    "en": "data collection methods"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/data-collection-process",
+   "type": "Framework",
+   "label": {
+    "ko": "데이터 수집 프로세스",
+    "en": "data collection process"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/data-freshness",
+   "type": "Concept",
+   "label": {
+    "ko": "적시성·데이터 신선도",
+    "en": "timeliness / data freshness"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/data-governance",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 거버넌스",
+    "en": "data governance"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/data-lake",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 레이크",
+    "en": "data lake"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/data-mining",
+   "type": "Method",
+   "label": {
+    "ko": "데이터마이닝",
+    "en": "data mining"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/data-quality-3",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 품질(정확성·완전성·일관성)",
+    "en": "data quality (accuracy, completeness, consistency)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/data-quality-6",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 품질 6차원",
+    "en": "six dimensions of data quality"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/data-storytelling",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 시각화와 스토리텔링",
+    "en": "data visualization and storytelling"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/data-warehouse",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 웨어하우스",
+    "en": "data warehouse"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/deductive",
+   "type": "Concept",
+   "label": {
+    "ko": "전통적 분석(연역)",
+    "en": "deductive analysis"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/duplicates",
+   "type": "Concept",
+   "label": {
+    "ko": "중복 데이터",
+    "en": "duplicate records"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/dynamic-pricing",
+   "type": "Method",
+   "label": {
+    "ko": "동적 요금",
+    "en": "dynamic pricing"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/inductive",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 과학(귀납)",
+    "en": "inductive data science"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/industry-data",
+   "type": "Concept",
+   "label": {
+    "ko": "산업별 비즈니스 데이터",
+    "en": "business data by industry"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/information",
+   "type": "Concept",
+   "label": {
+    "ko": "정보",
+    "en": "information"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/integrity",
+   "type": "Concept",
+   "label": {
+    "ko": "무결성(개체·참조·도메인)",
+    "en": "integrity constraints"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/k-anonymity",
+   "type": "Method",
+   "label": {
+    "ko": "k-익명성",
+    "en": "k-anonymity"
+   },
+   "domain": [
+    "stats",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/knowledge",
+   "type": "Concept",
+   "label": {
+    "ko": "지식",
+    "en": "knowledge"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/masking",
+   "type": "Concept",
+   "label": {
+    "ko": "가림 효과",
+    "en": "masking effect"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/missing-mechanism",
+   "type": "Concept",
+   "label": {
+    "ko": "결측 메커니즘(MCAR·MAR·MNAR)",
+    "en": "missingness mechanisms"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/preprocessing",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 전처리",
+    "en": "data preprocessing"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/privacy",
+   "type": "Concept",
+   "label": {
+    "ko": "프라이버시·윤리 문제",
+    "en": "privacy and ethics"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/problem-types",
+   "type": "Concept",
+   "label": {
+    "ko": "문제 유형(분류·예측·최적화·탐색)",
+    "en": "problem types"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/pseudonymization",
+   "type": "Method",
+   "label": {
+    "ko": "가명처리·익명화",
+    "en": "pseudonymization and anonymization"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/quasi-identifier",
+   "type": "Concept",
+   "label": {
+    "ko": "준식별자",
+    "en": "quasi-identifier"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/random-assignment",
+   "type": "Concept",
+   "label": {
+    "ko": "무작위 할당",
+    "en": "random assignment"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/recommender",
+   "type": "Method",
+   "label": {
+    "ko": "개인화 추천 시스템",
+    "en": "recommender system"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/reidentification",
+   "type": "Concept",
+   "label": {
+    "ko": "재식별 위험",
+    "en": "re-identification risk"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/sample-size",
+   "type": "Concept",
+   "label": {
+    "ko": "표본 크기",
+    "en": "sample size"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/standard-error",
+   "type": "Concept",
+   "label": {
+    "ko": "표준오차",
+    "en": "standard error"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/survivorship-bias",
+   "type": "Concept",
+   "label": {
+    "ko": "생존자 편향",
+    "en": "survivorship bias"
+   },
+   "domain": [
+    "stats",
+    "biz",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/tco",
+   "type": "Concept",
+   "label": {
+    "ko": "TCO(총소유비용)",
+    "en": "total cost of ownership"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/wisdom",
+   "type": "Concept",
+   "label": {
+    "ko": "지혜",
+    "en": "wisdom"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:framework/decision-process",
+   "type": "Framework",
+   "label": {
+    "ko": "데이터 기반 의사결정 5단계",
+    "en": "data-driven decision process"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:framework/dikw",
+   "type": "Framework",
+   "label": {
+    "ko": "DIKW 계단",
+    "en": "DIKW hierarchy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:framework/smart",
+   "type": "Framework",
+   "label": {
+    "ko": "SMART 원칙",
+    "en": "SMART criteria"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science",
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/bivariate-only",
+   "type": "Limitation",
+   "label": {
+    "ko": "두 변수까지만 · 상관은 인과 아님",
+    "en": "bivariate only"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/cause-unknown",
+   "type": "Limitation",
+   "label": {
+    "ko": "함께 움직이는 것의 원인은 모름",
+    "en": "cause unknown"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:limitation/duplicates-remain",
+   "type": "Limitation",
+   "label": {
+    "ko": "겹친 기록·제각각 형식",
+    "en": "duplicates and inconsistent formats remain"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/filtered-data",
+   "type": "Limitation",
+   "label": {
+    "ko": "걸러진 데이터면 틀린 지혜",
+    "en": "filtered data leads to wrong decisions"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:limitation/frequency-unknown",
+   "type": "Limitation",
+   "label": {
+    "ko": "얼마나 자주 처리할지 모름",
+    "en": "processing frequency undecided"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/hidden-variables",
+   "type": "Limitation",
+   "label": {
+    "ko": "숨은 변수를 다 알 수 없음",
+    "en": "unknown hidden variables"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:limitation/l-diversity",
+   "type": "Limitation",
+   "label": {
+    "ko": "묶음 안 정보 누출(l-다양성 문제)",
+    "en": "homogeneity leakage"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/meaning-unknown",
+   "type": "Limitation",
+   "label": {
+    "ko": "데이터가 무엇을 말하는지 모름",
+    "en": "data not yet explored"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/method-unknown",
+   "type": "Limitation",
+   "label": {
+    "ko": "무엇을 모을지만 알고 방법은 모름",
+    "en": "method not chosen"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/missing-values",
+   "type": "Limitation",
+   "label": {
+    "ko": "목표를 잴 데이터에 빈칸",
+    "en": "missing values distort the metric"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/mnar",
+   "type": "Limitation",
+   "label": {
+    "ko": "MNAR은 어떤 대체로도 완전히 못 고침",
+    "en": "MNAR cannot be fully corrected"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/outliers-remain",
+   "type": "Limitation",
+   "label": {
+    "ko": "채워진 값 속 오류·극단값",
+    "en": "errors and extremes remain"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/ownership-cost",
+   "type": "Limitation",
+   "label": {
+    "ko": "소유 비용 전체가 빠짐",
+    "en": "ownership cost missing"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/personal-data",
+   "type": "Limitation",
+   "label": {
+    "ko": "사람이 담긴 데이터의 법적 문제",
+    "en": "personal data legal issues"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/quality-remains",
+   "type": "Limitation",
+   "label": {
+    "ko": "결측·이상값·중복은 그대로",
+    "en": "quality issues remain"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/small-sample",
+   "type": "Limitation",
+   "label": {
+    "ko": "작은 표본은 우연에 휘둘림",
+    "en": "small samples are noisy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:method/ab-test",
+   "type": "Method",
+   "label": {
+    "ko": "A/B 테스트",
+    "en": "A/B testing"
+   },
+   "domain": [
+    "stats",
+    "biz",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:method/api",
+   "type": "Method",
+   "label": {
+    "ko": "Open API",
+    "en": "open API"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/data-profiling",
+   "type": "Method",
+   "label": {
+    "ko": "데이터 프로파일링",
+    "en": "data profiling"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/eda",
+   "type": "Method",
+   "label": {
+    "ko": "탐색적 데이터 분석(EDA)",
+    "en": "exploratory data analysis"
+   },
+   "domain": [
+    "stats",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/etl",
+   "type": "Method",
+   "label": {
+    "ko": "ETL",
+    "en": "extract-transform-load"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/knn-imputation",
+   "type": "Method",
+   "label": {
+    "ko": "KNN 대체",
+    "en": "KNN imputation"
+   },
+   "domain": [
+    "stats",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/listwise-deletion",
+   "type": "Method",
+   "label": {
+    "ko": "결측 행 삭제",
+    "en": "listwise deletion"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/mean-imputation",
+   "type": "Method",
+   "label": {
+    "ko": "평균 대체",
+    "en": "mean imputation"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/outlier-detection",
+   "type": "Method",
+   "label": {
+    "ko": "이상값 탐지(Z·IQR·수정 Z)",
+    "en": "outlier detection"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/outlier-treatment",
+   "type": "Method",
+   "label": {
+    "ko": "이상값 처리(제거·캡핑·별도 분석)",
+    "en": "outlier treatment"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/rpa",
+   "type": "Method",
+   "label": {
+    "ko": "RPA",
+    "en": "robotic process automation"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/sensor-iot",
+   "type": "Method",
+   "label": {
+    "ko": "센서(IoT) 수집",
+    "en": "sensor / IoT collection"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/stratification",
+   "type": "Method",
+   "label": {
+    "ko": "층별로 나눠 비교하기",
+    "en": "stratified comparison"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:method/survey",
+   "type": "Method",
+   "label": {
+    "ko": "설문조사",
+    "en": "survey"
+   },
+   "domain": [
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/web-scraping",
+   "type": "Method",
+   "label": {
+    "ko": "웹 스크래핑·크롤링",
+    "en": "web scraping and crawling"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:metric/correct-choice",
+   "type": "Metric",
+   "label": {
+    "ko": "정답을 고른 비율",
+    "en": "correct decision rate"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:metric/daily-total-cost",
+   "type": "Metric",
+   "label": {
+    "ko": "하루 총비용(처리 + 지연 손실)",
+    "en": "daily total cost"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:metric/estimation-error",
+   "type": "Metric",
+   "label": {
+    "ko": "평균 추정 오차",
+    "en": "mean estimation error"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:metric/kpi",
+   "type": "Metric",
+   "label": {
+    "ko": "KPI",
+    "en": "key performance indicator"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:metric/pearson",
+   "type": "Metric",
+   "label": {
+    "ko": "피어슨 상관계수",
+    "en": "Pearson correlation"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:metric/response-rate",
+   "type": "Metric",
+   "label": {
+    "ko": "반응률",
+    "en": "response rate"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:metric/roi",
+   "type": "Metric",
+   "label": {
+    "ko": "ROI(투자 수익률)",
+    "en": "return on investment"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:metric/spearman",
+   "type": "Metric",
+   "label": {
+    "ko": "스피어만 상관계수",
+    "en": "Spearman correlation"
+   },
+   "domain": [
+    "stats"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:question/core",
+   "type": "Question",
+   "label": {
+    "ko": "데이터를 많이 모으면 좋은 결정이 저절로 나올까?",
+    "en": "Does more data automatically mean better decisions?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science",
+    "dsb_w02_data_collection",
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:question/duel",
+   "type": "Question",
+   "label": {
+    "ko": "첫날 결과로 바로 결정해도 될까?",
+    "en": "Decide on day-one results?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science",
+    "dsb_w02_data_collection",
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:question/hidden",
+   "type": "Question",
+   "label": {
+    "ko": "숨은 교란 변수를 모를 때 원인을 어떻게 확인할까?",
+    "en": "How to establish causation with unknown confounders?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:question/k-enough",
+   "type": "Question",
+   "label": {
+    "ko": "k는 얼마면 충분할까? 정보 손실과의 균형은?",
+    "en": "How large should k be?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:question/mnar",
+   "type": "Question",
+   "label": {
+    "ko": "MNAR이 의심될 때 무엇을 더 모아야 할까?",
+    "en": "What else to collect under MNAR?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:standard/ccpa",
+   "type": "Standard",
+   "label": {
+    "ko": "CCPA",
+    "en": "California Consumer Privacy Act"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:standard/gdpr",
+   "type": "Standard",
+   "label": {
+    "ko": "GDPR",
+    "en": "General Data Protection Regulation"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:standard/pipa-2020",
+   "type": "Standard",
+   "label": {
+    "ko": "개인정보보호법(2020 개정, 가명정보)",
+    "en": "Personal Information Protection Act (2020 amendment)"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:task/fraud-monitoring",
+   "type": "Task",
+   "label": {
+    "ko": "사기 의심 거래 감시",
+    "en": "fraud monitoring"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:task/monthly-report",
+   "type": "Task",
+   "label": {
+    "ko": "월간 매출 보고",
+    "en": "monthly sales reporting"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:task/order-decision",
+   "type": "Task",
+   "label": {
+    "ko": "발주량 정하기",
+    "en": "order quantity decision"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w01",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 1주차",
+    "en": "Ahn, DSB lecture notes week 1"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w02",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 2주차",
+    "en": "Ahn, DSB lecture notes week 2"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w03",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 3주차",
+    "en": "Ahn, DSB lecture notes week 3"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:work/davier2023",
+   "type": "Work",
+   "label": {
+    "ko": "Davier(2023) A/B Testing Got Obama $60 Million",
+    "en": "Davier (2023)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/ellenberg2016",
+   "type": "Work",
+   "label": {
+    "ko": "엘렌버그(2016) 틀리지 않는 법",
+    "en": "Ellenberg (2016) How Not to Be Wrong (Korean ed.)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/hyndman2018",
+   "type": "Work",
+   "label": {
+    "ko": "Hyndman·Athanasopoulos(2018) Forecasting: principles and practice",
+    "en": "Hyndman & Athanasopoulos (2018)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:work/koreatech2025",
+   "type": "Work",
+   "label": {
+    "ko": "한국기술교육대학교(2025) 핀테크데이터분석",
+    "en": "KOREATECH (2025) Fintech Data Analysis"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:work/nia2021",
+   "type": "Work",
+   "label": {
+    "ko": "한국지능정보사회진흥원(2021) 데이터 품질관리 가이드",
+    "en": "NIA (2021) Data Quality Guide"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:work/provost2014",
+   "type": "Work",
+   "label": {
+    "ko": "프로보스트·포셋(2014) 비즈니스를 위한 데이터 과학",
+    "en": "Provost & Fawcett (2014)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/sweeney2002",
+   "type": "Work",
+   "label": {
+    "ko": "Sweeney(2002) k-anonymity",
+    "en": "Sweeney (2002)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w02_data_collection"
+   ]
+  }
+ ],
+ "updated": "2026-11-09"
+}

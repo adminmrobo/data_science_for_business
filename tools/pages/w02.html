@@ -1,0 +1,275 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 2주차 · 비즈니스 데이터의 수집 및 처리 기술</span>
+      <h1>데이터는 어디서 오는가</h1>
+      <p class="q">어디서, 어떻게, 얼마나 빨리 모은 데이터라야 믿고 쓸 수 있을까?</p>
+      <p class="lead">1주차에서 데이터가 걸러지면 결정이 틀린다는 것을 보았습니다. 이번 주는 그 데이터가 만들어지는 곳으로 갑니다. 금융·제조·소매·플랫폼이 무엇을 모으는지 지도를 펴 보고, 수집 방법을 골라 보고, 얼마나 자주 처리할지(적시성)와 얼마를 쓸지(비용)를 장난감 모형으로 계산합니다. 마지막으로 개인정보를 가리면서도 데이터를 쓸 수 있는지, 가명처리 실험으로 확인합니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi i"><b>4개 산업</b><span>금융·제조·소매·플랫폼<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>5가지</b><span>수집 방법(API·웹·설문·센서·RPA)<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>3가지</b><span>품질 기준: 정확성·완전성·일관성<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>2020</b><span>개인정보보호법 개정, 가명정보 근거<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>GDPR · CCPA</b><span>글로벌 규제<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroK">–</b><span>⑤칸 기본 설정의 재식별 위험 고객<sup>예시</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w02_hero" alt="네 캐릭터가 공장 센서, 계산대, 스마트폰, 은행 창구에서 연구실 서버로 흘러드는 빛줄기를 바라보는 장면" hidden>
+      <div class="hero-stage" data-img="sc_w02_hero"><canvas id="heroArt" aria-label="밤의 연구실. 여러 데이터 출처에서 작은 빛 알갱이가 서버 랙으로 흘러 들어간다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="magnify" alt=""><img data-who="doc" data-mood="front" alt=""><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>좋은 분석은 좋은 수집에서 시작해요. 오늘은 데이터의 출생지를 찾아갑니다.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>산업별 데이터 지도, 수집 방법 고르기, 처리 주기, 비용, 가명처리까지 다섯 칸을 준비했어요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>모으는 건 좋은데, 그거 모아도 되는 데이터야? 동의는 받았고?</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>실시간으로 몽땅 모으자고. 빠른 데이터가 곧 수익이야.</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">실험을 돌리고 숫자를 발표합니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">의심하는 쪽. 싸고 확실한 방법, 법과 품질부터 봅니다.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">확신하는 쪽. 더 빠르고 더 많은 수집에 겁니다.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 숫자 옆 <sup>[n]</sup>은 바닥글 출처 번호입니다. ③·④·⑤칸과 대결의 비용·손실·고객 데이터는 모두 설명을 위해 정한 예시값입니다. 법·규제 내용은 교안 기준이며, 이후 개정 여부를 확인해야 합니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 수집부터 따로 배우나</h2></div>
+  <div class="steps">
+    <div><b>1. 산업마다 데이터가 다르다</b><p>비즈니스 데이터는 기업이 운영하며 만드는 모든 정보입니다. 고객 행동, 거래 내역, 운영 데이터, 외부 환경 정보가 들어가고, 기업의 목적과 전략에 따라 범위가 달라집니다.<sup>[1]</sup></p></div>
+    <div><b>2. 수집 방법이 품질을 정한다</b><p>설문, API, 웹 스크래핑, 센서는 장단점이 다릅니다. 목적에 맞지 않는 방법으로 모은 데이터는 1주차의 걸러진 비행기처럼 한쪽으로 기웁니다.</p></div>
+    <div><b>3. 법과 비용이 따라온다</b><p>개인정보보호법·GDPR·CCPA 같은 규제와 인프라 비용은 '모을 수 있는가', '모을 만한가'를 결정합니다.<sup>[1]</sup></p></div>
+  </div>
+  <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>분석이 끝나고 나서 "이거 모으면 안 되는 거였네"라고 알면 그때는 늦어.</p></div></div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 수집 프로세스와 저장소</h2><p class="lead">교안의 데이터 수집 프로세스입니다.<sup>[1]</sup> 표준화와 자동화가 중요하고, 저장한 다음에는 데이터 레이크와 웨어하우스로 나뉩니다.</p></div>
+  <div class="flowchips" aria-label="수집 프로세스"><span>① 목적·목표 설정</span><i>→</i><span>② 데이터 소스 선정</span><i>→</i><span>③ 수집 방법 결정</span><i>→</i><span>④ 체계적 수집</span><i>→</i><span>⑤ 안전한 저장</span><i>→</i><span class="lim">품질 검증(정확성·완전성·일관성)</span></div>
+  <div class="pair">
+    <div><div class="tag fly">데이터 레이크</div><p>정형·반정형·비정형 데이터를 <b>원본 그대로</b> 모아 두는 중앙 저장소. Hadoop, Spark 같은 빅데이터 기술로 대용량을 처리합니다. 다양성과 확장성이 강점입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 웨어하우스</div><p>비즈니스 목적에 맞게 <b>정제·구조화</b>한 데이터를 저장합니다. OLAP으로 다차원 분석과 리포팅을 지원합니다. 의사결정 지원의 핵심입니다.<sup>[1]</sup></p></div>
+  </div>
+  <p class="lead">둘 위에는 <b>데이터 거버넌스</b>가 있습니다. 품질·보안·접근 권한을 관리하고, 메타데이터와 데이터 계보(lineage)를 추적해 신뢰성을 지킵니다.<sup>[1]</sup></p>
+</div></section>
+
+<!-- ① 산업별 데이터 지도 -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>지도</small></div><h2>산업별 데이터 지도</h2></div>
+    <p class="sub"><span class="lvtag g">틀: 데이터 유형 → 수집 → 활용</span><span class="lvtag">현장: 은행 · 공장 · 편의점 · 배달앱</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">현장에서는</div><p>은행은 계좌와 대출 기록을, 공장은 센서의 온도·진동을, 편의점은 POS 영수증을, 배달앱은 주문과 라이더 위치를 모읍니다. 같은 '고객 데이터'라도 산업마다 모양과 속도가 다릅니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>데이터 유형(무엇) · 수집 방법(어떻게) · 활용 목적(왜)을 한 줄로 묶어 봐야 데이터 전략이 섭니다. 교안은 산업 특성에 맞는 데이터 전략이 필수라고 강조합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="산업별 데이터 지도">
+    <h3>산업을 골라 데이터가 흐르는 길 보기</h3>
+    <div class="ctrl"><div class="group" id="indBtns" role="group" aria-label="산업"><span class="glabel">산업</span></div></div>
+    <div class="cwrap"><canvas id="c1" class="wide" aria-label="선택한 산업의 데이터 출처에서 저장소와 활용 목적으로 빛 알갱이가 흘러가는 흐름도"></canvas></div>
+    <div class="tw"><table class="tb" id="indTable" aria-label="선택한 산업의 데이터 유형, 수집 항목, 활용 목적"></table></div>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>각 산업의 표는 교안 1교시 내용을 데이터 유형 · 수집 항목 · 활용 목적으로 정리한 것입니다.<sup>[1]</sup></li>
+    <li>흐름도의 알갱이 속도는 데이터가 생기는 빠르기를 나타냅니다. 제조 센서는 초당 수백 건, 소매 POS는 거래마다, 금융 거래는 실시간 감시가 필요합니다(속도는 설명용).</li>
+    <li>표의 마지막 열 '조심할 점'은 다음 칸들(방법·적시성·비용·개인정보)로 이어집니다.</li>
+  </ol><p class="limit">이 칸의 한계: 무엇을 모으는지는 보이지만, 그것을 어떤 방법으로 모아야 안정적이고 합법적인지는 아직 정하지 않았습니다. → ②칸</p></div>
+  <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>공장 쪽 알갱이가 제일 빠르죠? 센서는 쉬지 않고 말을 하거든요.</p></div></div>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② 수집 방법 -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>방법</small></div><h2>수집 방법 고르기 — API · 웹 · 설문 · 센서 · RPA</h2></div>
+    <p class="sub"><span class="lvtag g">판단: 목적·안정성·실시간성·법적 위험</span><span class="lvtag">연구실: 장비를 골라 쓰는 조수</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">연구실에서는</div><p>실험마다 맞는 장비가 다릅니다. 온도는 온도계로, 무게는 저울로 잽니다. 저울로 온도를 재려 하면 아무리 정성껏 해도 틀립니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>수집 목적과 데이터 출처에 맞는 방법을 고릅니다. 교안은 각 방법의 장단점을 이해하고 목적에 맞는 방법을 선택하라고 합니다.<sup>[1]</sup></p></div>
+  </div>
+  <div class="tw"><table class="tb" aria-label="수집 방법 비교">
+    <thead><tr><th>방법</th><th>무엇인가</th><th>강점</th><th>조심할 점</th><th>교안 예시</th></tr></thead>
+    <tbody>
+      <tr><td><b>Open API</b></td><td>시스템끼리 데이터를 주고받는 표준 규칙</td><td>표준화된 인터페이스로 안정적·지속적 수집</td><td>제공하는 항목만 받을 수 있음, 키·호출 한도</td><td>공공데이터포털, 상권정보 API, DART 기업공시, 금융결제원</td></tr>
+      <tr><td><b>웹 스크래핑·크롤링</b></td><td>웹페이지에서 데이터를 뽑기(스크래핑) / 여러 페이지를 돌며 모으기(크롤링)</td><td>경쟁사 가격·리뷰·뉴스 같은 공개 정보를 대량 확보</td><td>저작권법·개인정보보호법·이용약관, 서버 부하(속도 제한)</td><td>시장 동향, 경쟁 정보</td></tr>
+      <tr><td><b>설문조사</b></td><td>사람에게 직접 묻기</td><td>태도·성향·만족도처럼 행동 기록에 없는 정보</td><td>응답률, 응답 편향, 설문 품질</td><td>투자성향진단(자본시장법, 교안 기준 2009년부터), NPS</td></tr>
+      <tr><td><b>센서(IoT)</b></td><td>온도·습도·압력·진동을 자동 측정</td><td>실시간, 사람 손 없이 대량</td><td>대용량 처리 인프라(엣지·클라우드), 센서 오류</td><td>스마트팩토리, 스마트 양식장</td></tr>
+      <tr><td><b>RPA</b></td><td>화면 조작을 흉내 내는 업무 자동화 봇</td><td>API가 없는 구형(레거시) 시스템에서도 추출</td><td>화면이 바뀌면 멈춤 → 오류 알림·모니터링 필요</td><td>반복 데이터 입력·수집</td></tr>
+    </tbody></table></div>
+  <section class="panel" aria-label="수집 방법 고르기 게임">
+    <h3>상황 여섯 개 — 어떤 방법이 가장 알맞을까</h3>
+    <div id="pickBox" class="stack" style="gap:12px"></div>
+    <section class="kpis k3" id="k2"></section>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>공식 API가 있으면 API가 먼저입니다. 교안 복습 문제처럼 API는 웹 스크래핑보다 안정적이고 효율적입니다.<sup>[1]</sup></li>
+    <li>사람의 생각(위험 성향, 만족도)은 행동 로그에 남지 않으므로 설문이 필요합니다.</li>
+    <li>물리적 상태는 센서로, 화면만 있는 옛 시스템은 RPA로 모읍니다.</li>
+    <li>웹 크롤링은 공개된 정보라도 법·약관·서버 부하를 함께 따져야 합니다.</li>
+  </ol><p class="limit">이 칸의 한계: 방법을 골라도 '얼마나 자주' 모으고 처리할지는 남아 있습니다. 늦게 처리하면 데이터가 신선도를 잃습니다. → ③칸</p></div>
+  <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>크롤링이 제일 싸고 많이 모이잖아. …약관이 안 된다고 하면 그건 비용이지.</p></div></div>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ 적시성 -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>속도</small></div><h2>적시성 — 배치 처리와 스트림 처리</h2></div>
+    <p class="sub"><span class="lvtag g">모형: 총비용 = 처리 비용 + 지연 손실</span><span class="lvtag">현장: 카드 사기 의심 거래 감시</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">현장에서는</div><p>사기 의심 거래를 하루에 한 번 몰아서 검사하면 싸지만, 그사이 손실이 쌓입니다. 거래가 생기는 즉시 검사하면 손실은 거의 없지만 시스템을 늘 켜 두어야 합니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>대용량은 <b>배치 처리</b>로, 실시간 의사결정이 필요한 데이터는 <b>스트림 처리</b>로 나눕니다. 람다·카파 아키텍처 같은 하이브리드 구조도 씁니다.<sup>[1]</sup> 기준은 데이터 신선도가 비즈니스에 얼마나 중요한가입니다.</p></div>
+  </div>
+  <section class="panel" aria-label="배치와 스트림 비교 실험">
+    <h3>30일 동안 사기 의심 거래 감시 — 처리 주기를 바꿔 보기</h3>
+    <div class="ctrl">
+      <div class="group" id="hBtns" role="group" aria-label="처리 주기"><span class="glabel">처리 주기</span></div>
+      <div class="group"><label class="glabel" for="lossH">탐지 전 시간당 손실(건당)</label><input type="range" id="lossH" min="0" max="50000" step="5000" value="20000"><span class="val" id="lossHv">2만 원</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="하루 24시간 축 위에 의심 거래 발생 시각과 처리 시각, 그 사이의 대기 시간을 선으로 보여 주고, 아래에 처리 주기별 하루 총비용 막대를 그린 그림"></canvas></div>
+    <section class="kpis k4" id="k3"></section>
+    <div class="eq" id="eq3"></div>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>의심 거래는 하루 20건, 아무 때나 생깁니다. 처리 주기가 h시간이면 거래는 다음 처리 시각까지 기다립니다(평균 약 h/2시간).</li>
+    <li>기다리는 동안 건당 시간당 손실이 쌓입니다. 처리 한 번에 2만 원, 스트림은 하루 50만 원이 든다고 정했습니다(예시값).</li>
+    <li>손실이 크면 짧은 주기·스트림이, 손실이 거의 없으면(월간 보고처럼) 하루 한 번 배치가 싸게 먹힙니다. 슬라이더를 0으로 내려 보세요.</li>
+  </ol><p class="limit">이 칸의 한계: 한 달 운영비만 비교했습니다. 서버를 살지 빌릴지, 몇 년을 쓸지 같은 소유 비용 전체는 아직입니다. → ④칸</p></div>
+  <details class="math"><summary>수식으로 보기</summary><div>
+    <p class="num">하루 총비용(h) = (24 / h) × 처리 1회 비용 + 하루 건수 × 평균 대기 시간(h) × 시간당 손실,  평균 대기 시간 ≈ h / 2</p>
+    <p class="muted">두 항이 h에 대해 반대로 움직이므로(앞은 h가 작을수록 커지고, 뒤는 h가 클수록 커짐) 그 사이 어딘가에 가장 싼 주기가 있습니다.</p>
+  </div></details>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 비용 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>비용</small></div><h2>수집 비용 — TCO로 클라우드와 온프레미스 비교</h2></div>
+    <p class="sub"><span class="lvtag g">모형: 누적 총소유비용(TCO)</span><span class="lvtag">장부: 사서 쓸까, 빌려 쓸까</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">장부로 보면</div><p>차를 사면 처음에 큰돈이 들고 매달 유지비가 나갑니다. 렌터카는 처음 돈은 없지만 쓰는 만큼 매달 냅니다. 오래, 많이 탈수록 사는 쪽이 유리해지는 지점이 옵니다.</p></div>
+    <div><div class="tag nn">경영으로는</div><p>TCO(총소유비용)는 하드웨어·소프트웨어·인력·운영비를 모두 더한 비용입니다. 교안은 초기 투자 규모·운영 복잡성·확장성·보안을 함께 보고, FinOps 관점에서 클라우드 비용을 계속 감시하라고 합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="TCO 비교 실험">
+    <h3>36개월 누적 비용 — 데이터 양을 바꿔 보기</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="tb">월 데이터 양</label><input type="range" id="tb" min="5" max="100" step="5" value="30"><span class="val" id="tbv">30TB</span></div>
+      <div class="group"><label class="glabel" for="gr">월 증가율</label><input type="range" id="gr" min="0" max="5" step="1" value="2"><span class="val" id="grv">2%</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c4" class="wide" aria-label="온프레미스와 클라우드의 36개월 누적 비용 꺾은선과 두 선이 만나는 손익분기 월"></canvas></div>
+    <section class="kpis k4" id="k4"></section>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>온프레미스: 처음 1억 2,000만 원(서버·라이선스) + 매달 운영비 300만 원. 용량은 월 80TB까지(예시값).</li>
+    <li>클라우드: 기본료 월 50만 원 + TB당 월 12만 원, 쓰는 만큼(예시값). 데이터가 늘면 비용도 늘어납니다.</li>
+    <li>두 선이 만나는 달이 손익분기점입니다. 데이터가 적거나 사업 기간이 짧으면 클라우드, 많고 길면 온프레미스가 유리해집니다.</li>
+    <li>온프레미스 용량을 넘으면 서버를 더 사야 합니다(빨간 점). 클라우드의 장점인 확장성이 여기서 드러납니다.</li>
+  </ol><p class="limit">이 칸의 한계: 돈만 셌습니다. 그 데이터 안에 사람이 있다면, 모으고 저장하는 것 자체가 법의 문제입니다. → ⑤칸</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>ROI(투자 수익률)로 수집 투자의 가치를 잽니다. 매출 증대, 비용 절감, 리스크 감소를 함께 셉니다. 예약·스팟 인스턴스, 자동 스케일링, 반복 작업 자동화가 교안의 비용 최적화 방법입니다.<sup>[1]</sup></p><p class="lim">모형의 한계: 실제 단가는 업체·계약·지역마다 다르며, 이 페이지의 숫자는 비교를 보여 주기 위한 예시값입니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>사내 챗봇을 API로 빌려 쓸지, 모델을 직접 서버에 올릴지도 같은 TCO 문제입니다. 사용량이 적으면 API, 많고 오래 쓰면 자체 운영이 유리해지는 지점이 있습니다.</p><p class="lim">비유의 한계: 생성 AI는 보안·데이터 반출 규정이 비용보다 먼저 결정을 가르는 경우가 많습니다.</p></div>
+  </div>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- ⑤ 가명처리 -->
+<section class="level" id="lv5"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">5<small>보호</small></div><h2>가명처리와 재식별 위험 — k-익명성 실험</h2></div>
+    <p class="sub"><span class="lvtag g">지표: k = 같은 조합을 가진 최소 인원</span><span class="lvtag">연구실: 이름을 가린 실험 노트</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">연구실에서는</div><p>실험 참가자 이름을 지워도 "34세 여성, 우편번호 06236"이 한 명뿐이라면 누구인지 알 수 있습니다. 이름만 가리는 것으로는 부족합니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>식별자 제거, 일반화(나이 → 나이대), 마스킹으로 개인 식별 가능성을 낮춥니다. <b>k-익명성</b>은 어떤 조합이든 최소 k명이 같도록 만드는 기준입니다. 교안은 가명정보도 다른 정보와 결합하면 재식별될 위험이 있다고 경고합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="k-익명성 실험">
+    <h3>고객 40명 표 — 얼마나 뭉뚱그려야 아무도 특정되지 않을까</h3>
+    <div class="ctrl">
+      <div class="group" id="ageBtns" role="group" aria-label="나이"><span class="glabel">나이</span></div>
+      <div class="group" id="zipBtns" role="group" aria-label="우편번호"><span class="glabel">우편번호</span></div>
+      <div class="group" id="sexBtns" role="group" aria-label="성별"><span class="glabel">성별</span></div>
+    </div>
+    <div class="tw" style="max-height:300px;overflow-y:auto"><table class="dt" id="kTable" aria-label="가명처리한 고객 표. 빨간 줄은 같은 조합이 한 명뿐인 고객"></table></div>
+    <section class="kpis k4" id="k5"></section>
+    <div class="insight" id="ins5" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>이름은 이미 지웠습니다(가명). 남은 나이·성별·우편번호를 <b>준식별자</b>라고 부릅니다. 하나하나는 흔하지만 조합하면 사람을 가리킬 수 있습니다.</li>
+    <li>같은 준식별자 조합을 가진 사람끼리 한 묶음입니다. 가장 작은 묶음의 인원이 k입니다. k = 1인 사람은 다른 데이터와 맞춰 보면 특정될 수 있습니다(빨간 줄).</li>
+    <li>일반화할수록 k가 커지지만, 분석에 쓸 정보(남은 묶음 수)는 줄어듭니다. 보호와 활용 사이의 균형입니다.</li>
+    <li>교안은 이 밖에 l-다양성, t-근접성, 해시·토큰화·차분 프라이버시를 소개합니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: k-익명성은 준식별자의 조합만 봅니다. 한 묶음의 구매 패턴이 모두 같다면 묶음 안에서도 정보가 샙니다(l-다양성이 다루는 문제). 법적 판단은 개별 사안과 최신 법령을 따라야 합니다.</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면 · 규제 지도 <span class="stampnote">교안 기준 · 개정 여부 확인 필요</span></h4><p><b>한국:</b> 2020년 개정 개인정보보호법으로 통계 작성·과학적 연구·공익적 기록 보존 목적의 가명정보 활용 근거가 생겼습니다. 정보통신망법·신용정보법, 규제 샌드박스도 있습니다. <b>유럽:</b> GDPR. <b>미국 캘리포니아:</b> CCPA. 금융(마이데이터·바젤·IFRS), 의료(개인건강정보), 제조(산업보안법)는 업종 규제가 따로 있습니다.<sup>[1]</sup></p><p class="lim">이 페이지는 법률 자문이 아닙니다. 개인정보보호법은 이후에도 개정되었으므로, 실제 수집 전에는 최신 조문과 담당 부서의 판단을 확인해야 합니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>교안은 챗GPT에 회사 자료를 넣어 생긴 보안·유출 우려를 다룬 뉴스를 함께 봅니다.<sup>[1]</sup> 프롬프트에 붙여 넣는 고객 표도 '수집'입니다. 이름을 지워도 준식별자가 남으면 이 실험처럼 특정될 수 있습니다.</p><p class="lim">비유의 한계: 생성 AI 서비스의 데이터 보관·학습 사용 정책은 서비스와 계약마다 다릅니다.</p></div>
+  </div>
+  <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>이름을 지웠다고 끝이 아니야. 빨간 줄 몇 개 남았는지 봐.</p></div></div>
+  <div class="quiz" data-quiz="lv5"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 하루 한 번 배치냐, 실시간 스트림이냐</h2><p class="lead">③칸 모형으로 하루 총비용(처리 비용 + 지연 손실)을 겨룹니다. 낮을수록 이깁니다. 이번 판은 두 업무를 함께 봅니다.</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 하루 한 번 배치</b><p>"한 번에 몰아서 처리하면 하루 2만 원이면 돼."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 실시간 스트림</b><p>"하루 50만 원이면 1초도 안 놓쳐. 속도가 돈이야."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 다섯 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 산업별 지도</b></td><td>무엇을, 왜 모으는지 산업별로 본다</td><td>어떤 방법으로 모을지는 모른다</td><td>방법을 고른다</td></tr>
+      <tr><td><b>② 수집 방법</b></td><td>목적에 맞는 방법(API·웹·설문·센서·RPA)을 고른다</td><td>얼마나 자주 처리할지는 모른다</td><td>처리 주기를 정한다</td></tr>
+      <tr><td><b>③ 적시성</b></td><td>지연 손실과 처리 비용의 균형을 계산한다</td><td>소유 비용 전체는 빠졌다</td><td>TCO로 비교한다</td></tr>
+      <tr><td><b>④ 비용(TCO)</b></td><td>클라우드와 온프레미스의 손익분기를 찾는다</td><td>사람이 담긴 데이터의 법적 문제는 남는다</td><td>가명처리와 규제</td></tr>
+      <tr><td><b>⑤ 가명처리</b></td><td>재식별 위험(k)과 정보 손실을 함께 본다</td><td>모은 데이터의 결측·이상값·중복은 그대로다</td><td>3주차: 분석을 위한 준비</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>교안 정리 1</b><p>비즈니스 데이터는 기업 운영에서 생기는 모든 정보. 은행은 맞춤 상품, 스마트팩토리는 MES로 품질관리·예측정비, 소매는 POS·RFM·RFID.</p></div>
+    <div><b>교안 정리 2</b><p>수집 방법론: API, 웹 스크래핑·크롤링(법 준수), 설문, 센서, 플랫폼 데이터(개인화 추천, 동적 가격).</p></div>
+    <div><b>교안 정리 3</b><p>고려사항: 품질, 보안, 적시성, 비용(TCO), 신뢰성(다중 소스 검증, 데이터 계보), 국내외 규제, 익명화·가명화, 산업별 규제.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w02_outro" hidden><img alt="두 업무 카드를 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>수집 방법은 목적과 출처에 맞춰 고른다.</li><li>처리 속도와 저장 방식은 지연 손실과 비용의 균형으로 정한다.</li><li>사람이 담긴 데이터는 이름을 지운 뒤에도 재식별 위험을 잰다.</li></ul></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>사기 감시는 주판봇 쪽, 월간 보고는 초파리 쪽이 쌌어요. 이번 판은 업무가 승자를 정했어요.</p></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>손실이 큰 데서는 빠른 게 맞네. 그래도 수집 전에 법부터 보는 건 양보 못 해.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>반은 본전, 반은 수익. 다음엔 업무부터 확인하고 투자하지.</p></div></div>
+  </div>
+</div></section>
