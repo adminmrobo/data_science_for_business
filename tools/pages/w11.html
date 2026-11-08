@@ -1,0 +1,261 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 11주차 · 데이터 모델 최적화와 시계열 모형</span>
+      <h1>시간이 기억하는 숫자</h1>
+      <p class="q">이번 달 매출은 지난달을, 작년 이맘때를 얼마나 기억하고 있을까?</p>
+      <p class="lead">지금까지의 데이터는 순서를 섞어도 괜찮았습니다. 시계열은 다릅니다. 순서가 곧 정보입니다. 시간 추이에 맞는 차트를 고르는 데서 시작해, 자기상관(ACF·PACF), 추세·계절성·불규칙성 분해, 정상성과 차분, AR·ARIMA 예측까지 한 걸음씩 올라갑니다. 마지막에는 "작년 같은 달"이라는 단순한 규칙과 ARIMA가 겨룹니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi i"><b>추세 · 계절 · 주기 · 불규칙</b><span>시계열의 네 구성 요소<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>ACF · PACF</b><span>과거와의 상관, 직접 상관<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>Yₜ − Yₜ₋₁</b><span>1차 차분: 추세를 지운다<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>ARIMA(p, d, q)</b><span>자기회귀 · 차분 · 이동평균<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>Q1 − 1.5 × IQR</b><span>상자수염도표의 이상값 기준<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroAcf">–</b><span>예시 월매출의 1개월·12개월 자기상관<sup>계산</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w11_hero" alt="네 캐릭터가 벽에 걸린 긴 달력과 물결치는 매출 그래프 앞에서 작년 같은 달을 손가락으로 짚는 연구실 장면" hidden>
+      <div class="hero-stage" data-img="sc_w11_hero"><canvas id="heroArt" aria-label="밤의 연구실. 벽에 오르내리는 물결 모양 그래프와 달력이 걸려 있다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="point" alt=""><img data-who="doc" data-mood="think" alt=""><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘의 데이터는 줄을 서 있습니다. 순서를 섞는 순간 가장 중요한 정보가 사라져요.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>6년(72개월)치 월매출 예시 데이터를 만들었어요. 해마다 조금씩 오르고, 12월에 가장 많이 팔려요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>차분하고, ACF·PACF 보고, AIC로 차수 고르고. 정석대로 ARIMA를 세우면 돼.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>그렇게 복잡하게? 작년 같은 달 장부에 올해 늘어난 만큼만 더하면 끝인데.</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">시계열을 자르고 차분합니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">정석 ARIMA 편.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">작년 같은 달 장부 편.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 이 페이지의 매출·일매출·시계열은 모두 교안의 개념을 보여 주려고 만든 예시 데이터입니다(교안 실습의 PayPal 주가 데이터는 싣지 않았습니다). ARIMA는 MA 항 없이 AR 부분만(ARIMA(p, d, 0)) 최소제곱으로 단순화해 계산합니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 시계열은 따로 배우나</h2></div>
+  <div class="steps">
+    <div><b>1. 순서가 정보다</b><p>일반 데이터는 행을 섞어도 되지만, 시계열은 수집 시점과 순서가 분석의 핵심 변수입니다. 6주차처럼 무작위로 나누면 미래로 과거를 맞히는 셈이 됩니다.<sup>[1]</sup></p></div>
+    <div><b>2. 과거가 현재에 남는다</b><p>이번 달 매출은 지난달과 닮고(자기상관), 광고 효과는 몇 달 뒤에 나타납니다(지연효과).<sup>[1]</sup></p></div>
+    <div><b>3. 예측이 곧 계획이다</b><p>매출 예측과 재고 관리, 금융 전망, 수요 예측은 시계열 모델이 가장 많이 쓰이는 곳입니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 교안 11주차의 세 교시</h2></div>
+  <div class="flowchips" aria-label="11주차 흐름"><span>1교시: 시각화 기법(선·막대·상자수염·히스토그램·트리맵·게이지)</span><i>→</i><span>2교시: 자기상관 · 지연효과 · 4요소 · 정상성 · 차분</span><i>→</i><span class="lim">3교시: AR · MA · ARMA · ARIMA · 평가(MAPE)</span></div>
+  <div class="pair">
+    <div><div class="tag fly">읽기</div><p>먼저 그림으로 읽습니다. 시간 추이는 선 그래프, 분포는 상자수염도표와 히스토그램. 그다음 자기상관과 네 구성 요소로 "어떤 패턴이 있나"를 봅니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">예측</div><p>평균·분산이 일정한 정상 시계열로 바꾼 뒤(차분), 과거 값(AR)과 과거 오차(MA)로 다음 값을 예측합니다. ARIMA의 I가 차분입니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<!-- ① 차트 -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>그림</small></div><h2>차트 고르기 — 시간은 선으로, 분포는 상자로</h2></div>
+    <p class="sub"><span class="lvtag g">이상값: Q1 − 1.5·IQR 미만, Q3 + 1.5·IQR 초과</span><span class="lvtag">데이터: 분기 매출 · 일매출 90일(예시)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>교안의 분기별 매출 예입니다. 같은 숫자를 선형 차트로 그리면 오르내림이 바로 보이지만, 파이 차트로 그리면 "어느 분기가 먼저였는지"가 사라집니다. 파이는 전체 대비 비율용입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로 보면</div><p>상자수염도표는 최솟값·Q1·중앙값·Q3·최댓값으로 분포를 요약하고, 수염 밖의 점을 이상값으로 표시합니다. 매출의 이상 패턴, 사기·품질 이상 탐지에 씁니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="차트 선택과 상자수염도표 실험">
+    <h3>왼쪽: 같은 8분기 매출, 다른 차트 · 오른쪽: 일매출 상자수염도표</h3>
+    <div class="ctrl">
+      <div class="group" id="chBtns" role="group" aria-label="차트"><span class="glabel">차트</span></div>
+      <div class="group"><label class="glabel" for="iq">수염 길이(× IQR)</label><input type="range" id="iq" min="0.5" max="3" step="0.5" value="1.5"><span class="val" id="iqv">1.5</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c1" class="wide" aria-label="왼쪽은 분기 매출을 선·막대·파이로 그린 차트, 오른쪽은 일매출 90일의 상자수염도표"></canvas></div>
+    <section class="kpis k4" id="k1k"></section>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>파이로 바꾸면 8개 조각의 크기가 비슷해 차이도, 순서도 읽기 어렵습니다. 교안의 "나쁜 예시"와 같습니다.<sup>[1]</sup></li>
+    <li>수염 길이를 1.5배에서 3배로 늘리면 이상값으로 찍히는 날이 줄어듭니다. 1.5배는 관례일 뿐이므로, 찍힌 점은 "확인할 후보"로 봅니다(3주차 ③칸).</li>
+  </ol><p class="limit">이 칸의 한계: 상자수염도표는 순서를 버리고 분포만 봅니다. 오늘 값이 어제 값과 얼마나 닮았는지는 보이지 않습니다. → ②칸 자기상관</p></div>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② ACF/PACF -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>기억</small></div><h2>자기상관 — ACF는 서서히, PACF는 뚝</h2></div>
+    <p class="sub"><span class="lvtag g">AR(2): Yₜ = φ₁Yₜ₋₁ + φ₂Yₜ₋₂ + εₜ</span><span class="lvtag">점선: 95% 신뢰구간 ±1.96 ÷ √n</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>교안의 친구 관계 비유입니다. A가 B에게, B가 C에게 영향을 주면 A와 C도 닮아 보입니다(ACF). PACF는 B를 거친 간접 영향을 빼고 A와 C의 직접 연결만 봅니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로 보면</div><p>교안의 기온 예에서 ACF는 1일 전 0.8, 2일 전 0.65, 3일 전 0.52로 서서히 줄고, PACF는 1일 0.6, 2일 0.4 뒤 3일부터 0 근처로 뚝 떨어집니다. ACF가 서서히, PACF가 p 시점 뒤 끊기면 AR(p)가 맞습니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="자기상관 실험">
+    <h3>φ₁, φ₂를 바꿔 만든 시계열 200개 시점의 ACF와 PACF</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="p1">φ₁</label><input type="range" id="p1" min="-0.8" max="0.9" step="0.1" value="0.6"><span class="val" id="p1v">0.6</span></div>
+      <div class="group"><label class="glabel" for="p2">φ₂</label><input type="range" id="p2" min="-0.4" max="0.4" step="0.1" value="0.2"><span class="val" id="p2v">0.2</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c2" class="wide" aria-label="위는 시계열, 아래 왼쪽은 ACF 막대, 아래 오른쪽은 PACF 막대"></canvas></div>
+    <section class="kpis k4" id="k2k"></section>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>φ₂ = 0이면 AR(1)입니다. PACF는 1시점만 신뢰구간 밖이고, ACF는 φ₁, φ₁², φ₁³…로 서서히 줄어듭니다.</li>
+    <li>φ₁과 φ₂를 둘 다 0으로 하면 백색잡음입니다. 모든 막대가 점선 안에 있어 "과거로 미래를 맞힐 단서가 없다"는 뜻입니다.<sup>[1]</sup></li>
+    <li>φ₁을 음수로 하면 ACF가 +, −를 번갈아 냅니다. 이번 달 많이 팔면 다음 달 덜 파는(재고 조정 같은) 패턴입니다.</li>
+  </ol><p class="limit">이 칸의 한계: 실제 매출에는 자기상관 말고도 장기 추세와 12개월 계절성이 섞여 있습니다. 뒤엉킨 패턴을 떼어 봐야 합니다. → ③칸 분해</p></div>
+  <details class="math"><summary>계산 방법</summary><div>
+    <p class="num">ACF(k) = Σ(Yₜ − Ȳ)(Yₜ₋ₖ − Ȳ) ÷ Σ(Yₜ − Ȳ)²,  PACF는 더빈-레빈슨 점화식으로 계산</p>
+  </div></details>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ 분해 -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>분해</small></div><h2>시계열 분해 — 추세 + 계절성 + 불규칙성</h2></div>
+    <p class="sub"><span class="lvtag g">추세: 12개월 중심 이동평균</span><span class="lvtag">데이터: 월매출 72개월(예시)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>아이스크림 가게 매출은 해마다 조금씩 늘고(추세), 여름마다 뛰고(계절성), 몇 해 주기로 경기에 따라 출렁이고(주기성), 가끔 이유 없이 튑니다(불규칙성).<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로 보면</div><p>이동평균으로 단기 변동을 지워 추세를 찾고, 추세를 뺀 나머지를 같은 달끼리 평균해 계절성을 얻습니다. 남은 것이 불규칙성(잔차)입니다. 이 페이지는 추세 + 계절성 + 불규칙성의 더하기 모델로 분해합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="시계열 분해 실험">
+    <h3>추세 기울기와 계절 진폭을 바꿔 보기</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="tr3">추세(월당 증가)</label><input type="range" id="tr3" min="-1" max="3" step="0.2" value="1.2"><span class="val" id="tr3v">1.2</span></div>
+      <div class="group"><label class="glabel" for="am3">계절 진폭</label><input type="range" id="am3" min="0" max="30" step="2" value="14"><span class="val" id="am3v">14</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="원 시계열, 추세, 계절성, 불규칙성 네 줄의 그래프"></canvas></div>
+    <section class="kpis k4" id="k3k"></section>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>계절 진폭을 0으로 하면 계절성 줄이 평평해지고, 원 시계열은 추세 + 잡음만 남습니다.</li>
+    <li>추세를 음수로 하면 매출이 줄어드는 사업입니다. 계절성은 그대로 12월에 솟습니다. 추세와 계절성은 서로 다른 정보입니다.</li>
+    <li>분해해서 얻은 계절 지수는 "12월에는 평소보다 약 몇 만큼 더 판다"로 바로 재고 계획에 씁니다.</li>
+  </ol><p class="limit">이 칸의 한계: 추세가 있으면 평균이 시간에 따라 움직여, 과거 평균으로 미래를 맞힐 수 없습니다. 대부분의 시계열 모델은 평균·분산이 일정한 정상성을 가정합니다. → ④칸 차분</p></div>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 정상성·차분 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>정상화</small></div><h2>정상성과 차분 — 수준 대신 변화를 본다</h2></div>
+    <p class="sub"><span class="lvtag g">1차 차분: ΔYₜ = Yₜ − Yₜ₋₁</span><span class="lvtag">2차 차분: Δ²Yₜ = ΔYₜ − ΔYₜ₋₁</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>키가 매년 크는 아이의 "키"는 해마다 평균이 달라지지만, "올해 큰 만큼"은 해마다 비슷합니다. 수준이 아닌 변화량을 보면 평균이 일정해집니다.</p></div>
+    <div><div class="tag nn">통계로 보면</div><p>정상 시계열은 ① 평균 일정 ② 분산 일정 ③ 자기공분산이 시차에만 의존합니다. 1차 차분은 선형 추세를, 2차 차분은 곡선 추세를 지웁니다. 대부분의 경제·금융 시계열은 1~2차 차분으로 정상화되며, 과도한 차분은 정보를 훼손합니다. 실무에서는 ADF 검정으로 확인합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="차분 실험">
+    <h3>추세가 있는 시계열을 차분해 보기</h3>
+    <div class="ctrl">
+      <div class="group" id="srBtns" role="group" aria-label="시계열"><span class="glabel">시계열</span></div>
+      <div class="group" id="dfBtns" role="group" aria-label="차분"><span class="glabel">차분 d</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c4" class="wide" aria-label="차분한 시계열과 네 구간의 평균·표준편차, ACF 막대"></canvas></div>
+    <section class="kpis k4" id="k4k"></section>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>선형 추세 시계열은 d = 1에서 네 구간의 평균이 비슷해지고, ACF가 빠르게 0으로 떨어집니다.</li>
+    <li>곡선(가속) 추세는 d = 1로는 구간 평균이 아직 오르고, d = 2에서 비로소 평탄해집니다.</li>
+    <li>이미 정상인 시계열을 더 차분하면 lag 1 ACF가 −0.5 근처로 떨어집니다. 지나친 차분의 흔적입니다.</li>
+  </ol><p class="limit">이 칸의 한계: 정상 시계열을 만들었으니 이제 예측할 차례입니다. 과거 값 몇 개를 써야 할까요? → ⑤칸 AR·ARIMA</p></div>
+  <details class="math"><summary>정상성 확인(단순화)</summary><div>
+    <p class="muted">이 칸은 시계열을 네 구간으로 나눠 평균·표준편차가 비슷한지, ACF가 빨리 줄어드는지로 정상성을 눈으로 확인합니다. ADF 같은 정식 검정은 하지 않습니다.</p>
+  </div></details>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- ⑤ AR·ARIMA -->
+<section class="level" id="lv5"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">5<small>예측</small></div><h2>AR과 ARIMA — 과거 p개로 다음 값을</h2></div>
+    <p class="sub"><span class="lvtag g">AR(p): Yₜ = c + φ₁Yₜ₋₁ + … + φₚYₜ₋ₚ + εₜ</span><span class="lvtag">평가: MAPE = 평균 |실제 − 예측| ÷ 실제</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>다음 달 매출을 점칠 때 지난 몇 달을 돌아볼지 정하는 것이 p, 그 전에 "변화량"으로 바꿀지 정하는 것이 d입니다. MA는 지난번 예측이 얼마나 빗나갔는지를 다음 예측에 반영합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로 보면</div><p>ARIMA는 ARMA에 차분(I)을 더한 모델입니다. 정상성 검정으로 d를, ACF·PACF로 p와 q를 정하고, AIC·BIC 같은 정보 기준으로 후보를 비교합니다. 예측은 MSE·MAE·MAPE로 평가하며, MAPE는 백분율이라 규모가 다른 데이터끼리 비교할 수 있습니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="AR·ARIMA 예측 실험">
+    <h3>60개월로 학습, 마지막 12개월 예측</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="pp">p</label><input type="range" id="pp" min="1" max="12" step="1" value="2"><span class="val" id="ppv">2</span></div>
+      <div class="group" id="d5Btns" role="group" aria-label="차분"><span class="glabel">d</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c5" class="wide" aria-label="월매출 72개월과 마지막 12개월의 예측선, p별 AIC 막대"></canvas></div>
+    <section class="kpis k4" id="k5k"></section>
+    <div class="insight" id="ins5" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>d = 0이면 추세가 있는 원 시계열에 AR을 맞춘 것이라 예측이 평균 쪽으로 끌려 내려갑니다. d = 1로 바꾸면 추세를 따라갑니다.</li>
+    <li>p를 1~6에서 바꾸면 AIC는 조금씩 좋아지지만, 12월 계절성은 잘 못 따라갑니다. p = 12로 올리면 "12개월 전" 값이 들어와 계절성을 잡습니다. 계절 ARIMA(SARIMA)가 하는 일을 거칠게 흉내 낸 것입니다.</li>
+    <li>ARIMA는 선형성을 가정하므로 극단적 외부 충격이나 구조 변화에 약합니다. 교안은 LSTM·GRU 같은 순환 신경망과의 결합을 다음 방향으로 꼽습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: AIC가 가장 좋은 모델이 시험 기간 MAPE도 가장 좋을까요? 그리고 단순한 규칙보다 나을까요? → 대결</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>소매·제조에서는 판매량·수요 예측으로 재고와 발주를, 금융에서는 주가·환율 단기 전망과 리스크 관리를 합니다. 예측 정확도가 오르면 과잉 재고와 기회 손실이 함께 줄어듭니다. 마케팅 캠페인처럼 효과가 몇 달 뒤 나타나는 지연효과는 교차상관으로 시차를 찾아 반영합니다.<sup>[1]</sup></p><p class="lim">한계: 시험 기간은 반드시 학습 기간보다 뒤여야 합니다. 시계열에 무작위 분할(6주차)을 쓰면 미래 정보가 학습에 섞입니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>언어모델은 "앞의 단어들로 다음 단어를 예측"하는 자기회귀 모델입니다. AR(p)의 p가 문맥 길이(컨텍스트 윈도)에 해당하고, 계수 대신 거대한 신경망이 과거와 현재를 연결합니다.</p><p class="lim">비유의 한계: 언어모델은 숫자가 아닌 단어(토큰)의 확률분포를 예측하며, 정상성 같은 가정을 두지 않습니다.</p></div>
+  </div>
+  <div class="quiz" data-quiz="lv5"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 정석 ARIMA vs 작년 같은 달</h2><p class="lead">처음 60개월로 학습해 마지막 12개월을 한 번에 예측합니다. 초파리 연구원은 d = 1, p는 1~6 중 AIC가 가장 낮은 값으로 고른 ARIMA(p, 1, 0), 주판봇은 "작년 같은 달 + 최근 1년의 평균 증가분"입니다. 지표는 MAPE(작을수록 좋음).</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · ARIMA(p, 1, 0), AIC로 p 선택</b><p>"차분하고 차수를 고르는 게 정석이야."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 작년 같은 달 + 연간 증가분</b><p>"12월은 12월끼리. 장부 한 줄이면 돼."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+      <p class="muted" style="font-size:14px">조건 메모: 예시 월매출(시드 11)은 12월에 뚜렷이 솟는 계절성을 갖도록 만들었습니다. 계절성이 약하거나 계절 항을 넣은 SARIMA를 쓰면 결과가 달라질 수 있습니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 다섯 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 차트</b></td><td>시간은 선, 분포는 상자수염</td><td>순서 정보를 버린다</td><td>자기상관</td></tr>
+      <tr><td><b>② ACF·PACF</b></td><td>과거와의 상관, AR 차수 단서</td><td>추세·계절이 섞여 있다</td><td>분해</td></tr>
+      <tr><td><b>③ 분해</b></td><td>추세·계절·불규칙을 떼어 본다</td><td>평균이 움직인다</td><td>차분</td></tr>
+      <tr><td><b>④ 차분</b></td><td>정상 시계열로 바꾼다</td><td>아직 예측하지 않았다</td><td>AR·ARIMA</td></tr>
+      <tr><td><b>⑤ AR·ARIMA</b></td><td>과거 p개로 미래를 예측</td><td>계절성·단순 규칙과 비교 필요</td><td>대결</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>교안 정리 1</b><p>시간 추이는 선형 차트, 분포는 상자수염도표·히스토그램, 비중은 원형·트리맵, 목표 대비는 게이지. Tableau·Power BI 선택.</p></div>
+    <div><b>교안 정리 2</b><p>자기상관·ACF·PACF·지연효과, 추세·계절성·주기성·불규칙성, 정상성과 1·2차 차분.</p></div>
+    <div><b>교안 정리 3</b><p>AR·MA·ARMA·ARIMA(p, d, q), AIC·BIC, MSE·MAE·MAPE, 금융·소매·제조 적용과 LSTM·GRU.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w11_outro" hidden><img alt="작년 장부를 펼친 주판봇이 기뻐하고, 커피를 든 초파리 연구원이 달력을 바라보며, 박사가 엄지를 세우고 조수가 웃는 장면"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>시계열은 순서가 정보다. 시험 기간은 언제나 학습 기간 뒤에 둔다.</li><li>ACF·PACF와 분해로 어떤 패턴이 있는지 먼저 본다.</li><li>복잡한 모델은 단순한 기준선(작년 같은 달)과 반드시 비교한다.</li></ul></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>12월은 12월끼리! 장부 한 줄이 이렇게 셀 줄이야.</p></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>p를 6까지로 묶은 게 패인이군. 계절 항을 넣었어야 했어.</p></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>12주차에는 평균·분산·왜도·상관부터 차트 고르기까지 시각화를 더 깊이 봐요. ⑤칸에서 p = 12도 눌러 보세요.</p></div></div>
+  </div>
+</div></section>

@@ -8,7 +8,7 @@ COVER_ALT = '네 캐릭터가 S자 곡선이 그려진 칠판과 가지를 뻗�
 COVER_PROP = '🌳'
 SEARCH_PH = '예: 시그모이드, 지니, max_depth, PolynomialFeatures, 릿지, 라쏘'
 NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① 로지스틱'), ('#lv2', '② 지니'), ('#lv3', '③ 깊이'), ('#lv4', '④ 특성공학'), ('#lv5', '⑤ 릿지·라쏘'), ('#duel', '대결'), ('#sum', '정리')]
-PREVNEXT = '<a href="week09_regression_1.html"><small>← 이전 · 9주차</small>숫자를 맞히는 선</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="index.html"><small>다음 · 11주차</small>준비 중</a>'
+PREVNEXT = '<a href="week09_regression_1.html"><small>← 이전 · 9주차</small>숫자를 맞히는 선</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week11_time_series.html"><small>다음 · 11주차</small>시간이 기억하는 숫자 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:method/logistic-regression', 'lab:method/decision-tree', 'lab:concept/feature-engineering', 'lab:method/ridge-lasso']
 KGPATH = ['method/logistic-regression', 'limitation/hard-to-explain', 'concept/gini-split', 'limitation/one-question', 'method/decision-tree', 'limitation/given-features', 'concept/feature-engineering', 'limitation/exploding-coef', 'method/ridge-lasso']

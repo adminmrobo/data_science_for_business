@@ -15,9 +15,9 @@ WEEKS = [
  (8, '중간고사', '', '', '📝', '', None, ''),
  (9, '데이터 분석 모형: 회귀모형(1)', '숫자를 맞히는 선', 'KNN 회귀 · 최소제곱 · 다항 회귀 · MSE·RMSE·MAE · R²', '🎯', 'week09_regression_1.html', True, '조건부'),
  (10, '데이터 분석 모형: 회귀모형(2)', 'S자 곡선과 스무고개', '로지스틱 회귀 · 지니 불순도 · 나무 깊이 · 특성공학 · 릿지·라쏘', '🌳', 'week10_regression_2.html', True, '초파리 승'),
- (11, '데이터 모델 최적화와 시계열 모형', '', '최적화를 위한 시각화 · 시계열의 특징 · 시계열 모형', '⏳', '', False, ''),
- (12, '효과적인 비즈니스 데이터 시각화', '', '데이터 특성과 시각화 원칙 · 차트 선택 · 오픈소스 도구', '🎨', '', False, ''),
- (13, '비즈니스 인텔리전스와 KPI 설계', '', 'BI 프레임워크 · KPI 설계 · 의사결정 지원 시스템', '🧭', '', False, ''),
+ (11, '데이터 모델 최적화와 시계열 모형', '시간이 기억하는 숫자', '차트 선택 · ACF·PACF · 시계열 분해 · 차분 · ARIMA', '📅', 'week11_time_series.html', True, '주판봇 승'),
+ (12, '효과적인 비즈니스 데이터 시각화', '숫자의 얼굴', '대표값 · 분산도·변동계수 · 왜도·첨도 · 상관 · 차트 선택', '📊', 'week12_visualization.html', True, '초파리 승'),
+ (13, '비즈니스 인텔리전스와 KPI 설계', '계기판을 설계하다', 'ETL · 재고 KPI · 광고 퍼널 · 어트리뷰션 · CLV : CAC', '🧭', 'week13_bi_kpi.html', True, '조건부'),
  (14, '비즈니스를 위한 고급 분석 기법', '', '군집·연관 규칙 · 자연어 처리·감성 분석 · 딥러닝', '🧠', '', False, ''),
  (15, '기말고사', '', '', '📝', '', None, ''),
 ]
@@ -77,7 +77,7 @@ a.wk:hover{{border-color:var(--seq)}}
 <section class="level" id="weeks"><div class="wrap stack">
   <h2>주차별 해설</h2>
   <div class="weeks">{cards}</div>
-  <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 지금까지: 초파리 승 3 · 주판봇 승 3 · 무승부 1 · 조건부 2.</p>
+  <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 지금까지: 초파리 승 4 · 주판봇 승 4 · 무승부 1 · 조건부 3.</p>
 </div></section>
 <section class="level" id="practice"><div class="wrap stack">
   <h2>실습 사례 <span class="lvtag">추가 예정</span></h2>

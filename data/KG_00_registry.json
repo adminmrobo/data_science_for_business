@@ -1,6 +1,6 @@
 {
  "series": "비즈니스를 위한 데이터 과학 연구실",
- "version": "255",
+ "version": "314",
  "concepts": [
   {
    "id": "lab:analogy/airport",
@@ -35,6 +35,22 @@
    ]
   },
   {
+   "id": "lab:analogy/bowls",
+   "type": "Analogy",
+   "label": {
+    "ko": "음식에 맞는 그릇 ↔ 데이터에 맞는 차트",
+    "en": "bowls for dishes ↔ charts for data"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
    "id": "lab:analogy/buy-vs-rent",
    "type": "Analogy",
    "label": {
@@ -51,6 +67,22 @@
    ]
   },
   {
+   "id": "lab:analogy/cockpit",
+   "type": "Analogy",
+   "label": {
+    "ko": "조종석·자동차 계기판 ↔ KPI 대시보드",
+    "en": "cockpit gauges ↔ KPI dashboard"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
    "id": "lab:analogy/containers",
    "type": "Analogy",
    "label": {
@@ -64,6 +96,38 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:analogy/cooking",
+   "type": "Analogy",
+   "label": {
+    "ko": "재료 준비·손질·조리·플레이팅 ↔ BI 4단계",
+    "en": "cooking steps ↔ BI stages"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:analogy/dancers",
+   "type": "Analogy",
+   "label": {
+    "ko": "함께 춤추는 두 사람 ↔ 상관관계",
+    "en": "dancing pair ↔ correlation"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -95,7 +159,24 @@
     "biz"
    ],
    "pages": [
-    "dsb_w05_classification_1"
+    "dsb_w05_classification_1",
+    "dsb_w11_time_series"
+   ]
+  },
+  {
+   "id": "lab:analogy/height",
+   "type": "Analogy",
+   "label": {
+    "ko": "아이의 키 vs 올해 큰 만큼 ↔ 차분",
+    "en": "height vs growth ↔ differencing"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -208,6 +289,22 @@
    ],
    "pages": [
     "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:analogy/relay",
+   "type": "Analogy",
+   "label": {
+    "ko": "릴레이 경기의 공 나누기 ↔ 어트리뷰션",
+    "en": "relay credit ↔ attribution"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -339,6 +436,22 @@
    ]
   },
   {
+   "id": "lab:claim/acf-pacf-rule",
+   "type": "Claim",
+   "label": {
+    "ko": "ACF가 서서히 줄고 PACF가 특정 시점 뒤 급감하면 AR 모형이 적합",
+    "en": "ACF decays + PACF cuts off ⇒ AR"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:claim/api-more-stable",
    "type": "Claim",
    "label": {
@@ -368,6 +481,54 @@
    ],
    "pages": [
     "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:claim/clv-cac-3",
+   "type": "Claim",
+   "label": {
+    "ko": "CLV : CAC 3 : 1 이상이면 건강한 비즈니스 모델",
+    "en": "CLV:CAC ≥ 3 is healthy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:claim/corr-scale",
+   "type": "Claim",
+   "label": {
+    "ko": "상관계수 0.7 이상 강함, 0.3~0.7 중간, 0.3 미만 약함",
+    "en": "correlation interpretation scale"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:claim/ctr-cvr-tradeoff",
+   "type": "Claim",
+   "label": {
+    "ko": "CTR을 높이려 자극적 광고를 쓰면 전환율이 감소할 수 있다",
+    "en": "clickbait raises CTR but may lower CVR"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -515,6 +676,22 @@
    ]
   },
   {
+   "id": "lab:claim/pie-time",
+   "type": "Claim",
+   "label": {
+    "ko": "파이 차트는 시간 순서 정보를 잃어 시간 추이 분석에 부적절",
+    "en": "pie charts lose time order"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:claim/pipa-2020-pseudonym",
    "type": "Claim",
    "label": {
@@ -592,6 +769,22 @@
    ],
    "pages": [
     "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:claim/salary-mean-median",
+   "type": "Claim",
+   "label": {
+    "ko": "월급 200·300·350·400·1,000의 평균 450, 중앙값 350",
+    "en": "mean 450, median 350"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -691,6 +884,22 @@
    ]
   },
   {
+   "id": "lab:concept/autocorrelation",
+   "type": "Concept",
+   "label": {
+    "ko": "자기상관(ACF·PACF)",
+    "en": "autocorrelation (ACF, PACF)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:concept/batch-vs-stream",
    "type": "Concept",
    "label": {
@@ -704,6 +913,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/bi",
+   "type": "Concept",
+   "label": {
+    "ko": "비즈니스 인텔리전스(BI)",
+    "en": "business intelligence"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -736,6 +961,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/central-tendency",
+   "type": "Concept",
+   "label": {
+    "ko": "집중화 경향(평균·중앙값·최빈값)",
+    "en": "central tendency"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -828,6 +1069,22 @@
    ],
    "pages": [
     "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:concept/correlation",
+   "type": "Concept",
+   "label": {
+    "ko": "공분산·상관계수",
+    "en": "covariance and correlation"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -1052,6 +1309,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/dispersion",
+   "type": "Concept",
+   "label": {
+    "ko": "분산도(분산·표준편차·변동계수)",
+    "en": "dispersion"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -1621,6 +1894,38 @@
    ]
   },
   {
+   "id": "lab:concept/skewness-kurtosis",
+   "type": "Concept",
+   "label": {
+    "ko": "왜도·첨도",
+    "en": "skewness and kurtosis"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:concept/smart-kpi",
+   "type": "Concept",
+   "label": {
+    "ko": "SMART KPI",
+    "en": "SMART KPIs"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
    "id": "lab:concept/sst-decomposition",
    "type": "Concept",
    "label": {
@@ -1648,6 +1953,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/stationarity",
+   "type": "Concept",
+   "label": {
+    "ko": "정상성",
+    "en": "stationarity"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -1713,6 +2034,22 @@
    ]
   },
   {
+   "id": "lab:concept/time-series",
+   "type": "Concept",
+   "label": {
+    "ko": "시계열 데이터",
+    "en": "time series"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:concept/train-score-trap",
    "type": "Concept",
    "label": {
@@ -1726,6 +2063,22 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:concept/ts-decomposition",
+   "type": "Concept",
+   "label": {
+    "ko": "시계열 분해(추세·계절·불규칙)",
+    "en": "time series decomposition"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -1758,6 +2111,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:dataset/card-spend",
+   "type": "Dataset",
+   "label": {
+    "ko": "카드 결제액 예시 1,000건",
+    "en": "synthetic card spending"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -1809,6 +2178,22 @@
    ]
   },
   {
+   "id": "lab:dataset/monthly-sales",
+   "type": "Dataset",
+   "label": {
+    "ko": "예시 월매출 72개월",
+    "en": "synthetic monthly sales (72)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:dataset/perch-56",
    "type": "Dataset",
    "label": {
@@ -1826,6 +2211,22 @@
    ]
   },
   {
+   "id": "lab:dataset/salary-five",
+   "type": "Dataset",
+   "label": {
+    "ko": "월급 다섯 명(교안 예)",
+    "en": "five salaries (lecture example)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
    "id": "lab:dataset/study-pass",
    "type": "Dataset",
    "label": {
@@ -1839,6 +2240,22 @@
    ],
    "pages": [
     "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:dataset/three-sources",
+   "type": "Dataset",
+   "label": {
+    "ko": "세 출처 주간 주문(예시)",
+    "en": "three-source weekly orders (synthetic)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -1966,6 +2383,22 @@
    ],
    "pages": [
     "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:limitation/demand-side",
+   "type": "Limitation",
+   "label": {
+    "ko": "수요를 만드는 쪽은 별도",
+    "en": "demand creation not covered"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -2241,6 +2674,22 @@
    ]
   },
   {
+   "id": "lab:limitation/mixed-patterns",
+   "type": "Limitation",
+   "label": {
+    "ko": "추세·계절이 섞여 있다",
+    "en": "patterns are mixed"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:limitation/mnar",
    "type": "Limitation",
    "label": {
@@ -2254,6 +2703,38 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/moving-mean",
+   "type": "Limitation",
+   "label": {
+    "ko": "평균이 시간에 따라 움직인다",
+    "en": "moving mean"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
+   "id": "lab:limitation/multi-touch",
+   "type": "Limitation",
+   "label": {
+    "ko": "여러 채널을 거친 구매",
+    "en": "multi-touch journeys"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -2305,6 +2786,22 @@
    ]
   },
   {
+   "id": "lab:limitation/no-forecast",
+   "type": "Limitation",
+   "label": {
+    "ko": "아직 예측하지 않았다",
+    "en": "no forecast yet"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:limitation/no-model",
    "type": "Limitation",
    "label": {
@@ -2337,6 +2834,38 @@
    ]
   },
   {
+   "id": "lab:limitation/no-picture",
+   "type": "Limitation",
+   "label": {
+    "ko": "아직 그림이 없다",
+    "en": "no picture yet"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:limitation/no-spread",
+   "type": "Limitation",
+   "label": {
+    "ko": "흩어짐을 모른다",
+    "en": "spread unknown"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
    "id": "lab:limitation/one-question",
    "type": "Limitation",
    "label": {
@@ -2350,6 +2879,38 @@
    ],
    "pages": [
     "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:limitation/one-variable",
+   "type": "Limitation",
+   "label": {
+    "ko": "변수 하나만 본다",
+    "en": "one variable only"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:limitation/order-lost",
+   "type": "Limitation",
+   "label": {
+    "ko": "순서 정보를 버린다",
+    "en": "order is lost"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -2513,6 +3074,22 @@
    ]
   },
   {
+   "id": "lab:limitation/single-purchase",
+   "type": "Limitation",
+   "label": {
+    "ko": "한 번의 구매만 셌다",
+    "en": "single purchase only"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
    "id": "lab:limitation/small-sample",
    "type": "Limitation",
    "label": {
@@ -2545,6 +3122,22 @@
    ]
   },
   {
+   "id": "lab:limitation/symmetric",
+   "type": "Limitation",
+   "label": {
+    "ko": "대칭을 가정한 요약",
+    "en": "assumes symmetry"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
    "id": "lab:limitation/threshold-dependent",
    "type": "Limitation",
    "label": {
@@ -2558,6 +3151,22 @@
    ],
    "pages": [
     "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:limitation/what-to-watch",
+   "type": "Limitation",
+   "label": {
+    "ko": "무엇을 볼지 아직 없다",
+    "en": "nothing chosen to watch"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -2609,6 +3218,22 @@
    ]
   },
   {
+   "id": "lab:method/arima",
+   "type": "Method",
+   "label": {
+    "ko": "AR·ARIMA",
+    "en": "AR and ARIMA"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:method/association-rules",
    "type": "Method",
    "label": {
@@ -2621,6 +3246,54 @@
    ],
    "pages": [
     "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:method/attribution",
+   "type": "Method",
+   "label": {
+    "ko": "어트리뷰션(퍼스트·라스트·선형)",
+    "en": "attribution models"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:method/chart-choice",
+   "type": "Method",
+   "label": {
+    "ko": "차트 선택과 상자수염도표",
+    "en": "chart choice and box plots"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
+   "id": "lab:method/chart-selection",
+   "type": "Method",
+   "label": {
+    "ko": "목적별 차트 선택",
+    "en": "chart selection by purpose"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -2720,6 +3393,22 @@
    ]
   },
   {
+   "id": "lab:method/differencing",
+   "type": "Method",
+   "label": {
+    "ko": "차분",
+    "en": "differencing"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:method/eda",
    "type": "Method",
    "label": {
@@ -2763,7 +3452,8 @@
     "biz"
    ],
    "pages": [
-    "dsb_w03_analysis_prep"
+    "dsb_w03_analysis_prep",
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -2891,6 +3581,22 @@
    ]
   },
   {
+   "id": "lab:method/log-transform",
+   "type": "Method",
+   "label": {
+    "ko": "로그 변환",
+    "en": "log transform"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
    "id": "lab:method/logistic-regression",
    "type": "Method",
    "label": {
@@ -2996,6 +3702,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/seasonal-naive",
+   "type": "Method",
+   "label": {
+    "ko": "계절 나이브(작년 같은 달)",
+    "en": "seasonal naive"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -3141,6 +3863,38 @@
    ]
   },
   {
+   "id": "lab:metric/ad-funnel",
+   "type": "Metric",
+   "label": {
+    "ko": "광고 퍼널 지표(CPM·CPC·CPA·ROAS)",
+    "en": "ad funnel metrics"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:metric/clv-cac",
+   "type": "Metric",
+   "label": {
+    "ko": "CLV : CAC",
+    "en": "CLV to CAC ratio"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
    "id": "lab:metric/confidence",
    "type": "Metric",
    "label": {
@@ -3203,6 +3957,22 @@
    ]
   },
   {
+   "id": "lab:metric/inventory-kpi",
+   "type": "Metric",
+   "label": {
+    "ko": "재고 KPI(회전율·품절률)",
+    "en": "inventory KPIs"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
    "id": "lab:metric/kpi",
    "type": "Metric",
    "label": {
@@ -3246,6 +4016,38 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:metric/mae",
+   "type": "Metric",
+   "label": {
+    "ko": "MAE(평균 절대 오차)",
+    "en": "mean absolute error"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:metric/mape",
+   "type": "Metric",
+   "label": {
+    "ko": "MAPE",
+    "en": "MAPE"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -3423,7 +4225,10 @@
     "dsb_w06_classification_2",
     "dsb_w07_model_evaluation",
     "dsb_w09_regression_1",
-    "dsb_w10_regression_2"
+    "dsb_w10_regression_2",
+    "dsb_w11_time_series",
+    "dsb_w12_visualization",
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -3447,7 +4252,10 @@
     "dsb_w06_classification_2",
     "dsb_w07_model_evaluation",
     "dsb_w09_regression_1",
-    "dsb_w10_regression_2"
+    "dsb_w10_regression_2",
+    "dsb_w11_time_series",
+    "dsb_w12_visualization",
+    "dsb_w13_bi_kpi"
    ]
   },
   {
@@ -3602,6 +4410,54 @@
    ],
    "pages": [
     "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:task/data-description",
+   "type": "Task",
+   "label": {
+    "ko": "데이터 특성 요약과 전달",
+    "en": "describing and communicating data"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:task/decision-support",
+   "type": "Task",
+   "label": {
+    "ko": "데이터 기반 경영 의사결정",
+    "en": "data-driven decision support"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:task/forecasting",
+   "type": "Task",
+   "label": {
+    "ko": "시계열 예측",
+    "en": "forecasting"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
    ]
   },
   {
@@ -3842,6 +4698,54 @@
    ]
   },
   {
+   "id": "lab:work/ahn-dsb-w11",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 11주차",
+    "en": "Ahn, DSB lecture notes week 11"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w12",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 12주차",
+    "en": "Ahn, DSB lecture notes week 12"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w13",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 13주차",
+    "en": "Ahn, DSB lecture notes week 13"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w13_bi_kpi"
+   ]
+  },
+  {
    "id": "lab:work/cs231n",
    "type": "Work",
    "label": {
@@ -3923,6 +4827,22 @@
    ]
   },
   {
+   "id": "lab:work/fpp3",
+   "type": "Work",
+   "label": {
+    "ko": "Hyndman·Athanasopoulos, Forecasting: Principles and Practice",
+    "en": "FPP3"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series"
+   ]
+  },
+  {
    "id": "lab:work/hyndman2018",
    "type": "Work",
    "label": {
@@ -3952,6 +4872,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:work/matplotlib-seaborn",
+   "type": "Work",
+   "label": {
+    "ko": "Matplotlib · Seaborn 공식 문서",
+    "en": "Matplotlib and Seaborn docs"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w12_visualization"
    ]
   },
   {
@@ -4034,6 +4970,24 @@
    ],
    "pages": [
     "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:work/step-fintech",
+   "type": "Work",
+   "label": {
+    "ko": "한국기술교육대학교, 핀테크데이터분석(STEP)",
+    "en": "KoreaTech STEP Fintech Data Analysis"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w11_time_series",
+    "dsb_w12_visualization",
+    "dsb_w13_bi_kpi"
    ]
   },
   {
