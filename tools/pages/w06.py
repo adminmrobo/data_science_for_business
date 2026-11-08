@@ -8,7 +8,7 @@ COVER_ALT = '네 캐릭터가 도미·농어·빙어가 든 수조 앞에서 자
 COVER_PROP = '🎣'
 SEARCH_PH = '예: 다중 분류, K, SVM, 커널, stratify, 표준화'
 NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① 3클래스'), ('#lv2', '② K 고르기'), ('#lv3', '③ SVM'), ('#lv4', '④ 분할'), ('#lv5', '⑤ 표준화'), ('#duel', '대결'), ('#sum', '정리')]
-PREVNEXT = '<a href="week05_classification_1.html"><small>← 이전 · 5주차</small>도미와 빙어</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="index.html"><small>다음 · 7주차</small>준비 중</a>'
+PREVNEXT = '<a href="week05_classification_1.html"><small>← 이전 · 5주차</small>도미와 빙어</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week07_model_evaluation.html"><small>다음 · 7주차</small>정확도 95%의 함정 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:task/multiclass-classification', 'lab:method/k-tuning', 'lab:method/svm', 'lab:method/train-test-split', 'lab:method/standardization']
 KGPATH = ['method/knn-multiclass', 'limitation/k-unknown', 'method/k-tuning', 'limitation/curved-boundary', 'method/svm', 'limitation/biased-split', 'method/train-test-split', 'limitation/scale', 'method/standardization']

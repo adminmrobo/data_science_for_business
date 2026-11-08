@@ -1,0 +1,256 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 9주차 · 데이터 분석 모형: 회귀모형(1)</span>
+      <h1>숫자를 맞히는 선</h1>
+      <p class="q">길이만 재고 농어의 무게를 몇 g까지 맞힐 수 있을까?</p>
+      <p class="lead">5~7주차의 분류는 "어느 상자에 넣을까"를 물었습니다. 회귀는 "몇 g일까"를 묻습니다. 교안의 농어 56마리로 KNN 회귀, 최소제곱 직선, 2차 곡선을 차례로 그려 보고, 화살이 과녁에서 얼마나 빗나갔는지 재는 법(MSE·RMSE·MAE)과 "얼마나 설명했는지" 재는 법(R²·수정 R²)을 손으로 확인합니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi i"><b>56마리</b><span>농어 길이(cm)·무게(g), 훈련 42 · 시험 14<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>0.993</b><span>KNN 회귀(K = 5)의 시험 R²<sup>[1]</sup></span></div>
+        <div class="kpi r"><b id="heroKnn50">–</b><span>KNN이 예측한 50cm 농어의 무게<sup>계산</sup></span></div>
+        <div class="kpi a"><b>Y = β₀ + β₁X</b><span>최소제곱 직선<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>SST = SSR + SSE</b><span>전체 변동 = 설명한 몫 + 못 한 몫<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>RMSE</b><span>원래 단위(g)로 읽는 오차<sup>[1]</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w09_hero" alt="네 캐릭터가 양궁 과녁 앞에서 농어를 저울에 올리고 칠판에 곡선을 긋는 연구실 장면" hidden>
+      <div class="hero-stage" data-img="sc_w09_hero"><canvas id="heroArt" aria-label="밤의 연구실. 양궁 과녁에 화살이 꽂혀 있고 벽 화면에 점들을 지나는 곡선이 그려져 있다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="point" alt=""><img data-who="doc" data-mood="think" alt=""><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘부터는 이름표가 아니라 숫자를 맞힙니다. 과녁 한가운데가 실제 무게예요.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>교안의 농어 56마리를 교안과 같은 방식(random_state = 42)으로 훈련 42, 시험 14로 나눴어요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>무게는 길이의 세제곱쯤 따라가겠지. 곡선 하나로 쭉 그어 보자.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>공식 필요 없어. 비슷한 길이 다섯 마리 무게 평균이면 끝이지.</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">데이터를 나누고 오차를 셉니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">곡선(다항 회귀) 편.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">이웃 평균(KNN 회귀) 편.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 농어 56마리의 길이·무게는 교안 실습 데이터(Fish Market) 그대로이고, 훈련·시험 분할은 scikit-learn의 train_test_split(random_state = 42)과 같은 순서를 옮겨 왔습니다. 대결의 "큰 농어 10마리"는 설명용 예시값입니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 회귀인가</h2></div>
+  <div class="steps">
+    <div><b>1. 비즈니스는 숫자로 계획한다</b><p>판매량, 가격, 수요, 고객 생애 가치처럼 "몇 개·얼마"가 필요한 결정이 많습니다. 이탈 여부는 분류, 고객 생애 가치는 회귀입니다.<sup>[1]</sup></p></div>
+    <div><b>2. 빗나간 거리를 재야 한다</b><p>분류는 맞음·틀림을 셌지만, 회귀는 "얼마나 빗나갔나"를 잽니다. 양궁 과녁에서 중심과의 거리가 점수인 것과 같습니다.<sup>[1]</sup></p></div>
+    <div><b>3. 예측과 설명, 두 얼굴</b><p>머신러닝은 미래 값을 맞히는 데, 통계학은 X와 Y의 관계를 이해하는 데 회귀를 씁니다. 같은 식도 쓰임새에 따라 읽는 법이 다릅니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 교안 9주차의 세 교시</h2></div>
+  <div class="flowchips" aria-label="9주차 흐름"><span>1교시: KNN 회귀 · 선형 회귀 · 비선형 회귀 · Fish Market 실습</span><i>→</i><span>2교시: MSE · RMSE · MAE · R² · 수정 R²</span><i>→</i><span class="lim">3교시: 배터리 수명 · 보험료 · 대출 심사</span></div>
+  <div class="pair">
+    <div><div class="tag fly">분류 모델</div><p>여러 상자 중 어느 상자에 넣을지 정합니다. 예/아니오, A/B/C 같은 이산적 결과와 각 클래스의 확률을 냅니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">회귀 모델</div><p>온도계처럼 구체적인 숫자를 냅니다. 주가, 매출, 무게처럼 연속적인 값을 입력 변수의 함수로 모델링합니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<!-- ① KNN 회귀 -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>이웃</small></div><h2>KNN 회귀 — 이웃 K마리의 평균 무게</h2></div>
+    <p class="sub"><span class="lvtag g">코드: KNeighborsRegressor() · 기본 K = 5</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>처음 보는 생선의 무게를 짐작할 때, 길이가 비슷한 생선 다섯 마리의 무게를 떠올려 평균을 냅니다. 생선 가게 주인의 눈대중과 같습니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>KNN 분류는 이웃의 다수결, KNN 회귀는 이웃 값의 평균입니다. K가 작으면 지역 패턴과 노이즈에 민감하고, 크면 전체 추세만 따라갑니다. 학습 데이터는 (42,) 1차원 배열이라 reshape(−1, 1)로 (42, 1) 2차원으로 바꿔 넣습니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="KNN 회귀 실험">
+    <h3>K와 새 농어의 길이를 바꿔 보기</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="k1">K</label><input type="range" id="k1" min="1" max="41" step="2" value="5"><span class="val" id="k1v">5</span></div>
+      <div class="group"><label class="glabel" for="q1">새 농어 길이</label><input type="range" id="q1" min="10" max="60" step="1" value="50"><span class="val" id="q1v">50cm</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c1" class="wide" aria-label="농어 길이-무게 산점도와 KNN 회귀 예측선, 새 농어와 이웃"></canvas></div>
+    <section class="kpis k4" id="k1k"></section>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>K = 5에서 시험 R²는 0.993으로 교안 실행 결과와 같습니다. 훈련 R²(0.970)보다 높은 것은 시험 14마리가 우연히 맞히기 쉬웠기 때문입니다.<sup>[1]</sup></li>
+    <li>K = 1이면 계단이 촘촘해져 훈련 점수는 오르지만 들쭉날쭉합니다. K를 크게 하면 계단이 뭉툭해집니다. 교안의 TV 광고 예산-매출 예(K = 1, 10, 70)와 같은 모습입니다.<sup>[1]</sup></li>
+    <li>새 농어 길이를 44cm 넘게 밀어 보세요. 가장 긴 이웃 다섯 마리의 평균에서 더 오르지 않습니다.</li>
+  </ol><p class="limit">이 칸의 한계: KNN은 훈련 데이터 범위 밖을 예측하지 못하고, "길이가 1cm 늘면 무게가 몇 g 느는가" 같은 설명도 주지 않습니다. → ②칸 선형 회귀</p></div>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② 선형 회귀 -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>직선</small></div><h2>선형 회귀 — 오차 제곱의 합이 가장 작은 직선</h2></div>
+    <p class="sub"><span class="lvtag g">최소제곱법: Σ(실제 − 예측)²을 최소로</span><span class="lvtag">코드: LinearRegression()</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>요리 레시피처럼 "재료 A를 1 늘리면 결과가 β만큼 는다"고 읽을 수 있는 식입니다. 대신 줄다리기에서 한 명이 극단적으로 당기면 균형이 깨지듯, 튀는 점 하나가 직선을 크게 끌어당깁니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>Y = β₀ + β₁X₁ + … + βₙXₙ + ε. 최소제곱법은 실제 값과 예측 값의 세로 거리(잔차)를 제곱해 더한 값이 가장 작은 β를 찾습니다. 독립변수가 하나면 단순선형회귀, 여럿이면 다중선형회귀입니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="최소제곱 실험">
+    <h3>직선을 손으로 맞춰 보고, 최소제곱과 비교하기</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="b1">기울기 β₁</label><input type="range" id="b1" min="10" max="60" step="1" value="25"><span class="val" id="b1v">25</span></div>
+      <div class="group"><label class="glabel" for="b0">절편 β₀</label><input type="range" id="b0" min="-1200" max="200" step="20" value="-300"><span class="val" id="b0v">-300</span></div>
+      <div class="group" id="lsBtns" role="group" aria-label="맞추기"><span class="glabel">맞추기</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c2" class="wide" aria-label="훈련 농어 42마리, 직선, 잔차 제곱을 나타낸 사각형"></canvas></div>
+    <section class="kpis k4" id="k2k"></section>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>점마다 붙은 사각형이 잔차의 제곱입니다. 사각형 넓이의 합(SSE)을 가장 작게 하는 직선이 최소제곱 직선입니다.</li>
+    <li>최소제곱 직선은 무게 ≈ 39.0 × 길이 − 709입니다. 길이 1cm에 약 39g. 해석이 쉽고 범위 밖도 예측합니다.</li>
+    <li>하지만 8.4cm 농어의 무게를 음수(약 −381g)로 예측합니다. 길이와 무게의 관계가 직선이 아니기 때문입니다.</li>
+  </ol><p class="limit">이 칸의 한계: 현실의 많은 관계는 곡선입니다. 직선으로는 작은 농어와 큰 농어를 동시에 맞히지 못합니다. → ③칸 비선형 회귀</p></div>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ 다항 회귀 -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>비선형(다항) 회귀 — 길이² 열을 하나 더</h2></div>
+    <p class="sub"><span class="lvtag g">코드: np.column_stack((train_input ** 2, train_input))</span><span class="lvtag">일상: 구불구불한 산길</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>고속도로는 직선이면 되지만 산길은 굽이를 따라가야 합니다. 그런데 곡선자를 너무 휘게 쓰면 교과서 문제만 외운 학생처럼, 훈련 데이터에는 딱 맞고 새 문제에서는 엉뚱한 답을 냅니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>다항 회귀는 x², x³ 같은 항을 새 열로 더해 여전히 LinearRegression으로 풉니다. 2차 곡선은 농어 무게를 잘 따라갑니다. 지수 회귀(Y = a·e^(bX)), 로그 회귀(Y = a + b·log X)도 비선형 회귀의 한 형태입니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="다항 회귀 실험">
+    <h3>차수를 올려 보기 — 훈련 R² vs 시험 R²</h3>
+    <div class="ctrl"><div class="group"><label class="glabel" for="dg">차수</label><input type="range" id="dg" min="1" max="8" step="1" value="2"><span class="val" id="dgv">2</span></div></div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="왼쪽은 다항 회귀 곡선과 훈련·시험 농어, 오른쪽은 차수에 따른 훈련·시험 R² 막대"></canvas></div>
+    <section class="kpis k4" id="k3k"></section>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>차수 2: 훈련 R² 0.971, 시험 R² 0.978. 직선(0.940 / 0.825)보다 둘 다 좋아졌습니다.</li>
+    <li>차수를 6 이상으로 올리면 훈련 R²는 계속 오르는데 시험 R²는 무너집니다. 시험 14마리 중 8.4cm 농어가 훈련 범위(13.7cm~) 밖에 있어, 휘어진 곡선이 그 끝에서 크게 빗나갑니다.</li>
+    <li>교안 그림의 선형(0.935 / 0.873)·다항(0.976 / 0.962) 점수는 이 페이지의 분할과 다른 분할에서 나온 값으로 보입니다. KNN 점수는 같습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: R² 하나만 보았습니다. "몇 g 틀렸나"는 아직 모릅니다. 오차를 재는 자를 골라야 합니다. → ④칸</p></div>
+  <details class="math"><summary>계산 방법</summary><div>
+    <p class="num">x를 훈련 데이터의 평균·표준편차로 표준화한 뒤 [1, z, z², …, z^d] 열로 정규방정식 (XᵀX)β = Xᵀy를 풉니다.</p>
+    <p class="muted">표준화는 높은 차수에서 숫자가 너무 커지는 것을 막으려는 계산상의 장치이며, 예측 결과는 표준화하지 않은 다항식과 같습니다.</p>
+  </div></details>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 오차 지표 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>과녁</small></div><h2>MSE · RMSE · MAE — 빗나간 거리를 재는 세 자</h2></div>
+    <p class="sub"><span class="lvtag g">MSE = 평균(오차²) · RMSE = √MSE · MAE = 평균|오차|</span><span class="lvtag">일상: 양궁 점수</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>왼쪽으로 3 빗나간 화살과 오른쪽으로 3 빗나간 화살을 그냥 더하면 0이 됩니다. 방향을 지우고 거리만 남겨야 합니다. 제곱하거나 절댓값을 씌웁니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>MSE는 큰 오차를 더 크게 벌해 이상치에 민감합니다. RMSE는 MSE의 제곱근이라 원래 단위(g)로 읽힙니다. MAE는 모든 오차를 같은 무게로 다뤄 이상치에 덜 민감합니다. 셋 다 0에 가까울수록 좋습니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="오차 지표 실험">
+    <h3>시험 농어 14마리의 오차 — 모델과 입력 실수</h3>
+    <div class="ctrl">
+      <div class="group" id="mdBtns" role="group" aria-label="모델"><span class="glabel">모델</span></div>
+      <div class="group" id="olBtns" role="group" aria-label="입력 실수"><span class="glabel">입력 실수</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c4" class="wide" aria-label="시험 농어 14마리의 오차 막대와 지표"></canvas></div>
+    <section class="kpis k4" id="k4k"></section>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>"한 마리 +600g 오기"를 켜면 MAE는 600 ÷ 14 ≈ 43g만큼만 오르지만, MSE는 600² ÷ 14 ≈ 25,700만큼 뛰어오릅니다.</li>
+    <li>RMSE와 MAE는 단위가 g이라 "평균 몇 g 틀린다"로 읽을 수 있습니다. RMSE ≥ MAE가 항상 성립하고, 둘의 차이가 크면 큰 오차가 섞여 있다는 신호입니다.</li>
+    <li>큰 실수 하나가 치명적인 일(재고 바닥, 대형 손실)이면 MSE·RMSE를, 평소의 평균 오차가 중요하면 MAE를 봅니다.</li>
+  </ol><p class="limit">이 칸의 한계: RMSE 30g이 좋은 건지 나쁜 건지는 데이터 규모를 모르면 알 수 없습니다. 작은 다트판에서 5cm와 큰 다트판에서 5cm는 다릅니다.<sup>[1]</sup> → ⑤칸 R²</p></div>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- ⑤ R² -->
+<section class="level" id="lv5"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">5<small>설명력</small></div><h2>R²와 수정 R² — 전체 변동 중 얼마를 설명했나</h2></div>
+    <p class="sub"><span class="lvtag g">R² = SSR ÷ SST = 1 − SSE ÷ SST</span><span class="lvtag">Adj. R² = 1 − (1 − R²)(n − 1) ÷ (n − k − 1)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>1,000조각 퍼즐 중 950조각을 맞췄으면 95%. 그런데 남는 조각을 억지로 끼워 넣으면 겉보기 완성도는 오르지만 그림은 틀어집니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>SST(실제 값이 평균에서 흩어진 정도) = SSR(모델이 평균에서 움직인 몫) + SSE(남은 오차). R²는 설명한 비율입니다. 변수를 더하면 R²는 줄지 않으므로, 변수 개수 k에 벌점을 주는 수정 R²로 비교합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="R²와 수정 R² 실험">
+    <h3>훈련 농어 42마리 선형 회귀에 쓸모없는 변수(난수 열) 더하기</h3>
+    <div class="ctrl"><div class="group"><label class="glabel" for="kn">난수 변수 개수</label><input type="range" id="kn" min="0" max="12" step="1" value="0"><span class="val" id="knv">0</span></div></div>
+    <div class="cwrap"><canvas id="c5" class="wide" aria-label="왼쪽은 SST를 SSR과 SSE로 나눈 막대, 오른쪽은 변수 개수에 따른 R²와 수정 R² 곡선"></canvas></div>
+    <section class="kpis k4" id="k5k"></section>
+    <div class="eq" id="eq5"></div>
+    <div class="insight" id="ins5" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>난수 변수는 무게와 아무 관계가 없습니다. 그래도 하나씩 더할 때마다 R²는 조금씩 오릅니다. 우연히 맞는 부분을 찾아내기 때문입니다.<sup>[1]</sup></li>
+    <li>수정 R²는 분모 (n − k − 1)이 줄어드는 벌점 때문에 오히려 내려갑니다. 교안의 주택 가격 예(R² 0.82로 올라도 Adj. R² 0.79 → 0.76)와 같은 현상입니다.<sup>[1]</sup></li>
+    <li>교안의 해석 기준: R² 0.7 이상 높은 설명력, 0.5~0.7 중간, 0.3 이하 낮음. 분야마다 기준은 다릅니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: R²는 훈련 범위 안의 설명력입니다. 범위 밖의 큰 농어를 누가 더 잘 맞힐지는 따로 재야 합니다. → 대결</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>교안의 보험료 산정에서는 "나이 × 흡연 여부" 같은 상호작용 항까지 넣은 다중회귀로 위험도를 계산하고, 대출 심사에서는 "금리 = 0.01 × 신용점수 + 0.05 × 부채비율 + 상수"처럼 계수로 근거를 설명합니다. 변수를 늘릴 때는 수정 R²와 시험 데이터로 정말 나아졌는지 확인합니다.<sup>[1]</sup></p><p class="lim">한계: 계수가 크다고 원인이라는 뜻은 아닙니다. 1주차의 상관과 인과를 떠올리세요.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>언어모델의 학습 손실도 "정답과의 거리"를 평균한 값이고, 모델을 키울수록 손실이 거듭제곱 꼴로 줄어든다는 스케일링 법칙은 로그-로그 축에서 직선을 긋는 회귀로 찾습니다.</p><p class="lim">비유의 한계: 언어모델의 손실은 다음 단어 확률의 교차 엔트로피이지 MSE가 아닙니다.</p></div>
+  </div>
+  <div class="quiz" data-quiz="lv5"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 이웃 평균이냐, 곡선이냐</h2><p class="lead">훈련 농어 42마리로 학습한 두 모델이 두 시험을 치릅니다. 시험 A는 교안의 시험 농어 14마리(10~44cm), 시험 B는 새로 잡힌 큰 농어 10마리(45~48cm)입니다. 지표는 RMSE(g), 작을수록 좋습니다.</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 2차 다항 회귀</b><p>"곡선은 범위 밖에서도 길을 안다."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · KNN 회귀(K = 5)</b><p>"가까운 다섯 마리 평균이 제일 정직해."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+      <p class="muted" style="font-size:14px">조건 메모: 큰 농어 10마리의 무게는 교안 56마리에 맞춘 거듭제곱 관계(무게 ≈ 0.0077 × 길이^3.15)에 잡음을 더해 만든 설명용 예시값입니다. 실제 큰 농어가 이 관계를 따르지 않으면 결과가 달라질 수 있습니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 다섯 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① KNN 회귀</b></td><td>이웃 평균으로 숫자를 맞힌다</td><td>범위 밖 예측·설명 불가</td><td>선형 회귀</td></tr>
+      <tr><td><b>② 선형 회귀</b></td><td>최소제곱 직선, 계수로 설명</td><td>곡선 관계를 못 따라간다</td><td>다항 회귀</td></tr>
+      <tr><td><b>③ 다항 회귀</b></td><td>제곱항으로 곡선을 맞춘다</td><td>오차의 크기를 모른다</td><td>MSE·RMSE·MAE</td></tr>
+      <tr><td><b>④ 오차 지표</b></td><td>빗나간 거리를 원래 단위로 잰다</td><td>데이터 규모를 모르면 해석 불가</td><td>R²·수정 R²</td></tr>
+      <tr><td><b>⑤ R²·수정 R²</b></td><td>설명한 비율, 변수 수 벌점</td><td>범위 밖은 따로 재야 한다</td><td>대결</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>교안 정리 1</b><p>회귀는 연속 수치 예측. KNN 회귀(이웃 평균, K와 스케일링), 선형 회귀(최소제곱, 해석 용이, 이상치 민감), 비선형 회귀(다항·지수·로그, 과적합 주의).</p></div>
+    <div><b>교안 정리 2</b><p>MSE·RMSE·MAE(오차 기준), R²·수정 R²(설명력 기준), SST = SSR + SSE.</p></div>
+    <div><b>교안 정리 3</b><p>전기차 배터리 수명, 보험료 산정, 대출 심사 자동화. 데이터 품질·윤리·해석가능성·드리프트 모니터링·단계적 도입.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w09_outro" hidden><img alt="두 개의 과녁을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>회귀는 맞음·틀림이 아니라 빗나간 거리로 평가한다.</li><li>RMSE·MAE는 원래 단위로, R²는 비율로 읽는다. 변수를 늘릴 땐 수정 R²를 본다.</li><li>데이터 범위 안과 밖에서 강한 모델이 다를 수 있다.</li></ul></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>범위 안에서는 주판봇, 범위 밖에서는 초파리 연구원이 이겼어요. 어떤 생선이 들어올지가 답을 정해요.</p></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>곡선이 큰 농어를 따라간 건 좋았는데, 차수를 욕심내면 나도 무너지더라.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>내 장부에 없는 생선은 내가 모르는 생선. 장부를 늘려야겠어.</p></div></div>
+  </div>
+</div></section>

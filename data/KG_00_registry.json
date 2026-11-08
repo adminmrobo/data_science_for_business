@@ -1,7 +1,39 @@
 {
  "series": "비즈니스를 위한 데이터 과학 연구실",
- "version": "189",
+ "version": "255",
  "concepts": [
+  {
+   "id": "lab:analogy/airport",
+   "type": "Analogy",
+   "label": {
+    "ko": "공항 수하물 검사 ↔ 정밀도·재현율",
+    "en": "airport screening ↔ precision/recall"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:analogy/archery",
+   "type": "Analogy",
+   "label": {
+    "ko": "양궁 과녁 ↔ 회귀 오차",
+    "en": "archery target ↔ regression error"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
   {
    "id": "lab:analogy/buy-vs-rent",
    "type": "Analogy",
@@ -32,6 +64,22 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:analogy/experts",
+   "type": "Analogy",
+   "label": {
+    "ko": "여러 전문가의 의견 ↔ 앙상블",
+    "en": "panel of experts ↔ ensemble"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
    ]
   },
   {
@@ -115,6 +163,22 @@
    ]
   },
   {
+   "id": "lab:analogy/marbles",
+   "type": "Analogy",
+   "label": {
+    "ko": "색 구슬 상자의 칸막이 ↔ 지니 분할",
+    "en": "marble box divider ↔ Gini split"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:analogy/planes-customers",
    "type": "Analogy",
    "label": {
@@ -128,6 +192,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:analogy/puzzle",
+   "type": "Analogy",
+   "label": {
+    "ko": "퍼즐 조각 맞추기 ↔ R²",
+    "en": "puzzle pieces ↔ R²"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
    ]
   },
   {
@@ -160,6 +240,70 @@
    ],
    "pages": [
     "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:analogy/seasoning",
+   "type": "Analogy",
+   "label": {
+    "ko": "양념 조절 ↔ 릿지·라쏘",
+    "en": "seasoning ↔ ridge/lasso"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:analogy/textbook",
+   "type": "Analogy",
+   "label": {
+    "ko": "교과서 몇 쪽씩 읽고 정리 ↔ 배치·에포크",
+    "en": "reading a textbook ↔ batch/epoch"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:analogy/tug",
+   "type": "Analogy",
+   "label": {
+    "ko": "줄다리기의 극단적 한 명 ↔ 최소제곱의 이상치 민감성",
+    "en": "tug-of-war ↔ outlier sensitivity"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:analogy/twenty-q",
+   "type": "Analogy",
+   "label": {
+    "ko": "스무고개 ↔ 의사결정나무",
+    "en": "twenty questions ↔ decision tree"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -211,6 +355,22 @@
    ]
   },
   {
+   "id": "lab:claim/auc-scale",
+   "type": "Claim",
+   "label": {
+    "ko": "AUC 0.5 무작위, 0.7~0.8 적절, 0.8~0.9 좋음, 0.9 이상 매우 뛰어남",
+    "en": "AUC interpretation scale"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:claim/data-growth-2500x",
    "type": "Claim",
    "label": {
@@ -259,6 +419,22 @@
    ]
   },
   {
+   "id": "lab:claim/gini-half",
+   "type": "Claim",
+   "label": {
+    "ko": "40 : 40으로 섞인 노드의 지니 불순도는 0.5",
+    "en": "Gini 0.5 for 40:40"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:claim/knn-default-5",
    "type": "Claim",
    "label": {
@@ -272,6 +448,22 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:claim/knn-r2",
+   "type": "Claim",
+   "label": {
+    "ko": "KNN 회귀(K = 5)의 시험 R² 0.9928, 훈련 R² 0.9699",
+    "en": "KNN test R² 0.9928"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
    ]
   },
   {
@@ -355,6 +547,22 @@
    ]
   },
   {
+   "id": "lab:claim/poly-count",
+   "type": "Claim",
+   "label": {
+    "ko": "특성 3개를 3차로 늘리면 19개, 5차로 늘리면 55개",
+    "en": "3 features: 19 at degree 3, 55 at degree 5"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:claim/prep-80",
    "type": "Claim",
    "label": {
@@ -368,6 +576,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:claim/r2-scale",
+   "type": "Claim",
+   "label": {
+    "ko": "R² 0.7 이상 높음, 0.5~0.7 중간, 0.3 이하 낮음",
+    "en": "R² interpretation scale"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
    ]
   },
   {
@@ -435,6 +659,22 @@
    ]
   },
   {
+   "id": "lab:claim/type1-fp",
+   "type": "Claim",
+   "label": {
+    "ko": "FP = 1종 오류(거짓 경보), FN = 2종 오류(누락)",
+    "en": "FP is type I, FN is type II"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/analysis-tools",
    "type": "Concept",
    "label": {
@@ -499,6 +739,22 @@
    ]
   },
   {
+   "id": "lab:concept/class-imbalance",
+   "type": "Concept",
+   "label": {
+    "ko": "클래스 불균형",
+    "en": "class imbalance"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/cloud-vs-onprem",
    "type": "Concept",
    "label": {
@@ -559,6 +815,22 @@
    ]
   },
   {
+   "id": "lab:concept/confusion-matrix",
+   "type": "Concept",
+   "label": {
+    "ko": "혼동행렬",
+    "en": "confusion matrix"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/correlation-vs-causation",
    "type": "Concept",
    "label": {
@@ -572,6 +844,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/cost-function",
+   "type": "Concept",
+   "label": {
+    "ko": "비용함수(로그 손실)",
+    "en": "cost function (log loss)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -767,6 +1055,22 @@
    ]
   },
   {
+   "id": "lab:concept/diversity",
+   "type": "Concept",
+   "label": {
+    "ko": "모델 다양성",
+    "en": "model diversity"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/duplicates",
    "type": "Concept",
    "label": {
@@ -794,6 +1098,54 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/extrapolation",
+   "type": "Concept",
+   "label": {
+    "ko": "훈련 범위 밖 예측(외삽)",
+    "en": "extrapolation"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:concept/feature-engineering",
+   "type": "Concept",
+   "label": {
+    "ko": "특성공학(PolynomialFeatures)",
+    "en": "feature engineering"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:concept/gini-split",
+   "type": "Concept",
+   "label": {
+    "ko": "지니 불순도와 분할",
+    "en": "Gini impurity and splits"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -924,6 +1276,22 @@
    ]
   },
   {
+   "id": "lab:concept/learning-rate-batch",
+   "type": "Concept",
+   "label": {
+    "ko": "배치·에포크·학습률",
+    "en": "batch, epoch, learning rate"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/masking",
    "type": "Concept",
    "label": {
@@ -1030,6 +1398,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/pruning",
+   "type": "Concept",
+   "label": {
+    "ko": "가지치기(max_depth)",
+    "en": "pruning (max_depth)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -1159,6 +1543,22 @@
    ]
   },
   {
+   "id": "lab:concept/rfm",
+   "type": "Concept",
+   "label": {
+    "ko": "RFM 고객 세분화",
+    "en": "RFM segmentation"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/rule-vs-ml",
    "type": "Concept",
    "label": {
@@ -1202,6 +1602,38 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:concept/sigmoid",
+   "type": "Concept",
+   "label": {
+    "ko": "시그모이드 함수",
+    "en": "sigmoid function"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:concept/sst-decomposition",
+   "type": "Concept",
+   "label": {
+    "ko": "SST = SSR + SSE",
+    "en": "variance decomposition"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
    ]
   },
   {
@@ -1265,6 +1697,22 @@
    ]
   },
   {
+   "id": "lab:concept/threshold",
+   "type": "Concept",
+   "label": {
+    "ko": "임계값",
+    "en": "decision threshold"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:concept/train-score-trap",
    "type": "Concept",
    "label": {
@@ -1313,6 +1761,22 @@
    ]
   },
   {
+   "id": "lab:dataset/churn-demo",
+   "type": "Dataset",
+   "label": {
+    "ko": "이탈 예측 예시 고객",
+    "en": "synthetic churn customers"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:dataset/fish-3class",
    "type": "Dataset",
    "label": {
@@ -1342,6 +1806,55 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:dataset/perch-56",
+   "type": "Dataset",
+   "label": {
+    "ko": "농어 56마리 길이·무게",
+    "en": "Perch length/weight (56)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1",
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:dataset/study-pass",
+   "type": "Dataset",
+   "label": {
+    "ko": "공부시간-합격 예시 40명",
+    "en": "study hours vs pass (synthetic)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:dataset/wine-like",
+   "type": "Dataset",
+   "label": {
+    "ko": "와인 모양 예시 600병",
+    "en": "wine-like synthetic data"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -1488,6 +2001,38 @@
    ]
   },
   {
+   "id": "lab:limitation/eval-not-improve",
+   "type": "Limitation",
+   "label": {
+    "ko": "평가만으로는 모델이 좋아지지 않는다",
+    "en": "evaluation does not improve"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:limitation/exploding-coef",
+   "type": "Limitation",
+   "label": {
+    "ko": "특성을 늘리면 계수가 날뛴다",
+    "en": "exploding coefficients"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:limitation/fairness",
    "type": "Limitation",
    "label": {
@@ -1533,6 +2078,38 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:limitation/given-features",
+   "type": "Limitation",
+   "label": {
+    "ko": "주어진 특성만 묻는다",
+    "en": "only given features"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:limitation/hard-to-explain",
+   "type": "Limitation",
+   "label": {
+    "ko": "규칙으로 설명하기 어렵다",
+    "en": "hard to explain as rules"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -1680,6 +2257,54 @@
    ]
   },
   {
+   "id": "lab:limitation/no-alt-metric",
+   "type": "Limitation",
+   "label": {
+    "ko": "정확도 대신 볼 지표가 없다",
+    "en": "no alternative metric"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:limitation/no-error-size",
+   "type": "Limitation",
+   "label": {
+    "ko": "오차의 크기를 모른다",
+    "en": "error size unknown"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/no-extrapolation",
+   "type": "Limitation",
+   "label": {
+    "ko": "범위 밖을 예측하지 못하고 설명도 없다",
+    "en": "no extrapolation, no explanation"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
    "id": "lab:limitation/no-model",
    "type": "Limitation",
    "label": {
@@ -1693,6 +2318,38 @@
    ],
    "pages": [
     "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/no-money",
+   "type": "Limitation",
+   "label": {
+    "ko": "손실이 낮아도 돈이 되는 기준은 따로다",
+    "en": "loss is not profit"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:limitation/one-question",
+   "type": "Limitation",
+   "label": {
+    "ko": "질문 하나로는 부족하다",
+    "en": "one split is not enough"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -1808,6 +2465,22 @@
    ]
   },
   {
+   "id": "lab:limitation/scale-free",
+   "type": "Limitation",
+   "label": {
+    "ko": "규모를 모르면 해석할 수 없다",
+    "en": "no scale reference"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
    "id": "lab:limitation/separate-lists",
    "type": "Limitation",
    "label": {
@@ -1824,6 +2497,22 @@
    ]
   },
   {
+   "id": "lab:limitation/single-learner",
+   "type": "Limitation",
+   "label": {
+    "ko": "개별 모델의 학습 방법은 그대로다",
+    "en": "single learner training"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:limitation/small-sample",
    "type": "Limitation",
    "label": {
@@ -1837,6 +2526,38 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:limitation/straight-only",
+   "type": "Limitation",
+   "label": {
+    "ko": "직선만 그린다",
+    "en": "straight lines only"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/threshold-dependent",
+   "type": "Limitation",
+   "label": {
+    "ko": "임계값마다 점수가 다르다",
+    "en": "threshold-dependent scores"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
    ]
   },
   {
@@ -1903,6 +2624,22 @@
    ]
   },
   {
+   "id": "lab:method/cost-threshold",
+   "type": "Method",
+   "label": {
+    "ko": "비용 기반 임계값",
+    "en": "cost-based threshold"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:method/cross-validation",
    "type": "Method",
    "label": {
@@ -1914,7 +2651,8 @@
     "ai"
    ],
    "pages": [
-    "dsb_w04_analysis_concepts"
+    "dsb_w04_analysis_concepts",
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -1966,6 +2704,22 @@
    ]
   },
   {
+   "id": "lab:method/decision-tree",
+   "type": "Method",
+   "label": {
+    "ko": "의사결정나무",
+    "en": "decision tree"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:method/eda",
    "type": "Method",
    "label": {
@@ -1978,6 +2732,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/ensemble",
+   "type": "Method",
+   "label": {
+    "ko": "앙상블(배깅·부스팅·스태킹)",
+    "en": "ensembles"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
    ]
   },
   {
@@ -2075,6 +2845,38 @@
    ]
   },
   {
+   "id": "lab:method/knn-regression",
+   "type": "Method",
+   "label": {
+    "ko": "KNN 회귀",
+    "en": "KNN regression"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:method/linear-regression",
+   "type": "Method",
+   "label": {
+    "ko": "선형 회귀(최소제곱)",
+    "en": "linear regression (least squares)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
    "id": "lab:method/listwise-deletion",
    "type": "Method",
    "label": {
@@ -2086,6 +2888,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/logistic-regression",
+   "type": "Method",
+   "label": {
+    "ko": "로지스틱 회귀",
+    "en": "logistic regression"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -2130,6 +2948,38 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/polynomial-regression",
+   "type": "Method",
+   "label": {
+    "ko": "다항(비선형) 회귀",
+    "en": "polynomial regression"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:method/ridge-lasso",
+   "type": "Method",
+   "label": {
+    "ko": "릿지·라쏘 규제",
+    "en": "ridge and lasso"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -2286,7 +3136,8 @@
     "biz"
    ],
    "pages": [
-    "dsb_w04_analysis_concepts"
+    "dsb_w04_analysis_concepts",
+    "dsb_w07_model_evaluation"
    ]
   },
   {
@@ -2398,6 +3249,22 @@
    ]
   },
   {
+   "id": "lab:metric/mse-rmse-mae",
+   "type": "Metric",
+   "label": {
+    "ko": "MSE·RMSE·MAE",
+    "en": "MSE, RMSE, MAE"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
    "id": "lab:metric/pearson",
    "type": "Metric",
    "label": {
@@ -2409,6 +3276,38 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:metric/precision-recall",
+   "type": "Metric",
+   "label": {
+    "ko": "정밀도·재현율·F1",
+    "en": "precision, recall, F1"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:metric/r2",
+   "type": "Metric",
+   "label": {
+    "ko": "R²와 수정 R²",
+    "en": "R² and adjusted R²"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
    ]
   },
   {
@@ -2425,6 +3324,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:metric/roc-auc",
+   "type": "Metric",
+   "label": {
+    "ko": "ROC 곡선과 AUC",
+    "en": "ROC and AUC"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
    ]
   },
   {
@@ -2505,7 +3420,10 @@
     "dsb_w03_analysis_prep",
     "dsb_w04_analysis_concepts",
     "dsb_w05_classification_1",
-    "dsb_w06_classification_2"
+    "dsb_w06_classification_2",
+    "dsb_w07_model_evaluation",
+    "dsb_w09_regression_1",
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -2526,7 +3444,10 @@
     "dsb_w03_analysis_prep",
     "dsb_w04_analysis_concepts",
     "dsb_w05_classification_1",
-    "dsb_w06_classification_2"
+    "dsb_w06_classification_2",
+    "dsb_w07_model_evaluation",
+    "dsb_w09_regression_1",
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -2652,6 +3573,38 @@
    ]
   },
   {
+   "id": "lab:task/churn-prediction",
+   "type": "Task",
+   "label": {
+    "ko": "고객 이탈 예측",
+    "en": "churn prediction"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:task/classification",
+   "type": "Task",
+   "label": {
+    "ko": "분류",
+    "en": "classification"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:task/fraud-monitoring",
    "type": "Task",
    "label": {
@@ -2725,6 +3678,23 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:task/regression",
+   "type": "Task",
+   "label": {
+    "ko": "회귀(연속 수치 예측)",
+    "en": "regression"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1",
+    "dsb_w10_regression_2"
    ]
   },
   {
@@ -2824,6 +3794,70 @@
    ]
   },
   {
+   "id": "lab:work/ahn-dsb-w07",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 7주차",
+    "en": "Ahn, DSB lecture notes week 7"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w09",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 9주차",
+    "en": "Ahn, DSB lecture notes week 9"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w10",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 10주차",
+    "en": "Ahn, DSB lecture notes week 10"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:work/cs231n",
+   "type": "Work",
+   "label": {
+    "ko": "CS231n Lecture 6 (2017)",
+    "en": "CS231n Lecture 6 (2017)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
    "id": "lab:work/davier2023",
    "type": "Work",
    "label": {
@@ -2856,6 +3890,22 @@
    ]
   },
   {
+   "id": "lab:work/fawcett2006",
+   "type": "Work",
+   "label": {
+    "ko": "Fawcett (2006) ROC 분석 입문",
+    "en": "Fawcett 2006"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
+   ]
+  },
+  {
    "id": "lab:work/fish-market",
    "type": "Work",
    "label": {
@@ -2868,7 +3918,8 @@
     "biz"
    ],
    "pages": [
-    "dsb_w05_classification_1"
+    "dsb_w05_classification_1",
+    "dsb_w09_regression_1"
    ]
   },
   {
@@ -2964,7 +4015,25 @@
     "biz"
    ],
    "pages": [
-    "dsb_w06_classification_2"
+    "dsb_w06_classification_2",
+    "dsb_w09_regression_1",
+    "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:work/sklearn-metrics",
+   "type": "Work",
+   "label": {
+    "ko": "scikit-learn Metrics 문서",
+    "en": "scikit-learn metrics docs"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w07_model_evaluation"
    ]
   },
   {

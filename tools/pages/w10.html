@@ -1,0 +1,263 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 10주차 · 데이터 분석 모형: 회귀모형(2)</span>
+      <h1>S자 곡선과 스무고개</h1>
+      <p class="q">특성을 많이 만들수록 모델은 똑똑해질까, 아니면 엉뚱해질까?</p>
+      <p class="lead">이번 주는 세 가지 도구를 손에 쥡니다. 회귀식을 확률로 바꾸는 로지스틱 회귀(분류의 옷을 입은 회귀), 예/아니오 질문을 이어 가는 의사결정나무, 그리고 특성을 새로 만드는 특성공학과 그 부작용을 막는 릿지·라쏘입니다. 마지막에는 9주차 농어로 "특성을 다 쓰되 계수를 묶을 것인가"를 겨룹니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi g"><b>σ(z) = 1 ÷ (1 + e<sup>−z</sup>)</b><span>시그모이드: z를 0~1 확률로<sup>[1]</sup></span></div>
+        <div class="kpi i"><b>1 − Σp²</b><span>지니 불순도, 반반이면 0.5<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>3 → 19 → 55</b><span>특성 3개를 3차·5차로 늘리면<sup>[1]</sup></span></div>
+        <div class="kpi r"><b id="heroCoef">–</b><span>규제 없는 8차 회귀의 가장 큰 계수<sup>계산</sup></span></div>
+        <div class="kpi m"><b>Ridge · Lasso</b><span>계수 다이어트 · 특성 선택<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>max_depth</b><span>나무의 깊이 = 질문 횟수<sup>[1]</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w10_hero" alt="네 캐릭터가 S자 곡선이 그려진 칠판과 가지가 뻗은 질문 나무 앞에서 가위와 양념통을 든 연구실 장면" hidden>
+      <div class="hero-stage" data-img="sc_w10_hero"><canvas id="heroArt" aria-label="밤의 연구실. 벽에 S자 곡선과 가지를 뻗은 나무 그림이 있다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="point" alt=""><img data-who="doc" data-mood="think" alt=""><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>회귀의 식, 분류의 질문, 그리고 재료 손질까지. 오늘은 도구 세 개를 차례로 꺼냅니다.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>①②③칸은 설명용 예시 데이터, ④⑤칸과 대결은 9주차와 같은 교안 농어 56마리예요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>특성은 늘려도 좋아. 대신 계수가 날뛰지 않게 고삐를 채워야지.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>고삐? 재료가 많으면 많을수록 맛있는 거야. 8차까지 다 넣고 그대로 간다!</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">불순도와 계수를 셉니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">규제(릿지) 편.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">특성 많이, 규제 없이 편.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. ①칸의 공부시간-합격, ②③칸의 와인 모양 데이터는 교안의 예를 본떠 만든 예시 데이터입니다(교안 실습의 Fish Market 7종·Wine 데이터를 이 페이지에 그대로 싣지는 않았습니다). ④⑤칸과 대결은 9주차와 같은 교안 농어 56마리, 같은 분할(random_state = 42)입니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 이 세 도구인가</h2></div>
+  <div class="steps">
+    <div><b>1. 확률이 필요하다</b><p>스팸인가 아닌가, 합격인가 불합격인가. 회귀식의 출력은 −∞~+∞라 그대로는 확률이 아닙니다. 시그모이드로 0~1에 가둡니다.<sup>[1]</sup></p></div>
+    <div><b>2. 설명이 필요하다</b><p>"나이 30세 이상이고 소득 5,000만 원 이상이면 대출 승인" 같은 규칙은 고객과 규제기관에 그대로 보여 줄 수 있습니다. 의사결정나무가 만드는 것이 이런 규칙입니다.<sup>[1]</sup></p></div>
+    <div><b>3. 좋은 재료가 필요하다</b><p>때로는 복잡한 알고리즘보다 좋은 특성 하나가 더 효과적입니다. 다만 특성이 늘면 과적합도 늘어 규제가 함께 필요합니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 교안 10주차의 세 교시</h2></div>
+  <div class="flowchips" aria-label="10주차 흐름"><span>1교시: 로지스틱 회귀 · 시그모이드 · 의사결정나무 · 지니 불순도 · 가지치기</span><i>→</i><span>2교시: 실습(Fish Market 다중 분류 · Wine 이진 분류 · 교차 검증 · GridSearchCV)</span><i>→</i><span class="lim">3교시: 특성공학 · PolynomialFeatures · 릿지 · 라쏘</span></div>
+  <div class="pair">
+    <div><div class="tag fly">로지스틱 회귀</div><p>z = w₀ + w₁x₁ + … 로 점수를 계산하고, 시그모이드로 확률을 만들어 0.5를 기준으로 나눕니다. 이름은 회귀지만 일은 분류입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">의사결정나무</div><p>스무고개처럼 "특성 ≤ 기준값?"을 묻고 갈라 내려가, 잎(리프)에서 결론을 냅니다. 갈 때마다 섞인 정도(지니 불순도)가 가장 많이 줄어드는 질문을 고릅니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<!-- ① 로지스틱 -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>확률</small></div><h2>로지스틱 회귀 — 직선 점수를 S자 확률로</h2></div>
+    <p class="sub"><span class="lvtag g">z = w₀ + w₁x → p = σ(z)</span><span class="lvtag">데이터: 공부시간-합격 40명(예시)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>교안의 공부시간과 합격 확률입니다. 처음에는 확률이 낮다가 어느 구간에서 빠르게 오르고, 결국 거의 확실해집니다. 아무리 더 공부해도 100%를 넘지는 않습니다(포화).<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>가중치 w₁은 특성의 영향력(음수면 반대 방향), 편향 w₀는 시소의 받침점처럼 전체 기준을 옮깁니다. 최적화는 비용함수(로그 손실)가 가장 작아지는 w₀, w₁을 반복해서 찾는 과정입니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="로지스틱 회귀 실험">
+    <h3>w₁과 w₀를 움직여 S자 곡선 맞추기</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="w1">가중치 w₁</label><input type="range" id="w1" min="0" max="3" step="0.1" value="0.5"><span class="val" id="w1v">0.5</span></div>
+      <div class="group"><label class="glabel" for="w0">편향 w₀</label><input type="range" id="w0" min="-12" max="2" step="0.5" value="-2"><span class="val" id="w0v">-2</span></div>
+      <div class="group" id="fitBtns" role="group" aria-label="최적화"><span class="glabel">최적화</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c1" class="wide" aria-label="공부시간에 따른 합격(1)·불합격(0) 점과 시그모이드 곡선, 오른쪽에 z 값의 직선"></canvas></div>
+    <section class="kpis k4" id="k1k"></section>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>w₁을 키우면 S자가 가팔라지고(결정이 단호해짐), w₀를 바꾸면 곡선이 좌우로 이동합니다. 곡선이 0.5를 지나는 공부시간이 결정 경계(−w₀ ÷ w₁)입니다.</li>
+    <li>"비용 최소화"를 누르면 경사하강으로 로그 손실이 가장 작은 w₀, w₁을 찾습니다. 정확도 대신 비용을 줄이는 까닭은, 비용이 매끄럽게 변해 조금씩 고쳐 갈 방향을 알려 주기 때문입니다.</li>
+    <li>출력 0.7은 "70% 확률로 합격"으로 바로 읽힙니다. 7주차의 임계값 이야기가 여기에 그대로 붙습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 결정 경계가 직선(특성 하나면 점 하나)이고, 계수만으로는 현장 담당자에게 "왜"를 규칙으로 말해 주기 어렵습니다. → ②칸 의사결정나무</p></div>
+  <details class="math"><summary>비용함수(로그 손실)</summary><div>
+    <p class="num">비용 = −(1/n) Σ [ y·log p + (1 − y)·log(1 − p) ],  p = σ(w₀ + w₁x)</p>
+    <p class="muted">정답이 1인데 p가 0에 가까우면 비용이 매우 커집니다. 교안의 활성함수 그림(시그모이드·tanh·ReLU 등)은 CS231n 강의 자료를 인용한 것입니다.<sup>[1]</sup></p>
+  </div></details>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② 지니 불순도 -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>질문</small></div><h2>첫 질문 고르기 — 지니 불순도를 가장 많이 줄이는 분할</h2></div>
+    <p class="sub"><span class="lvtag g">Gini = 1 − Σ pᵢ²</span><span class="lvtag">데이터: 레드·화이트 와인 모양의 예시 300병</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>색이 다른 구슬이 섞인 상자를 칸막이 하나로 나눕니다. 칸막이를 어디에 꽂아야 양쪽 칸이 한 색에 가까워질까요? 한 색만 있으면 불순도 0, 반반이면 0.5입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>의사결정나무는 모든 특성과 기준값을 훑어, 분할 전 불순도 − 분할 후 가중 평균 불순도(정보 이득)가 가장 큰 질문을 고릅니다. 교안 그림의 루트 노드는 80개, 40 : 40이라 지니 0.5입니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="지니 불순도 실험">
+    <h3>칸막이를 옮겨 보기</h3>
+    <div class="ctrl">
+      <div class="group" id="ftBtns" role="group" aria-label="특성"><span class="glabel">특성</span></div>
+      <div class="group"><label class="glabel" for="th2">기준값</label><input type="range" id="th2" min="0" max="100" step="1" value="50"><span class="val" id="th2v">–</span></div>
+      <div class="group" id="bestBtns" role="group" aria-label="자동"><span class="glabel">자동</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c2" class="wide" aria-label="두 특성의 산점도와 분할선, 왼쪽·오른쪽 칸의 클래스 비율과 지니 불순도"></canvas></div>
+    <section class="kpis k4" id="k2k"></section>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>분할 전 상자의 지니는 레드·화이트 비율로 정해집니다. 칸막이를 옮기면 왼쪽·오른쪽의 지니와, 크기로 가중한 평균이 바뀝니다.</li>
+    <li>"최적 분할 찾기"는 두 특성의 모든 기준값을 시험해 정보 이득이 가장 큰 곳을 고릅니다. 나무의 뿌리 질문이 이렇게 정해집니다.</li>
+    <li>의사결정나무는 거리를 쓰지 않아 표준화가 필요 없습니다. 교안도 "스케일에 민감하지 않은 모델이지만 비교를 위해 표준화를 적용해 봄"이라고 적습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 질문 하나로는 다 못 가릅니다. 질문을 계속 이어 가면 언제 멈춰야 할까요? → ③칸 깊이와 가지치기</p></div>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ 깊이 -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>가지</small></div><h2>나무의 깊이 — 스무고개를 몇 번까지</h2></div>
+    <p class="sub"><span class="lvtag g">코드: DecisionTreeClassifier(max_depth = …)</span><span class="lvtag">가지치기(Pruning)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>스무고개에서 질문을 무한정 허락하면 결국 정답을 맞히지만, 그 질문 목록은 이번 문제에만 통합니다. 다른 사람이 다른 물건을 떠올리면 엉뚱한 길로 빠집니다.</p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>깊이가 깊을수록 훈련 데이터의 노이즈까지 외워 과적합됩니다. max_depth, min_samples_split으로 제한하거나 불필요한 노드를 잘라 내는 가지치기로 노드 수와 오차의 균형점을 찾습니다. 작은 데이터 변화에도 나무 모양이 크게 바뀔 수 있습니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="의사결정나무 깊이 실험">
+    <h3>max_depth를 바꿔 보기 — 훈련 300 · 시험 300</h3>
+    <div class="ctrl"><div class="group"><label class="glabel" for="dp">max_depth</label><input type="range" id="dp" min="1" max="10" step="1" value="2"><span class="val" id="dpv">2</span></div></div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="왼쪽은 나무의 결정 영역, 오른쪽은 깊이에 따른 훈련·시험 정확도"></canvas></div>
+    <section class="kpis k4" id="k3k"></section>
+    <pre class="out" id="rules3" style="max-height:none;font-size:13px;white-space:pre-wrap;word-break:keep-all"></pre>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>깊이 1~3: 결정 영역이 큰 직사각형 몇 개입니다. 아래 상자에 if-then 규칙이 그대로 나옵니다. 비즈니스 룰로 옮길 수 있는 모양입니다.<sup>[1]</sup></li>
+    <li>깊이를 끝까지 올리면 훈련 정확도는 100%에 가까워지지만, 시험 정확도는 어느 깊이부터 오히려 떨어집니다. 교안의 "노드 수와 정확도" 그림과 같은 모양입니다.<sup>[1]</sup></li>
+    <li>특성 중요도(feature_importances_)는 각 특성이 불순도를 줄인 몫의 비율입니다.</li>
+  </ol><p class="limit">이 칸의 한계: 나무는 주어진 특성만 묻습니다. "당도 × 알코올" 같은 새 질문 재료를 만들려면? → ④칸 특성공학</p></div>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 특성공학 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>재료</small></div><h2>특성공학 — PolynomialFeatures와 커지는 계수</h2></div>
+    <p class="sub"><span class="lvtag g">코드: PolynomialFeatures(degree = …)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>요리사가 재료를 다듬듯, 길이와 너비를 곱해 면적을 만들고 세 치수를 곱해 부피를 만듭니다. 생선 무게는 부피를 따라가니 교차항이 중요한 뜻을 갖습니다. 하지만 냉장고 재료를 전부 넣는다고 맛있어지지는 않습니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>degree = 2면 원래 특성, 각 특성의 제곱, 서로 다른 특성의 곱이 모두 생깁니다. 특성 개수는 degree에 따라 빠르게 불어나, 특성 3개를 3차로 늘리면 19개, 5차면 55개입니다. 그러다 계수가 커지면 입력이 조금만 바뀌어도 예측이 크게 흔들립니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="특성 개수와 계수 크기 실험">
+    <h3>특성 개수 계산기 + 농어 길이를 degree차까지 늘린 회귀(규제 없음)</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="nf">원래 특성 수</label><input type="range" id="nf" min="1" max="6" step="1" value="3"><span class="val" id="nfv">3</span></div>
+      <div class="group"><label class="glabel" for="dg4">degree</label><input type="range" id="dg4" min="1" max="8" step="1" value="3"><span class="val" id="dg4v">3</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c4" class="wide" aria-label="왼쪽은 degree에 따른 특성 개수 막대, 오른쪽은 농어 길이 다항 회귀 곡선"></canvas></div>
+    <section class="kpis k4" id="k4k"></section>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>특성 n개, degree d면 새 특성은 C(n + d, d) − 1개입니다(상수항 제외). 3개·3차 = 19, 3개·5차 = 55로 교안과 같습니다.<sup>[1]</sup></li>
+    <li>오른쪽은 농어 길이 하나를 1~8차로 늘려(표준화 후) 규제 없이 맞춘 곡선입니다. 차수가 오르면 계수 절댓값이 수천~수백만으로 커지고, 길이 0.1cm 차이에 예측이 크게 흔들리는 곳이 생깁니다. 교안의 "0.1cm 증가에 38.7g 대 1.2g" 비교와 같은 이야기입니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 특성을 늘리면 표현력은 늘지만 계수가 날뜁니다. 계수에 고삐를 채울 방법은? → ⑤칸 릿지·라쏘</p></div>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- ⑤ 릿지·라쏘 -->
+<section class="level" id="lv5"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">5<small>규제</small></div><h2>릿지와 라쏘 — 계수 다이어트와 특성 선택</h2></div>
+    <p class="sub"><span class="lvtag g">비용 = 오차 + α × (계수 크기)</span><span class="lvtag">Ridge: L2(제곱) · Lasso: L1(절댓값)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>교안의 양념 비유입니다. 릿지는 모든 양념을 조금씩 써서 조화로운 맛을, 라쏘는 핵심 양념 두세 개만 골라 깔끔한 맛을 냅니다. α는 양념 조절의 강도입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>릿지는 계수 제곱합에, 라쏘는 계수 절댓값 합에 벌점을 줍니다. 라쏘는 덜 중요한 계수를 정확히 0으로 만들어 특성을 고릅니다. α가 클수록 규제가 세지고, 최적 α는 교차 검증으로 찾습니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="릿지·라쏘 실험">
+    <h3>농어 길이 8차 다항 특성(표준화) + 규제</h3>
+    <div class="ctrl">
+      <div class="group" id="rgBtns" role="group" aria-label="규제"><span class="glabel">규제</span></div>
+      <div class="group"><label class="glabel" for="al">α</label><input type="range" id="al" min="0" max="5" step="1" value="2"><span class="val" id="alv">0.1</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c5" class="wide" aria-label="왼쪽은 규제된 곡선과 농어, 오른쪽은 계수 8개의 막대"></canvas></div>
+    <section class="kpis k4" id="k5k"></section>
+    <div class="insight" id="ins5" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>규제 없음: 계수 수백만, 시험 R² 음수. 규제를 켜면 α = 0.1 정도에서도 계수가 수백 이하로 줄고 시험 R²가 0.98대로 돌아옵니다.</li>
+    <li>라쏘로 바꾸고 α를 올려 보세요. 막대가 하나씩 0이 됩니다. 남은 특성이 "핵심 양념"입니다.</li>
+    <li>α를 100까지 올리면 둘 다 너무 단순해져 훈련·시험 모두 떨어집니다(과소적합). 모든 특성이 중요하면 릿지, 특성 선택이 필요하면 라쏘가 바람직합니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: α를 시험 데이터로 고르면 시험지를 미리 본 셈입니다. 훈련 데이터 안에서 교차 검증으로 고르는 것이 정석입니다. → 대결</p></div>
+  <details class="math"><summary>계산 방법</summary><div>
+    <p class="num">Ridge: min ‖y − Xw‖² + α‖w‖² (닫힌 해) · Lasso: min (1/2n)‖y − Xw‖² + α‖w‖₁ (좌표 하강)</p>
+    <p class="muted">scikit-learn Ridge·Lasso와 같은 목적함수입니다. 특성은 훈련 데이터로 표준화하고 절편은 규제하지 않습니다.</p>
+  </div></details>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>금융 데이터에서는 이동평균, 변동성, 모멘텀, RSI 같은 도메인 특성이, 시계열에서는 지연(lag)·차분·계절성 분해가 효과적입니다. EDA → 가설 → 특성 생성 → 검증 → 개선을 반복하고, 어떤 특성을 왜 만들었는지 기록합니다. 전처리·특성공학·모델을 Pipeline으로 묶으면 시험 데이터가 섞여 드는 실수를 줄입니다.<sup>[1]</sup></p><p class="lim">한계: 특성 선택 도구(SelectKBest 등)는 빠르지만 특성 간 상호작용은 보지 못합니다.<sup>[1]</sup></p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>대형 언어모델 학습에도 가중치 감쇠(weight decay)라는 L2 계열 규제가 거의 언제나 들어갑니다. 계수(가중치)가 커져 작은 입력 변화에 출력이 날뛰는 것을 막는 같은 생각입니다.</p><p class="lim">비유의 한계: 언어모델은 특성을 사람이 만들지 않고 모델이 스스로 표현을 학습합니다.</p></div>
+  </div>
+  <div class="quiz" data-quiz="lv5"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 특성은 다 쓰되, 고삐를 채울 것인가</h2><p class="lead">두 사람 모두 농어 길이를 8차까지 늘린 특성 8개를 씁니다. 초파리 연구원은 릿지를 쓰되 α를 훈련 42마리 안에서 5겹 교차 검증으로 고르고, 주판봇은 규제 없이 그대로 맞춥니다. 시험 농어 14마리의 RMSE(g)로 겨룹니다. 작을수록 좋습니다.</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 8차 특성 + 릿지(교차 검증 α)</b><p>"양념은 다 넣되 한 숟갈씩만."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 8차 특성 그대로</b><p>"훈련 R²는 내가 더 높아. 숫자는 거짓말 안 해."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+      <p class="muted" style="font-size:14px">조건 메모: 시험 14마리에는 훈련 범위(13.7cm~)보다 작은 8.4cm 농어가 들어 있어 규제 없는 고차 곡선이 특히 크게 빗나갑니다. 차수를 2~3으로 낮추면 두 방법의 차이는 거의 사라집니다(9주차 ③칸).</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 다섯 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 로지스틱 회귀</b></td><td>회귀식을 확률로, 비용 최소화</td><td>규칙으로 설명하기 어렵다</td><td>의사결정나무</td></tr>
+      <tr><td><b>② 지니 분할</b></td><td>불순도를 가장 줄이는 질문</td><td>질문 하나로는 부족</td><td>깊이·가지치기</td></tr>
+      <tr><td><b>③ 깊이</b></td><td>if-then 규칙, 과적합 조절</td><td>주어진 특성만 묻는다</td><td>특성공학</td></tr>
+      <tr><td><b>④ 특성공학</b></td><td>제곱·교차항으로 표현력 확장</td><td>계수가 날뛴다</td><td>릿지·라쏘</td></tr>
+      <tr><td><b>⑤ 릿지·라쏘</b></td><td>계수 규제, 특성 선택</td><td>α를 정직하게 골라야</td><td>대결: 교차 검증</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>교안 정리 1</b><p>로지스틱 회귀(시그모이드, 가중치·편향, 비용함수), 의사결정나무(스무고개, 지니 불순도, 가지치기, 해석가능성).</p></div>
+    <div><b>교안 정리 2</b><p>Fish Market 다중 분류·Wine 이진 분류 실습, 표준화, classification_report, plot_tree, feature_importances_, cross_val_score, GridSearchCV.</p></div>
+    <div><b>교안 정리 3</b><p>특성공학, PolynomialFeatures, 차원의 저주, 릿지(L2)·라쏘(L1), RFE·SelectKBest·Pipeline, 도메인 특화 특성.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w10_outro" hidden><img alt="고삐 달린 곡선 앞에서 팔짱 낀 초파리 연구원과, 끝이 튀어 오른 곡선 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>로지스틱 회귀는 직선 점수를 시그모이드로 확률로 바꾼 분류기다.</li><li>의사결정나무는 불순도를 줄이는 질문을 잇고, 깊이로 과적합을 조절한다.</li><li>특성을 늘리면 규제를 함께, α는 교차 검증으로 고른다.</li></ul></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="arms" data-img="fly_arms" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>특성 8개를 다 썼는데도 안 무너졌지. 고삐 값은 내가 고른 게 아니라 교차 검증이 고른 거야.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="sigh" data-img="robo_sigh" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>훈련 점수는 내가 1등이었는데… 계수 하나가 수백만이면 장부가 터지는구나.</p></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>11주차에는 모델 최적화를 마무리하고 시계열로 넘어가요. ②칸에서 "최적 분할 찾기"도 눌러 보세요.</p></div></div>
+  </div>
+</div></section>

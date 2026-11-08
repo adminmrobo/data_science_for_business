@@ -249,3 +249,5 @@ footer .stack{gap:28px}
 .chk span.off{border-color:var(--eye);color:var(--eye);background:rgba(240,96,77,.08)}
 .src{font-size:13px;color:var(--muted)}
 @media (max-width:600px){.cover-chip{bottom:auto;top:10px;font-size:12px}}
+.note{border-left:3px solid var(--amber,#f1b646);background:var(--bg);padding:10px 14px;border-radius:6px;font-size:14px;color:var(--muted)}.note b{color:var(--text)}
+footer a,#export a,.refs a{overflow-wrap:anywhere;word-break:break-all}

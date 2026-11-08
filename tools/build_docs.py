@@ -48,6 +48,21 @@ PAGES = {
    meta='a stretched rubber ruler being pulled to the same length as a scale dial, showing two different units brought to one common scale',
    pose=('at the back center tapping the aquarium glass', 'sorting fish into the blue and orange baskets', 'on the left facing right, stretching the rubber ruler to match the scale dial', 'on the right facing left, weighing a fish and squinting at the big number'),
    alt='네 캐릭터가 도미·농어·빙어가 든 수조 앞에서 자의 눈금을 맞추고 생선을 훈련·시험 두 바구니로 나누는 표지', duel='F(초파리 승, 새 생선 30마리: 표준화 100% 대 원자료 83.3%)', prev='5주차: 생선 계측대'),
+ '07': dict(title='7주차 · 정확도 95%의 함정', key='w07', anchor='B 연구실: 2×2 성적표와 저울',
+   place='a night lab with a huge 2x2 grid board on the wall, each cell glowing a different color (green, red, amber, blue), a balance scale on the desk with two different weights',
+   meta='a balance scale weighing two kinds of mistakes, one heavy coin and one light coin, in front of the four-cell board',
+   pose=('at the back center pointing at the top-right cell of the board', 'counting tally marks on a blank clipboard', 'on the left facing right, holding a magnifier up to the biggest cell', 'on the right facing left, putting coins on the balance scale'),
+   alt='네 캐릭터가 2×2 칸의 커다란 성적표 앞에서 저울로 두 종류의 오류 무게를 다는 표지', duel='R(주판봇 승, 고객 1,000명당 순이익 639만 원 대 198만 원)', prev='6주차: 수조와 두 바구니'),
+ '09': dict(title='9주차 · 숫자를 맞히는 선', key='w09', anchor='B 연구실: 과녁과 저울',
+   place='a night lab with an archery target on the wall, a kitchen scale with a medium fish on it, and a chalkboard full of dots with a smooth curve drawn through them',
+   meta='arrows stuck around the bullseye at different distances, with faint lines measuring how far each one missed',
+   pose=('at the back center drawing a smooth curve through dots on the chalkboard', 'reading the scale and writing a number on a blank card', 'on the left facing right, measuring a fish with a long ruler', 'on the right facing left, averaging five small fish cards with the abacus'),
+   alt='네 캐릭터가 양궁 과녁 앞에서 농어를 저울에 올리고 칠판의 점들 위로 곡선을 긋는 표지', duel='C(조건부: 범위 안 KNN 27g 대 곡선 47g, 범위 밖 KNN 485g 대 곡선 209g)', prev='7주차: 2×2 성적표와 저울'),
+ '10': dict(title='10주차 · S자 곡선과 스무고개', key='w10', anchor='B 연구실: S자 칠판과 질문 나무',
+   place='a night lab with a chalkboard showing a smooth S-shaped curve, a small potted tree whose branches end in colored marble jars, and a spice rack on the side',
+   meta='a tree whose every branch split sorts marbles by color, next to a spice rack where some jars are almost empty',
+   pose=('at the back center trimming a branch of the tree with small scissors', 'sorting colored marbles into two jars', 'on the left facing right, holding a spice jar and pouring just a pinch', 'on the right facing left, dumping a whole armful of spice jars into a pot'),
+   alt='네 캐릭터가 S자 곡선이 그려진 칠판과 가지를 뻗은 질문 나무 앞에서 가위와 양념통을 든 표지', duel='F(초파리 승, 시험 RMSE 53g 대 1,431g)', prev='9주차: 과녁과 저울'),
 }
 
 def prompt(p):
@@ -97,7 +112,10 @@ OUTRO = {'01': ('fly_arms', 'robo_sigh', 'a relaxed fruit fly researcher with ar
          '03': ('fly_coffee', 'robo_happy', 'a big table whose blank cells are now filled with green light, the robot cheering in front, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling', '빈칸이 채워진 표 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
          '04': ('fly_cry', 'robo_happy', 'the map table with a curved glowing boundary, the robot cheering beside it, the fruit fly researcher with teary eyes holding his straight ruler, the scientist giving a thumbs-up, the girl smiling', '곡선 경계 앞에서 기뻐하는 주판봇과 직선 자를 든 채 눈물 맺힌 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
          '05': ('fly_coffee', 'robo_meh', 'two identical score cards on the bench between the fish buckets, the fruit fly researcher sipping coffee, the robot shrugging, the scientist nodding, the girl holding up both cards', '같은 점수 카드 두 장을 사이에 두고 커피를 든 초파리 연구원과 어깨를 으쓱하는 주판봇, 고개를 끄덕이는 박사와 두 카드를 든 조수'),
-         '06': ('fly_arms', 'robo_sigh', 'the aquarium glowing behind, the fruit fly researcher with arms crossed holding the matched rubber ruler, the robot sighing over its scale, the scientist giving a thumbs-up, the girl smiling', '수조 앞에서 팔짱 낀 초파리 연구원과 저울 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수')}
+         '06': ('fly_arms', 'robo_sigh', 'the aquarium glowing behind, the fruit fly researcher with arms crossed holding the matched rubber ruler, the robot sighing over its scale, the scientist giving a thumbs-up, the girl smiling', '수조 앞에서 팔짱 낀 초파리 연구원과 저울 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수'),
+         '07': ('fly_coffee', 'robo_happy', 'the robot cheering with a stack of coins in front of the 2x2 board, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling', '동전 더미 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
+         '09': ('fly_coffee', 'robo_calc', 'two archery targets side by side, one for small fish and one for big fish, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both targets', '두 과녁을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수'),
+         '10': ('fly_arms', 'robo_sigh', 'a calm curve on the chalkboard behind the fruit fly researcher with arms crossed, a wildly spiking curve behind the sighing robot, the scientist giving a thumbs-up, the girl smiling', '차분한 곡선 앞에서 팔짱 낀 초파리 연구원과 튀어 오른 곡선 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수')}
 
 def img_md(k, p):
     n = p['key']; fo, ro, scene, alt = OUTRO[k]
