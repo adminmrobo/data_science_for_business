@@ -1,0 +1,255 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 4주차 · 데이터 분석 개념의 이해</span>
+      <h1>도구와 알고리즘의 지도</h1>
+      <p class="q">이 비즈니스 문제에는 어떤 도구와 어떤 알고리즘을 써야 할까?</p>
+      <p class="lead">3주차까지 문제를 정하고 데이터를 손봤습니다. 이번 주는 연장통을 엽니다. 엑셀부터 파이썬까지 도구를 고르고, 사람이 규칙을 짜는 방식과 데이터에서 규칙을 배우는 머신러닝을 신용대출 심사로 겨뤄 봅니다. 그다음 데이터를 나눠 과적합을 잡는 법, 문제 유형에 맞는 모델을 고르는 법을 장바구니 분석까지 직접 계산합니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi i"><b>4계열</b><span>분석 도구<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>3가지</b><span>학습 방법: 지도·비지도·강화<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>60:20:20</b><span>훈련·검증·시험 분할 예<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>1.25</b><span>라면→달걀 향상도<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>5겹</b><span>교차 검증(5-Fold)<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroAcc">–</b><span>머신러닝 심사 시험 정확도<sup>예시</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w04_hero" alt="네 캐릭터가 엑셀 표, 차트, 코드 창이 꽂힌 큰 연장통을 열어 보는 연구실 장면" hidden>
+      <div class="hero-stage" data-img="sc_w04_hero"><canvas id="heroArt" aria-label="밤의 연구실. 큰 연장통에 표·차트·코드 모양 도구가 꽂혀 있고, 옆 칠판에 갈래가 나뉘는 나무 그림이 있다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="point" alt=""><img data-who="doc" data-mood="board" alt=""><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="board" data-img="doc_board" alt="" aria-hidden="true"><div><b class="name">박사</b><p>망치로 나사를 돌릴 수는 없죠. 오늘은 문제에 맞는 연장을 고르는 법을 봅니다.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>대출 신청 기록 1,000건, 장바구니 다섯 개를 준비했어요. 모두 설명용으로 만든 데이터예요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>대출 심사는 베테랑 심사역의 규칙이면 충분해. 왜 그런지 설명도 되잖아.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>과거 기록 600건이면 기계가 규칙을 더 잘 찾지. 데이터에 투자하자고.</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">실험을 돌리고 숫자를 발표합니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">의심하는 쪽. 설명할 수 있는 규칙을 고릅니다.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">확신하는 쪽. 데이터로 배우는 모델에 겁니다.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 숫자 옆 <sup>[n]</sup>은 바닥글 출처 번호입니다. 대출·장바구니 데이터는 시드를 고정해 만든 장난감 데이터이며, 실제 금융 기관의 심사 기준이 아닙니다. 이 페이지는 교육용이며 금융·투자 자문이 아닙니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 도구와 알고리즘을 따로 배우나</h2></div>
+  <div class="steps">
+    <div><b>1. 도구가 프로젝트를 좌우한다</b><p>교안은 도구 선택이 분석 프로젝트의 성공을 결정하는 핵심 요소라고 말합니다. 맞지 않는 도구를 고르면 분석 효율과 결과 품질이 크게 떨어집니다.<sup>[1]</sup></p></div>
+    <div><b>2. 규칙을 누가 만드는가</b><p>전통적 프로그래밍은 사람이 규칙을 적고, 머신러닝은 데이터와 과거 결과에서 규칙을 찾습니다. 같은 대출 심사라도 만드는 방식이 다릅니다.<sup>[1]</sup></p></div>
+    <div><b>3. 문제 유형이 모델을 고른다</b><p>3주차에서 정한 분류·예측·군집·연관·최적화 유형마다 어울리는 알고리즘과 평가 지표가 있습니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 분석 프로세스와 세 가지 학습 방법</h2></div>
+  <div class="flowchips" aria-label="분석 프로세스"><span>비즈니스 이해</span><i>→</i><span>데이터 이해·준비</span><i>→</i><span>모델링</span><i>→</i><span class="lim">평가</span><i>→</i><span>배포·모니터링</span></div>
+  <div class="tw"><table class="tb" aria-label="학습 방법 비교">
+    <thead><tr><th>구분</th><th>지도 학습</th><th>비지도 학습</th><th>강화 학습</th></tr></thead>
+    <tbody>
+      <tr><td><b>데이터</b></td><td>정답(레이블)이 있는 데이터</td><td>정답이 없는 데이터</td><td>환경과 주고받는 상호작용</td></tr>
+      <tr><td><b>목적</b></td><td>예측·분류</td><td>패턴 발견·구조 파악</td><td>보상을 최대화하는 정책 학습</td></tr>
+      <tr><td><b>알고리즘 예</b></td><td>회귀, 의사결정 트리, SVM, 신경망</td><td>K-means, PCA, 오토인코더</td><td>Q-learning, SARSA, Policy Gradient</td></tr>
+      <tr><td><b>비즈니스 예</b></td><td>신용평가, 스팸 필터, 수요 예측</td><td>고객 세분화, 이상 감지</td><td>광고 최적화, 추천, 자원 배분</td></tr>
+    </tbody></table></div>
+  <p class="lead">교안의 비교표입니다.<sup>[1]</sup> 레이블이 충분하면 지도 학습, 없으면 비지도 학습, 상호작용이 가능하면 강화 학습을 고려합니다. 이 페이지의 ②·③칸은 지도 학습, ④칸의 장바구니 분석은 비지도 학습에 속합니다.</p>
+</div></section>
+
+<!-- ① 도구 -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>도구</small></div><h2>분석 도구 고르기 — 스프레드시트에서 파이썬까지</h2></div>
+    <p class="sub"><span class="lvtag g">기준: 데이터 규모 · 분석 복잡도 · 협업 · 비용</span><span class="lvtag">연구실: 실험에 맞는 장비 고르기</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">연구실에서는</div><p>저울 하나로 끝날 실험에 분석 장비를 들이면 돈과 시간이 새고, 반대로 정밀 측정이 필요한데 줄자를 들면 결과가 틀립니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>교안의 네 계열: 스프레드시트(엑셀·구글 시트), 상용 통계 도구(SAS·SPSS·MATLAB·STATA), 오픈소스(Python·R), 시각화·BI(Tableau·Power BI).<sup>[1]</sup> 소규모는 스프레드시트, 중규모 이상은 통계 패키지나 프로그래밍 언어를 고려합니다.</p></div>
+  </div>
+  <section class="panel" aria-label="도구 추천기">
+    <h3>프로젝트 조건을 고르면 — 어울리는 도구 묶음</h3>
+    <div class="ctrl" style="flex-direction:column;align-items:flex-start">
+      <div class="group" id="tq0" role="group" aria-label="데이터 규모"><span class="glabel">데이터 규모</span></div>
+      <div class="group" id="tq1" role="group" aria-label="분석 내용"><span class="glabel">분석 내용</span></div>
+      <div class="group" id="tq2" role="group" aria-label="결과 공유"><span class="glabel">결과 공유</span></div>
+      <div class="group" id="tq3" role="group" aria-label="반복"><span class="glabel">반복·재현</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c1" class="wide" aria-label="네 도구 계열의 적합도 막대"></canvas></div>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <div class="tw"><table class="tb" aria-label="스프레드시트와 오픈소스 비교">
+    <thead><tr><th>특징</th><th>스프레드시트(엑셀·구글 시트)</th><th>오픈소스(Python·R)</th></tr></thead>
+    <tbody>
+      <tr><td>사용 편의성</td><td>높음</td><td>중간 (초기 학습 곡선)</td></tr>
+      <tr><td>데이터 처리 능력</td><td>제한적 (수백만 행 이하)</td><td>매우 높음 (빅데이터 처리 가능)</td></tr>
+      <tr><td>고급 분석</td><td>기본 통계</td><td>고급 통계, 머신러닝, 딥러닝</td></tr>
+      <tr><td>자동화·재현성</td><td>제한적 (매크로) · 버전 관리 어려움</td><td>스크립트로 용이 · 코드 기반 버전 관리</td></tr>
+    </tbody></table></div>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>막대 점수는 교안의 비교표와 도구 선택 가이드를 규칙으로 옮긴 것입니다(정성 비교를 숫자로 나타낸 도식).</li>
+    <li>초보자 학습 경로: 스프레드시트 → 시각화 도구 → 통계 프로그램 → 프로그래밍 언어.<sup>[1]</sup></li>
+    <li>오픈소스는 라이선스가 무료지만 학습·기술 지원 비용이 들 수 있어, 2주차의 TCO처럼 총소유비용으로 봅니다.<sup>[1]</sup></li>
+    <li>재현성을 위해 conda·pip 가상 환경, Docker, Git·GitHub로 버전과 환경을 기록합니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 도구는 정했지만, 그 안에서 판단 규칙을 사람이 짤지 데이터가 배우게 할지는 아직 정하지 않았습니다. → ②칸</p></div>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② 규칙 vs 머신러닝 -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>방법</small></div><h2>규칙 기반과 머신러닝 — 신용대출 심사</h2></div>
+    <p class="sub"><span class="lvtag g">비교: 사람이 쓴 규칙 vs 데이터에서 배운 규칙</span><span class="lvtag">교안 사례: 은행 신용대출</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">은행에서는</div><p>전통적 방식은 데이터를 보고 전문가와 담당 직원의 의견을 반영해 판단 기준을 직접 입력합니다. 머신러닝은 데이터와 과거 결과(정상 상환·연체)로 판단 기준을 자동으로 만들고, 그중 결과가 가장 좋은 기준을 고릅니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>규칙 기반은 로직이 명확하고 예측 가능하지만 유연성이 부족합니다. 머신러닝은 복잡한 패턴과 새 데이터에 적응하지만, 해석이 어렵고 대량의 학습 데이터가 필요합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="규칙과 머신러닝 비교 실험">
+    <h3>과거 대출 600건으로 만들고, 처음 보는 400건으로 채점</h3>
+    <div class="ctrl">
+      <div class="group"><label class="glabel" for="rI">규칙: 연소득 ≥</label><input type="range" id="rI" min="2" max="8" step="0.5" value="4"><span class="val" id="rIv">4,000만</span></div>
+      <div class="group"><label class="glabel" for="rD">그리고 부채비율 ≤</label><input type="range" id="rD" min="10" max="90" step="5" value="40"><span class="val" id="rDv">40%</span></div>
+      <div class="group" id="vw2" role="group" aria-label="보기"><span class="glabel">보기</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c2" class="wide" aria-label="연소득과 부채비율 평면 위의 대출 기록. 왼쪽은 사람이 정한 규칙의 승인 영역, 오른쪽은 머신러닝이 배운 승인 영역"></canvas></div>
+    <section class="kpis k4" id="k2"></section>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>장난감 세계의 진짜 규칙은 "소득이 높을수록 감당할 수 있는 부채비율도 높아진다"는 비스듬한 경계입니다(8%는 무작위로 뒤집힌 예외).</li>
+    <li>사람의 규칙은 '소득 ≥ A 그리고 부채 ≤ B' 같은 네모 모양이라 비스듬한 경계를 따라가지 못합니다. 슬라이더로 가장 좋은 네모를 찾아도 한계가 있습니다.</li>
+    <li>머신러닝(KNN, K = 15)은 과거 기록에서 경계 모양을 그대로 배웁니다. 대신 "왜 거절했나"를 한 줄 규칙으로 설명하기 어렵습니다.</li>
+  </ol><p class="limit">이 칸의 한계: 모델이 과거 기록을 지나치게 외웠는지(과적합) 어떻게 알 수 있을까요? 같은 기록으로 채점하면 알 수 없습니다. → ③칸</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>교안은 규제 준수와 설명 가능성이 중요한 분야에서는 해석 가능한 모델을 선택하라고 합니다.<sup>[1]</sup> 신용평가처럼 거절 사유를 설명해야 하는 업무는 성능과 해석 가능성 사이의 균형을 정해야 합니다.</p><p class="lim">모형의 한계: 실제 신용평가는 수많은 변수와 규제 요건을 쓰며, 이 2차원 장난감과 다릅니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>"이런 경우엔 이렇게 답하라"는 규칙 목록(프롬프트)으로 챗봇을 만들 수도 있고, 예시 데이터로 모델을 미세조정할 수도 있습니다. 같은 선택입니다. 규칙은 설명하기 쉽고, 학습은 예외를 더 잘 다룹니다.</p><p class="lim">비유의 한계: 대형 언어 모델은 이미 방대한 데이터로 학습되어 있어 규칙과 학습의 경계가 이 실험처럼 깔끔하지 않습니다.</p></div>
+  </div>
+  <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="magnify" data-img="fly_magnify" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>네모를 아무리 옮겨도 비스듬한 선은 못 따라가네… 그래도 거절 이유는 내 쪽이 말할 수 있어.</p></div></div>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ 분할·교차 검증·과적합 -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>검증</small></div><h2>데이터 분할과 교차 검증 — 외운 것과 배운 것</h2></div>
+    <p class="sub"><span class="lvtag g">방법: 훈련·검증·시험 분할, 5겹 교차 검증</span><span class="lvtag">연구실: 봉인한 시험지</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">연구실에서는</div><p>연습 문제만 달달 외운 학생은 연습 문제로 치면 100점이지만, 처음 보는 시험지에서는 무너집니다. 그래서 시험지는 따로 봉인해 둡니다.</p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>훈련 데이터만 너무 잘 외워 새 데이터에 대응하지 못하는 현상이 <b>과적합</b>입니다. 교안은 훈련·검증·시험을 60:20:20 또는 70:15:15로 나누고, 교차 검증으로 제한된 데이터를 최대한 활용하라고 합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="과적합과 교차 검증 실험">
+    <h3>KNN의 K를 바꾸며 — 훈련 정확도와 시험 정확도, 5겹 교차 검증</h3>
+    <div class="ctrl"><div class="group"><label class="glabel" for="kk">K (이웃 수)</label><input type="range" id="kk" min="1" max="51" step="2" value="1"><span class="val" id="kkv">1</span></div></div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="왼쪽은 선택한 K로 배운 승인 영역, 오른쪽은 K에 따른 훈련 정확도와 교차 검증 정확도 곡선"></canvas></div>
+    <section class="kpis k4" id="k3"></section>
+    <div class="eq" id="eq3"></div>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>K = 1이면 모든 훈련 기록이 자기 자신을 이웃으로 삼아 훈련 정확도가 100%입니다. 예외 8%까지 외워 경계가 울퉁불퉁해집니다.</li>
+    <li>5겹 교차 검증은 600건을 다섯 묶음으로 나눠, 한 묶음씩 번갈아 검증용으로 쓰고 나머지로 학습합니다. 다섯 점수의 평균과 흩어짐을 함께 봅니다.<sup>[1]</sup></li>
+    <li>K는 교차 검증 점수로 고르고, 봉인한 시험 데이터 400건은 마지막에 한 번만 씁니다. 시험 점수로 K를 고르면 시험지를 미리 본 셈입니다.</li>
+    <li>K가 너무 작으면 과적합, 너무 크면 경계가 뭉개지는 과소적합입니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 지금까지는 '승인/거절' 분류 하나만 봤습니다. 문제가 군집·연관·예측이면 쓰는 모델과 지표가 달라집니다. → ④칸</p></div>
+  <details class="math"><summary>수식으로 보기</summary><div>
+    <p class="num">k겹 교차 검증 점수 = (1/k) Σ<sub>i=1..k</sub> 정확도(묶음 i로 검증, 나머지로 학습)</p>
+    <p class="muted">홀드아웃(한 번 나눠 한 번 평가)은 빠르지만 나누는 방법에 따라 결과가 흔들립니다. 부트스트랩은 복원 추출로 여러 표본을 만들어 성능의 분포를 봅니다.<sup>[1]</sup></p>
+  </div></details>
+  <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>K = 1의 훈련 점수 100%는 답안지를 보고 푼 점수예요. 교차 검증 막대를 보세요.</p></div></div>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 문제 유형별 모델·연관성 분석 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>선택</small></div><h2>문제 유형별 모델 고르기 — 장바구니 분석까지</h2></div>
+    <p class="sub"><span class="lvtag g">지표: 지지도 · 신뢰도 · 향상도</span><span class="lvtag">교안 사례: 라면과 달걀</span></p>
+  </div>
+  <div class="tw"><table class="tb" aria-label="문제 유형별 대표 모델">
+    <thead><tr><th>문제 유형</th><th>대표 모델 (교안)</th><th>평가 지표</th><th>산업 사례 (교안)</th></tr></thead>
+    <tbody>
+      <tr><td><b>분류</b></td><td>KNN, SVM, 의사결정 트리, 랜덤 포레스트, 로지스틱 회귀</td><td>혼동행렬, 정확도·정밀도·재현율·F1, ROC-AUC</td><td>신용 스코어링, 사기 탐지, 이탈 예측, 질병 진단 지원</td></tr>
+      <tr><td><b>예측</b></td><td>선형 회귀, 시계열 분석</td><td>MAE, MSE, RMSE, R²</td><td>수요 예측, 매출 예측, 환자 위험도</td></tr>
+      <tr><td><b>군집</b></td><td>K-means, 계층적 클러스터링</td><td>클러스터 품질(실루엣 등)</td><td>고객 세분화, 시장 세분화</td></tr>
+      <tr><td><b>연관성</b></td><td>Apriori, FP-Growth</td><td>지지도, 신뢰도, 향상도</td><td>장바구니 분석, 교차 판매, 번들 상품</td></tr>
+      <tr><td><b>최적화</b></td><td>선형·정수·비선형 계획법</td><td>목적 함수 값</td><td>자원 배분, 가격 최적화, 포트폴리오(평균-분산)</td></tr>
+    </tbody></table></div>
+  <div class="pair">
+    <div><div class="tag fly">마트에서는</div><p>라면을 산 손님이 달걀도 함께 사는지 봅니다. 교안의 예: 손님 5명 중 라면 3명, 달걀 4명, 둘 다 3명.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p><b>지지도</b> = 둘 다 산 비율, <b>신뢰도</b> = 라면을 산 사람 중 달걀도 산 비율, <b>향상도</b> = 신뢰도 ÷ 달걀의 전체 구매 비율. 향상도가 1보다 크면 우연보다 함께 잘 팔립니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="장바구니 분석 계산기">
+    <h3>장바구니 계산기 — 칸을 눌러 구매를 바꿔 보기</h3>
+    <div class="ctrl"><div class="group" id="ruleBtns" role="group" aria-label="규칙"><span class="glabel">규칙</span></div><div class="group"><button class="bt" type="button" id="bkReset">교안 예시로 되돌리기</button></div></div>
+    <div class="tw"><table class="dt" id="bkTable" aria-label="손님별 구매 표. 칸을 누르면 구매 여부가 바뀐다"></table></div>
+    <section class="kpis k4" id="k4"></section>
+    <div class="eq" id="eq4"></div>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>교안 예시 그대로면 지지도 3/5 = 0.6, 신뢰도 3/3 = 1.0, 향상도 1.0 ÷ (4/5) = 1.25입니다. 함께 구매될 가능성이 우연보다 25% 높습니다.<sup>[1]</sup></li>
+    <li>신뢰도가 높아도 달걀을 거의 모든 사람이 산다면 향상도는 1에 가깝습니다. "누구나 사는 물건"과의 연관은 정보가 없습니다.</li>
+    <li>Apriori는 자주 팔리는 상품부터 단계별로 조합을 찾고, FP-Growth는 트리 구조로 더 빠르게 찾습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 손님 5명의 연관은 우연일 수 있습니다(1주차 ④칸의 표본 크기). 그리고 어떤 모델을 고르든 그 판단이 공정한지, 설명할 수 있는지는 따로 따져야 합니다. → 정리의 윤리적 고려</p></div>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 전문가 규칙이냐, 머신러닝이냐</h2><p class="lead">②칸의 대출 데이터. 과거 600건으로 만들고, 처음 보는 400건의 실제 결과(정상 상환·연체)를 얼마나 맞히는지 겨룹니다. 이 페이지는 교육용이며 금융 자문이 아닙니다.</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 심사역 규칙</b><p>"연소득 4,000만 이상, 부채비율 40% 이하. 설명도 깔끔하지."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 머신러닝(KNN, K = 15)</b><p>"과거 600건이 규칙을 알려 줄 거야. 데이터에 걸지."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+      <p class="muted" style="font-size:14px">조건 메모: 이 장난감 세계의 진짜 경계가 비스듬하기 때문에 나온 결과입니다. 진짜 규칙이 네모 모양이거나 학습 기록이 아주 적으면 규칙 쪽이 이길 수 있습니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 네 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="네 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 도구</b></td><td>규모·분석·공유·재현 조건으로 도구를 고른다</td><td>판단 규칙을 누가 만들지 모른다</td><td>규칙 vs 머신러닝</td></tr>
+      <tr><td><b>② 규칙 vs 머신러닝</b></td><td>데이터에서 경계 모양을 배운다</td><td>외웠는지 배웠는지 모른다</td><td>분할·교차 검증</td></tr>
+      <tr><td><b>③ 분할·교차 검증</b></td><td>과적합을 잡고 K를 고른다</td><td>분류 외 문제 유형</td><td>문제 유형별 모델</td></tr>
+      <tr><td><b>④ 문제 유형·연관성</b></td><td>유형마다 모델·지표를 고르고 향상도를 계산한다</td><td>작은 표본, 공정성·설명 가능성</td><td>5주차: 실제 데이터로 분류 모델 만들기</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>모델 선택 기준 (교안)</b><p>정확도 요구와 허용 오차, 실시간/배치 처리, 응답 시간·확장성, 규제와 설명 가능성, 유지보수. 기술 지표는 비용-편익·ROI·A/B 테스트로 비즈니스 가치로 바꿔 봅니다.<sup>[1]</sup></p></div>
+    <div><b>윤리적 AI (교안)</b><p>알고리즘 편향은 데이터나 모델 설계에서 생기는 불공정한 차별입니다. 편향 탐지와 완화, 개인정보 보호, 투명성과 설명 가능성, 지속적 모니터링이 필요합니다.<sup>[1]</sup></p></div>
+    <div><b>비유의 한계</b><p>대출 데이터의 경계와 예외 비율, 장바구니 표는 설명을 위해 만든 것입니다. 실제 심사와 판매 데이터는 훨씬 많은 변수와 잡음을 가집니다.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w04_outro" hidden><img alt="승인 영역 지도 앞에서 기뻐하는 주판봇과 머쓱해하는 초파리 연구원, 엄지를 세운 박사와 웃는 조수"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>도구는 규모·분석·공유·재현 조건으로 고른다.</li><li>복잡한 경계는 데이터에서 배우는 쪽이 강하지만, 설명 가능성을 대가로 낸다.</li><li>모델은 봉인한 데이터와 교차 검증으로 평가한다.</li></ul></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>숫자가 말해 줬잖아. 다음에도 데이터에 투자.</p></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="cry" data-img="fly_cry" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>…네모로는 비스듬한 선을 못 잡는구나. 그래도 K = 1에 속지 않은 건 내 덕이야.</p></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>다음 주에는 진짜 생선 데이터(도미와 빙어)로 파이썬 분류 모델을 처음부터 만들어 볼게요.</p></div></div>
+  </div>
+</div></section>

@@ -33,6 +33,21 @@ PAGES = {
    meta='a giant table with holes being filled with green light, one oddly tall bar sticking out of the table, and a broom sweeping duplicate cards',
    pose=('at the back center pointing at a red cell with a pointer finger', 'filling a blank cell with a glowing green block', 'on the left facing right, holding scissors over a row with a blank cell, hesitating', 'on the right facing left, carrying a basket of glowing filler blocks'),
    alt='네 캐릭터가 빈칸과 튀는 값, 겹친 카드가 섞인 큰 표를 작업대 위에서 함께 손질하는 표지', duel='R(주판봇 승, 오차 28만 원 대 280만 원)', prev='2주차: 데이터 출처와 빛줄기'),
+ '04': dict(title='4주차 · 도구와 알고리즘의 지도', key='w04', anchor='B 연구실: 도구 선반과 지도 탁자',
+   place='a night lab with a tall tool shelf of glowing instruments and a large map table showing a scatter of red and green dots split by a curved line, a shopping basket on the corner',
+   meta='a hand-drawn treasure map whose paths branch to different tools, and a straight ruler laid next to a curved glowing boundary between dots',
+   pose=('at the back center unrolling the big map', 'checking items off a blank clipboard beside the shelf', 'on the left facing right, drawing a curved boundary with a glowing pen', 'on the right facing left, laying a straight ruler across the dots'),
+   alt='네 캐릭터가 도구 선반과 점이 흩어진 지도 탁자 앞에서 직선 자와 곡선 경계를 견주는 표지', duel='R(주판봇 승, 대출 시험 정확도 88.5% 대 75.8%)', prev='3주차: 데이터 손질 작업대'),
+ '05': dict(title='5주차 · 도미와 빙어', key='w05', anchor='B 연구실: 생선 계측대',
+   place='a night lab workbench with a ruler, a kitchen scale, two buckets of fish (large silvery bream and small slim smelt) and a laptop showing a blank scatter plot',
+   meta='fish being measured and turned into glowing dots that fly into the scatter plot on the laptop screen',
+   pose=('at the back center holding up a large bream to look at it', 'writing blank labels and sticking them on small cards', 'on the left facing right, measuring a small smelt with a ruler', 'on the right facing left, placing a bream on the scale'),
+   alt='네 캐릭터가 작업대 위 도미와 빙어를 자와 저울로 재며 노트북 산점도에 점을 찍는 표지', duel='D(무승부, 한 마리씩 빼고 채점: 둘 다 100%)', prev='4주차: 도구 선반과 지도'),
+ '06': dict(title='6주차 · 농어가 끼어들자', key='w06', anchor='B 연구실: 수조와 두 바구니',
+   place='a night lab with a glowing aquarium of three kinds of fish (big, medium, tiny), two baskets labeled only by color (one blue, one orange) and a long ruler and a scale side by side',
+   meta='a stretched rubber ruler being pulled to the same length as a scale dial, showing two different units brought to one common scale',
+   pose=('at the back center tapping the aquarium glass', 'sorting fish into the blue and orange baskets', 'on the left facing right, stretching the rubber ruler to match the scale dial', 'on the right facing left, weighing a fish and squinting at the big number'),
+   alt='네 캐릭터가 도미·농어·빙어가 든 수조 앞에서 자의 눈금을 맞추고 생선을 훈련·시험 두 바구니로 나누는 표지', duel='F(초파리 승, 새 생선 30마리: 표준화 100% 대 원자료 83.3%)', prev='5주차: 생선 계측대'),
 }
 
 def prompt(p):
@@ -79,7 +94,10 @@ def cover_md(k, p):
 
 OUTRO = {'01': ('fly_arms', 'robo_sigh', 'a relaxed fruit fly researcher with arms crossed in quiet satisfaction on the left, a sheepish robot with a sweat drop on the right, the scientist giving a thumbs-up, the girl smiling with a striped ledger', '대결 후 팔짱 낀 초파리 연구원과 식은땀 흘리는 주판봇, 엄지를 세운 박사와 웃는 조수'),
          '02': ('fly_coffee', 'robo_calc', 'two task cards on a table between them, the fruit fly researcher holding a coffee cup calmly, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both cards', '두 업무 카드를 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수'),
-         '03': ('fly_coffee', 'robo_happy', 'a big table whose blank cells are now filled with green light, the robot cheering in front, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling', '빈칸이 채워진 표 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수')}
+         '03': ('fly_coffee', 'robo_happy', 'a big table whose blank cells are now filled with green light, the robot cheering in front, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling', '빈칸이 채워진 표 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
+         '04': ('fly_cry', 'robo_happy', 'the map table with a curved glowing boundary, the robot cheering beside it, the fruit fly researcher with teary eyes holding his straight ruler, the scientist giving a thumbs-up, the girl smiling', '곡선 경계 앞에서 기뻐하는 주판봇과 직선 자를 든 채 눈물 맺힌 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
+         '05': ('fly_coffee', 'robo_meh', 'two identical score cards on the bench between the fish buckets, the fruit fly researcher sipping coffee, the robot shrugging, the scientist nodding, the girl holding up both cards', '같은 점수 카드 두 장을 사이에 두고 커피를 든 초파리 연구원과 어깨를 으쓱하는 주판봇, 고개를 끄덕이는 박사와 두 카드를 든 조수'),
+         '06': ('fly_arms', 'robo_sigh', 'the aquarium glowing behind, the fruit fly researcher with arms crossed holding the matched rubber ruler, the robot sighing over its scale, the scientist giving a thumbs-up, the girl smiling', '수조 앞에서 팔짱 낀 초파리 연구원과 저울 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수')}
 
 def img_md(k, p):
     n = p['key']; fo, ro, scene, alt = OUTRO[k]

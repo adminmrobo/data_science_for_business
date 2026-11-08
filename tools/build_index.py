@@ -8,9 +8,9 @@ WEEKS = [
  (1, '비즈니스 데이터 과학의 이해', '데이터는 많은데, 결정은 왜 틀릴까', 'DIKW 계단 · 생존자 편향 · 상관과 인과 · A/B 테스트', '📊', 'week01_business_data_science.html', True, '초파리 승'),
  (2, '비즈니스 데이터의 수집 및 처리 기술', '데이터는 어디서 오는가', '산업별 데이터 · 수집 방법 · 배치와 스트림 · TCO · k-익명성', '📡', 'week02_data_collection.html', True, '조건부'),
  (3, '데이터 분석을 위한 준비', '분석 전에 데이터를 손보다', 'SMART · 결측값 · 이상값 · 품질 6차원 · EDA', '🧹', 'week03_analysis_prep.html', True, '주판봇 승'),
- (4, '데이터 분석 개념의 이해', '', '분석 도구 · 알고리즘의 원리 · 문제 유형별 모델 선택', '🧭', '', False, ''),
- (5, '데이터 분석 모형: 분류모형(1)', '', 'Colab 실습 환경 · 분류를 위한 전처리', '🗂️', '', False, ''),
- (6, '데이터 분석 모형: 분류모형(2)', '', '분류 알고리즘 학습 · 데이터 분할 · 표준화·특성 선택', '🌳', '', False, ''),
+ (4, '데이터 분석 개념의 이해', '도구와 알고리즘의 지도', '도구 고르기 · 규칙 vs KNN · K와 교차 검증 · 장바구니 연관 규칙', '🧰', 'week04_analysis_concepts.html', True, '주판봇 승'),
+ (5, '데이터 분석 모형: 분류모형(1)', '도미와 빙어', '파이썬 데이터 구조 · 입력 점검 · zip과 라벨 · KNN 예측', '🐟', 'week05_classification_1.html', True, '무승부'),
+ (6, '데이터 분석 모형: 분류모형(2)', '농어가 끼어들자', '3클래스 KNN · K 고르기 · SVM과 커널 · 층화 분할 · 표준화', '🎣', 'week06_classification_2.html', True, '초파리 승'),
  (7, '비즈니스 데이터 분석 모델의 평가', '', '성능 평가 지표 · 하이퍼파라미터 튜닝 · 활용 사례', '🎯', '', False, ''),
  (8, '중간고사', '', '', '📝', '', None, ''),
  (9, '데이터 분석 모형: 회귀모형(1)', '', '회귀 모델의 특징 · 성능 평가 · 매출·가격·수요 예측', '📈', '', False, ''),
@@ -77,7 +77,7 @@ a.wk:hover{{border-color:var(--seq)}}
 <section class="level" id="weeks"><div class="wrap stack">
   <h2>주차별 해설</h2>
   <div class="weeks">{cards}</div>
-  <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 지금까지: 초파리 승 1 · 주판봇 승 1 · 조건부 1.</p>
+  <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 지금까지: 초파리 승 2 · 주판봇 승 2 · 무승부 1 · 조건부 1.</p>
 </div></section>
 <section class="level" id="practice"><div class="wrap stack">
   <h2>실습 사례 <span class="lvtag">추가 예정</span></h2>

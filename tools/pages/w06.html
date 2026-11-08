@@ -1,0 +1,256 @@
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 6주차 · 데이터 분석 모형: 분류모형(2)</span>
+      <h1>농어가 끼어들자</h1>
+      <p class="q">모델이 학습 데이터에서 100%를 맞혔다면, 처음 보는 생선도 맞힐까?</p>
+      <p class="lead">5주차의 KNN은 너무 쉬운 문제를 풀었습니다. 이번 주는 일부러 어렵게 만듭니다. 중간 크기의 농어를 넣어 세 종류로 늘리고, K를 고르는 법과 SVM의 결정 경계를 보고, 시험 데이터를 떼어 내는 법(순서·무작위·층화)을 비교합니다. 마지막으로 5주차에 남겨 둔 25cm·150g 생선의 수수께끼를 표준화로 풉니다.</p>
+      <div class="kpis k3" aria-label="숫자 요약">
+        <div class="kpi i"><b>3종류</b><span>도미 35 · 농어 10 · 빙어 14<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>0%</b><span>순서대로 나눴을 때 시험 정확도<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>stratify</b><span>클래스 비율을 지키는 분할<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>RBF</b><span>곡선 경계를 만드는 SVM 커널<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>(값 − 평균) ÷ 표준편차</b><span>Z-점수 표준화<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroStd">–</b><span>표준화 뒤 25cm·150g의 판정<sup>계산</sup></span></div>
+      </div>
+    </div>
+    <div class="pixelart">
+      <img class="scene-img" data-scene="sc_w06_hero" alt="도미와 빙어 사이에 중간 크기 농어가 끼어든 수조를 네 캐릭터가 들여다보는 연구실 장면" hidden>
+      <div class="hero-stage" data-img="sc_w06_hero"><canvas id="heroArt" aria-label="밤의 연구실. 수조 안에 큰 물고기, 중간 물고기, 작은 물고기가 있고, 벽 화면에 곡선 경계가 그려져 있다"></canvas>
+        <div class="crew" aria-hidden="true"><img class="flip" data-who="fly" data-mood="point" alt=""><img data-who="doc" data-mood="think" alt=""><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-block:0 40px">
+    <div class="dialog">
+      <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>100점짜리 모델이 왜 처음 보는 생선에서 틀리는지, 오늘 하나씩 뜯어봅시다.</p></div></div>
+      <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>교안의 농어 10마리를 더했어요. 시험용으로 새로 잡힌 생선 30마리도 준비했고요.</p></div></div>
+      <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>길이는 cm, 무게는 g. 눈금이 다른 숫자를 그대로 거리로 재도 돼?</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>원자료가 진실이지. 손대면 손댈수록 정보가 새는 거야.</p></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="level" id="cast"><div class="wrap stack">
+  <h2>등장인물과 이 페이지 사용법</h2>
+  <div class="cast">
+    <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">데이터를 나누고 숫자를 발표합니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">의심하는 쪽. 눈금부터 맞추자고 합니다.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">확신하는 쪽. 원자료 그대로에 겁니다.</p></div>
+  </div>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 도미·빙어 49마리는 교안 실습 데이터(Fish Market), 농어 10마리는 교안이 만든 값입니다. ②칸의 겹치는 데이터, ③칸의 원형 데이터, 대결의 새로 잡힌 생선 30마리는 설명을 위해 만든 값입니다. SVM은 브라우저에서 돌아가도록 단순화한 학습 규칙으로 계산합니다.</p>
+</div></section>
+
+<section class="level" id="why"><div class="wrap stack">
+  <div class="lvhead"><h2>왜 100점을 의심하나</h2></div>
+  <div class="steps">
+    <div><b>1. 학습 데이터 점수는 외운 점수다</b><p>5주차의 score 1.0은 학습에 쓴 생선으로 채점한 값입니다. 훈련 정확도가 100%여도 새 생선에서는 틀릴 수 있습니다.<sup>[1]</sup></p></div>
+    <div><b>2. 시험을 어떻게 떼느냐가 점수를 바꾼다</b><p>데이터가 종류별로 정렬돼 있을 때 앞뒤로 자르면 0% 같은 극단적인 실패가 나옵니다.<sup>[1]</sup></p></div>
+    <div><b>3. 눈금이 다르면 거리가 왜곡된다</b><p>KNN·K-means 같은 거리 기반 알고리즘에서는 숫자가 큰 특성이 결과를 지배합니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<section class="level" id="big"><div class="wrap stack">
+  <div class="lvhead"><h2>큰 그림 — 교안 6주차의 세 교시</h2></div>
+  <div class="flowchips" aria-label="6주차 흐름"><span>1교시: 다중 클래스 KNN · K 최적화 · SVM</span><i>→</i><span>2교시: 데이터 분할(순서·무작위·stratify)</span><i>→</i><span class="lim">3교시: 표준화와 특성 선택</span></div>
+  <div class="pair">
+    <div><div class="tag fly">KNN</div><p>가까운 K개 이웃의 다수결. 경계가 데이터 모양을 따라 울퉁불퉁하게 생깁니다. 거리에 의존하므로 눈금(스케일)에 민감합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">SVM</div><p>두 클래스 사이 여백(마진)이 가장 넓은 경계를 찾습니다. 경계 가까운 점(서포트 벡터)이 경계를 정하고, 커널(선형·다항식·RBF·시그모이드)로 곡선 경계도 만듭니다.<sup>[1]</sup></p></div>
+  </div>
+</div></section>
+
+<!-- ① 3클래스 -->
+<section class="level" id="lv1"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">1<small>확장</small></div><h2>다중 클래스 KNN — 농어가 끼어들면</h2></div>
+    <p class="sub"><span class="lvtag g">라벨: Bream = 0 · Perch = 1 · Smelt = 2</span><span class="lvtag">데이터: 도미 35 · 농어 10 · 빙어 14</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">어시장에서는</div><p>큰 도미와 작은 빙어만 있을 땐 눈대중으로도 갈랐지만, 중간 크기 농어가 섞이면 경계에 선 생선이 늘어납니다.</p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>다중 클래스 KNN도 원리는 같습니다. 가까운 K개 이웃 중 클래스별 투표를 세어 가장 많은 쪽으로 정합니다. 농어는 도미와 빙어 사이 크기라 경계가 복잡해지고 난이도가 올라갑니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="3클래스 KNN">
+    <h3>그림을 눌러 생선을 놓아 보기 — 세 종류의 투표 비율</h3>
+    <div class="ctrl"><div class="group"><label class="glabel" for="k1">K</label><input type="range" id="k1" min="1" max="15" step="2" value="5"><span class="val" id="k1v">5</span></div></div>
+    <div class="cwrap"><canvas id="c1" class="wide" aria-label="도미·농어·빙어 59마리의 길이-무게 산점도와 새 생선, 가까운 K마리" style="cursor:crosshair"></canvas></div>
+    <section class="kpis k4" id="k1k"></section>
+    <div class="insight" id="ins1" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>투표 비율이 predict_proba입니다. 세 클래스면 확률도 세 개이고 합은 1입니다.</li>
+    <li>농어 영역 근처(15~24cm)를 눌러 보면 이웃이 섞여 확률이 갈리는 곳이 보입니다.</li>
+    <li>교안은 농어 10마리가 다른 종류보다 적어 클래스 불균형도 함께 생긴다고 짚습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: K를 5로 그냥 두었습니다. K는 어떻게 골라야 할까요? 이 데이터는 너무 깔끔해 대부분의 K에서 100%가 나옵니다. → ②칸</p></div>
+  <div class="quiz" data-quiz="lv1"></div>
+</div></section>
+
+<!-- ② K 최적화 -->
+<section class="level" id="lv2"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">2<small>조정</small></div><h2>K값 최적화 — 너무 작지도, 너무 크지도 않게</h2></div>
+    <p class="sub"><span class="lvtag g">곡선: K에 따른 훈련·시험 정확도</span><span class="lvtag">데이터: 겹치는 두 집단(예시)</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>의견을 한 명에게만 물으면 그 사람의 기분에 휘둘리고, 반 전체에게 물으면 누구에게 물어도 같은 답(다수파)이 나옵니다.</p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>교안: Fish Market은 거의 모든 K에서 100%라 K의 효과를 보기 어려워 별도의 데이터로 살폈고, K = 1은 약 60%로 노이즈에 민감했고, K = 9 근처가 가장 좋았으며, 20을 넘자 점점 떨어졌습니다.<sup>[1]</sup> 아래는 같은 현상을 보이도록 만든 예시 데이터입니다.</p></div>
+  </div>
+  <section class="panel" aria-label="K 최적화 실험">
+    <h3>훈련 200 · 시험 200 — K를 움직여 보기</h3>
+    <div class="ctrl"><div class="group"><label class="glabel" for="k2">K</label><input type="range" id="k2" min="1" max="51" step="2" value="1"><span class="val" id="k2v">1</span></div></div>
+    <div class="cwrap"><canvas id="c2" class="wide" aria-label="왼쪽은 선택한 K의 결정 영역, 오른쪽은 K에 따른 훈련·시험 정확도 곡선"></canvas></div>
+    <section class="kpis k4" id="k2k"></section>
+    <div class="insight" id="ins2" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>K = 1: 훈련 100%, 시험은 낮음. 노이즈 하나하나에 반응한 과적합입니다.</li>
+    <li>K가 커지면 경계가 매끄러워지고 시험 정확도가 오르다가, 너무 커지면 경계가 뭉개져 다시 내려갑니다.</li>
+    <li>실무에서는 시험 데이터가 아니라 교차 검증(4주차 ③칸)으로 K를 고르고, 시험 데이터는 마지막에 한 번만 씁니다. 이 그림의 시험 곡선은 현상을 보여 주려고 함께 그린 것입니다.</li>
+  </ol><p class="limit">이 칸의 한계: KNN의 경계는 이웃이 정하는 울퉁불퉁한 모양입니다. 경계를 하나의 "가장 넓은 길"로 정하는 다른 방법은 없을까요? → ③칸 SVM</p></div>
+  <div class="quiz" data-quiz="lv2"></div>
+</div></section>
+
+<!-- ③ SVM -->
+<section class="level" id="lv3"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">3<small>경계</small></div><h2>SVM — 가장 넓은 길을 내는 경계</h2></div>
+    <p class="sub"><span class="lvtag g">커널: 선형 · RBF(방사 기저 함수)</span><span class="lvtag">일상: 두 동네 사이에 가장 넓은 길 내기</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>두 동네 사이에 길을 낼 때, 양쪽 집에서 가장 멀리 떨어진 넓은 길을 내면 집이 조금 늘어나도 길을 다시 낼 필요가 적습니다. 길 가장자리에 닿은 집이 서포트 벡터입니다.</p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>SVM은 마진을 최대화하는 결정 경계를 찾아 일반화 성능을 높입니다. 커널 트릭으로 데이터를 더 높은 차원에서 보는 것처럼 계산해 곡선 경계도 만듭니다. C는 오분류를 얼마나 용서할지, gamma는 RBF 경계가 얼마나 구불구불할지를 정합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="SVM 결정 경계 실험">
+    <h3>선형 경계와 RBF 경계 — 데이터 모양에 따라 비교</h3>
+    <div class="ctrl">
+      <div class="group" id="svData" role="group" aria-label="데이터"><span class="glabel">데이터</span></div>
+      <div class="group" id="svKer" role="group" aria-label="커널"><span class="glabel">커널</span></div>
+      <div class="group"><label class="glabel" for="gm">gamma</label><input type="range" id="gm" min="0" max="4" step="1" value="2"><span class="val" id="gmv">1</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c3" class="wide" aria-label="두 클래스 점과 SVM의 결정 경계, 여백(마진) 띠, 서포트 벡터 테두리"></canvas></div>
+    <section class="kpis k4" id="k3k"></section>
+    <div class="insight" id="ins3" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li>도미·빙어(표준화)는 직선 하나로 넓게 갈립니다. 선형 커널로 충분합니다.</li>
+    <li>원형 데이터(가운데 한 클래스를 다른 클래스가 둘러쌈)는 어떤 직선으로도 못 가릅니다. RBF 커널은 원 모양 경계를 만듭니다.</li>
+    <li>gamma가 너무 크면 점 하나하나를 감싸는 경계(과적합), 너무 작으면 직선에 가까워집니다(과소적합). 교안의 C·gamma에 따른 정확도 변화 그림과 같은 이야기입니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 지금까지 정확도를 어떻게 쟀는지 다시 보세요. 시험 데이터를 어떻게 떼어 냈는지가 점수를 좌우합니다. → ④칸</p></div>
+  <details class="math"><summary>계산 방법 (단순화)</summary><div>
+    <p class="num">결정 함수 f(x) = Σ α<sub>i</sub> y<sub>i</sub> K(x<sub>i</sub>, x),  RBF: K(a, b) = exp(−γ‖a − b‖²)</p>
+    <p class="muted">이 페이지는 scikit-learn의 SVC(SMO 최적화)가 아니라, 같은 힌지 손실을 확률적 경사하강으로 푸는 커널 Pegasos 방식으로 계산합니다. 경계 모양은 비슷하지만 숫자는 SVC와 다를 수 있습니다.</p>
+  </div></details>
+  <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>gamma를 최대로 올리면 훈련은 다 맞히지! …시험은 내 장부에 안 적혀 있네.</p></div></div>
+  <div class="quiz" data-quiz="lv3"></div>
+</div></section>
+
+<!-- ④ 데이터 분할 -->
+<section class="level" id="lv4"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">4<small>분할</small></div><h2>데이터 분할 — 순서대로, 무작위로, 층화로</h2></div>
+    <p class="sub"><span class="lvtag g">코드: train_test_split(..., stratify=fish_target, random_state=42)</span><span class="lvtag">데이터: 도미 35 · 빙어 14</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">연구실에서는</div><p>시약장 앞쪽 35병으로 실험을 익히고, 뒤쪽 14병으로 시험을 봤는데, 앞쪽엔 산성만, 뒤쪽엔 염기만 있었다면? 실험을 익힌 적 없는 종류로 시험을 본 셈입니다.</p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>데이터가 종류별로 정렬돼 있을 때 순서대로 자르면 훈련에는 도미만, 시험에는 빙어만 들어가 정확도 0%가 됩니다. 무작위 샘플링으로 섞고, stratify로 클래스 비율을 원본과 같게 맞춥니다. random_state는 같은 분할을 다시 만들게 해 줍니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="데이터 분할 실험">
+    <h3>49마리를 훈련 36 · 시험 13으로 나누기</h3>
+    <div class="ctrl">
+      <div class="group" id="spBtns" role="group" aria-label="분할 방법"><span class="glabel">분할</span></div>
+      <div class="group"><label class="glabel" for="seed">random_state</label><input type="range" id="seed" min="1" max="60" step="1" value="42"><span class="val" id="seedv">42</span></div>
+    </div>
+    <div class="cwrap"><canvas id="c4" class="wide" aria-label="49마리를 한 줄로 늘어놓고 훈련(위)과 시험(아래)으로 나눈 모습과 클래스 비율 막대"></canvas></div>
+    <section class="kpis k4" id="k4k"></section>
+    <pre class="out" id="splitOut" style="max-height:none;font-size:13px"></pre>
+    <div class="insight" id="ins4" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li><b>순서대로</b>: 앞 36마리 = 도미 35 + 빙어 1. 시험 13마리 = 모두 빙어. 교안 그림처럼 거의 도미만 배운 모델이 빙어를 도미로 판정합니다.<sup>[1]</sup></li>
+    <li><b>무작위</b>: 섞어서 자르면 두 종류가 다 들어가지만, random_state에 따라 시험의 빙어 비율이 흔들립니다. 슬라이더로 바꿔 보세요.</li>
+    <li><b>층화(stratify)</b>: 원본 비율(빙어 약 29%)을 훈련과 시험 모두에서 지킵니다. 교안은 이 분할로 KNN·SVM 모두 시험 정확도 100%를 얻었습니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 분할을 바로잡아도 5주차의 25cm·150g 생선은 여전히 빙어로 판정됩니다. 문제는 분할이 아니라 눈금에 있습니다. → ⑤칸</p></div>
+  <div class="quiz" data-quiz="lv4"></div>
+</div></section>
+
+<!-- ⑤ 표준화 -->
+<section class="level" id="lv5"><div class="wrap stack">
+  <div class="lvhead">
+    <div class="hexrow"><div class="hexno">5<small>눈금</small></div><h2>표준화 — 길이와 무게를 같은 눈금으로</h2></div>
+    <p class="sub"><span class="lvtag g">Z-점수: (값 − 평균) ÷ 표준편차</span><span class="lvtag">교안 사례: New Fish 25cm · 150g</span></p>
+  </div>
+  <div class="pair">
+    <div><div class="tag fly">일상으로 치면</div><p>교안의 부동산 비유입니다. 면적(85㎡), 역까지 거리(300m), 건축년도(2015년)를 그대로 넣으면 숫자가 가장 큰 건축년도가 모든 것을 압도합니다. 모두 "중요도 점수"라는 같은 단위로 바꿔야 공정하게 비교됩니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>무게(0~1,000g)가 길이(0~50cm)보다 범위가 훨씬 커서, 거리가 거의 무게로만 정해집니다. Z-점수 표준화로 두 특성을 평균 0, 표준편차 1로 맞춥니다. 새 생선도 <b>훈련 데이터의 평균·표준편차</b>로 같은 변환을 해야 합니다.<sup>[1]</sup></p></div>
+  </div>
+  <section class="panel" aria-label="표준화 실험">
+    <h3>New Fish(25cm, 150g)의 이웃 5마리 — 눈금을 바꿔 보기</h3>
+    <div class="ctrl"><div class="group" id="scBtns" role="group" aria-label="눈금"><span class="glabel">눈금</span></div></div>
+    <div class="cwrap"><canvas id="c5" class="wide" aria-label="왼쪽은 원래 눈금, 오른쪽은 바꾼 눈금에서 New Fish와 가장 가까운 5마리"></canvas></div>
+    <section class="kpis k4" id="k5k"></section>
+    <div class="eq" id="eq5"></div>
+    <div class="insight" id="ins5" aria-live="polite"></div>
+  </section>
+  <div class="explain"><h4>풀이</h4><ol>
+    <li><b>원자료</b>: 이웃 5마리 중 빙어 4, 도미 1 → 빙어. 교안의 결과와 같습니다.<sup>[1]</sup></li>
+    <li><b>Z-점수 표준화</b>: 이웃 5마리가 모두 도미 → 도미. 교안의 결과와 같습니다.<sup>[1]</sup></li>
+    <li><b>Min-Max</b>(0~1로 줄이기)도 눈금을 맞춰 줍니다. 교안은 이 밖에 Robust 스케일링(중앙값 기반), Unit Vector 스케일링을 소개하고, 방법에 따라 정확도가 달라질 수 있다고 말합니다.<sup>[1]</sup></li>
+    <li>무게를 로그로 바꾸거나 길이와 무게를 조합한 새 특성을 만드는 일은 특성 공학(10주차)으로 이어집니다.<sup>[1]</sup></li>
+  </ol><p class="limit">이 칸의 한계: 지금까지는 정확도 하나로만 평가했습니다. 클래스가 불균형하거나 틀림의 비용이 다르면 정확도만으로는 부족합니다. → 7주차: 모델의 평가</p></div>
+  <div class="bridges">
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>고객 데이터의 나이(20~70), 연소득(2,000만~1억), 방문 횟수(0~50)를 그대로 KNN·K-means에 넣으면 소득이 거리를 지배합니다. 표준화 기준(평균·표준편차)은 훈련 데이터로만 정하고, 시험·운영 데이터에는 그 기준을 그대로 적용합니다. 시험 데이터까지 섞어 기준을 정하면 4주차의 봉인한 시험지를 미리 본 셈입니다.</p><p class="lim">한계: 의사결정 트리처럼 거리를 쓰지 않는 모델은 표준화의 영향이 거의 없습니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>문장을 숫자 벡터(임베딩)로 바꿔 비교할 때도 벡터 길이를 1로 맞추는 정규화를 흔히 합니다. 교안의 Unit Vector 스케일링과 같은 생각입니다. 길이가 다르면 긴 벡터가 유사도를 지배하기 때문입니다.</p><p class="lim">비유의 한계: 임베딩의 각 차원은 길이·무게처럼 사람이 읽을 수 있는 뜻을 갖지 않습니다.</p></div>
+  </div>
+  <div class="quiz" data-quiz="lv5"></div>
+</div></section>
+
+<!-- 대결 -->
+<section class="level" id="duel"><div class="wrap stack">
+  <div class="lvhead"><h2>대결 — 원자료 그대로냐, 표준화냐</h2><p class="lead">도미·빙어 49마리로 KNN(K = 5)을 학습하고, 새로 잡힌 생선 30마리(큰 도미 10, 빙어 10, 어린 도미 10)를 얼마나 맞히는지 겨룹니다.</p></div>
+  <div class="duel" id="duelBox">
+    <div class="vs">
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · Z-점수 표준화 후 KNN</b><p>"cm와 g를 같은 눈금에 올려놓고 재야 공정하지."</p></div>
+      <div class="mid">VS</div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 원자료 그대로 KNN</b><p>"손대지 않은 숫자가 제일 정직해. 그대로 간다."</p></div>
+    </div>
+    <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
+    <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
+    <div class="result">
+      <div class="bars"></div>
+      <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
+      <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
+      <p class="muted guessfb"></p>
+      <p class="muted" style="font-size:14px">조건 메모: 새로 잡힌 생선 30마리는 설명용 예시값입니다(시드 17). 어린 도미(24~27cm, 130~230g)는 교안의 New Fish처럼 길이는 도미, 무게는 그 중간인 생선입니다. 이런 생선이 없으면 두 방법의 차이는 줄어듭니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 정리 -->
+<section class="level" id="sum"><div class="wrap stack">
+  <div class="lvhead"><h2>정리 — 다섯 칸을 한 장으로</h2></div>
+  <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
+    <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 3클래스 KNN</b></td><td>세 종류를 투표 비율로 판정한다</td><td>K를 그냥 정했다</td><td>K 최적화</td></tr>
+      <tr><td><b>② K 최적화</b></td><td>과적합과 과소적합 사이의 K를 찾는다</td><td>경계가 울퉁불퉁하다</td><td>SVM</td></tr>
+      <tr><td><b>③ SVM</b></td><td>마진이 가장 넓은 경계, 커널로 곡선 경계</td><td>점수를 잰 방법을 안 따졌다</td><td>데이터 분할</td></tr>
+      <tr><td><b>④ 데이터 분할</b></td><td>무작위·층화로 공정한 시험을 만든다</td><td>눈금 차이는 그대로다</td><td>표준화</td></tr>
+      <tr><td><b>⑤ 표준화</b></td><td>특성을 같은 눈금으로 맞춘다</td><td>정확도 하나로만 평가했다</td><td>7주차: 평가 지표</td></tr>
+    </tbody></table></div>
+  <div class="steps">
+    <div><b>교안 정리 1</b><p>다중 클래스 KNN(농어 추가), K값에 따른 정확도 변화, SVM(결정 경계·서포트 벡터·커널·C·gamma).</p></div>
+    <div><b>교안 정리 2</b><p>순서대로 분할하면 0% 정확도. 무작위 샘플링, train_test_split의 stratify·random_state.</p></div>
+    <div><b>교안 정리 3</b><p>New Fish(25cm, 150g)가 빙어로 잘못 예측 → Z-점수 표준화 후 도미로 바르게 예측, KNN·SVM 모두 100%. 표준화와 특성 선택.</p></div>
+  </div>
+</div></section>
+
+<!-- 아웃트로 -->
+<section class="level" id="outro"><div class="wrap stack">
+  <h2>실험을 마치며</h2>
+  <figure class="scene" data-scene="sc_w06_outro" hidden><img alt="같은 눈금의 자를 든 초파리 연구원이 팔짱을 끼고, 주판봇이 식은땀을 흘리며, 박사가 엄지를 세우고 조수가 웃는 장면"></figure>
+  <div class="dialog">
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>K·gamma 같은 설정은 과적합과 과소적합 사이에서 고른다.</li><li>시험 데이터는 섞고, 클래스 비율을 지켜서 뗀다.</li><li>거리를 쓰는 모델은 특성의 눈금부터 맞춘다.</li></ul></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="arms" data-img="fly_arms" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>어린 도미를 빙어라고 부르면 안 되지. 눈금 하나 맞춘 값이 이거야.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="sigh" data-img="robo_sigh" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>이번 판은 손절. g 단위가 이렇게 목소리가 클 줄은 몰랐네.</p></div></div>
+    <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>다음 주에는 정확도 말고도 정밀도·재현율로 모델을 평가해 볼게요. ⑤칸에서 Min-Max도 눌러 보세요.</p></div></div>
+  </div>
+</div></section>

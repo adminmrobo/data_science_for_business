@@ -1,6 +1,6 @@
 {
  "series": "비즈니스를 위한 데이터 과학 연구실",
- "version": "120",
+ "version": "189",
  "concepts": [
   {
    "id": "lab:analogy/buy-vs-rent",
@@ -16,6 +16,54 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:analogy/containers",
+   "type": "Analogy",
+   "label": {
+    "ko": "시약 용기 ↔ 데이터 구조",
+    "en": "lab containers ↔ data structures"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:analogy/friends",
+   "type": "Analogy",
+   "label": {
+    "ko": "새 친구의 동아리 맞히기 ↔ KNN",
+    "en": "guessing a new friend's club ↔ KNN"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:analogy/instruments",
+   "type": "Analogy",
+   "label": {
+    "ko": "실험 장비 고르기 ↔ 분석 도구 고르기",
+    "en": "choosing instruments ↔ choosing tools"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -51,6 +99,22 @@
    ]
   },
   {
+   "id": "lab:analogy/locked-exam",
+   "type": "Analogy",
+   "label": {
+    "ko": "봉인한 시험지 ↔ 시험 데이터",
+    "en": "sealed exam ↔ test set"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
    "id": "lab:analogy/planes-customers",
    "type": "Analogy",
    "label": {
@@ -64,6 +128,38 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:analogy/road",
+   "type": "Analogy",
+   "label": {
+    "ko": "가장 넓은 도로 놓기 ↔ SVM 마진",
+    "en": "widest road ↔ SVM margin"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:analogy/ruler",
+   "type": "Analogy",
+   "label": {
+    "ko": "cm 자와 g 저울을 같은 눈금으로 ↔ 표준화",
+    "en": "common ruler ↔ standardization"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -147,6 +243,70 @@
    ]
   },
   {
+   "id": "lab:claim/fish-35-14",
+   "type": "Claim",
+   "label": {
+    "ko": "교안 실습 데이터: 도미 35마리, 빙어 14마리",
+    "en": "bream 35, smelt 14"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:claim/knn-default-5",
+   "type": "Claim",
+   "label": {
+    "ko": "KNeighborsClassifier의 기본 K는 5",
+    "en": "default n_neighbors = 5"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:claim/lift-125",
+   "type": "Claim",
+   "label": {
+    "ko": "라면→달걀: 지지도 0.6, 신뢰도 1.0, 향상도 1.25",
+    "en": "ramen→egg lift 1.25"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:claim/newfish-raw-smelt",
+   "type": "Claim",
+   "label": {
+    "ko": "New Fish [25, 150]은 원자료 KNN에서 빙어, 표준화 후 도미",
+    "en": "New Fish: smelt raw, bream scaled"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:claim/obama-ab",
    "type": "Claim",
    "label": {
@@ -211,6 +371,22 @@
    ]
   },
   {
+   "id": "lab:claim/seq-split-zero",
+   "type": "Claim",
+   "label": {
+    "ko": "순서대로 나누면 시험 세트가 모두 빙어가 되어 정확도 0",
+    "en": "sequential split gives 0 accuracy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:claim/smart-example",
    "type": "Claim",
    "label": {
@@ -227,6 +403,22 @@
    ]
   },
   {
+   "id": "lab:claim/split-ratio",
+   "type": "Claim",
+   "label": {
+    "ko": "훈련·검증·시험은 60:20:20 또는 70:15:15로 나누는 경우가 많다",
+    "en": "common split ratios"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
    "id": "lab:claim/tripitaka-99mb",
    "type": "Claim",
    "label": {
@@ -240,6 +432,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/analysis-tools",
+   "type": "Concept",
+   "label": {
+    "ko": "분석 도구 네 계열",
+    "en": "analysis tool families"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -302,6 +510,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/colab",
+   "type": "Concept",
+   "label": {
+    "ko": "Google Colab",
+    "en": "Google Colab"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
    ]
   },
   {
@@ -637,6 +861,22 @@
    ]
   },
   {
+   "id": "lab:concept/interpretability",
+   "type": "Concept",
+   "label": {
+    "ko": "해석 가능성",
+    "en": "interpretability"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
    "id": "lab:concept/k-anonymity",
    "type": "Method",
    "label": {
@@ -649,6 +889,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:concept/kernel",
+   "type": "Concept",
+   "label": {
+    "ko": "커널(선형·RBF)과 gamma",
+    "en": "kernels and gamma"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -693,6 +949,39 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:concept/model-selection",
+   "type": "Concept",
+   "label": {
+    "ko": "문제 유형별 모델 선택",
+    "en": "model selection by problem type"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:concept/overfitting",
+   "type": "Concept",
+   "label": {
+    "ko": "과적합",
+    "en": "overfitting"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts",
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -760,6 +1049,22 @@
    ]
   },
   {
+   "id": "lab:concept/python-data-structures",
+   "type": "Concept",
+   "label": {
+    "ko": "파이썬 데이터 구조",
+    "en": "Python data structures"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:concept/quasi-identifier",
    "type": "Concept",
    "label": {
@@ -822,6 +1127,54 @@
    ]
   },
   {
+   "id": "lab:concept/reinforcement",
+   "type": "Concept",
+   "label": {
+    "ko": "강화 학습",
+    "en": "reinforcement learning"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:concept/reproducibility",
+   "type": "Concept",
+   "label": {
+    "ko": "재현성",
+    "en": "reproducibility"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:concept/rule-vs-ml",
+   "type": "Concept",
+   "label": {
+    "ko": "규칙 기반과 머신러닝",
+    "en": "rule-based vs machine learning"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
    "id": "lab:concept/sample-size",
    "type": "Concept",
    "label": {
@@ -836,6 +1189,22 @@
    ]
   },
   {
+   "id": "lab:concept/scale-difference",
+   "type": "Concept",
+   "label": {
+    "ko": "특성 눈금 차이",
+    "en": "feature scale difference"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:concept/standard-error",
    "type": "Concept",
    "label": {
@@ -847,6 +1216,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/supervised",
+   "type": "Concept",
+   "label": {
+    "ko": "지도 학습",
+    "en": "supervised learning"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -880,6 +1265,38 @@
    ]
   },
   {
+   "id": "lab:concept/train-score-trap",
+   "type": "Concept",
+   "label": {
+    "ko": "학습 데이터로 채점하는 함정",
+    "en": "scoring on training data"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:concept/unsupervised",
+   "type": "Concept",
+   "label": {
+    "ko": "비지도 학습",
+    "en": "unsupervised learning"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
    "id": "lab:concept/wisdom",
    "type": "Concept",
    "label": {
@@ -893,6 +1310,38 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:dataset/fish-3class",
+   "type": "Dataset",
+   "label": {
+    "ko": "Fish Market(도미 35·농어 10·빙어 14)",
+    "en": "Fish Market 3-class"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:dataset/fish-market",
+   "type": "Dataset",
+   "label": {
+    "ko": "Fish Market(도미 35·빙어 14)",
+    "en": "Fish Market (bream 35, smelt 14)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
    ]
   },
   {
@@ -943,6 +1392,22 @@
    ]
   },
   {
+   "id": "lab:limitation/biased-split",
+   "type": "Limitation",
+   "label": {
+    "ko": "평가 데이터가 치우칠 수 있다",
+    "en": "biased evaluation split"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:limitation/bivariate-only",
    "type": "Limitation",
    "label": {
@@ -975,6 +1440,22 @@
    ]
   },
   {
+   "id": "lab:limitation/curved-boundary",
+   "type": "Limitation",
+   "label": {
+    "ko": "이웃 투표는 경계를 설명하지 못한다",
+    "en": "no explicit boundary"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:limitation/duplicates-remain",
    "type": "Limitation",
    "label": {
@@ -988,6 +1469,38 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/easy-data",
+   "type": "Limitation",
+   "label": {
+    "ko": "쉬운 데이터·학습 데이터 채점·눈금 차이",
+    "en": "easy data, train scoring, scale"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/fairness",
+   "type": "Limitation",
+   "label": {
+    "ko": "알고리즘 편향·설명 가능성",
+    "en": "algorithmic bias and explainability"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -1039,6 +1552,38 @@
    ]
   },
   {
+   "id": "lab:limitation/input-mistakes",
+   "type": "Limitation",
+   "label": {
+    "ko": "담는 과정의 실수",
+    "en": "input mistakes"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/k-unknown",
+   "type": "Limitation",
+   "label": {
+    "ko": "K를 몇으로 할지 모른다",
+    "en": "which K?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:limitation/l-diversity",
    "type": "Limitation",
    "label": {
@@ -1068,6 +1613,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/memorized",
+   "type": "Limitation",
+   "label": {
+    "ko": "외웠는지 배웠는지 모름",
+    "en": "memorized or learned?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -1116,6 +1677,38 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:limitation/no-model",
+   "type": "Limitation",
+   "label": {
+    "ko": "모델이 아직 없다",
+    "en": "no model yet"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/other-problem-types",
+   "type": "Limitation",
+   "label": {
+    "ko": "분류 외 문제 유형",
+    "en": "other problem types"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -1183,6 +1776,54 @@
    ]
   },
   {
+   "id": "lab:limitation/rectangle",
+   "type": "Limitation",
+   "label": {
+    "ko": "네모 규칙은 비스듬한 경계를 못 따라감",
+    "en": "axis-aligned rules miss diagonal boundaries"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:limitation/scale",
+   "type": "Limitation",
+   "label": {
+    "ko": "눈금 차이가 거리를 왜곡한다",
+    "en": "scale distorts distance"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:limitation/separate-lists",
+   "type": "Limitation",
+   "label": {
+    "ko": "길이·무게가 따로 논다",
+    "en": "features not paired"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:limitation/small-sample",
    "type": "Limitation",
    "label": {
@@ -1196,6 +1837,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:limitation/who-makes-rules",
+   "type": "Limitation",
+   "label": {
+    "ko": "규칙을 누가 만들지 모름",
+    "en": "who makes the rules"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -1231,6 +1888,52 @@
    ]
   },
   {
+   "id": "lab:method/association-rules",
+   "type": "Method",
+   "label": {
+    "ko": "연관성 분석(장바구니 분석)",
+    "en": "association rules / market basket"
+   },
+   "domain": [
+    "biz",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:method/cross-validation",
+   "type": "Method",
+   "label": {
+    "ko": "교차 검증(k겹)",
+    "en": "k-fold cross-validation"
+   },
+   "domain": [
+    "stats",
+    "ai"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:method/data-check",
+   "type": "Method",
+   "label": {
+    "ko": "입력 데이터 점검(len·범위·산점도)",
+    "en": "input data checks"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:method/data-profiling",
    "type": "Method",
    "label": {
@@ -1244,6 +1947,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/data-split",
+   "type": "Method",
+   "label": {
+    "ko": "훈련·검증·시험 분할",
+    "en": "train/validation/test split"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -1278,6 +1997,53 @@
    ]
   },
   {
+   "id": "lab:method/expert-rule",
+   "type": "Method",
+   "label": {
+    "ko": "심사역 규칙(네모 규칙)",
+    "en": "expert threshold rule"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:method/k-tuning",
+   "type": "Method",
+   "label": {
+    "ko": "K 값 최적화",
+    "en": "tuning K"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:method/knn",
+   "type": "Method",
+   "label": {
+    "ko": "KNN",
+    "en": "k-nearest neighbors"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts",
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:method/knn-imputation",
    "type": "Method",
    "label": {
@@ -1290,6 +2056,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:method/knn-multiclass",
+   "type": "Method",
+   "label": {
+    "ko": "다중 클래스 KNN",
+    "en": "multiclass KNN"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -1383,6 +2165,22 @@
    ]
   },
   {
+   "id": "lab:method/standardization",
+   "type": "Method",
+   "label": {
+    "ko": "표준화",
+    "en": "standardization"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:method/stratification",
    "type": "Method",
    "label": {
@@ -1412,6 +2210,38 @@
    ]
   },
   {
+   "id": "lab:method/svm",
+   "type": "Method",
+   "label": {
+    "ko": "SVM",
+    "en": "support vector machine"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
+   "id": "lab:method/train-test-split",
+   "type": "Method",
+   "label": {
+    "ko": "훈련·시험 분할(무작위·층화)",
+    "en": "train/test split"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:method/web-scraping",
    "type": "Method",
    "label": {
@@ -1425,6 +2255,54 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/zip-labeling",
+   "type": "Method",
+   "label": {
+    "ko": "zip 결합과 라벨링",
+    "en": "zip pairing and labeling"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:metric/accuracy",
+   "type": "Metric",
+   "label": {
+    "ko": "정확도",
+    "en": "accuracy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:metric/confidence",
+   "type": "Metric",
+   "label": {
+    "ko": "신뢰도",
+    "en": "confidence"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
    ]
   },
   {
@@ -1488,6 +2366,38 @@
    ]
   },
   {
+   "id": "lab:metric/lift",
+   "type": "Metric",
+   "label": {
+    "ko": "향상도",
+    "en": "lift"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:metric/loo-accuracy",
+   "type": "Metric",
+   "label": {
+    "ko": "Leave-One-Out 정확도",
+    "en": "leave-one-out accuracy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:metric/pearson",
    "type": "Metric",
    "label": {
@@ -1546,6 +2456,38 @@
    ]
   },
   {
+   "id": "lab:metric/support",
+   "type": "Metric",
+   "label": {
+    "ko": "지지도",
+    "en": "support"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:metric/test-accuracy",
+   "type": "Metric",
+   "label": {
+    "ko": "시험 정확도",
+    "en": "test accuracy"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:question/core",
    "type": "Question",
    "label": {
@@ -1560,7 +2502,10 @@
    "pages": [
     "dsb_w01_business_data_science",
     "dsb_w02_data_collection",
-    "dsb_w03_analysis_prep"
+    "dsb_w03_analysis_prep",
+    "dsb_w04_analysis_concepts",
+    "dsb_w05_classification_1",
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -1578,7 +2523,10 @@
    "pages": [
     "dsb_w01_business_data_science",
     "dsb_w02_data_collection",
-    "dsb_w03_analysis_prep"
+    "dsb_w03_analysis_prep",
+    "dsb_w04_analysis_concepts",
+    "dsb_w05_classification_1",
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -1630,6 +2578,22 @@
    ]
   },
   {
+   "id": "lab:question/scale",
+   "type": "Question",
+   "label": {
+    "ko": "눈금이 다른 특성의 거리는 어떻게 재야 공정할까?",
+    "en": "How to measure distance fairly across scales?"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:standard/ccpa",
    "type": "Standard",
    "label": {
@@ -1672,6 +2636,22 @@
    ]
   },
   {
+   "id": "lab:task/binary-classification",
+   "type": "Task",
+   "label": {
+    "ko": "이진 분류",
+    "en": "binary classification"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
    "id": "lab:task/fraud-monitoring",
    "type": "Task",
    "label": {
@@ -1688,6 +2668,20 @@
    ]
   },
   {
+   "id": "lab:task/loan-screening",
+   "type": "Task",
+   "label": {
+    "ko": "신용대출 심사",
+    "en": "loan screening"
+   },
+   "domain": [
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
    "id": "lab:task/monthly-report",
    "type": "Task",
    "label": {
@@ -1701,6 +2695,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:task/multiclass-classification",
+   "type": "Task",
+   "label": {
+    "ko": "다중 분류",
+    "en": "multiclass classification"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
    ]
   },
   {
@@ -1766,6 +2776,54 @@
    ]
   },
   {
+   "id": "lab:work/ahn-dsb-w04",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 4주차",
+    "en": "Ahn, DSB lecture notes week 4"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w05",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 5주차",
+    "en": "Ahn, DSB lecture notes week 5"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
+   ]
+  },
+  {
+   "id": "lab:work/ahn-dsb-w06",
+   "type": "Work",
+   "label": {
+    "ko": "안상선, 비즈니스를위한데이터과학 교안 6주차",
+    "en": "Ahn, DSB lecture notes week 6"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:work/davier2023",
    "type": "Work",
    "label": {
@@ -1795,6 +2853,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/fish-market",
+   "type": "Work",
+   "label": {
+    "ko": "Fish Market 데이터셋(Kaggle)",
+    "en": "Fish Market dataset (Kaggle)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w05_classification_1"
    ]
   },
   {
@@ -1846,6 +2920,22 @@
    ]
   },
   {
+   "id": "lab:work/pegasos",
+   "type": "Work",
+   "label": {
+    "ko": "Shalev-Shwartz 외 (2011) Pegasos",
+    "en": "Pegasos (2011)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
+   ]
+  },
+  {
    "id": "lab:work/provost2014",
    "type": "Work",
    "label": {
@@ -1859,6 +2949,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:work/sklearn-docs",
+   "type": "Work",
+   "label": {
+    "ko": "scikit-learn 문서",
+    "en": "scikit-learn docs"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_w06_classification_2"
    ]
   },
   {
