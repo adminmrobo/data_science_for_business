@@ -14,7 +14,7 @@ VERSION = '1.1'
 sys.path.insert(0, HERE)
 from abbr import ABBR
 from plain import PLAIN
-from easy import EASY
+from easy import EASY, ASK
 
 def load(n):
     spec = importlib.util.spec_from_file_location('w' + n, os.path.join(HERE, 'pages', 'w%s.py' % n))
@@ -166,10 +166,13 @@ def easy_box(n, lv):
     title = '왜 이 모델을 쓰나' if (n, lv) in MODEL_LV else '왜 이 방법을 쓰나'
     school = ('<p class="ez-school"><b>학교 수학으로 보면</b> %s</p>' % e['school']) if e['school'] else ''
     pieces = ''.join('<div><dt>%s</dt><dd>%s</dd></div>' % (a, b) for a, b in e['pieces'])
+    q, c = ASK[(n, lv)]
+    say = lambda mood, t, cls: ('<div class="say ez-say %s" data-who="asst"><img class="who" data-who="asst" data-mood="%s" data-img="asst_%s" alt="" aria-hidden="true">'
+                               '<div><b class="name">조수</b><p>%s</p></div></div>') % (cls, mood, mood, t)
     return ('<div class="easy" aria-label="쉽게 풀어 보기">'
             '<div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>%s</h3><p>%s</p><p class="ez-like"><b>쉽게 말하면</b> %s</p></div>'
-            '<div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3>%s<dl class="ez-pieces">%s</dl>'
-            '<div class="ez-try"><b>숫자로 한 번 해 보기</b><p>%s</p></div></div></div>\n  ') % (title, e['why'], e['like'], school, pieces, e['tryit'])
+            '<div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3>%s%s<dl class="ez-pieces">%s</dl>'
+            '<div class="ez-try"><b>숫자로 한 번 해 보기</b><p>%s</p></div>%s</div></div>\n  ') % (title, e['why'], e['like'], say('shock', q, 'ez-q'), school, pieces, e['tryit'], say('spark', c, 'ez-c'))
 
 def add_easy(n, body):
     for (wk, lv) in EASY:
@@ -197,7 +200,7 @@ def page(n):
     pjs = open(os.path.join(HERE, 'pages', 'w%s.js' % n), encoding='utf-8').read()
     css = open(os.path.join(HERE, 'engine.css'), encoding='utf-8').read() + getattr(m, 'CSS', '')
     ejs = open(os.path.join(HERE, 'engine.js'), encoding='utf-8').read()
-    keys = set(re.findall(r'data-img="((?:doc|asst|fly|robo)_[a-z]+)"', body)) | set(m.EXTRA_SPRITES) | {'asst_report', 'doc_front', 'asst_smile', 'fly_clip', 'robo_smile', 'fly_point', 'robo_coin'}
+    keys = set(re.findall(r'data-img="((?:doc|asst|fly|robo)_[a-z]+)"', body)) | set(m.EXTRA_SPRITES) | {'asst_report', 'doc_front', 'asst_smile', 'fly_clip', 'robo_smile', 'fly_point', 'robo_coin', 'asst_shock', 'asst_spark'}
     keys |= {'cover_w%s' % n, 'sc_w%s_hero' % n, 'sc_w%s_outro' % n}
     spr = sprites(keys)
     links = ''.join('<a href="%s">%s</a>' % (h, t) for h, t in m.NAV) + '<a href="#kg">지식 색인</a><a href="#export">꾸러미</a>'

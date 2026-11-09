@@ -288,3 +288,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-try p b{color:var(--text)}
 @media (max-width:860px){.easy{grid-template-columns:1fr}}
 @media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
+.ez-say{margin:0 0 10px}
+.ez-say.ez-c{margin:10px 0 0}
+.ez-say .who{width:44px;height:44px}
+.ez-say p{font-size:14px}

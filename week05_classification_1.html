@@ -303,6 +303,10 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-try p b{color:var(--text)}
 @media (max-width:860px){.easy{grid-template-columns:1fr}}
 @media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
+.ez-say{margin:0 0 10px}
+.ez-say.ez-c{margin:10px 0 0}
+.ez-say .who{width:44px;height:44px}
+.ez-say p{font-size:14px}
 
 </style>
 </head>
@@ -462,7 +466,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">4<small>모델</small></div><h2>KNN 학습과 예측 — 가장 가까운 K마리에게 묻기</h2></div>
     <p class="sub"><span class="lvtag g">코드: kn = KNeighborsClassifier() · kn.fit() · kn.score() · kn.predict()</span><span class="lvtag">일상: 새 친구의 동아리 맞히기</span></p>
   </div>
-  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>생선의 길이와 무게만 보고 도미인지 빙어인지 맞히고 싶습니다. "30cm 넘으면 도미" 같은 규칙을 사람이 정할 수도 있지만, 경계에 걸친 생선에서 자주 틀립니다. <b>KNN은 규칙을 만들지 않고, 비슷한 과거 사례를 찾아 다수결로 정합니다.</b> 가장 단순한 머신러닝 모델이라 첫 모델로 씁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 전학 온 친구가 어느 동아리에 갈지 맞히려면, 그 친구와 취향이 가장 비슷한 친구 5명이 어느 동아리인지 보면 됩니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 3학년 피타고라스 정리로 두 점 사이 거리를 구하는 계산 그대로입니다.</p><dl class="ez-pieces"><div><dt>거리 d = √((길이 차)² + (무게 차)²)</dt><dd>두 생선이 얼마나 닮았나. 좌표평면의 두 점 사이 거리(피타고라스 정리)</dd></div><div><dt>K</dt><dd>몇 마리 이웃에게 물어볼지. 기본값 5</dd></div><div><dt>다수결</dt><dd>K마리 중 가장 많은 종으로 판정. 도미 3 · 빙어 2면 도미</dd></div><div><dt>fit · predict · score</dt><dd>데이터 저장하기 · 새 생선 판정하기 · 정답률 채점하기</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>두 점 (1, 2)와 (4, 6)의 거리 = √(3² + 4²) = √25 = <b>5</b>.<br>새 생선의 가까운 이웃 5마리가 도미·도미·빙어·도미·빙어 → 도미 3표 → <b>도미</b>(확률 3 ÷ 5 = 0.6).</p></div></div></div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>생선의 길이와 무게만 보고 도미인지 빙어인지 맞히고 싶습니다. "30cm 넘으면 도미" 같은 규칙을 사람이 정할 수도 있지만, 경계에 걸친 생선에서 자주 틀립니다. <b>KNN은 규칙을 만들지 않고, 비슷한 과거 사례를 찾아 다수결로 정합니다.</b> 가장 단순한 머신러닝 모델이라 첫 모델로 씁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 전학 온 친구가 어느 동아리에 갈지 맞히려면, 그 친구와 취향이 가장 비슷한 친구 5명이 어느 동아리인지 보면 됩니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>√ 안에 제곱이 두 개… 이거 꼭 이렇게 복잡하게 재야 해요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 3학년 피타고라스 정리로 두 점 사이 거리를 구하는 계산 그대로입니다.</p><dl class="ez-pieces"><div><dt>거리 d = √((길이 차)² + (무게 차)²)</dt><dd>두 생선이 얼마나 닮았나. 좌표평면의 두 점 사이 거리(피타고라스 정리)</dd></div><div><dt>K</dt><dd>몇 마리 이웃에게 물어볼지. 기본값 5</dd></div><div><dt>다수결</dt><dd>K마리 중 가장 많은 종으로 판정. 도미 3 · 빙어 2면 도미</dd></div><div><dt>fit · predict · score</dt><dd>데이터 저장하기 · 새 생선 판정하기 · 정답률 채점하기</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>두 점 (1, 2)와 (4, 6)의 거리 = √(3² + 4²) = √25 = <b>5</b>.<br>새 생선의 가까운 이웃 5마리가 도미·도미·빙어·도미·빙어 → 도미 3표 → <b>도미</b>(확률 3 ÷ 5 = 0.6).</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>피타고라스 정리였어요! 점 두 개 사이의 직선 거리를 잰 것뿐이네요.</p></div></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 비유입니다. 새 친구가 왔을 때 가장 가까운 K명이 대부분 축구부면 "새 친구도 축구부겠지"라고 추측합니다. K가 너무 적으면 한 명의 이상한 의견에 휘둘리고, 너무 많으면 의견이 섞여 판단이 흐려집니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>KNN은 학습 때 따로 계산하지 않고 훈련 데이터를 저장합니다. 예측 때 새 점과 모든 점의 거리(기본: 유클리드)를 재고, 가장 가까운 K개의 다수결로 정합니다. 동점을 피하려 K는 보통 홀수를 씁니다.<sup>[1]</sup></p></div>
