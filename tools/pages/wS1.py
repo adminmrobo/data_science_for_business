@@ -11,7 +11,7 @@ SEARCH_PH = '예: Z 점수, 마할라노비스, 고립 숲, 경로 길이, 복�
 OGIMG = 'img/og_index.jpg'
 FOOT_ORIGIN = ('이 페이지는 소셜미디어에 공유된 인포그래픽 「Anomaly Detection Mathematics」(작성자 미상)의 여섯 칸을 연구실 해설 형식으로 다시 쓴 특강입니다. '
                '인포그래픽의 3번(오토인코더)과 4번(고립 숲) 순서를 바꾸고, 각 칸의 쓰는 조건과 한계를 덧붙였습니다. 수식은 원 논문과 scikit-learn 문서로 확인했습니다.')
-NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① Z 점수'), ('#lv2', '② 마할라노비스'), ('#lv3', '③ 고립 숲'), ('#lv4', '④ 복원 오차'), ('#lv5', '⑤ 문턱값'), ('#duel', '대결'), ('#sum', '정리'), ('#code', '코드')]
+NAV = [('#story', '이야기'), ('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① Z 점수'), ('#lv2', '② 마할라노비스'), ('#lv3', '③ 고립 숲'), ('#lv4', '④ 복원 오차'), ('#lv5', '⑤ 문턱값'), ('#duel', '대결'), ('#sum', '정리'), ('#myth', '오해'), ('#code', '코드')]
 PREVNEXT = '<a href="week14_advanced_analytics.html"><small>← 함께 보기 · 14주차</small>정답 없이, 글 속에서, 층을 쌓아</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week07_model_evaluation.html"><small>함께 보기 · 7주차</small>정확도 95%의 함정 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think', 'doc_board', 'fly_type', 'robo_wow', 'doc_magic']
 ABOUT = ['lab:method/z-score', 'lab:method/mahalanobis', 'lab:method/isolation-forest', 'lab:method/reconstruction-error', 'lab:method/thresholding']
@@ -24,7 +24,8 @@ SOURCES = [
  '[3] Mahalanobis, P. C. (1936). On the generalised distance in statistics. <i>Proceedings of the National Institute of Sciences of India</i>, 2(1), 49–55.',
  '[4] Chandola, V., Banerjee, A., &amp; Kumar, V. (2009). Anomaly detection: A survey. <i>ACM Computing Surveys</i>, 41(3), Article 15. <a href="https://doi.org/10.1145/1541880.1541882" target="_blank" rel="noopener">doi:10.1145/1541880.1541882</a>',
  '[5] Baldi, P., &amp; Hornik, K. (1989). Neural networks and principal component analysis: Learning from examples without local minima. <i>Neural Networks</i>, 2(1), 53–58. <a href="https://doi.org/10.1016/0893-6080(89)90014-2" target="_blank" rel="noopener">doi:10.1016/0893-6080(89)90014-2</a> — 직선(선형) 오토인코더는 주성분 분석과 같은 공간을 배운다.',
- '[6] scikit-learn 문서: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html" target="_blank" rel="noopener">IsolationForest</a> (2026-11-10 확인, 1.5판 기준 문구) — score_samples는 원 논문 점수의 반대 부호(낮을수록 이상), fit_predict는 이상 −1·정상 1, contamination 기본값 "auto".']
+ '[6] scikit-learn 문서: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html" target="_blank" rel="noopener">IsolationForest</a> (2026-11-10 확인, 1.5판 기준 문구) — score_samples는 원 논문 점수의 반대 부호(낮을수록 이상), fit_predict는 이상 −1·정상 1, contamination 기본값 "auto".',
+ '[7] 함께 읽기: 안상선 (2024). 금융 분야의 이상탐지 모델 보안을 위한 통계 기반의 적대적 데이터 대응 방안 — 실증적 분석과 시뮬레이션 결과. <i>미래사회</i>, 15(3), 147–166. <a href="https://doi.org/10.22987/jifso.2024.15.3.147" target="_blank" rel="noopener">doi:10.22987/jifso.2024.15.3.147</a> · 연구실 해설: <a href="https://adminmrobo.github.io/my_article_04_adversarial_finance_attack/01_adversarial_finance.html" target="_blank" rel="noopener">적대적 데이터와 금융 이상 탐지</a>']
 ILLUSTRATIVE = [
  '①칸 식대 결제 200건, ②칸 출장 150건, ③칸 결제 292건, ④칸 매장 방문객 146일, ⑤칸 결제 574건, 대결의 결제 292건은 모두 설명용 예시 데이터입니다. 실제 회사·카드사의 데이터가 아닙니다.',
  '③칸·⑤칸·대결의 고립 숲은 브라우저에서 원 논문 방식대로 직접 만든 것입니다(나무 100그루, 나무마다 256건을 중복 없이 뽑음, 깊이 제한 8). scikit-learn과 난수가 달라 점수가 조금 다릅니다.',
@@ -117,6 +118,8 @@ NODES = [
  N('work/mahalanobis1936', 'Work', 'Mahalanobis (1936)', 'Mahalanobis 1936', '#footer'),
  N('work/chandola2009', 'Work', 'Chandola, Banerjee, Kumar (2009) 이상 탐지 서베이', 'Chandola et al. 2009', '#footer'),
  N('work/baldi1989', 'Work', 'Baldi, Hornik (1989)', 'Baldi & Hornik 1989', '#footer'),
+ N('work/ahn2024adversarial', 'Work', '안상선 (2024) 금융 이상탐지 모델의 적대적 데이터 대응', 'Ahn 2024 adversarial data in financial anomaly detection', '#footer'),
+ N('concept/evasion', 'Concept', '문턱 피해 가기(회피)', 'evasion of thresholds', '#lv5', '탐지 규칙이나 문턱을 알고 기록을 평범해 보이게 꾸미는 일.', level=2, family='evaluation'),
  N('work/sklearn-if', 'Work', 'scikit-learn IsolationForest 문서', 'scikit-learn IsolationForest docs', '#footer'),
 ]
 
@@ -168,6 +171,8 @@ EDGES = [
  ('lab:method/mahalanobis', 'lab:assertedIn', 'lab:work/mahalanobis1936', '#footer'),
  ('lab:concept/anomaly-detection', 'lab:assertedIn', 'lab:work/chandola2009', '#footer'),
  ('lab:concept/anomaly-detection', 'lab:assertedIn', 'lab:work/infographic', '#footer'),
+ ('lab:method/thresholding', 'lab:hasLimitation', 'lab:concept/evasion', '#lv5'),
+ ('lab:concept/evasion', 'lab:assertedIn', 'lab:work/ahn2024adversarial', '#lv5'),
 ]
 
 def R(id, typ, title, author, year, role, supports, work, verified, checked, note='', **k):
@@ -176,6 +181,10 @@ def R(id, typ, title, author, year, role, supports, work, verified, checked, not
     r.update(k); return r
 
 REFS = [
+ R('ahn2024adversarial', 'article-journal', '금융 분야의 이상탐지 모델 보안을 위한 통계 기반의 적대적 데이터 대응 방안 - 실증적 분석과 시뮬레이션 결과 -', [{'family': '안', 'given': '상선'}], 2024, 'background',
+   ['lab:concept/evasion'], 'lab:work/ahn2024adversarial',
+   {'title': True, 'authors': True, 'year': True, 'venue': True, 'doi': True, 'pages': True}, '저자 해설 페이지로 확인 2026-11-10', '함께 읽기',
+   **{'container-title': '미래사회', 'volume': '15', 'issue': '3', 'page': '147-166', 'DOI': '10.22987/jifso.2024.15.3.147'}),
  R('anon_anomaly_infographic', 'webpage', 'Anomaly Detection Mathematics (infographic)', [{'literal': '작성자 미상'}], None, 'primary',
    ['lab:concept/anomaly-detection', 'lab:method/z-score', 'lab:method/mahalanobis', 'lab:method/isolation-forest', 'lab:method/reconstruction-error', 'lab:method/thresholding'], 'lab:work/infographic',
    {'title': True, 'authors': False, 'year': False, 'venue': False, 'doi': False, 'pages': False}, '사용자가 제공한 이미지로 확인 2026-11-10', '소셜미디어 게시물, 원 작성자·게시일 미확인'),
@@ -206,5 +215,11 @@ CSS = '''
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
 pre.code{background:var(--panel2);border:1px solid var(--rule);border-radius:10px;padding:14px;overflow-x:auto;font-size:13px;line-height:1.6;white-space:pre}
+ .cloud{background:rgba(176,124,255,.08);border:1px dashed var(--c-doc);border-radius:16px;padding:14px 18px;position:relative}
+.cloud b{color:var(--c-doc);display:block;margin-bottom:4px}
+.cloud p{margin:0}
+.myth{background:rgba(240,96,77,.08);border-left:3px solid var(--eye);border-radius:10px;padding:12px 16px}
+.myth b{color:var(--eye)}
+.myth p{margin:6px 0 0}
 .origin{border-left:3px solid var(--info);padding:6px 0 6px 14px;color:var(--muted);font-size:14px}
 '''

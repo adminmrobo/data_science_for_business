@@ -1,6 +1,6 @@
 {
  "series": "비즈니스를 위한 데이터 과학 연구실",
- "version": "363",
+ "version": "365",
  "concepts": [
   {
    "id": "lab:analogy/airport",
@@ -1563,6 +1563,22 @@
    ],
    "pages": [
     "dsb_w01_business_data_science"
+   ]
+  },
+  {
+   "id": "lab:concept/evasion",
+   "type": "Concept",
+   "label": {
+    "ko": "문턱 피해 가기(회피)",
+    "en": "evasion of thresholds"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -5438,6 +5454,22 @@
    ],
    "pages": [
     "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
+   "id": "lab:work/ahn2024adversarial",
+   "type": "Work",
+   "label": {
+    "ko": "안상선 (2024) 금융 이상탐지 모델의 적대적 데이터 대응",
+    "en": "Ahn 2024 adversarial data in financial anomaly detection"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
