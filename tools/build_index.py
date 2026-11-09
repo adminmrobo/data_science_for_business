@@ -112,7 +112,7 @@ a.wk:hover{{border-color:var(--seq)}}
 </div></section>
 <footer id="about"><div class="wrap stack">
   <div><h3>저자·출처</h3><p>교안 저자: 안상선. 이 시리즈의 모든 페이지는 저자의 강의 교안 「비즈니스를위한데이터과학」을 바탕으로 하며, 교안이 인용한 자료의 출처는 각 페이지 바닥글에 적었습니다. 교안의 기업 사례는 인용 자료의 시점 기준입니다.</p></div>
-  <p>글 · 안상선 ((주)M-Robo 대표) · <a href="https://adminmrobo.github.io/who_am_i/who_am_i.html" target="_blank" rel="noopener">저자 소개</a> · {date}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
+  <p>글 · 안상선 (<a href="https://www.ahnboat.xyz" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · (주)M-Robo 대표 · {date}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
 </div></footer>
 <script>
 {spr}

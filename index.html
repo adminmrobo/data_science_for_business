@@ -278,6 +278,54 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
+.ez-say{margin:0 0 10px}
+.ez-say.ez-c{margin:10px 0 0}
+.ez-say .who{width:44px;height:44px}
+.ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
+/* ── 여백 완화 (2026-11-09): 빽빽함 줄이기 ── */
+body{line-height:1.8}
+.level{padding-block:88px}
+.level>.wrap.stack{gap:40px}
+.pair{gap:20px}
+.pair>div{padding:20px 22px}
+.pair p{margin:8px 0 0}
+.panel{padding:22px;gap:18px}
+.explain{padding:22px 24px;gap:12px}
+.explain ol,.explain ul{display:flex;flex-direction:column;gap:10px;padding-left:22px;margin:4px 0}
+.explain .limit{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(241,182,70,.35)}
+.easy{gap:20px}
+.easy>div{padding:20px 22px}
+.dialog.lvtalk{gap:14px;padding:18px 20px;border-radius:12px;background:linear-gradient(180deg,rgba(154,184,255,.05),transparent);border:1px dashed var(--rule)}
+.dialog .say p{margin:2px 0 0;line-height:1.7}
+details.code,details.abbr,details.math{margin-top:4px}
+@media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
 
 .weeks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .wk{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--text);min-width:0;position:relative}
@@ -341,7 +389,7 @@ a.wk:hover{border-color:var(--seq)}
 </div></section>
 <footer id="about"><div class="wrap stack">
   <div><h3>저자·출처</h3><p>교안 저자: 안상선. 이 시리즈의 모든 페이지는 저자의 강의 교안 「비즈니스를위한데이터과학」을 바탕으로 하며, 교안이 인용한 자료의 출처는 각 페이지 바닥글에 적었습니다. 교안의 기업 사례는 인용 자료의 시점 기준입니다.</p></div>
-  <p>글 · 안상선 ((주)M-Robo 대표) · <a href="https://adminmrobo.github.io/who_am_i/who_am_i.html" target="_blank" rel="noopener">저자 소개</a> · 2026-11-09<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
+  <p>글 · 안상선 (<a href="https://www.ahnboat.xyz" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · (주)M-Robo 대표 · 2026-11-09<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
 </div></footer>
 <script>
 /* 캐릭터 팩 https://github.com/adminmrobo/fruitfly-lab-expressions @ 5269662, 96px, 7장, 32.3 KB */

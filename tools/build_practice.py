@@ -180,7 +180,7 @@ def build(key):
   <div class="serieslinks">{pn}</div>
   <div><h3>출처</h3><ol style="margin:0;padding-left:20px"><li>안상선. 「비즈니스를위한데이터과학」 강의 교안, {wk}주차 「연습문제」. 1부 문항·보기·정답·해설은 교안 원문이며, 해설은 읽기 쉽게 다듬었습니다.</li></ol></div>
   <div><h3>예시값·설명용 모형인 것</h3><ul style="margin:0;padding-left:20px"><li>2부 계산·사례 문제의 숫자(비용, 매출, 고객 수, 오차, 광고 실적 등)는 모두 설명을 위해 만든 예시값입니다. 실제 기업이나 교안 실습 데이터의 값이 아닙니다.</li></ul></div>
-  <p>글 · 안상선 ((주)M-Robo 대표) · {series} {no}주차 연습 · v{ver} · {date}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
+  <p>글 · 안상선 (<a href="https://www.ahnboat.xyz" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · (주)M-Robo 대표 · {series} {no}주차 연습 · v{ver} · {date}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
 </div></footer>'''.format(pn=prevnext, wk=wk, series=SERIES, no=P['no'], ver=VERSION, date=DATE)
     files = {w: WEEKFILE[w][0] for w in P['weeks']}
     js = JS.replace('__WEEKS__', json.dumps(P['weeks'])).replace('__FILES__', json.dumps({str(k): v for k, v in files.items()}))

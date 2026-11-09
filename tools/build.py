@@ -207,7 +207,7 @@ def page(n):
     slug = m.SLUG
     fname = m.FILE
     url = BASE_URL + fname
-    meta = {'title': m.TITLE, 'series': SERIES, 'number': n, 'creator': [{'name': '안상선', 'role': 'author', 'affiliation': '(주)M-Robo 대표'}],
+    meta = {'title': m.TITLE, 'series': SERIES, 'number': n, 'creator': [{'name': '안상선', 'role': 'author', 'affiliation': '(주)M-Robo 대표', 'url': 'https://www.ahnboat.xyz'}],
             'date': DATE, 'version': VERSION, 'language': ['ko'], 'license': '', 'url': url, 'domain': m.DOMAIN,
             'about': m.ABOUT, 'educationalLevel': '입문~중급', 'learningResourceType': 'interactive explainer', 'basedOn': [r['id'] for r in m.REFS if r['lab']['role'] == 'primary'],
             'suggestedCitation': '안상선 (2026). %s. %s %s주차, v%s. %s' % (m.TITLE, SERIES, n, VERSION, url),
@@ -254,7 +254,7 @@ def page(n):
   <div class="serieslinks">{prevnext}</div>
   <div><h3>출처</h3><ol style="margin:0;padding-left:20px">{src}</ol></div>
   <div><h3>예시값·설명용 모형인 것</h3><ul style="margin:0;padding-left:20px">{ill}</ul></div>
-  <p>글 · 안상선 ((주)M-Robo 대표) · {series} {n}주차 · v{ver} · {date}<br>이 페이지는 저자의 강의 교안 「비즈니스를위한데이터과학」 {n}주차를 연구실 해설 형식으로 다시 쓴 것입니다. 교안에 나온 기업 사례는 교안이 인용한 기사·자료의 내용이며, 시점이 지난 사례일 수 있습니다.<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
+  <p>글 · 안상선 (<a href="https://www.ahnboat.xyz" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · (주)M-Robo 대표 · {series} {n}주차 · v{ver} · {date}<br>이 페이지는 저자의 강의 교안 「비즈니스를위한데이터과학」 {n}주차를 연구실 해설 형식으로 다시 쓴 것입니다. 교안에 나온 기업 사례는 교안이 인용한 기사·자료의 내용이며, 시점이 지난 사례일 수 있습니다.<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
 </div></footer>
 
 <div id="study" aria-live="polite"><span id="stRead">읽은 곳 0%</span><span id="stQuiz">퀴즈 0/0</span><button class="bt" type="button" id="stGloss">밑줄: 핵심</button></div>
