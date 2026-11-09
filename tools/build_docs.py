@@ -295,7 +295,7 @@ def index_md():
     n_new, n_crop = total['그림(새로)'], total['표지 자르기']
     return '''# 이미지 전체 목록 (IMG_INDEX)
 
-{series}에 들어가는 그림을 한곳에 모은 목록입니다. 주차별 상세 프롬프트는 각 명세서(`COVER_NN.md`, `IMG_NN.md`)에 있습니다.
+{series}에 들어가는 그림을 한곳에 모은 목록입니다. **42장 프롬프트는 만드는 순서대로 `IMG_PROMPTS.md`에 모두 모아 두었습니다**(주차별 명세서 `COVER_NN.md`·`IMG_NN.md`에도 같은 내용).
 이 파일은 `tools/build_docs.py`가 페이지 HTML을 읽어 만들므로, 그림을 넣은 뒤 다시 돌리면 상태 칸이 갱신됩니다.
 
 ## 1. 한눈에 보기
@@ -337,6 +337,57 @@ def index_md():
 - 페이지 한 편의 그림 합계는 표지 포함 600 KB 이하로 둡니다.
 '''.format(series=SERIES, n_new=n_new, n_crop=n_crop, nf=len(allfaces), done=done, rows='\n'.join(rows), face_rows=face_rows)
 
+def scene_prompts(k, p):
+    fo, ro, scene, alt = OUTRO[k]
+    hero = '%s, %s, 3:2 landscape scene, medium brightness, %s, %s at the back center, %s on the left facing right, %s on the right facing left, %s at the side, %s' % (STYLE, SEASON, p['place'], s(DOC), s(FLY), s(ROBO), s(ASST), NO)
+    outro = '%s, %s, 3:2 landscape scene, medium brightness, inside the same night lab, %s; %s; %s; %s; %s; %s' % (STYLE, SEASON, scene, s(DOC), s(ASST), s(FLY), s(ROBO), NO)
+    return hero, outro, alt, fo, ro
+
+def prompts_md():
+    name = lambda k: '목차' if k == 'index' else '%d주차' % int(k)
+    out, no = [], 0
+    def item(key, size, title, alt, body, extra=''):
+        nonlocal no
+        no += 1
+        out.append('### %d. `%s` — %s · %s\n\n%s대체 글: %s\n\n```\n%s\n```\n' % (no, key, title, size, extra, alt, body))
+    out.append('## 1단계 · 목차 표지 (1장)\n')
+    p = PAGES['index']; item('cover_index', '16:9, 가로 1920 이상', name('index') + ' 표지', p['alt'], prompt(p))
+    out.append('## 2단계 · 주차 표지 (15장)\n\n1단계에서 만든 `cover_index`를 참고 이미지로 함께 올리면 그림체가 맞습니다.\n')
+    for k in ORDER[1:]:
+        p = PAGES[k]; item('cover_' + p['key'], '16:9, 가로 1920 이상', p['title'], p['alt'], prompt(p))
+    out.append('## 3단계 · 히어로 무대 (13장)\n\n대결 전 장면입니다. 결과를 암시하지 않습니다.\n')
+    for k in ORDER[1:]:
+        if k in PRACTICE: continue
+        p = PAGES[k]; hero, outro, alt, fo, ro = scene_prompts(k, p)
+        item('sc_%s_hero' % p['key'], '3:2, 1200×800', p['title'] + ' 히어로', p['alt'], hero)
+    out.append('## 4단계 · 아웃트로 (13장)\n\n대결 뒤 장면입니다. 표정은 각 주차 대결 결과를 따릅니다.\n')
+    for k in ORDER[1:]:
+        if k in PRACTICE: continue
+        p = PAGES[k]; hero, outro, alt, fo, ro = scene_prompts(k, p)
+        item('sc_%s_outro' % p['key'], '3:2, 1200×800', p['title'] + ' 아웃트로', alt, outro, '대결: %s · 표정 기준: 초파리 `%s`, 주판봇 `%s`\n\n' % (p['duel'], fo, ro))
+    return '''# 이미지 제작 프롬프트 모음 (42장)
+
+{series}의 새로 그릴 그림 42장 프롬프트를 만드는 순서대로 모았습니다. 같은 내용이 주차별 `COVER_NN.md`·`IMG_NN.md`에도 있습니다. 전체 목록과 상태는 `IMG_INDEX.md`를 보세요.
+
+## 쓰는 법 (Genspark 기준)
+
+1. 새 대화마다 **참고 이미지**를 함께 올립니다: 네 캐릭터 기본 그림 4장(GitHub `adminmrobo/fruitfly-lab-expressions`). 1단계가 끝나면 `cover_index`도 함께 올립니다.
+2. 아래 한국어 안내 다음 줄에 해당 영어 프롬프트를 붙여 넣습니다.
+
+```
+웹페이지에 넣을 그림 1장을 만들어 줘.
+- 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장
+- 그림 안에 글자·숫자·로고를 넣지 말 것
+- 비율: 표지는 16:9(가로 1920px 이상), 무대·아웃트로는 3:2(1200×800)
+아래 영어 프롬프트를 그대로 써 줘.
+```
+
+3. 고칠 때(같은 대화에서): `Same four characters, same art style and composition. Change only: {{고칠 점}}. Still no text.`
+4. 받은 그림은 **키와 같은 파일 이름**으로 저장해 주세요(예: `cover_w07.png`, `sc_w07_hero.png`).
+5. 같은 캐릭터가 나오는 그림은 같은 대화에서 연달아 만드는 편이 외형이 덜 흔들립니다.
+
+{body}'''.format(series=SERIES, body='\n'.join(out))
+
 def main():
     d = os.path.join(REPO, 'docs'); os.makedirs(d, exist_ok=True)
     for k, p in PAGES.items():
@@ -346,6 +397,7 @@ def main():
         elif k != 'index':
             open(os.path.join(d, 'IMG_%s.md' % k), 'w', encoding='utf-8').write(img_md(k, p))
     open(os.path.join(d, 'IMG_INDEX.md'), 'w', encoding='utf-8').write(index_md())
+    open(os.path.join(d, 'IMG_PROMPTS.md'), 'w', encoding='utf-8').write(prompts_md())
     print('docs written')
 
 if __name__ == '__main__':
