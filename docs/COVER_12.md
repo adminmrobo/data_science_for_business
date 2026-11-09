@@ -29,8 +29,8 @@ Scene: a night lab with a big histogram on the wall whose right tail stretches f
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center pointing at the long right tail of the histogram;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, lining up small figurines in order of height;
-  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, on the left facing right, standing next to the middle figurine with arms open;
-  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, on the right facing left, pushing the heavy weight further out on the seesaw.
+  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, standing next to the middle figurine with arms open;
+  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, pushing the heavy weight further out on the seesaw.
 Visual metaphor of the topic: a seesaw tipped by one heavy weight far out on the right, while a small flag stands at the middle of the line of people.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner dark and simple; the light falls on the main prop.

@@ -29,8 +29,8 @@ Scene: a night lab arranged like an airplane cockpit, with three round gauges, a
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center in the pilot seat looking at the gauges;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, plugging three different cables into one hub;
-  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, on the left facing right, scattering many small light dots into the top of the funnel;
-  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, on the right facing left, catching coins at the bottom of the funnel with the abacus.
+  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, scattering many small light dots into the top of the funnel;
+  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, catching coins at the bottom of the funnel with the abacus.
 Visual metaphor of the topic: three gauge needles pulling against each other, and a funnel narrowing from many dots at the top to a few coins at the bottom.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner dark and simple; the light falls on the main prop.

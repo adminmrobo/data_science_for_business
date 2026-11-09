@@ -29,8 +29,8 @@ Scene: a round review table in the night laboratory at the end of the season, si
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center holding up a blank finished answer sheet proudly;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, pinning a blank sticky note on the corkboard;
-  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, on the left facing right, flipping through a glowing folder with a magnifying glass;
-  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, on the right facing left, tapping the abacus with one arm raised.
+  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, flipping through a glowing folder with a magnifying glass;
+  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, tapping the abacus with one arm raised.
 Visual metaphor of the topic: six glowing folders in a circle (one per week reviewed) around a single lit candle-like lamp, sticky notes without writing, a finished stack of answer sheets tied with ribbon.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner dark and simple; the light falls on the main prop.

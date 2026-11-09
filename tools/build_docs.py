@@ -97,6 +97,7 @@ PAGES = {
 
 def prompt(p):
     d, a, f, r = p['pose']
+    f = f.replace('on the left facing right, ', '', 1); r = r.replace('on the right facing left, ', '', 1)
     return ('Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: %s).\n%s.\nScene: %s.\n'
             'All four characters together:\n  %s, %s;\n  %s, %s;\n  %s, on the left facing right, %s;\n  %s, on the right facing left, %s.\n'
             'Visual metaphor of the topic: %s.\nComposition: keep every face and hand inside the central safe area (12%% margin left and right, 10%% top, 18%% bottom);\n'
