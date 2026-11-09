@@ -26,14 +26,16 @@ def card(w):
     n, t, sub, desc, ico, f, ready, duel = w
     if ready is None:
         return '<div class="wk exam"><span class="no">%02d주차</span><b>%s</b><p class="muted">시험 주간</p></div>' % (n, t)
-    inner = '<span class="no">%02d주차</span><span class="ico" aria-hidden="true">%s</span><b>%s</b>%s<p class="muted">%s</p>%s' % (
+    th = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'img', 'thumb_w%02d.webp' % n)
+    pic = ('<img class="th" src="img/thumb_w%02d.webp" alt="" width="600" height="400" loading="lazy" decoding="async">' % n) if os.path.exists(th) else ''
+    inner = pic + '<span class="no">%02d주차</span><span class="ico" aria-hidden="true">%s</span><b>%s</b>%s<p class="muted">%s</p>%s' % (
         n, ico, html.escape(sub or t), ('<small>교안: %s</small>' % html.escape(t)) if sub else '', html.escape(desc),
         ('<span class="lvtag g">대결: %s</span>' % duel) if duel else '<span class="lvtag">연습 · 문제풀이</span>')
     return ('<a class="wk" href="%s">%s</a>' % (f, inner)) if ready else '<div class="wk soon">%s</div>' % inner
 
 def main():
     css = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'engine.css'), encoding='utf-8').read()
-    spr = sprites(['doc_front', 'asst_smile', 'fly_point', 'robo_coin'])
+    spr = sprites(['doc_front', 'asst_smile', 'fly_point', 'robo_coin', 'cover_index'])
     cards = ''.join(card(w) for w in WEEKS)
     out = '''<!DOCTYPE html>
 <html lang="ko">
@@ -42,7 +44,7 @@ def main():
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>비즈니스를 위한 데이터 과학 연구실</title>
 <meta name="description" content="안상선의 강의 교안 「비즈니스를위한데이터과학」을 박사·조수·초파리 연구원·주판봇이 진행하는 연구실 해설 대시보드로 다시 쓴 시리즈. 주차별 시뮬레이션과 대결, 실습 사례.">
-<meta property="og:title" content="비즈니스를 위한 데이터 과학 연구실"><meta property="og:url" content="{url}">
+<meta property="og:title" content="비즈니스를 위한 데이터 과학 연구실"><meta property="og:url" content="{url}"><meta property="og:image" content="{url}img/og_index.jpg"><meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="비즈니스를 위한 데이터 과학 연구실"><meta name="citation_author" content="안상선"><meta name="dc.language" content="ko">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0l7 4v8l-7 4-7-4V4z' fill='%239ab8ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
@@ -53,6 +55,8 @@ def main():
 a.wk:hover{{border-color:var(--seq)}}
 .wk .no{{font-size:12px;color:var(--seq);font-weight:700;letter-spacing:.06em}}
 .wk .ico{{position:absolute;right:14px;top:12px;font-size:26px}}
+.wk .th{{width:calc(100% + 32px);margin:-16px -16px 6px;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px 12px 0 0;display:block}}
+.wk:has(.th) .ico{{top:auto;right:14px;margin-top:0;display:none}}
 .wk b{{font-size:17px}}
 .wk small{{color:var(--muted);font-size:12px}}
 .wk .lvtag{{align-self:flex-start;margin-top:auto}}

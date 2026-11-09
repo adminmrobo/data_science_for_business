@@ -124,7 +124,7 @@ score();
 def build(key):
     P = PAGES[key]
     css = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'engine.css'), encoding='utf-8').read() + CSS_EXTRA
-    spr = sprites(['doc_front', 'doc_think', 'asst_smile', 'asst_report', 'fly_point', 'fly_clip', 'robo_coin', 'robo_calc'])
+    spr = sprites(['doc_front', 'doc_think', 'asst_smile', 'asst_report', 'fly_point', 'fly_clip', 'robo_coin', 'robo_calc', 'cover_w%02d' % P['no']])
     qh, nq = quiz_html(P)
     ch = calc_html(P)
     nc = len(P['calc'])
@@ -191,7 +191,7 @@ def build(key):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta property="og:type" content="article"><meta property="og:title" content="{title}"><meta property="og:url" content="{url}">
+<meta property="og:type" content="article"><meta property="og:title" content="{title}"><meta property="og:url" content="{url}"><meta property="og:image" content="{ogimg}"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <style>
 {css}
@@ -207,7 +207,7 @@ def build(key):
 </script>
 </body>
 </html>
-'''.format(title=E('%d주차 연습 · %s' % (P['no'], P['title'])), desc=E(P['lead']), url=url, css=css, body=body, foot=foot, spr=spr, js=js)
+'''.format(title=E('%d주차 연습 · %s' % (P['no'], P['title'])), desc=E(P['lead']), url=url, ogimg=BASE_URL + 'img/og_w%02d.jpg' % P['no'], css=css, body=body, foot=foot, spr=spr, js=js)
     open(os.path.join(REPO, P['file']), 'w', encoding='utf-8').write(out)
     print('%s %.1f KB  교안 %d문 · 계산 %d문' % (P['file'], len(out.encode()) / 1024, nq, nc))
 

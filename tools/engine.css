@@ -213,8 +213,8 @@ footer h3{color:var(--text);font-size:16px;margin-bottom:8px}
 footer .stack{gap:28px}
 
 /* ---- 시리즈 추가: 글 표지, 사례 카드, 표 데이터, 토글 ---- */
-.cover{position:relative;margin:0;background:linear-gradient(160deg,#1b1533,#13141f);width:100%;height:min(56.25vw,48vh);min-height:220px;overflow:hidden;border-bottom:1px solid var(--rule)}
-.cover img.cv{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.cover{position:relative;margin:0;background:linear-gradient(160deg,#1b1533,#13141f);width:100%;height:min(56.25vw,80vh);min-height:220px;overflow:hidden;border-bottom:1px solid var(--rule)}
+.cover img.cv{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
 .cover .fallback{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,3vw,40px);padding-bottom:6%}
 .cover .fallback::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(154,184,255,.18) 1.2px,transparent 1.4px);background-size:14px 12px;-webkit-mask-image:radial-gradient(circle at 70% 20%,#000 0,transparent 70%);mask-image:radial-gradient(circle at 70% 20%,#000 0,transparent 70%)}
 .cover .fallback::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(0deg,rgba(214,114,214,.14),transparent)}

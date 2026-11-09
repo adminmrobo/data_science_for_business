@@ -22,9 +22,20 @@ def load(n):
 def jdump(o):
     return json.dumps(o, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 
+ART = os.path.join(HERE, 'art')
+
 def sprites(keys):
-    out = subprocess.run([sys.executable, os.path.join(PACK, 'build_character_pack.py'), '--pack', PACK, '--pick', ','.join(sorted(set(keys))), '--size', '96'],
+    """캐릭터 표정(팩) + 이 시리즈의 표지·장면 그림(tools/art/*.webp)을 SPRITE에 함께 싣는다."""
+    keys = set(keys)
+    art = sorted(k for k in keys if k.startswith(('cover_', 'sc_')))
+    face = sorted(keys - set(art))
+    out = subprocess.run([sys.executable, os.path.join(PACK, 'build_character_pack.py'), '--pack', PACK, '--pick', ','.join(face), '--size', '96'],
                          capture_output=True, text=True, check=True).stdout
+    have = {k: os.path.join(ART, k + '.webp') for k in art if os.path.exists(os.path.join(ART, k + '.webp'))}
+    if have:
+        import base64
+        out += '\nwindow.SPRITE=window.SPRITE||{};Object.assign(window.SPRITE,{%s});\n' % ','.join(
+            '"%s":"data:image/webp;base64,%s"' % (k, base64.b64encode(open(p, 'rb').read()).decode()) for k, p in have.items())
     return out
 
 LD_TYPE = {'Concept': ['skos:Concept', 'schema:DefinedTerm'], 'Method': ['skos:Concept', 'schema:DefinedTerm'], 'Task': ['skos:Concept', 'schema:DefinedTerm'],
@@ -163,6 +174,7 @@ def page(n):
     css = open(os.path.join(HERE, 'engine.css'), encoding='utf-8').read() + getattr(m, 'CSS', '')
     ejs = open(os.path.join(HERE, 'engine.js'), encoding='utf-8').read()
     keys = set(re.findall(r'data-img="((?:doc|asst|fly|robo)_[a-z]+)"', body)) | set(m.EXTRA_SPRITES) | {'asst_report', 'doc_front', 'asst_smile', 'fly_clip', 'robo_smile', 'fly_point', 'robo_coin'}
+    keys |= {'cover_w%s' % n, 'sc_w%s_hero' % n, 'sc_w%s_outro' % n}
     spr = sprites(keys)
     links = ''.join('<a href="%s">%s</a>' % (h, t) for h, t in m.NAV) + '<a href="#kg">지식 색인</a><a href="#export">꾸러미</a>'
     gl_js = {k: v[:3] for k, v in m.GL.items()}
@@ -181,7 +193,7 @@ def page(n):
 <meta name="citation_author" content="안상선">
 <meta name="citation_publication_date" content="2026/11/09">
 <meta name="dc.title" content="{title}"><meta name="dc.creator" content="안상선"><meta name="dc.language" content="ko"><meta name="dc.date" content="{date}">
-<meta property="og:type" content="article"><meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:url" content="{url}">
+<meta property="og:type" content="article"><meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{ogimg}"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0l7 4v8l-7 4-7-4V4z' fill='%239ab8ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <style>
@@ -191,7 +203,7 @@ def page(n):
 <body>
 <div id="prog"></div>
 <div id="tip" role="tooltip"></div>
-'''.format(title=html.escape(m.TITLE), desc=html.escape(m.DESC), date=DATE, url=url, css=css)
+'''.format(title=html.escape(m.TITLE), desc=html.escape(m.DESC), date=DATE, url=url, ogimg=BASE_URL + 'img/og_w%s.jpg' % n, css=css)
     foot = '''
 <footer id="footer"><div class="wrap stack">
   <div class="serieslinks">{prevnext}</div>

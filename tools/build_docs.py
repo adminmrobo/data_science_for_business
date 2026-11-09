@@ -286,7 +286,7 @@ def index_md():
         fs = sorted(set(re.findall(r'data-(?:img|mood)="((?:doc|asst|fly|robo)_[a-z]+)"', h)) | {w + '_' + m for w, m in re.findall(r'data-who="(doc|asst|fly|robo)" data-mood="([a-z]+)"', h)})
         faces[k] = fs
         for key, plate, size, pr, kind, spec in page_imgs(k, p):
-            ok = key in have
+            ok = (key in have) or os.path.exists(os.path.join(REPO, 'img', key + ('.jpg' if key.startswith('og_') else '.webp')))
             done += ok
             total[kind] += 1
             name = '목차' if k == 'index' else ('%d주차' % int(k))
@@ -306,7 +306,7 @@ def index_md():
 | 새로 그릴 그림 | **{n_new}장** | 표지 16(목차 + 15주차) · 히어로 무대 13 · 아웃트로 13 |
 | 표지에서 자르는 그림 | {n_crop}장 | 목차 카드(thumb, 3:2) 15 · 공유 미리보기(og, 1200×630) 16 — 따로 그리지 않음 |
 | 재사용(캐릭터 팩) | 표정 {nf}종 | 이미 모든 페이지에 들어 있음. 새로 그리지 않음 |
-| 지금 들어간 그림 | {done}장 | 나머지 페이지는 대체 표지·캔버스 무대로 이미 완성 상태 |
+| 지금 들어간 그림 | {done}장 / {all}장 | 표지·장면은 페이지 안에(WebP), 목차 카드·공유 미리보기는 `img/` 폴더에 |
 
 연습 페이지(8·15주차)는 대결이 없어서 히어로 무대·아웃트로 자리가 없고 표지만 필요합니다.
 
@@ -336,7 +336,7 @@ def index_md():
 - 파일 이름을 키와 같게 해 주세요. 예: `cover_w07.png`, `sc_w07_hero.png`
 - 받은 뒤 처리: 비율·글자·네 캐릭터 확인 → WebP(표지 1600×900, 220 KB 이하) → 페이지 `SPRITE`에 넣기 → 390·768·1280 폭 점검 → 이 목록 다시 생성
 - 페이지 한 편의 그림 합계는 표지 포함 600 KB 이하로 둡니다.
-'''.format(series=SERIES, n_new=n_new, n_crop=n_crop, nf=len(allfaces), done=done, rows='\n'.join(rows), face_rows=face_rows)
+'''.format(series=SERIES, n_new=n_new, n_crop=n_crop, nf=len(allfaces), done=done, all=n_new + n_crop, rows='\n'.join(rows), face_rows=face_rows)
 
 def scene_prompts(k, p):
     fo, ro, scene, alt = OUTRO[k]
