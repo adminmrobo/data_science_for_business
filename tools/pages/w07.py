@@ -8,7 +8,7 @@ COVER_ALT = '네 캐릭터가 2×2 칸의 커다란 성적표 앞에서 저울�
 COVER_PROP = '⚖️'
 SEARCH_PH = '예: 혼동행렬, 재현율, F1, ROC, AUC, 배깅, 학습률'
 NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① 혼동행렬'), ('#lv2', '② 정밀도·재현율'), ('#lv3', '③ ROC·AUC'), ('#lv4', '④ 앙상블'), ('#lv5', '⑤ 학습률'), ('#duel', '대결'), ('#sum', '정리')]
-PREVNEXT = '<a href="week06_classification_2.html"><small>← 이전 · 6주차</small>농어가 끼어들자</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week09_regression_1.html"><small>다음 · 9주차</small>숫자를 맞히는 선 →</a>'
+PREVNEXT = '<a href="week06_classification_2.html"><small>← 이전 · 6주차</small>농어가 끼어들자</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week08_practice_1.html"><small>다음 · 8주차</small>연습 ① 1~7주차 문제풀이 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:concept/confusion-matrix', 'lab:metric/precision-recall', 'lab:metric/roc-auc', 'lab:method/ensemble', 'lab:concept/learning-rate-batch', 'lab:method/cost-threshold']
 KGPATH = ['concept/confusion-matrix', 'limitation/no-alt-metric', 'metric/precision-recall', 'limitation/threshold-dependent', 'metric/roc-auc', 'limitation/eval-not-improve', 'method/ensemble', 'limitation/single-learner', 'concept/learning-rate-batch', 'limitation/no-money', 'method/cost-threshold']

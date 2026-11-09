@@ -8,7 +8,7 @@ COVER_ALT = '네 캐릭터가 양궁 과녁 앞에서 농어를 저울에 올리
 COVER_PROP = '🎯'
 SEARCH_PH = '예: KNN 회귀, 최소제곱, 다항 회귀, RMSE, MAE, R²'
 NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① KNN 회귀'), ('#lv2', '② 선형'), ('#lv3', '③ 다항'), ('#lv4', '④ 오차 지표'), ('#lv5', '⑤ R²'), ('#duel', '대결'), ('#sum', '정리')]
-PREVNEXT = '<a href="week07_model_evaluation.html"><small>← 이전 · 7주차</small>정확도 95%의 함정</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week10_regression_2.html"><small>다음 · 10주차</small>S자 곡선과 스무고개 →</a>'
+PREVNEXT = '<a href="week08_practice_1.html"><small>← 이전 · 8주차</small>연습 ① 1~7주차 문제풀이</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week10_regression_2.html"><small>다음 · 10주차</small>S자 곡선과 스무고개 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:method/knn-regression', 'lab:method/linear-regression', 'lab:method/polynomial-regression', 'lab:metric/mse-rmse-mae', 'lab:metric/r2']
 KGPATH = ['method/knn-regression', 'limitation/no-extrapolation', 'method/linear-regression', 'limitation/straight-only', 'method/polynomial-regression', 'limitation/no-error-size', 'metric/mse-rmse-mae', 'limitation/scale-free', 'metric/r2']

@@ -8,7 +8,7 @@ COVER_ALT = '네 캐릭터가 색깔별로 모인 구슬 무리, 말풍선 리�
 COVER_PROP = '🧠'
 SEARCH_PH = '예: K-means, 엘보우, 향상도, 감성 사전, TF-IDF, 은닉층'
 NAV = [('#why', '왜'), ('#big', '큰 그림'), ('#lv1', '① 군집'), ('#lv2', '② 연관 규칙'), ('#lv3', '③ 감성 분석'), ('#lv4', '④ TF-IDF'), ('#lv5', '⑤ 신경망'), ('#duel', '대결'), ('#sum', '정리')]
-PREVNEXT = '<a href="week13_bi_kpi.html"><small>← 이전 · 13주차</small>계기판을 설계하다</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="index.html"><small>15주차</small>기말고사</a>'
+PREVNEXT = '<a href="week13_bi_kpi.html"><small>← 이전 · 13주차</small>계기판을 설계하다</a><a href="index.html"><small>목차</small>비즈니스를 위한 데이터 과학 연구실</a><a href="week15_practice_2.html"><small>다음 · 15주차</small>연습 ② 9~14주차 문제풀이 →</a>'
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:method/kmeans', 'lab:method/association-rules', 'lab:method/sentiment-lexicon', 'lab:method/tfidf', 'lab:method/neural-network']
 KGPATH = ['method/kmeans', 'limitation/no-product-link', 'method/association-rules', 'limitation/no-feeling', 'method/sentiment-lexicon', 'limitation/no-topic', 'method/tfidf', 'limitation/handmade-features', 'method/neural-network']
