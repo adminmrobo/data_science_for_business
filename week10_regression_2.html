@@ -281,6 +281,28 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -363,6 +385,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">1<small>확률</small></div><h2>로지스틱 회귀 — 직선 점수를 S자 확률로</h2></div>
     <p class="sub"><span class="lvtag g">z = w₀ + w₁x → p = σ(z)</span><span class="lvtag">데이터: 공부시간-합격 40명(예시)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>"합격/불합격"처럼 답이 둘인 문제에 직선 회귀를 쓰면 1.3이나 −0.2처럼 확률이 될 수 없는 숫자가 나옵니다. <b>직선으로 점수를 낸 뒤, 그 점수를 0~1 사이로 눌러 주는 S자 곡선(시그모이드)에 넣으면 확률이 됩니다.</b> 이것이 로지스틱 회귀입니다. 이름은 회귀지만 분류 모델입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 일기예보가 "비가 온다/안 온다" 대신 "비 올 확률 70%"라고 말하는 것과 같습니다. 확률을 알면 우산을 챙길 기준(예: 50%)을 내가 정할 수 있습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 1단계는 중학교 일차함수, 2단계는 고등학교 지수함수 e<sup>x</sup>입니다.</p><dl class="ez-pieces"><div><dt>z = w₀ + w₁·x</dt><dd>1단계: 일차함수로 점수 계산. w₁ = 기울기(영향력), w₀ = 절편(기준 이동)</dd></div><div><dt>σ(z) = 1 ÷ (1 + e<sup>−z</sup>)</dt><dd>2단계: 점수를 0~1로 누름. e ≈ 2.718</dd></div><div><dt>z = 0이면 0.5</dt><dd>1 ÷ (1 + 1) = 0.5. 경계선</dd></div><div><dt>z가 크면 1에, 작으면 0에 가까움</dt><dd>e<sup>−z</sup>가 0에 가까워지거나 아주 커지기 때문</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>z = −4 + 1 × (공부 시간)일 때<br>4시간 → z = 0 → <b>0.5</b>, 6시간 → z = 2 → 1 ÷ (1 + 1/7.39) ≈ <b>0.88</b>, 2시간 → z = −2 → ≈ <b>0.12</b>.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 공부시간과 합격 확률입니다. 처음에는 확률이 낮다가 어느 구간에서 빠르게 오르고, 결국 거의 확실해집니다. 아무리 더 공부해도 100%를 넘지는 않습니다(포화).<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>가중치 w₁은 특성의 영향력(음수면 반대 방향), 편향 w₀는 시소의 받침점처럼 전체 기준을 옮깁니다. 최적화는 비용함수(로그 손실)가 가장 작아지는 w₀, w₁을 반복해서 찾는 과정입니다.<sup>[1]</sup></p></div>
@@ -396,6 +419,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">2<small>질문</small></div><h2>첫 질문 고르기 — 지니 불순도를 가장 많이 줄이는 분할</h2></div>
     <p class="sub"><span class="lvtag g">Gini = 1 − Σ pᵢ²</span><span class="lvtag">데이터: 레드·화이트 와인 모양의 예시 300병</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>로지스틱 회귀는 확률은 잘 내지만 "왜 그렇게 판단했는지"를 현장 담당자에게 말하기 어렵습니다. <b>"당도가 5 이상인가?" 같은 예/아니오 질문을 이어 가면, 판단 과정이 그대로 규칙이 됩니다.</b> 이때 어떤 질문을 먼저 할지 정하는 기준이 지니 불순도입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 스무고개에서 첫 질문은 "동물인가요?"처럼 후보를 반으로 확 줄이는 질문이 좋습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 비율을 제곱해 더하는 계산은 고등학교 확률에서 "두 번 뽑아 같은 색일 확률"과 같습니다. 지니는 "두 번 뽑아 다른 색일 확률"입니다.</p><dl class="ez-pieces"><div><dt>지니 = 1 − Σ (비율)²</dt><dd>한 칸에 섞인 정도. 한 종류뿐이면 0, 반반이면 0.5(가장 섞임)</dd></div><div><dt>질문 전 지니 − 질문 후 지니</dt><dd>그 질문으로 줄어든 섞임 = 질문의 가치</dd></div><div><dt>가장 많이 줄이는 질문</dt><dd>이 질문을 첫 질문으로 고름</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>10병 중 레드 8, 화이트 2 → 지니 = 1 − (0.8² + 0.2²) = 1 − 0.68 = <b>0.32</b>.<br>레드 5, 화이트 5 → 1 − 0.5 = <b>0.5</b>. 레드 10 → 1 − 1 = <b>0</b>.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>색이 다른 구슬이 섞인 상자를 칸막이 하나로 나눕니다. 칸막이를 어디에 꽂아야 양쪽 칸이 한 색에 가까워질까요? 한 색만 있으면 불순도 0, 반반이면 0.5입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>의사결정나무는 모든 특성과 기준값을 훑어, 분할 전 불순도 − 분할 후 가중 평균 불순도(정보 이득)가 가장 큰 질문을 고릅니다. 교안 그림의 루트 노드는 80개, 40 : 40이라 지니 0.5입니다.<sup>[1]</sup></p></div>
@@ -425,6 +449,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">3<small>가지</small></div><h2>나무의 깊이 — 스무고개를 몇 번까지</h2></div>
     <p class="sub"><span class="lvtag g">코드: DecisionTreeClassifier(max_depth = …)</span><span class="lvtag">가지치기(Pruning)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>질문을 끝없이 이어 가면 훈련 데이터의 와인 한 병 한 병까지 외워 버립니다. <b>질문 횟수(깊이)에 상한을 두거나 쓸모없는 가지를 잘라(가지치기)</b> 처음 보는 와인에도 통하는 규칙만 남깁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 스무고개를 100고개까지 허락하면 정답을 맞히지만, 다른 문제에는 쓸 수 없는 질문만 잔뜩 생깁니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 거듭제곱 2<sup>n</sup>입니다.</p><dl class="ez-pieces"><div><dt>깊이 d</dt><dd>위에서 아래까지 질문을 최대 몇 번 하나</dd></div><div><dt>최대 칸 수 = 2<sup>d</sup></dt><dd>질문 하나마다 갈래가 둘로 나뉨</dd></div><div><dt>max_depth</dt><dd>깊이 상한을 정하는 설정값</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>깊이 3 → 최대 2³ = <b>8칸</b>, 깊이 10 → 2¹⁰ = <b>1,024칸</b>. 와인이 300병이면 깊이 10에서는 칸마다 한두 병만 남아 외우기가 됩니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>스무고개에서 질문을 무한정 허락하면 결국 정답을 맞히지만, 그 질문 목록은 이번 문제에만 통합니다. 다른 사람이 다른 물건을 떠올리면 엉뚱한 길로 빠집니다.</p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>깊이가 깊을수록 훈련 데이터의 노이즈까지 외워 과적합됩니다. max_depth, min_samples_split으로 제한하거나 불필요한 노드를 잘라 내는 가지치기로 노드 수와 오차의 균형점을 찾습니다. 작은 데이터 변화에도 나무 모양이 크게 바뀔 수 있습니다.<sup>[1]</sup></p></div>
@@ -451,6 +476,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">4<small>재료</small></div><h2>특성공학 — PolynomialFeatures와 커지는 계수</h2></div>
     <p class="sub"><span class="lvtag g">코드: PolynomialFeatures(degree = …)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>농어 길이 하나만으로는 무게를 정확히 못 맞히니, 길이², 길이×높이처럼 <b>특성을 곱해서 새 특성을 만들어</b> 줍니다. 특성이 늘면 곡선 관계를 잡지만, 너무 늘면 계수가 엄청나게 커지면서 훈련 데이터를 외웁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 재료를 늘리면 요리가 다양해지지만, 재료가 손님 수보다 많아지면 손님 한 명 한 명 입맛에만 맞춘 요리가 됩니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 다항식 전개 (a + b)² = a² + 2ab + b²에서 나오는 항들이 새 특성입니다.</p><dl class="ez-pieces"><div><dt>degree(차수)</dt><dd>몇 제곱까지 만들지. 2면 a², ab, b²까지</dd></div><div><dt>특성 수</dt><dd>원래 특성 3개, degree 2 → 9개, degree 5 → 55개로 빠르게 증가</dd></div><div><dt>계수 폭발</dt><dd>특성이 데이터 수에 가까워지면 계수가 수만~수십만이 되어 작은 차이에도 예측이 크게 출렁임</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>특성 2개(길이 a, 높이 b), degree 2 → a, b, a², ab, b² = <b>5개</b>. 특성 3개, degree 2 → <b>9개</b>(a, b, c, a², b², c², ab, ac, bc).</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>요리사가 재료를 다듬듯, 길이와 너비를 곱해 면적을 만들고 세 치수를 곱해 부피를 만듭니다. 생선 무게는 부피를 따라가니 교차항이 중요한 뜻을 갖습니다. 하지만 냉장고 재료를 전부 넣는다고 맛있어지지는 않습니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>degree = 2면 원래 특성, 각 특성의 제곱, 서로 다른 특성의 곱이 모두 생깁니다. 특성 개수는 degree에 따라 빠르게 불어나, 특성 3개를 3차로 늘리면 19개, 5차면 55개입니다. 그러다 계수가 커지면 입력이 조금만 바뀌어도 예측이 크게 흔들립니다.<sup>[1]</sup></p></div>
@@ -478,6 +504,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">5<small>규제</small></div><h2>릿지와 라쏘 — 계수 다이어트와 특성 선택</h2></div>
     <p class="sub"><span class="lvtag g">비용 = 오차 + α × (계수 크기)</span><span class="lvtag">Ridge: L2(제곱) · Lasso: L1(절댓값)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>특성을 많이 만들면 계수가 폭발해 처음 보는 데이터에서 무너집니다. 특성을 다 버리면 곡선을 못 잡습니다. <b>특성은 두되 "계수는 작게 유지하라"는 벌점을 더하는 것</b>이 규제입니다. 벌점을 제곱으로 매기면 릿지, 절댓값으로 매기면 라쏘입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 릿지는 정해진 크기의 여행 가방에 모든 짐을 조금씩 눌러 담기, 라쏘는 중요하지 않은 짐을 아예 빼 버리기입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 절댓값과 제곱입니다. 둘 다 "부호와 상관없이 크기만 재는" 방법입니다.</p><dl class="ez-pieces"><div><dt>비용 = 오차 + α × 계수 크기</dt><dd>맞히는 것(오차)과 계수를 작게 하는 것(벌점)을 함께 고려</dd></div><div><dt>α(알파)</dt><dd>벌점의 무게. 0이면 규제 없음, 클수록 계수를 강하게 누름</dd></div><div><dt>릿지(L2) = Σ 계수²</dt><dd>모든 계수를 조금씩 줄임. 0이 되지는 않음</dd></div><div><dt>라쏘(L1) = Σ |계수|</dt><dd>쓸모없는 계수를 정확히 0으로 만듦 → 특성 선택</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>계수가 (3, −4)이면 릿지 벌점 = 9 + 16 = <b>25</b>, 라쏘 벌점 = 3 + 4 = <b>7</b>. α = 0.1이면 비용에 각각 2.5, 0.7이 더해집니다. 계수를 (3, 0)으로 줄이면 라쏘 벌점은 3으로 크게 줄어, 라쏘는 0을 만드는 쪽을 좋아합니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 양념 비유입니다. 릿지는 모든 양념을 조금씩 써서 조화로운 맛을, 라쏘는 핵심 양념 두세 개만 골라 깔끔한 맛을 냅니다. α는 양념 조절의 강도입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>릿지는 계수 제곱합에, 라쏘는 계수 절댓값 합에 벌점을 줍니다. 라쏘는 덜 중요한 계수를 정확히 0으로 만들어 특성을 고릅니다. α가 클수록 규제가 세지고, 최적 α는 교차 검증으로 찾습니다.<sup>[1]</sup></p></div>

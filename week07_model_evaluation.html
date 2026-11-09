@@ -281,6 +281,28 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -363,6 +385,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">1<small>함정</small></div><h2>혼동행렬 — 정확도 뒤에 숨은 네 칸</h2></div>
     <p class="sub"><span class="lvtag g">코드: confusion_matrix(y_test, y_pred)</span><span class="lvtag">데이터: 고객 2,000명(예시)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 100명 중 실제로 떠나는 사람이 5명뿐이면, "아무도 안 떠난다"고만 말해도 정확도 95%입니다. 정확도 하나로는 모델이 쓸모 있는지 알 수 없습니다. 그래서 <b>맞힌 것과 틀린 것을 종류별로 네 칸에 나눠 세는 표</b>가 혼동행렬입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 화재경보기를 평가할 때 "불이 났는데 울렸나 / 안 울렸나", "불이 없는데 울렸나 / 조용했나"를 따로 세는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><dl class="ez-pieces"><div><dt>TP(참 양성)</dt><dd>실제 이탈 → 이탈이라고 맞힘</dd></div><div><dt>FN(거짓 음성)</dt><dd>실제 이탈 → 놓침. 2종 오류</dd></div><div><dt>FP(거짓 양성)</dt><dd>실제 유지 → 이탈이라고 잘못 경보. 1종 오류</dd></div><div><dt>TN(참 음성)</dt><dd>실제 유지 → 유지라고 맞힘</dd></div><div><dt>정확도 = (TP + TN) ÷ 전체</dt><dd>네 칸 중 대각선(맞힌 칸)의 비율</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>100명: TP 6, FN 4, FP 9, TN 81 → 정확도 = (6 + 81) ÷ 100 = <b>87%</b>. 그런데 실제 이탈 10명 중 4명을 놓쳤습니다. 이 4명이 네 칸으로 나눠야 보이는 숫자입니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>100명 중 1명만 아픈 마을에서 "모두 건강합니다"라고만 말하는 의사는 99% 맞힙니다. 하지만 정작 아픈 1명은 놓칩니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>혼동행렬은 행에 실제, 열에 예측을 놓은 2×2 표입니다. TP(이탈을 이탈로), TN(유지를 유지로), FP(유지를 이탈로 — 1종 오류, 거짓 경보), FN(이탈을 유지로 — 2종 오류, 누락). 정확도 = (TP + TN) ÷ 전체.<sup>[1]</sup></p></div>
@@ -389,6 +412,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">2<small>기준</small></div><h2>정밀도와 재현율 — 임계값을 움직이면</h2></div>
     <p class="sub"><span class="lvtag g">정밀도 = TP ÷ (TP + FP) · 재현율 = TP ÷ (TP + FN)</span><span class="lvtag">일상: 공항 수하물 검사</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>이탈 고객을 잡으려고 쿠폰을 보낸다면, 두 가지가 궁금합니다. "쿠폰 받은 사람 중 진짜 떠날 사람은 몇 %인가"와 "떠날 사람 중 몇 %에게 쿠폰이 갔나". 앞의 것이 정밀도, 뒤의 것이 재현율입니다. <b>둘은 한쪽을 올리면 다른 쪽이 내려가서, 어디서 끊을지(임계값)를 업무 비용으로 정해야 합니다.</b></p><p class="ez-like"><b>쉽게 말하면</b> 공항 검색대를 엄격하게 하면 위험물은 다 잡지만(재현율↑) 멀쩡한 가방도 많이 열어 봅니다(정밀도↓).</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 분수의 분모만 바뀌는 계산입니다. 분자는 둘 다 TP입니다.</p><dl class="ez-pieces"><div><dt>정밀도 = TP ÷ (TP + FP)</dt><dd>"이탈"이라고 찍은 사람 중 맞힌 비율</dd></div><div><dt>재현율 = TP ÷ (TP + FN)</dt><dd>실제 이탈자 중 잡아낸 비율</dd></div><div><dt>임계값</dt><dd>확률이 몇 % 넘으면 "이탈"로 볼지 정하는 기준선. 낮추면 재현율↑ 정밀도↓</dd></div><div><dt>F1 = 2 × 정밀도 × 재현율 ÷ (정밀도 + 재현율)</dt><dd>둘 다 높아야 높아지는 평균(조화평균)</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>TP 6, FP 9, FN 4 → 정밀도 = 6 ÷ 15 = <b>0.40</b>, 재현율 = 6 ÷ 10 = <b>0.60</b>, F1 = 2 × 0.4 × 0.6 ÷ 1.0 = <b>0.48</b>.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 공항 검색대입니다. 수상한 물건을 모두 추가 검사하면 밀수품은 덜 놓치지만(재현율↑) 멀쩡한 짐도 많이 열어 민원이 늘고(정밀도↓), 검사를 느슨하게 하면 민원은 줄지만 위험물이 빠져나갑니다(재현율↓).<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>모델은 이탈 확률을 내고, 임계값 이상이면 "이탈"로 판정합니다. 임계값을 낮추면 재현율이 오르고 정밀도가 내려가는 상충관계가 생깁니다. F1은 둘의 조화평균이라 한쪽만 높으면 낮게 나옵니다.<sup>[1]</sup></p></div>
@@ -418,6 +442,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>ROC 곡선과 AUC — 모든 임계값을 한 장에</h2></div>
     <p class="sub"><span class="lvtag g">TPR = 재현율 · FPR = FP ÷ (FP + TN)</span><span class="lvtag">코드: roc_curve, roc_auc_score</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>임계값을 50%로 할지 30%로 할지에 따라 성적이 달라지니, 모델 두 개를 비교하기 어렵습니다. <b>모든 임계값의 성적을 한 장의 곡선(ROC)으로 그리고, 그 아래 넓이(AUC) 하나로 비교</b>하면 임계값과 상관없이 어느 모델이 나은지 알 수 있습니다.</p><p class="ez-like"><b>쉽게 말하면</b> 선수 두 명을 비교할 때 한 경기 점수보다 시즌 전체 기록을 보는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 좌표평면에 점을 찍고, 정사각형(넓이 1) 안에서 곡선 아래 넓이를 재는 것입니다.</p><dl class="ez-pieces"><div><dt>TPR = TP ÷ (TP + FN)</dt><dd>재현율과 같음. 세로축</dd></div><div><dt>FPR = FP ÷ (FP + TN)</dt><dd>실제 유지 고객 중 잘못 경보한 비율. 가로축</dd></div><div><dt>ROC 곡선</dt><dd>임계값을 100%에서 0%로 내리며 (FPR, TPR) 점을 이은 선</dd></div><div><dt>AUC</dt><dd>곡선 아래 넓이. 0.5 = 동전 던지기, 1.0 = 완벽</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>TP 6, FN 4, FP 9, TN 81 → TPR = 6 ÷ 10 = <b>0.6</b>, FPR = 9 ÷ 90 = <b>0.1</b>. 이 점 (0.1, 0.6)이 곡선 위의 한 점입니다. 왼쪽 위 모서리(0, 1)에 가까울수록 좋은 모델입니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 KNN 암 진단 예입니다. 이웃 10명 중 5명이 환자면 암으로 보는 관대한 기준과 7명은 돼야 암으로 보는 엄격한 기준. 기준을 낮추면 환자를 덜 놓치지만(TPR↑) 건강한 사람도 더 잘못 진단합니다(FPR↑).<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>임계값을 조금씩 바꾸며 얻은 (FPR, TPR) 점을 이은 것이 ROC 곡선입니다. 왼쪽 위에 붙을수록 좋고, 45도 대각선은 동전 던지기입니다. AUC는 곡선 아래 넓이로, 무작위로 뽑은 이탈 고객이 유지 고객보다 높은 점수를 받을 확률과 같습니다.<sup>[1]</sup></p></div>
@@ -446,6 +471,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">4<small>묶음</small></div><h2>앙상블 — 여럿이 투표하면 왜 나아지나</h2></div>
     <p class="sub"><span class="lvtag g">배깅 · 부스팅 · 스태킹 · 보팅</span><span class="lvtag">일상: 여러 전문가의 의견 모으기</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>모델 하나는 특정 실수를 반복합니다. 서로 다른 실수를 하는 모델 여러 개가 투표하면, 각자의 실수가 다수결에서 묻혀 전체가 더 정확해집니다. 이것이 <b>앙상블</b>입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 한 명의 의사보다 세 명의 의사가 따로 진단하고 다수 의견을 따르면 오진이 줄어듭니다. 단, 세 의사가 같은 책으로만 공부했다면 효과가 적습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 고등학교 확률의 「독립시행」(이항분포) 계산입니다.</p><dl class="ez-pieces"><div><dt>배깅</dt><dd>데이터를 다르게 뽑아 여러 모델을 따로 학습 → 투표(랜덤 포레스트)</dd></div><div><dt>부스팅</dt><dd>앞 모델이 틀린 문제에 집중해 다음 모델을 학습 → 차례로 보완</dd></div><div><dt>보팅</dt><dd>서로 다른 종류의 모델이 투표</dd></div><div><dt>조건</dt><dd>모델들의 실수가 서로 겹치지 않아야 효과가 큼</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>각자 70% 맞히는 모델 3개가 서로 독립적으로 투표하면, 2개 이상 맞힐 확률 = 0.7³ + 3 × 0.7² × 0.3 = 0.343 + 0.441 = <b>0.784</b> → 70%에서 78.4%로 오릅니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>중요한 결정은 여러 전문가에게 묻습니다. 단, 같은 배경의 사람만 모이면 같은 실수를 함께 합니다. 의견이 다양해야 서로의 실수가 상쇄됩니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>배깅은 복원 추출로 만든 여러 데이터셋에 모델을 하나씩 학습해 평균·다수결을 냅니다(랜덤 포레스트). 부스팅은 앞 모델이 틀린 곳을 다음 모델이 집중해 배웁니다(AdaBoost, XGBoost, LightGBM, CatBoost). 스태킹은 여러 모델의 예측을 메타 모델이 다시 종합합니다.<sup>[1]</sup></p></div>
@@ -479,6 +505,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">5<small>학습</small></div><h2>배치·에포크·학습률 — 얼마씩, 몇 번, 얼마나 크게</h2></div>
     <p class="sub"><span class="lvtag g">1에포크 = 훈련 데이터를 한 번 다 보기</span><span class="lvtag">일상: 교과서를 몇 쪽씩 읽고 노트 정리하기</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>모델은 정답을 한 번에 찾지 못하고, 틀린 만큼 숫자를 조금씩 고쳐 가며 배웁니다. 이때 <b>한 번에 얼마나 크게 고칠지(학습률), 몇 문제씩 보고 고칠지(배치), 전체를 몇 바퀴 볼지(에포크)</b>를 정해야 합니다.</p><p class="ez-like"><b>쉽게 말하면</b> 안개 낀 산에서 가장 낮은 골짜기로 내려가려면, 발밑 경사를 보고 한 걸음씩 내려갑니다. 보폭이 너무 작으면 해가 지고, 너무 크면 골짜기를 건너뛰어 반대편 산으로 올라갑니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 고등학교 미분에서 배우는 접선의 기울기를 따라 내려가는 것입니다. 기울기가 양수면 왼쪽, 음수면 오른쪽으로 갑니다.</p><dl class="ez-pieces"><div><dt>w ← w − η × 기울기</dt><dd>현재 위치(w)에서 내리막 방향으로 η만큼 이동. ←는 "바꿔 넣기"</dd></div><div><dt>η(에타, 학습률)</dt><dd>보폭. 보통 0.1, 0.01처럼 작은 수</dd></div><div><dt>배치</dt><dd>한 번 고치기 전에 보는 문제 수</dd></div><div><dt>에포크</dt><dd>훈련 데이터 전체를 한 바퀴 다 본 횟수</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>오차 = w²(w = 0일 때 가장 작음), 지금 w = 5, 기울기 = 2w = 10.<br>η = 0.1 → w = 5 − 1 = <b>4</b>(0에 가까워짐). η = 1.1 → w = 5 − 11 = <b>−6</b>(건너뛰어 더 멀어짐).</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>100쪽 교과서를 5쪽씩 읽고 정리하면 20번 정리(세밀하지만 가끔 엉뚱), 50쪽씩이면 2번 정리(안정적이지만 느림). 교과서 전체를 한 번 끝내는 것이 1에포크. 틀린 문제를 보고 풀이법을 너무 크게 고치면 다른 문제까지 틀리고, 너무 조금 고치면 같은 실수를 반복합니다(학습률).<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>풀 배치는 전체를 한 번에, 미니 배치는 섞어서 32·64개씩, SGD는 하나씩 넣어 조금씩 고칩니다. 1,000개를 100개씩 넣으면 10번의 갱신이 1에포크입니다. 학습률이 너무 크면 정답 주변을 헤매고, 너무 작으면 느립니다. 학습률 감쇠, Adam·RMSprop·AdaGrad 같은 방법이 이를 돕습니다.<sup>[1]</sup></p></div>

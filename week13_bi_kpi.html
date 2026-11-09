@@ -281,6 +281,28 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -474,6 +496,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">5<small>수익성</small></div><h2>CLV와 CAC — 한 고객의 일생과 데려온 값</h2></div>
     <p class="sub"><span class="lvtag g">CLV ≈ 연간 이익 × r ÷ (1 + i − r) + 연간 이익</span><span class="lvtag">건강한 기준: CLV : CAC ≥ 3 : 1</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 한 명을 데려오는 데 10만 원이 들었다면, 그 고객이 앞으로 그 이상을 벌어 줘야 합니다. 그런데 고객은 해마다 일부가 떠나고, 미래의 돈은 지금 돈보다 가치가 낮습니다. <b>이 둘을 반영해 한 고객이 일생 동안 남길 이익을 지금 돈으로 환산한 값</b>이 CLV입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 정기 구독자 한 명의 가치는 "1년 이익 × 앞으로 몇 년 더 남을지"인데, 내년 돈은 이자만큼 깎아서 셉니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 고등학교 등비급수(무한히 이어지는 r배씩 줄어드는 합) a ÷ (1 − 공비)를 쓴 식입니다. 공비가 r ÷ (1 + i)입니다.</p><dl class="ez-pieces"><div><dt>연간 이익 m</dt><dd>고객 한 명이 1년에 남기는 이익</dd></div><div><dt>유지율 r</dt><dd>내년에도 남아 있을 확률(예: 0.8)</dd></div><div><dt>할인율 i</dt><dd>미래 돈을 지금 가치로 깎는 비율(이 페이지 10%)</dd></div><div><dt>CLV ≈ m + m·r ÷ (1 + i − r)</dt><dd>올해 이익 + 내년부터 끝없이 이어지는 이익의 합</dd></div><div><dt>CLV : CAC ≥ 3 : 1</dt><dd>데려온 비용의 3배 이상을 벌면 건강</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>m = 10만 원, r = 0.8, i = 0.1 → 10 + 10 × 0.8 ÷ (1.1 − 0.8) = 10 + 8 ÷ 0.3 ≈ 10 + 26.7 = <b>36.7만 원</b>. CAC가 10만 원이면 3.7 : 1 → 건강.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 비유입니다. AOV는 음식점의 1인당 평균 주문 금액, CLV는 단골손님이 평생 쓰는 총 금액, ROAS는 광고에 쓴 돈 대비 번 돈입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">BI에서는</div><p>CLV는 한 고객이 관계 기간 동안 창출하는 총 수익, CAC는 그 고객 한 명을 데려오는 비용입니다. CLV 대비 CAC가 3 : 1 이상이면 지속 가능한 성장 모델로 봅니다. 7주차의 "유지가 획득보다 5~25배 싸다"는 원칙과 이어집니다.<sup>[1]</sup></p></div>

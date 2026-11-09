@@ -281,6 +281,28 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -438,6 +460,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">3<small>정제</small></div><h2>이상값 — 오류일까, VIP일까</h2></div>
     <p class="sub"><span class="lvtag g">방법: IQR · Z-score · 수정 Z-score</span><span class="lvtag">데이터: 고객 120명 1회 구매액</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 120명의 1회 구매액 중 몇 명만 금액이 유난히 큽니다. 입력 실수일 수도, 진짜 VIP일 수도 있습니다. 눈으로 "튀어 보인다"고 하면 사람마다 기준이 달라서, <b>모두가 같은 결론을 내는 숫자 기준</b>이 필요합니다.</p><p class="ez-like"><b>쉽게 말하면</b> 반 평균이 70점인 시험에서 100점은 "얼마나 튀는가"를 재려면, 점수 차이(30점)를 그 반의 보통 들쭉날쭉함(표준편차)으로 나눠 봅니다. 그 몫이 Z점수입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 「자료의 정리」에서 배운 평균·사분위수, 고등학교 「통계」의 표준화와 같은 계산입니다.</p><dl class="ez-pieces"><div><dt>Z = (x − 평균) ÷ 표준편차</dt><dd>평균에서 몇 걸음 떨어졌는지. 한 걸음 = 표준편차 1개</dd></div><div><dt>|Z| > 3</dt><dd>세 걸음 넘게 떨어지면 이상값 후보. 정규분포라면 1,000명 중 3명 정도만 그렇게 멉니다</dd></div><div><dt>IQR = Q3 − Q1</dt><dd>가운데 50% 사람들이 퍼진 폭. Q1은 하위 25%, Q3은 상위 25% 경계</dd></div><div><dt>Q1 − 1.5·IQR, Q3 + 1.5·IQR</dt><dd>이 울타리 밖이면 이상값 후보(상자그림의 수염 끝)</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>평균 50만 원, 표준편차 10만 원일 때 구매액 85만 원 → Z = (85 − 50) ÷ 10 = 3.5 → 이상값 후보.<br>Q1 = 20, Q3 = 40(만 원)이면 IQR = 20 → 울타리 20 − 30 = −10 ~ 40 + 30 = 70 → 150만 원은 울타리 밖.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>구매액 목록에 999만 9,999원과 −5만 원이 있습니다. 입력 실수입니다. 120만 원짜리 구매 세 건도 있습니다. 이건 진짜 VIP 고객일 수 있습니다. 둘을 똑같이 지우면 중요한 고객을 잃습니다.</p></div>
     <div><div class="tag nn">통계로는</div><p>통계적 방법(Z-score, IQR, 수정 Z-score)으로 후보를 찾고, 처리(제거·변환·캡핑·별도 분석)는 도메인 지식으로 정합니다. 교안은 이상값 자체가 중요한 의미를 가지면 별도로 분석하라고 합니다.<sup>[1]</sup></p></div>

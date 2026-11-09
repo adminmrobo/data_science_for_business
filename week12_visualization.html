@@ -281,6 +281,28 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -390,6 +412,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">2<small>흩어짐</small></div><h2>분산 · 표준편차 · 변동계수 — 단위를 바꾸면 무엇이 바뀌나</h2></div>
     <p class="sub"><span class="lvtag g">CV = 표준편차 ÷ 평균</span><span class="lvtag">교안 예: A 50,000 ± 10,000달러 · B 80,000 ± 15,000달러</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>평균이 같아도 한 회사는 연봉이 고르고 다른 회사는 들쭉날쭉할 수 있습니다. <b>흩어진 정도를 숫자로 재는 것</b>이 분산·표준편차입니다. 그런데 평균 규모가 다른 두 집단은 표준편차로 비교하면 안 되고, 평균으로 나눈 변동계수로 비교합니다.</p><p class="ez-like"><b>쉽게 말하면</b> 키 차이 10cm는 어른에게는 작지만 아기에게는 큽니다. 크기에 비해 얼마나 흩어졌는지를 봐야 합니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 고등학교 「확률과 통계」의 분산·표준편차 정의와 같습니다.</p><dl class="ez-pieces"><div><dt>분산 = 평균((값 − 평균)²)</dt><dd>평균에서 떨어진 거리를 제곱해 평균(이 페이지는 n으로 나눔)</dd></div><div><dt>표준편차 = √분산</dt><dd>단위를 원래대로</dd></div><div><dt>CV = 표준편차 ÷ 평균</dt><dd>평균 대비 흩어짐. 단위가 없어 서로 다른 집단 비교 가능</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>값 2, 4, 6 → 평균 4 → 분산 = (4 + 0 + 4) ÷ 3 ≈ <b>2.67</b>, 표준편차 ≈ <b>1.63</b>.<br>A: 10,000 ÷ 50,000 = <b>0.20</b>, B: 15,000 ÷ 80,000 = 0.1875 ≈ <b>0.19</b> → 표준편차는 B가 크지만 상대적으로는 A가 더 들쭉날쭉.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>A 회사는 연봉이 평균 5만 달러에서 ±1만, B 회사는 8만에서 ±1.5만. B의 흩어짐이 더 커 보이지만, 연봉 수준 자체가 다릅니다. "자기 평균에 비해" 얼마나 흩어졌는지 봐야 공정합니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">통계로 보면</div><p>분산은 (값 − 평균)²의 평균이라 단위가 제곱이 되어 읽기 어렵습니다. 표준편차는 그 제곱근이라 원래 단위입니다. 변동계수(CV)는 표준편차를 평균으로 나눠 단위·규모와 무관하게 상대적 변동성을 비교합니다.<sup>[1]</sup></p></div>
@@ -415,6 +438,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">3<small>기울기</small></div><h2>왜도와 첨도 — 신용카드 결제액의 긴 꼬리</h2></div>
     <p class="sub"><span class="lvtag g">왜도 = (1/n)Σ(x − μ)³ ÷ σ³ · 첨도 = (1/n)Σ(x − μ)⁴ ÷ σ⁴</span><span class="lvtag">정규분포의 첨도 = 3</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>카드 결제액은 대부분 소액이고 가끔 아주 큰 결제가 있습니다. 평균과 표준편차만으로는 이런 <b>한쪽으로 긴 꼬리</b>가 보이지 않습니다. 기울어진 방향과 꼬리의 두께를 숫자로 잰 것이 왜도와 첨도입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 반 시험에서 대부분 70점대인데 몇 명이 100점이면 오른쪽으로 꼬리가 깁니다(양의 왜도).</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 짝수 제곱은 부호를 없애고 홀수 제곱은 부호를 남긴다는 중학교 거듭제곱 성질을 쓴 것입니다.</p><dl class="ez-pieces"><div><dt>왜도 = 평균((x − 평균)³) ÷ 표준편차³</dt><dd>세제곱이라 부호가 남음. 오른쪽 꼬리가 길면 +, 왼쪽이면 −</dd></div><div><dt>첨도 = 평균((x − 평균)⁴) ÷ 표준편차⁴</dt><dd>네제곱이라 아주 먼 값에 민감. 정규분포 = 3</dd></div><div><dt>로그 변환</dt><dd>큰 값을 많이 줄이고 작은 값은 조금 줄여 꼬리를 접음</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>값 1, 2, 3, 10 → 평균 4 → 편차 −3, −2, −1, 6 → 세제곱 −27, −8, −1, 216 → 합 <b>180 &gt; 0</b> → 오른쪽 꼬리(양의 왜도). 10 하나가 다른 셋을 압도합니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>대부분의 카드 결제는 커피·점심 같은 소액이지만, 가끔 가전제품이나 항공권 같은 큰 결제가 있습니다. 히스토그램의 오른쪽 꼬리가 길게 늘어지고, 평균이 중앙값보다 오른쪽으로 끌려갑니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">통계로 보면</div><p>양(+)의 왜도면 평균 &gt; 중앙값, 음(−)의 왜도면 평균 &lt; 중앙값입니다. 첨도가 3보다 크면 가운데가 뾰족하면서 극단값도 많은, 금융 리스크 관리에서 주의할 분포입니다. 로그 변환은 오른쪽 꼬리를 접어 편향을 낮춥니다.<sup>[1]</sup></p></div>
@@ -443,6 +467,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">4<small>함께</small></div><h2>공분산과 상관계수 — 단위에 흔들리지 않는 관계의 세기</h2></div>
     <p class="sub"><span class="lvtag g">r = Cov(X, Y) ÷ (σₓσᵧ)</span><span class="lvtag">|r| ≥ 0.7 강함 · 0.3~0.7 중간 · &lt; 0.3 약함</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>광고비가 늘면 매출도 느는지, 얼마나 강하게 함께 움직이는지 알고 싶습니다. 공분산은 함께 움직이는 방향은 알려 주지만 단위(원 × 개)에 따라 크기가 바뀝니다. <b>공분산을 두 표준편차로 나눠 −1~1 사이로 맞춘 것</b>이 상관계수 r입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 두 사람이 같이 걷는지 보려면, 한 사람이 앞으로 갈 때 다른 사람도 앞으로 가는지를 봅니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 산점도의 점들이 일차함수 직선에 얼마나 가깝게 모여 있는지를 재는 수입니다.</p><dl class="ez-pieces"><div><dt>Cov = 평균((x − x평균)(y − y평균))</dt><dd>둘 다 평균보다 크거나 둘 다 작으면 +, 엇갈리면 −</dd></div><div><dt>r = Cov ÷ (σₓ · σᵧ)</dt><dd>−1(완전 반대) ~ 0(관계 없음) ~ 1(완전 함께)</dd></div><div><dt>|r| ≥ 0.7</dt><dd>강한 관계. 단, 원인이라는 뜻은 아님(1주차)</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>광고비 1, 2, 3 · 매출 2, 4, 6 → 평균 2, 4 → Cov = ((−1)(−2) + 0 + (1)(2)) ÷ 3 ≈ 1.33, σₓ ≈ 0.816, σᵧ ≈ 1.633 → r = 1.33 ÷ 1.33 = <b>1</b>(정확히 한 직선 위).</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>춤추는 두 사람처럼, 한 사람이 움직일 때 다른 사람이 얼마나 맞춰 움직이는지. 교안의 "앱 사용 빈도와 거래금액" 예입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">통계로 보면</div><p>공분산은 방향은 알려 주지만 단위에 따라 크기가 달라집니다(원 단위면 수백만, 억 원 단위면 수십). 상관계수는 공분산을 두 표준편차로 나눠 −1~+1로 표준화하므로 어떤 단위로 재도 같습니다. 단, 극단값 하나가 상관계수를 크게 왜곡할 수 있습니다.<sup>[1]</sup></p></div>

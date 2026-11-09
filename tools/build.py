@@ -14,6 +14,7 @@ VERSION = '1.1'
 sys.path.insert(0, HERE)
 from abbr import ABBR
 from plain import PLAIN
+from easy import EASY
 
 def load(n):
     spec = importlib.util.spec_from_file_location('w' + n, os.path.join(HERE, 'pages', 'w%s.py' % n))
@@ -157,6 +158,29 @@ def plain_box(n, body):
             '<div><dt>무엇을</dt><dd>%s</dd></div><div><dt>왜 중요한가</dt><dd>%s</dd></div><div><dt>업무에서는</dt><dd>%s</dd></div></dl>%s%s'
             '</div></div></section>\n') % (html.escape(what), html.escape(why), html.escape(work), codeline, det)
 
+MODEL_LV = {('04', 'lv2'), ('05', 'lv4'), ('06', 'lv3'), ('07', 'lv4'), ('09', 'lv1'), ('09', 'lv2'), ('09', 'lv3'),
+            ('10', 'lv1'), ('10', 'lv2'), ('10', 'lv3'), ('10', 'lv5'), ('11', 'lv2'), ('11', 'lv5'), ('14', 'lv1'), ('14', 'lv5')}
+
+def easy_box(n, lv):
+    e = EASY[(n, lv)]
+    title = '왜 이 모델을 쓰나' if (n, lv) in MODEL_LV else '왜 이 방법을 쓰나'
+    school = ('<p class="ez-school"><b>학교 수학으로 보면</b> %s</p>' % e['school']) if e['school'] else ''
+    pieces = ''.join('<div><dt>%s</dt><dd>%s</dd></div>' % (a, b) for a, b in e['pieces'])
+    return ('<div class="easy" aria-label="쉽게 풀어 보기">'
+            '<div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>%s</h3><p>%s</p><p class="ez-like"><b>쉽게 말하면</b> %s</p></div>'
+            '<div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3>%s<dl class="ez-pieces">%s</dl>'
+            '<div class="ez-try"><b>숫자로 한 번 해 보기</b><p>%s</p></div></div></div>\n  ') % (title, e['why'], e['like'], school, pieces, e['tryit'])
+
+def add_easy(n, body):
+    for (wk, lv) in EASY:
+        if wk != n:
+            continue
+        i = body.find('<section class="level" id="%s">' % lv)
+        j = body.find('<div class="pair">', i)
+        assert i >= 0 and j > i, (n, lv)
+        body = body[:j] + easy_box(n, lv) + body[j:]
+    return body
+
 def page(n):
     m = load(n)
     slug = m.SLUG
@@ -224,6 +248,7 @@ def page(n):
                '<script>\n(function(){\n"use strict";\nvar GL=' + jdump(gl_js) + ';\nvar CORE=' + jdump(m.CORE) + ';\nvar QZ=' + jdump({k: [{kk: vv for kk, vv in it.items() if kk != 'assess'} for it in v] for k, v in m.QZ.items()}) + ';\n'
                + pjs + '\nLAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:' + jdump(m.KGPATH) + '});\n})();\n</script>\n</body>\n</html>\n')
     body = body.replace('</header>', '</header>\n' + plain_box(n, body), 1)
+    body = add_easy(n, body)
     out = head + NAVTPL.format(links=links) + '\n' + cover + body + '\n' + KG_SECTION.replace('{ph}', m.SEARCH_PH) + foot + scripts
     p = os.path.join(REPO, fname)
     open(p, 'w', encoding='utf-8').write(out)

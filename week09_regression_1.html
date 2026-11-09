@@ -281,6 +281,28 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -363,6 +385,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">1<small>이웃</small></div><h2>KNN 회귀 — 이웃 K마리의 평균 무게</h2></div>
     <p class="sub"><span class="lvtag g">코드: KNeighborsRegressor() · 기본 K = 5</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>이번에는 종류가 아니라 <b>숫자(무게)</b>를 맞혀야 합니다. 분류에서 쓰던 KNN을 그대로 쓰되, 다수결 대신 이웃들의 무게를 평균 냅니다. 가장 쉬운 회귀 모델이라 출발점으로 씁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 중고차 값을 매길 때 연식·주행거리가 비슷한 차 5대의 시세를 평균 내는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><dl class="ez-pieces"><div><dt>예측값 = 이웃 K마리 무게의 평균</dt><dd>분류의 다수결 → 회귀의 평균</dd></div><div><dt>한계</dt><dd>훈련 데이터에 없는 큰 농어는 가장 큰 이웃들의 평균에 머무름(범위 밖 예측 불가)</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>가까운 농어 5마리 무게 100, 120, 130, 110, 140g → 예측 = 600 ÷ 5 = <b>120g</b>.<br>50cm 농어도 100cm 농어도 가장 큰 이웃 5마리가 같으면 같은 무게로 예측합니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>처음 보는 생선의 무게를 짐작할 때, 길이가 비슷한 생선 다섯 마리의 무게를 떠올려 평균을 냅니다. 생선 가게 주인의 눈대중과 같습니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>KNN 분류는 이웃의 다수결, KNN 회귀는 이웃 값의 평균입니다. K가 작으면 지역 패턴과 노이즈에 민감하고, 크면 전체 추세만 따라갑니다. 학습 데이터는 (42,) 1차원 배열이라 reshape(−1, 1)로 (42, 1) 2차원으로 바꿔 넣습니다.<sup>[1]</sup></p></div>
@@ -391,6 +414,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">2<small>직선</small></div><h2>선형 회귀 — 오차 제곱의 합이 가장 작은 직선</h2></div>
     <p class="sub"><span class="lvtag g">최소제곱법: Σ(실제 − 예측)²을 최소로</span><span class="lvtag">코드: LinearRegression()</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>KNN은 훈련 데이터 범위 밖의 큰 농어를 맞히지 못합니다. <b>길이와 무게 사이의 관계를 직선 하나로 요약</b>하면, 범위 밖의 길이도 식에 넣어 예측할 수 있습니다. 그 직선을 데이터에 가장 잘 맞게 긋는 방법이 최소제곱법입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 키와 몸무게 그래프에 점을 찍고, 점들 한가운데를 지나도록 자를 대고 선을 긋는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 일차함수 y = ax + b입니다. 차이는 a, b를 문제에서 주지 않고 점들을 보고 찾는다는 것뿐입니다.</p><dl class="ez-pieces"><div><dt>ŷ = a·x + b</dt><dd>예측 무게 = 기울기 × 길이 + 절편. ŷ(와이햇)은 "예측값"</dd></div><div><dt>a(기울기)</dt><dd>길이가 1cm 늘 때 무게가 몇 g 느는지</dd></div><div><dt>오차 = 실제 − 예측</dt><dd>점과 직선 사이의 세로 거리</dd></div><div><dt>Σ(실제 − 예측)²을 가장 작게</dt><dd>Σ는 "모두 더하기". 오차를 제곱해(음수 없애기) 다 더한 값이 가장 작은 a, b를 고름</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>직선 ŷ = 30x − 500. 길이 20cm, 실제 110g → 예측 100, 오차 10. 길이 30cm, 실제 380g → 예측 400, 오차 −20. 오차 제곱합 = 100 + 400 = <b>500</b>. 다른 직선으로 바꿔 이 값이 더 작아지면 그 직선이 더 좋은 직선입니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>요리 레시피처럼 "재료 A를 1 늘리면 결과가 β만큼 는다"고 읽을 수 있는 식입니다. 대신 줄다리기에서 한 명이 극단적으로 당기면 균형이 깨지듯, 튀는 점 하나가 직선을 크게 끌어당깁니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>Y = β₀ + β₁X₁ + … + βₙXₙ + ε. 최소제곱법은 실제 값과 예측 값의 세로 거리(잔차)를 제곱해 더한 값이 가장 작은 β를 찾습니다. 독립변수가 하나면 단순선형회귀, 여럿이면 다중선형회귀입니다.<sup>[1]</sup></p></div>
@@ -420,6 +444,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>비선형(다항) 회귀 — 길이² 열을 하나 더</h2></div>
     <p class="sub"><span class="lvtag g">코드: np.column_stack((train_input ** 2, train_input))</span><span class="lvtag">일상: 구불구불한 산길</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>농어는 길이가 길어질수록 무게가 가파르게 늡니다(길이가 2배면 무게는 대략 8배). 직선은 이 휘어짐을 따라가지 못해, 작은 농어 무게를 음수로 예측하기도 합니다. <b>길이²라는 열을 하나 더 만들어 주면, 같은 방법으로 곡선을 그을 수 있습니다.</b></p><p class="ez-like"><b>쉽게 말하면</b> 곧은 자로는 굽은 산길을 잴 수 없어서, 휘는 자(곡선자)를 쓰는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 3학년 이차함수 y = ax² + bx + c의 포물선입니다.</p><dl class="ez-pieces"><div><dt>ŷ = a·x² + b·x + c</dt><dd>이차함수. 길이²(x²) 항이 곡선을 만듦</dd></div><div><dt>길이² 열</dt><dd>원래 길이 열을 제곱해 만든 새 특성. 모델은 여전히 "곱하고 더하기"만 함</dd></div><div><dt>다항 회귀</dt><dd>특성을 제곱·세제곱으로 늘린 선형 회귀</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>ŷ = x² − 20x + 100에 길이 25 → 625 − 500 + 100 = <b>225g</b>, 길이 40 → 1,600 − 800 + 100 = <b>900g</b>. 길이는 1.6배인데 무게는 4배 — 직선으로는 나올 수 없는 휘어짐입니다(예시 식).</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>고속도로는 직선이면 되지만 산길은 굽이를 따라가야 합니다. 그런데 곡선자를 너무 휘게 쓰면 교과서 문제만 외운 학생처럼, 훈련 데이터에는 딱 맞고 새 문제에서는 엉뚱한 답을 냅니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>다항 회귀는 x², x³ 같은 항을 새 열로 더해 여전히 LinearRegression으로 풉니다. 2차 곡선은 농어 무게를 잘 따라갑니다. 지수 회귀(Y = a·e^(bX)), 로그 회귀(Y = a + b·log X)도 비선형 회귀의 한 형태입니다.<sup>[1]</sup></p></div>
@@ -449,6 +474,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">4<small>과녁</small></div><h2>MSE · RMSE · MAE — 빗나간 거리를 재는 세 자</h2></div>
     <p class="sub"><span class="lvtag g">MSE = 평균(오차²) · RMSE = √MSE · MAE = 평균|오차|</span><span class="lvtag">일상: 양궁 점수</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>예측이 얼마나 빗나갔는지 하나의 숫자로 말해야 모델끼리 비교할 수 있습니다. 그런데 오차를 그냥 더하면 +10과 −10이 지워져 0이 됩니다. 그래서 <b>부호를 없애는 세 가지 방법</b>(절댓값, 제곱, 제곱 후 제곱근)을 씁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 양궁에서 화살이 과녁 중심에서 얼마나 벗어났는지 재는 자가 세 종류 있는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 절댓값, 제곱근과 평균 계산입니다.</p><dl class="ez-pieces"><div><dt>MAE = 평균 |오차|</dt><dd>절댓값의 평균. "평균 몇 g 빗나갔나"를 그대로 말함</dd></div><div><dt>MSE = 평균(오차²)</dt><dd>제곱의 평균. 큰 오차를 더 무겁게 벌줌. 단위가 g²</dd></div><div><dt>RMSE = √MSE</dt><dd>단위를 다시 g으로 돌려놓은 값</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>오차 3, −4(g) → MAE = (3 + 4) ÷ 2 = <b>3.5</b>, MSE = (9 + 16) ÷ 2 = <b>12.5</b>, RMSE = √12.5 ≈ <b>3.54</b>. RMSE가 MAE보다 큰 것은 큰 오차(−4)에 무게를 더 줬기 때문입니다.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>왼쪽으로 3 빗나간 화살과 오른쪽으로 3 빗나간 화살을 그냥 더하면 0이 됩니다. 방향을 지우고 거리만 남겨야 합니다. 제곱하거나 절댓값을 씌웁니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>MSE는 큰 오차를 더 크게 벌해 이상치에 민감합니다. RMSE는 MSE의 제곱근이라 원래 단위(g)로 읽힙니다. MAE는 모든 오차를 같은 무게로 다뤄 이상치에 덜 민감합니다. 셋 다 0에 가까울수록 좋습니다.<sup>[1]</sup></p></div>
@@ -477,6 +503,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="hexrow"><div class="hexno">5<small>설명력</small></div><h2>R²와 수정 R² — 전체 변동 중 얼마를 설명했나</h2></div>
     <p class="sub"><span class="lvtag g">R² = SSR ÷ SST = 1 − SSE ÷ SST</span><span class="lvtag">Adj. R² = 1 − (1 − R²)(n − 1) ÷ (n − k − 1)</span></p>
   </div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>MAE·RMSE는 단위(g)가 있어서, 농어 모델과 주택 가격 모델을 비교할 수 없습니다. <b>"전체 들쭉날쭉함 중 몇 %를 모델이 설명했나"</b>를 0~1 사이 비율로 나타낸 것이 R²입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 반 학생 키가 들쭉날쭉한 이유를 "부모 키"로 80% 설명할 수 있다면 R² = 0.8입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>중·고등학생 눈높이로 한 조각씩</h3><dl class="ez-pieces"><div><dt>SST</dt><dd>평균만 말할 때의 오차 제곱합 = 전체 들쭉날쭉함</dd></div><div><dt>SSE</dt><dd>모델을 쓰고도 남은 오차 제곱합</dd></div><div><dt>R² = 1 − SSE ÷ SST</dt><dd>모델이 줄여 준 비율. 1이면 완벽, 0이면 평균만 말한 것과 같음, 음수면 평균보다 못함</dd></div><div><dt>수정 R²</dt><dd>특성 개수(k)가 많을수록 깎아서, 쓸데없는 특성을 넣어 R²만 부풀리는 것을 막음</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>SST = 100, SSE = 20 → R² = 1 − 0.2 = <b>0.8</b>.<br>데이터 n = 11개, 특성 k = 1개 → 수정 R² = 1 − 0.2 × 10 ÷ 9 ≈ <b>0.78</b>.</p></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>1,000조각 퍼즐 중 950조각을 맞췄으면 95%. 그런데 남는 조각을 억지로 끼워 넣으면 겉보기 완성도는 오르지만 그림은 틀어집니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>SST(실제 값이 평균에서 흩어진 정도) = SSR(모델이 평균에서 움직인 몫) + SSE(남은 오차). R²는 설명한 비율입니다. 변수를 더하면 R²는 줄지 않으므로, 변수 개수 k에 벌점을 주는 수정 R²로 비교합니다.<sup>[1]</sup></p></div>
