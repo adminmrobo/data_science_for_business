@@ -307,6 +307,11 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-say.ez-c{margin:10px 0 0}
 .ez-say .who{width:44px;height:44px}
 .ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -473,17 +478,17 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>분할</small></div><h2>데이터 분할 — 순서대로, 무작위로, 층화로</h2></div>
-    <p class="sub"><span class="lvtag g">코드: train_test_split(..., stratify=fish_target, random_state=42)</span><span class="lvtag">데이터: 도미 35 · 빙어 14</span></p>
+    <p class="sub"><span class="lvtag g">방법: 섞어서 나누되 도미·빙어 비율은 그대로(층화)</span><span class="lvtag">데이터: 도미 35 · 빙어 14</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>시약장 앞쪽 35병으로 실험을 익히고, 뒤쪽 14병으로 시험을 봤는데, 앞쪽엔 산성만, 뒤쪽엔 염기만 있었다면? 실험을 익힌 적 없는 종류로 시험을 본 셈입니다.</p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>데이터가 종류별로 정렬돼 있을 때 순서대로 자르면 훈련에는 도미만, 시험에는 빙어만 들어가 정확도 0%가 됩니다. 무작위 샘플링으로 섞고, stratify로 클래스 비율을 원본과 같게 맞춥니다. random_state는 같은 분할을 다시 만들게 해 줍니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>데이터가 종류별로 정렬돼 있을 때 순서대로 자르면 훈련에는 도미만, 시험에는 빙어만 들어가 정확도 0%가 됩니다. 그래서 먼저 카드처럼 골고루 섞고(무작위), 도미와 빙어의 비율이 공부용과 시험용에 똑같이 들어가게 나눕니다(층화). 섞는 순서에 번호(교안은 42)를 붙여 두면 다음에도 똑같이 나눌 수 있습니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="데이터 분할 실험">
     <h3>49마리를 훈련 36 · 시험 13으로 나누기</h3>
     <div class="ctrl">
       <div class="group" id="spBtns" role="group" aria-label="분할 방법"><span class="glabel">분할</span></div>
-      <div class="group"><label class="glabel" for="seed">random_state</label><input type="range" id="seed" min="1" max="60" step="1" value="42"><span class="val" id="seedv">42</span></div>
+      <div class="group"><label class="glabel" for="seed">섞는 순서 번호</label><input type="range" id="seed" min="1" max="60" step="1" value="42"><span class="val" id="seedv">42</span></div>
     </div>
     <div class="cwrap"><canvas id="c4" class="wide" aria-label="49마리를 한 줄로 늘어놓고 훈련(위)과 시험(아래)으로 나눈 모습과 클래스 비율 막대"></canvas></div>
     <section class="kpis k4" id="k4k"></section>
@@ -492,9 +497,10 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </section>
   <div class="explain"><h4>풀이</h4><ol>
     <li><b>순서대로</b>: 앞 36마리 = 도미 35 + 빙어 1. 시험 13마리 = 모두 빙어. 교안 그림처럼 거의 도미만 배운 모델이 빙어를 도미로 판정합니다.<sup>[1]</sup></li>
-    <li><b>무작위</b>: 섞어서 자르면 두 종류가 다 들어가지만, random_state에 따라 시험의 빙어 비율이 흔들립니다. 슬라이더로 바꿔 보세요.</li>
-    <li><b>층화(stratify)</b>: 원본 비율(빙어 약 29%)을 훈련과 시험 모두에서 지킵니다. 교안은 이 분할로 KNN·SVM 모두 시험 정확도 100%를 얻었습니다.<sup>[1]</sup></li>
+    <li><b>무작위</b>: 섞어서 자르면 두 종류가 다 들어가지만, 섞는 순서 번호에 따라 시험의 빙어 비율이 흔들립니다. 슬라이더로 바꿔 보세요.</li>
+    <li><b>층화</b>: 원본 비율(빙어 약 29%)을 훈련과 시험 모두에서 지킵니다. 교안은 이 분할로 KNN·SVM 모두 시험 정확도 100%를 얻었습니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 분할을 바로잡아도 5주차의 25cm·150g 생선은 여전히 빙어로 판정됩니다. 문제는 분할이 아니라 눈금에 있습니다. → ⑤칸</p></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>train_test_split(fish_data, fish_target, ...)</code></dt><dd>데이터를 공부용과 시험용으로 나누기</dd></div><div><dt><code>stratify=fish_target</code></dt><dd>도미·빙어 비율을 양쪽에 똑같이(층화)</dd></div><div><dt><code>random_state=42</code></dt><dd>섞는 순서 번호. 같은 번호면 언제나 같은 분할</dd></div></dl></details>
   <div class="quiz" data-quiz="lv4"></div>
 </div></section>
 
@@ -565,7 +571,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>다중 클래스 KNN(농어 추가), K값에 따른 정확도 변화, SVM(결정 경계·서포트 벡터·커널·C·gamma).</p></div>
-    <div><b>교안 정리 2</b><p>순서대로 분할하면 0% 정확도. 무작위 샘플링, train_test_split의 stratify·random_state.</p></div>
+    <div><b>교안 정리 2</b><p>순서대로 분할하면 0% 정확도. 골고루 섞어 나누고(무작위), 종류 비율을 맞추고(층화), 섞는 순서 번호를 고정한다.</p></div>
     <div><b>교안 정리 3</b><p>New Fish(25cm, 150g)가 빙어로 잘못 예측 → Z-점수 표준화 후 도미로 바르게 예측, KNN·SVM 모두 100%. 표준화와 특성 선택.</p></div>
   </div>
 </div></section>

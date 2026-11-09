@@ -63,7 +63,7 @@
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>함정</small></div><h2>혼동행렬 — 정확도 뒤에 숨은 네 칸</h2></div>
-    <p class="sub"><span class="lvtag g">코드: confusion_matrix(y_test, y_pred)</span><span class="lvtag">데이터: 고객 2,000명(예시)</span></p>
+    <p class="sub"><span class="lvtag g">표: 실제(가로줄) × 모델 판정(세로칸) 네 칸</span><span class="lvtag">데이터: 고객 2,000명(예시)</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>100명 중 1명만 아픈 마을에서 "모두 건강합니다"라고만 말하는 의사는 99% 맞힙니다. 하지만 정작 아픈 1명은 놓칩니다.<sup>[1]</sup></p></div>
@@ -82,6 +82,7 @@
     <li>FN이 많으면 그 클래스를 놓치는 경향, FP가 많으면 그 클래스로 과하게 분류하는 경향입니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 정확도가 소용없다는 건 알았지만, 대신 무엇을 볼지는 아직 없습니다. → ②칸 정밀도·재현율</p></div>
   <div class="note"><b>교안에서 바꾼 곳</b>: 교안 5쪽의 "TN을 1종 오류 또는 거짓 경보라고도 하는데…"를 이 페이지에서는 <b>"FP를 1종 오류 또는 거짓 경보라고도 하는데…"</b>로 바꿉니다. 1종 오류(거짓 경보)는 실제로는 음성인데 양성이라고 잘못 판단한 경우, 곧 FP입니다.</div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>confusion_matrix(y_test, y_pred)</code></dt><dd>시험 데이터의 실제 답과 모델 판정을 네 칸 표로 세기</dd></div></dl></details>
   <div class="quiz" data-quiz="lv1"></div>
 </div></section>
 
@@ -118,7 +119,7 @@
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>ROC 곡선과 AUC — 모든 임계값을 한 장에</h2></div>
-    <p class="sub"><span class="lvtag g">TPR = 재현율 · FPR = FP ÷ (FP + TN)</span><span class="lvtag">코드: roc_curve, roc_auc_score</span></p>
+    <p class="sub"><span class="lvtag g">TPR = 재현율 · FPR = FP ÷ (FP + TN)</span><span class="lvtag">일상: 한 경기 대신 시즌 전체 기록</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 KNN 암 진단 예입니다. 이웃 10명 중 5명이 환자면 암으로 보는 관대한 기준과 7명은 돼야 암으로 보는 엄격한 기준. 기준을 낮추면 환자를 덜 놓치지만(TPR↑) 건강한 사람도 더 잘못 진단합니다(FPR↑).<sup>[1]</sup></p></div>
@@ -139,6 +140,7 @@
     <li>교안의 AUC 해석: 0.5 무작위, 0.7~0.8 적절, 0.8~0.9 좋음, 0.9 이상 매우 뛰어남. 0.5보다 작으면 예측을 뒤집으면 됩니다.<sup>[1]</sup></li>
     <li>"쌍 뽑기"를 눌러 보세요. 이탈 고객 한 명과 유지 고객 한 명을 무작위로 1,000쌍 뽑아, 이탈 고객 점수가 더 높은 비율을 셉니다. 그 비율이 AUC와 거의 같습니다.</li>
   </ol><p class="limit">이 칸의 한계: AUC는 모델을 고르는 데 좋지만, 양성이 극히 적으면 지나치게 낙관적일 수 있어 PR 곡선·AP를 함께 봅니다.<sup>[1]</sup> 그리고 평가만으로는 모델이 좋아지지 않습니다. 어떻게 키울까요? → ④칸 앙상블</p></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>roc_curve(y_test, prob)</code></dt><dd>임계값을 바꿔 가며 (FPR, TPR) 점들을 계산</dd></div><div><dt><code>roc_auc_score(y_test, prob)</code></dt><dd>그 곡선 아래 넓이(AUC) 계산</dd></div></dl></details>
   <div class="quiz" data-quiz="lv3"></div>
 </div></section>
 

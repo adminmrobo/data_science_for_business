@@ -307,6 +307,11 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-say.ez-c{margin:10px 0 0}
 .ez-say .who{width:44px;height:44px}
 .ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -387,7 +392,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>함정</small></div><h2>혼동행렬 — 정확도 뒤에 숨은 네 칸</h2></div>
-    <p class="sub"><span class="lvtag g">코드: confusion_matrix(y_test, y_pred)</span><span class="lvtag">데이터: 고객 2,000명(예시)</span></p>
+    <p class="sub"><span class="lvtag g">표: 실제(가로줄) × 모델 판정(세로칸) 네 칸</span><span class="lvtag">데이터: 고객 2,000명(예시)</span></p>
   </div>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 100명 중 실제로 떠나는 사람이 5명뿐이면, "아무도 안 떠난다"고만 말해도 정확도 95%입니다. 정확도 하나로는 모델이 쓸모 있는지 알 수 없습니다. 그래서 <b>맞힌 것과 틀린 것을 종류별로 네 칸에 나눠 세는 표</b>가 혼동행렬입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 화재경보기를 평가할 때 "불이 났는데 울렸나 / 안 울렸나", "불이 없는데 울렸나 / 조용했나"를 따로 세는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>TP, FN, FP, TN… 영어 약자 네 개를 다 외워야 해요?</p></div></div><dl class="ez-pieces"><div><dt>TP(참 양성)</dt><dd>실제 이탈 → 이탈이라고 맞힘</dd></div><div><dt>FN(거짓 음성)</dt><dd>실제 이탈 → 놓침. 2종 오류</dd></div><div><dt>FP(거짓 양성)</dt><dd>실제 유지 → 이탈이라고 잘못 경보. 1종 오류</dd></div><div><dt>TN(참 음성)</dt><dd>실제 유지 → 유지라고 맞힘</dd></div><div><dt>정확도 = (TP + TN) ÷ 전체</dt><dd>네 칸 중 대각선(맞힌 칸)의 비율</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>100명: TP 6, FN 4, FP 9, TN 81 → 정확도 = (6 + 81) ÷ 100 = <b>87%</b>. 그런데 실제 이탈 10명 중 4명을 놓쳤습니다. 이 4명이 네 칸으로 나눠야 보이는 숫자입니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>외울 필요 없이 "실제는 무엇이었나 × 모델은 뭐라고 했나" 네 칸 표로 보면 되네요.</p></div></div></div></div>
   <div class="pair">
@@ -407,6 +412,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <li>FN이 많으면 그 클래스를 놓치는 경향, FP가 많으면 그 클래스로 과하게 분류하는 경향입니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 정확도가 소용없다는 건 알았지만, 대신 무엇을 볼지는 아직 없습니다. → ②칸 정밀도·재현율</p></div>
   <div class="note"><b>교안에서 바꾼 곳</b>: 교안 5쪽의 "TN을 1종 오류 또는 거짓 경보라고도 하는데…"를 이 페이지에서는 <b>"FP를 1종 오류 또는 거짓 경보라고도 하는데…"</b>로 바꿉니다. 1종 오류(거짓 경보)는 실제로는 음성인데 양성이라고 잘못 판단한 경우, 곧 FP입니다.</div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>confusion_matrix(y_test, y_pred)</code></dt><dd>시험 데이터의 실제 답과 모델 판정을 네 칸 표로 세기</dd></div></dl></details>
   <div class="quiz" data-quiz="lv1"></div>
 </div></section>
 
@@ -444,7 +450,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>ROC 곡선과 AUC — 모든 임계값을 한 장에</h2></div>
-    <p class="sub"><span class="lvtag g">TPR = 재현율 · FPR = FP ÷ (FP + TN)</span><span class="lvtag">코드: roc_curve, roc_auc_score</span></p>
+    <p class="sub"><span class="lvtag g">TPR = 재현율 · FPR = FP ÷ (FP + TN)</span><span class="lvtag">일상: 한 경기 대신 시즌 전체 기록</span></p>
   </div>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>임계값을 50%로 할지 30%로 할지에 따라 성적이 달라지니, 모델 두 개를 비교하기 어렵습니다. <b>모든 임계값의 성적을 한 장의 곡선(ROC)으로 그리고, 그 아래 넓이(AUC) 하나로 비교</b>하면 임계값과 상관없이 어느 모델이 나은지 알 수 있습니다.</p><p class="ez-like"><b>쉽게 말하면</b> 선수 두 명을 비교할 때 한 경기 점수보다 시즌 전체 기록을 보는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>곡선 아래 넓이라니, 적분까지 해야 해요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 좌표평면에 점을 찍고, 정사각형(넓이 1) 안에서 곡선 아래 넓이를 재는 것입니다.</p><dl class="ez-pieces"><div><dt>TPR = TP ÷ (TP + FN)</dt><dd>재현율과 같음. 세로축</dd></div><div><dt>FPR = FP ÷ (FP + TN)</dt><dd>실제 유지 고객 중 잘못 경보한 비율. 가로축</dd></div><div><dt>ROC 곡선</dt><dd>임계값을 100%에서 0%로 내리며 (FPR, TPR) 점을 이은 선</dd></div><div><dt>AUC</dt><dd>곡선 아래 넓이. 0.5 = 동전 던지기, 1.0 = 완벽</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>TP 6, FN 4, FP 9, TN 81 → TPR = 6 ÷ 10 = <b>0.6</b>, FPR = 9 ÷ 90 = <b>0.1</b>. 이 점 (0.1, 0.6)이 곡선 위의 한 점입니다. 왼쪽 위 모서리(0, 1)에 가까울수록 좋은 모델입니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>정사각형 안에서 곡선이 왼쪽 위로 얼마나 붙었나만 보면 되네요. 0.5는 찍기, 1은 완벽.</p></div></div></div></div>
   <div class="pair">
@@ -466,6 +472,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <li>교안의 AUC 해석: 0.5 무작위, 0.7~0.8 적절, 0.8~0.9 좋음, 0.9 이상 매우 뛰어남. 0.5보다 작으면 예측을 뒤집으면 됩니다.<sup>[1]</sup></li>
     <li>"쌍 뽑기"를 눌러 보세요. 이탈 고객 한 명과 유지 고객 한 명을 무작위로 1,000쌍 뽑아, 이탈 고객 점수가 더 높은 비율을 셉니다. 그 비율이 AUC와 거의 같습니다.</li>
   </ol><p class="limit">이 칸의 한계: AUC는 모델을 고르는 데 좋지만, 양성이 극히 적으면 지나치게 낙관적일 수 있어 PR 곡선·AP를 함께 봅니다.<sup>[1]</sup> 그리고 평가만으로는 모델이 좋아지지 않습니다. 어떻게 키울까요? → ④칸 앙상블</p></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>roc_curve(y_test, prob)</code></dt><dd>임계값을 바꿔 가며 (FPR, TPR) 점들을 계산</dd></div><div><dt><code>roc_auc_score(y_test, prob)</code></dt><dd>그 곡선 아래 넓이(AUC) 계산</dd></div></dl></details>
   <div class="quiz" data-quiz="lv3"></div>
 </div></section>
 

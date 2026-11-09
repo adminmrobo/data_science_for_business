@@ -38,7 +38,7 @@
     <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">규제(릿지) 편.</p></div>
     <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">특성 많이, 규제 없이 편.</p></div>
   </div>
-  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. ①칸의 공부시간-합격, ②③칸의 와인 모양 데이터는 교안의 예를 본떠 만든 예시 데이터입니다(교안 실습의 Fish Market 7종·Wine 데이터를 이 페이지에 그대로 싣지는 않았습니다). ④⑤칸과 대결은 9주차와 같은 교안 농어 56마리, 같은 분할(random_state = 42)입니다.</p>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. ①칸의 공부시간-합격, ②③칸의 와인 모양 데이터는 교안의 예를 본떠 만든 예시 데이터입니다(교안 실습의 Fish Market 7종·Wine 데이터를 이 페이지에 그대로 싣지는 않았습니다). ④⑤칸과 대결은 9주차와 같은 교안 농어 56마리, 교안 코드와 같은 분할입니다.</p>
 </div></section>
 
 <section class="level" id="why"><div class="wrap stack">
@@ -125,7 +125,7 @@
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>가지</small></div><h2>나무의 깊이 — 스무고개를 몇 번까지</h2></div>
-    <p class="sub"><span class="lvtag g">코드: DecisionTreeClassifier(max_depth = …)</span><span class="lvtag">가지치기(Pruning)</span></p>
+    <p class="sub"><span class="lvtag g">설정: 질문을 최대 몇 번까지 할지(깊이)</span><span class="lvtag">가지치기(Pruning)</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>스무고개에서 질문을 무한정 허락하면 결국 정답을 맞히지만, 그 질문 목록은 이번 문제에만 통합니다. 다른 사람이 다른 물건을 떠올리면 엉뚱한 길로 빠집니다.</p></div>
@@ -144,6 +144,7 @@
     <li>깊이를 끝까지 올리면 훈련 정확도는 100%에 가까워지지만, 시험 정확도는 어느 깊이부터 오히려 떨어집니다. 교안의 "노드 수와 정확도" 그림과 같은 모양입니다.<sup>[1]</sup></li>
     <li>특성 중요도(feature_importances_)는 각 특성이 불순도를 줄인 몫의 비율입니다.</li>
   </ol><p class="limit">이 칸의 한계: 나무는 주어진 특성만 묻습니다. "당도 × 알코올" 같은 새 질문 재료를 만들려면? → ④칸 특성공학</p></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>DecisionTreeClassifier(max_depth=3)</code></dt><dd>질문을 최대 3번까지 하는 의사결정나무 만들기</dd></div></dl></details>
   <div class="quiz" data-quiz="lv3"></div>
 </div></section>
 
@@ -151,7 +152,7 @@
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>재료</small></div><h2>특성공학 — PolynomialFeatures와 커지는 계수</h2></div>
-    <p class="sub"><span class="lvtag g">코드: PolynomialFeatures(degree = …)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
+    <p class="sub"><span class="lvtag g">설정: 몇 제곱까지 새 특성을 만들지(차수)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>요리사가 재료를 다듬듯, 길이와 너비를 곱해 면적을 만들고 세 치수를 곱해 부피를 만듭니다. 생선 무게는 부피를 따라가니 교차항이 중요한 뜻을 갖습니다. 하지만 냉장고 재료를 전부 넣는다고 맛있어지지는 않습니다.<sup>[1]</sup></p></div>
@@ -171,6 +172,7 @@
     <li>특성 n개, degree d면 새 특성은 C(n + d, d) − 1개입니다(상수항 제외). 3개·3차 = 19, 3개·5차 = 55로 교안과 같습니다.<sup>[1]</sup></li>
     <li>오른쪽은 농어 길이 하나를 1~8차로 늘려(표준화 후) 규제 없이 맞춘 곡선입니다. 차수가 오르면 계수 절댓값이 수천~수백만으로 커지고, 길이 0.1cm 차이에 예측이 크게 흔들리는 곳이 생깁니다. 교안의 "0.1cm 증가에 38.7g 대 1.2g" 비교는 이 페이지에서 직접 계산한 값으로 바꿉니다. 위 KPI "0.1cm 차이에 예측이 가장 크게 변하는 폭"이 그 값이며, 차수를 바꿀 때마다 다시 계산됩니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 특성을 늘리면 표현력은 늘지만 계수가 날뜁니다. 계수에 고삐를 채울 방법은? → ⑤칸 릿지·라쏘</p></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>PolynomialFeatures(degree=2)</code></dt><dd>길이², 길이×높이처럼 2제곱까지의 새 특성을 자동으로 만드는 도구</dd></div><div><dt><code>poly.fit_transform(train_input)</code></dt><dd>원래 표를 새 특성이 붙은 넓은 표로 바꾸기</dd></div></dl></details>
   <div class="quiz" data-quiz="lv4"></div>
 </div></section>
 

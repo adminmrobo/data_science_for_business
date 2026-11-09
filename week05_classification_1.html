@@ -307,6 +307,11 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-say.ez-c{margin:10px 0 0}
 .ez-say .who{width:44px;height:44px}
 .ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
 
 </style>
 </head>
@@ -326,12 +331,12 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 5주차 · 데이터 분석 모형: 분류모형(1)</span>
       <h1>도미와 빙어</h1>
       <p class="q">생선 49마리의 길이와 무게만으로, 처음 보는 생선의 종류를 맞힐 수 있을까?</p>
-      <p class="lead">이번 주부터 진짜 데이터로 손을 움직입니다. 교안의 Google Colab 실습처럼 파이썬 데이터 구조를 익히고, Fish Market 데이터의 도미 35마리와 빙어 14마리를 입력·점검·시각화한 뒤, zip()으로 묶고 라벨을 붙여 첫 분류 모델 KNN을 학습시킵니다. 화면 속 실험은 교안 코드의 흐름을 그대로 따라갑니다.</p>
+      <p class="lead">이번 주부터 진짜 데이터로 손을 움직입니다. 교안의 Google Colab 실습처럼 파이썬 데이터 구조를 익히고, Fish Market 데이터의 도미 35마리와 빙어 14마리를 입력·점검·시각화한 뒤, 한 마리씩 [길이, 무게] 짝을 지어 정답(라벨)을 붙여 첫 분류 모델 KNN을 학습시킵니다. 화면 속 실험은 교안 코드의 흐름을 그대로 따라갑니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi i"><b>49마리</b><span>도미 35 · 빙어 14<sup>[1][2]</sup></span></div>
         <div class="kpi m"><b>2개 특성</b><span>길이(cm) · 무게(g)<sup>[1]</sup></span></div>
         <div class="kpi a"><b>6가지</b><span>파이썬 데이터 구조<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>K = 5</b><span>KNeighborsClassifier 기본값<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>K = 5</b><span>KNN 기본값<sup>[1]</sup></span></div>
         <div class="kpi r"><b>1.0</b><span>학습 데이터로 채점한 정확도<sup>[1]</sup></span></div>
         <div class="kpi g"><b id="heroPred">–</b><span>30cm·600g 생선의 예측<sup>계산</sup></span></div>
       </div>
@@ -376,7 +381,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 실습의 흐름</h2></div>
-  <div class="flowchips" aria-label="실습 흐름"><span>Colab 접속·환경 테스트</span><i>→</i><span>리스트로 데이터 입력</span><i>→</i><span>len()·최솟값·최댓값 점검</span><i>→</i><span>산점도로 확인</span><i>→</i><span>zip()으로 [길이, 무게] 묶기</span><i>→</i><span>라벨 [1]*35 + [0]*14</span><i>→</i><span class="lim">KNN fit → score → predict</span></div>
+  <div class="flowchips" aria-label="실습 흐름"><span>Colab 접속·환경 테스트</span><i>→</i><span>리스트로 데이터 입력</span><i>→</i><span>개수·최솟값·최댓값 점검</span><i>→</i><span>산점도로 확인</span><i>→</i><span>[길이, 무게] 짝 짓기</span><i>→</i><span>라벨 [1]*35 + [0]*14</span><i>→</i><span class="lim">KNN fit → score → predict</span></div>
   <div class="pair">
     <div><div class="tag fly">Colab 환경 테스트 (교안)</div><p>첫 셀에서 사칙연산을 실행해 봅니다. 나눗셈 <code>/</code>는 소수 결과, 곱셈은 <code>*</code>. 셀이 멈추면 런타임을 다시 연결하고, 브라우저를 새로고침합니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝 워크플로 (교안)</div><p>학습(Training) → 예측(Prediction) → 성능평가(Evaluation). scikit-learn은 <code>fit()</code>, <code>predict()</code>, <code>score()</code>로 이 세 단계를 같은 방식으로 다룹니다.<sup>[1]</sup></p></div>
@@ -417,7 +422,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">어시장에서는</div><p>도미는 크고 무겁고, 빙어는 작고 가볍습니다. 측정 장부에 길이를 적다가 무게 칸을 한 줄 빼먹거나, 한 마리만 kg으로 적으면 장부가 어긋납니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>연속형 특성(길이, 무게)으로 범주형 목표(종류)를 예측하는 이진 분류 문제입니다. 입력 뒤에는 <code>len()</code>으로 개수 일치, 최솟값·최댓값으로 불가능한 값, 산점도로 이상치와 클래스 분포를 확인합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>연속형 특성(길이, 무게)으로 범주형 목표(종류)를 예측하는 이진 분류 문제입니다. 데이터를 넣은 뒤에는 세 가지를 확인합니다. 길이와 무게의 개수가 같은지(개수 세기), 0cm 같은 불가능한 값이 없는지(최솟값·최댓값), 튀는 점이 없는지(산점도)입니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="데이터 점검 실험">
     <h3>측정 장부에 실수를 넣어 보고 — 점검이 잡아내는지 확인</h3>
@@ -427,7 +432,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="insight" id="ins2" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li><b>개수 불일치</b>: 길이 35개, 무게 34개면 <code>len()</code>이 바로 잡습니다. zip()은 짧은 쪽에 맞춰 조용히 잘라 버리므로 반드시 먼저 확인합니다.</li>
+    <li><b>개수 불일치</b>: 길이 35개, 무게 34개면 개수를 세는 순간 바로 드러납니다. 짝을 짓는 단계는 짧은 쪽에 맞춰 남는 것을 말없이 버리므로, 짝 짓기 전에 반드시 개수부터 셉니다.</li>
     <li><b>음수 무게</b>: 최솟값을 보면 보입니다. 상식적으로 불가능한 값입니다(교안: 음수 무게, 비현실적 길이 점검).<sup>[1]</sup></li>
     <li><b>단위 혼동</b>: 0.5(kg)는 범위 안이라 최솟값·최댓값만으로는 안 보일 수 있지만, 산점도에서는 길이 32cm인데 무게가 빙어 수준인 점으로 튀어나옵니다. 길이와 무게의 관계가 합리적인지 봅니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 길이와 무게가 따로 놀고 있습니다. 모델은 한 마리를 [길이, 무게] 한 쌍으로, 정답과 함께 받아야 배웁니다. → ③칸</p></div>
@@ -439,7 +444,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>준비</small></div><h2>zip()으로 묶고 라벨 붙이기</h2></div>
-    <p class="sub"><span class="lvtag g">코드: fish_data = [[l, w] for l, w in zip(length, weight)] · fish_target = [1]*35 + [0]*14</span><span class="lvtag">현장: 데이터 라벨링</span></p>
+    <p class="sub"><span class="lvtag g">방법: 한 마리씩 [길이, 무게] 짝 만들기 · 정답표 도미 = 1, 빙어 = 0</span><span class="lvtag">현장: 데이터 라벨링</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>사진마다 "이건 도미" 이름표를 붙이는 일을 데이터 라벨링이라고 합니다. 교안은 데이터 댐 일자리 뉴스를 함께 봅니다. 이름표가 틀리면 모델은 틀린 것을 배웁니다.<sup>[1]</sup></p></div>
@@ -453,10 +458,11 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="insight" id="ins3" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li><code>zip(length, weight)</code>는 같은 자리끼리 짝을 짓습니다. 결과는 49개의 [길이, 무게] 쌍이고, 각 샘플은 2차원 특성 벡터입니다.<sup>[1]</sup></li>
+    <li>길이 목록과 무게 목록에서 같은 순서에 있는 것끼리 짝을 짓습니다. 결과는 49마리 각각의 [길이, 무게] 짝이고, 생선 한 마리를 숫자 두 개로 나타낸 것입니다.<sup>[1]</sup></li>
     <li><code>[1]*35 + [0]*14</code>는 리스트 반복(①칸의 리스트 × 2)과 이어붙이기로 라벨 49개를 한 번에 만듭니다.</li>
     <li>'빙어 먼저 입력' 버튼은 데이터를 빙어 → 도미 순서로 넣고도 라벨을 그대로 [1]*35+[0]*14로 만든 실수입니다. 49마리 중 다수가 틀린 이름표를 달게 됩니다.</li>
   </ol><p class="limit">이 칸의 한계: 학습 준비는 끝났습니다. 이제 모델이 이 쌍들로 "처음 보는 생선"을 어떻게 판정하는지 봐야 합니다. → ④칸</p></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>len(length), len(weight)</code></dt><dd>길이·무게 개수 세기</dd></div><div><dt><code>zip(length, weight)</code></dt><dd>같은 순서끼리 짝 짓기</dd></div><div><dt><code>fish_data = [[l, w] for l, w in zip(length, weight)]</code></dt><dd>49마리의 [길이, 무게] 목록 만들기</dd></div><div><dt><code>fish_target = [1]*35 + [0]*14</code></dt><dd>정답표: 도미 35마리는 1, 빙어 14마리는 0</dd></div></dl></details>
   <div class="quiz" data-quiz="lv3"></div>
 </div></section>
 
@@ -464,7 +470,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>모델</small></div><h2>KNN 학습과 예측 — 가장 가까운 K마리에게 묻기</h2></div>
-    <p class="sub"><span class="lvtag g">코드: kn = KNeighborsClassifier() · kn.fit() · kn.score() · kn.predict()</span><span class="lvtag">일상: 새 친구의 동아리 맞히기</span></p>
+    <p class="sub"><span class="lvtag g">순서: 모델 준비 → 학습 → 채점 → 새 생선 판정</span><span class="lvtag">일상: 새 친구의 동아리 맞히기</span></p>
   </div>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>생선의 길이와 무게만 보고 도미인지 빙어인지 맞히고 싶습니다. "30cm 넘으면 도미" 같은 규칙을 사람이 정할 수도 있지만, 경계에 걸친 생선에서 자주 틀립니다. <b>KNN은 규칙을 만들지 않고, 비슷한 과거 사례를 찾아 다수결로 정합니다.</b> 가장 단순한 머신러닝 모델이라 첫 모델로 씁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 전학 온 친구가 어느 동아리에 갈지 맞히려면, 그 친구와 취향이 가장 비슷한 친구 5명이 어느 동아리인지 보면 됩니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>√ 안에 제곱이 두 개… 이거 꼭 이렇게 복잡하게 재야 해요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 3학년 피타고라스 정리로 두 점 사이 거리를 구하는 계산 그대로입니다.</p><dl class="ez-pieces"><div><dt>거리 d = √((길이 차)² + (무게 차)²)</dt><dd>두 생선이 얼마나 닮았나. 좌표평면의 두 점 사이 거리(피타고라스 정리)</dd></div><div><dt>K</dt><dd>몇 마리 이웃에게 물어볼지. 기본값 5</dd></div><div><dt>다수결</dt><dd>K마리 중 가장 많은 종으로 판정. 도미 3 · 빙어 2면 도미</dd></div><div><dt>fit · predict · score</dt><dd>데이터 저장하기 · 새 생선 판정하기 · 정답률 채점하기</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>두 점 (1, 2)와 (4, 6)의 거리 = √(3² + 4²) = √25 = <b>5</b>.<br>새 생선의 가까운 이웃 5마리가 도미·도미·빙어·도미·빙어 → 도미 3표 → <b>도미</b>(확률 3 ÷ 5 = 0.6).</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>피타고라스 정리였어요! 점 두 개 사이의 직선 거리를 잰 것뿐이네요.</p></div></div></div></div>
   <div class="pair">
@@ -483,7 +489,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="insight" id="ins4" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li><code>kn.score(fish_data, fish_target)</code>은 학습에 쓴 데이터로 채점해 1.0이 나옵니다. 교안은 같은 데이터로 평가하면 과적합 여부를 판단하기 어렵다고 경고합니다.<sup>[1]</sup> 4주차 ③칸의 K = 1과 같은 함정입니다.</li>
+    <li>학습에 쓴 생선으로 다시 채점하면 정답률 1.0(100%)이 나옵니다. 교안은 같은 데이터로 평가하면 과적합 여부를 판단하기 어렵다고 경고합니다.<sup>[1]</sup> 4주차 ③칸의 K = 1과 같은 함정입니다.</li>
     <li><code>predict_proba()</code>는 이웃 중 각 클래스의 비율입니다. K = 5에서 0.6이면 이웃 5마리 중 3마리가 도미라는 뜻입니다.</li>
     <li>그림의 가로(0~45cm)와 세로(0~1,100g) 눈금이 달라서, 눈으로 보는 "가까움"과 KNN이 재는 거리가 다를 수 있습니다. 25cm·150g 생선을 눌러 보세요. 이 문제는 6주차 표준화에서 풉니다.</li>
   </ol><p class="limit">이 칸의 한계: 도미와 빙어는 너무 쉽게 갈립니다. 중간 크기인 농어가 끼어들고, 시험 데이터를 따로 떼고, 눈금을 맞추면 무엇이 달라질까요? → 6주차</p></div>
@@ -492,6 +498,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <div class="bridge gen"><h4>생성 AI로 치면</h4><p>문서 검색 기반 챗봇(RAG)도 질문과 가장 가까운 K개 문서를 거리(유사도)로 찾아 답의 근거로 씁니다. "가까운 이웃에게 묻기"는 KNN과 같은 생각입니다.</p><p class="lim">비유의 한계: RAG는 이웃의 다수결로 답하지 않고, 찾은 문서를 읽고 새 문장을 생성합니다.</p></div>
   </div>
   <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>score 1.0은 기쁘지만, 시험지를 미리 본 점수예요. 다음 주에 시험 데이터를 따로 떼 볼게요.</p></div></div>
+  <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>from sklearn.neighbors import KNeighborsClassifier</code></dt><dd>KNN 도구 불러오기</dd></div><div><dt><code>kn = KNeighborsClassifier()</code></dt><dd>모델 준비(기본 이웃 5마리)</dd></div><div><dt><code>kn.fit(fish_data, fish_target)</code></dt><dd>학습: 생선과 정답을 저장</dd></div><div><dt><code>kn.score(fish_data, fish_target)</code></dt><dd>채점: 정답률</dd></div><div><dt><code>kn.predict([[30, 600]])</code></dt><dd>새 생선(30cm, 600g) 판정</dd></div></dl></details>
   <div class="quiz" data-quiz="lv4"></div>
 </div></section>
 
@@ -529,8 +536,8 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>Colab: 설치 없이 브라우저에서 실행, 자동 저장, 구글 드라이브 연동, 인터넷 필요.</p></div>
-    <div><b>교안 정리 2</b><p>Fish Market: 도미 35·빙어 14, 길이·무게. 결측값(len), 이상치(산점도) 점검, zip()으로 결합, 1/0 라벨링.</p></div>
-    <div><b>교안 정리 3</b><p>KNN: from sklearn.neighbors import KNeighborsClassifier → fit → score(정확도) → predict.</p></div>
+    <div><b>교안 정리 2</b><p>Fish Market: 도미 35·빙어 14, 길이·무게. 개수·이상한 값 점검, [길이, 무게] 짝 짓기, 도미 1·빙어 0 정답 붙이기.</p></div>
+    <div><b>교안 정리 3</b><p>KNN: 모델 준비 → 학습 → 채점(정확도) → 새 생선 판정.</p></div>
   </div>
 </div></section>
 
