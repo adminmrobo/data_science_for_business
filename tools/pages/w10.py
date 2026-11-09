@@ -12,7 +12,7 @@ PREVNEXT = '<a href="week09_regression_1.html"><small>← 이전 · 9주차</sma
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:method/logistic-regression', 'lab:method/decision-tree', 'lab:concept/feature-engineering', 'lab:method/ridge-lasso']
 KGPATH = ['method/logistic-regression', 'limitation/hard-to-explain', 'concept/gini-split', 'limitation/one-question', 'method/decision-tree', 'limitation/given-features', 'concept/feature-engineering', 'limitation/exploding-coef', 'method/ridge-lasso']
-TODO = ['교안 [1]의 발행 연도·학기 표기 확인', '교안 실습의 Fish Market 7종(159마리)·Wine 데이터 원 출처와 이용 조건 확인 — 이 페이지에는 싣지 않음', '"0.1cm 증가에 38.7g 대 1.2g" 수치가 나온 교안 실습 설정(차수·α) 확인']
+TODO = ['교안 [1]의 발행 연도·학기 표기 확인', '교안 실습의 Fish Market 7종(159마리)·Wine 데이터 원 출처와 이용 조건 확인 — 이 페이지에는 싣지 않음']
 
 SOURCES = [
  '[1] 안상선. 「비즈니스를위한데이터과학」 강의 교안, 10. 데이터 분석 모형: 회귀모형(2). 인공지능융합학과. — 로지스틱 회귀(시그모이드, 가중치·편향, 비용함수, 공부시간-합격 예), 의사결정나무(스무고개, 지니 불순도, 정보 이득, 가지치기, max_depth, feature_importances_), Fish Market·Wine 실습, 교차 검증·GridSearchCV, 특성공학, PolynomialFeatures(3개·3차 19개, 5차 55개), 계수 크기 문제, 릿지·라쏘(양념 비유), RFE·SelectKBest·Pipeline, 도메인 특화 특성은 교안 본문을 옮김. 실습 링크: <a href="https://colab.research.google.com/drive/1K_S_a63m7ClnRSz1Ys7LVec-O9ZMvzmr?usp=sharing" target="_blank" rel="noopener">Colab 1</a>, <a href="https://colab.research.google.com/drive/1NvJHKbG9Si5fOCgNQQ8k_uqXxVok5U1D?usp=sharing" target="_blank" rel="noopener">Colab 2</a>',

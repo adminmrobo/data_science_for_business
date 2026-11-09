@@ -63,7 +63,7 @@ a.wk:hover{{border-color:var(--seq)}}
 </style>
 </head>
 <body>
-<nav class="top" aria-label="바로가기"><div class="wrap"><a class="logo" href="#top"><i></i>연구실</a><div class="links"><a href="#weeks">주차</a><a href="#practice">실습 사례</a><a href="#how">보는 법</a><a href="#about">저자·출처</a></div></div></nav>
+<nav class="top" aria-label="바로가기"><div class="wrap"><a class="logo" href="#top"><i></i>연구실</a><div class="links"><a href="#start">처음이라면</a><a href="#weeks">주차</a><a href="#practice">실습 사례</a><a href="#how">보는 법</a><a href="#about">저자·출처</a></div></div></nav>
 <!-- lab-cover -->
 <header class="cover" id="top" data-img="cover_index" data-alt="밤의 연구실 복도. 주차마다 다른 색 빛이 새는 문들 앞에 박사·조수·초파리 연구원·주판봇이 서 있는 표지" role="img" aria-label="밤의 연구실 복도 앞에 선 네 캐릭터 표지"><div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt=""><span class="prop">📚</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div><span class="cover-chip">{series}</span></header>
 <!-- /lab-cover -->
@@ -74,6 +74,15 @@ a.wk:hover{{border-color:var(--seq)}}
   <p class="lead">강의 교안 「비즈니스를위한데이터과학」(전 15주, 8주차 중간고사·15주차 기말고사)의 13개 주차를 박사 · 조수(하루) · 초파리 연구원 · 주판봇이 진행하는 해설 페이지로 다시 썼습니다. 페이지마다 직접 돌려 보는 장난감 실험, 초파리 연구원과 주판봇의 대결, 확인 퀴즈, 지식 색인과 온톨로지·서지 꾸러미가 들어 있습니다. 교안의 실습 사례는 아래 '실습 사례'에 차례로 더합니다.</p>
   <div class="kpis k4"><div class="kpi i"><b>13</b><span>강의 주차</span></div><div class="kpi g"><b>{ready}</b><span>공개한 주차</span></div><div class="kpi a"><b>2</b><span>시험 주간(8·15주차)</span></div><div class="kpi m"><b>추가 예정</b><span>실습 사례</span></div></div>
 </div></div></header>
+<section class="plain" id="start" aria-label="AI를 처음 접하는 분께"><div class="wrap"><div class="plainbox">
+  <h2>AI를 처음 접하는 분께 — 이렇게 읽으세요</h2>
+  <dl class="p3">
+    <div><dt>누구를 위해</dt><dd>AI·통계를 배운 적 없는 경영·사무직을 기준으로 썼습니다. 코드나 수식을 몰라도 됩니다.</dd></div>
+    <div><dt>먼저 볼 곳</dt><dd>각 페이지 첫 화면 아래 <b>「처음 오신 분께 — 이 페이지를 3줄로」</b> 상자입니다. 무엇을 배우는지, 왜 중요한지, 업무에서 어떻게 쓰는지가 있습니다. 영어 약어 풀이도 그 상자에 모아 두었습니다.</dd></div>
+    <div><dt>읽는 순서</dt><dd>1~4주차(데이터·문제 정의) → 12~13주차(숫자 읽기·대시보드) → 7주차(모델 성적표 읽기) → 나머지 순으로 읽어도 됩니다. 5·6·9·10주차는 파이썬 실습을 따라가는 주라 코드가 조금 나오지만, 코드는 접힌 상자 안에 있습니다.</dd></div>
+    <div><dt>바로 쓰는 법</dt><dd>각 실험에서 버튼·슬라이더를 움직여 결과가 어떻게 바뀌는지 봅니다. 밑줄 낱말에 마우스를 올리면 뜻이 나옵니다. 대결 끝의 판정이 그 주의 업무 결론입니다.</dd></div>
+  </dl>
+</div></div></section>
 <section class="level" id="weeks"><div class="wrap stack">
   <h2>주차별 해설</h2>
   <div class="weeks">{cards}</div>

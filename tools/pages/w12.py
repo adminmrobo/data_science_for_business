@@ -12,7 +12,7 @@ PREVNEXT = '<a href="week11_time_series.html"><small>← 이전 · 11주차</sma
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:concept/central-tendency', 'lab:concept/dispersion', 'lab:concept/skewness-kurtosis', 'lab:concept/correlation', 'lab:method/chart-selection']
 KGPATH = ['concept/central-tendency', 'limitation/no-spread', 'concept/dispersion', 'limitation/symmetric', 'concept/skewness-kurtosis', 'limitation/one-variable', 'concept/correlation', 'limitation/no-picture', 'method/chart-selection']
-TODO = ['교안 [1]의 발행 연도·학기 표기 확인', '교안의 B회사 변동계수 0.18 표기(15,000 ÷ 80,000 = 0.1875) 반올림 방식 확인']
+TODO = ['교안 [1]의 발행 연도·학기 표기 확인']
 
 SOURCES = [
  '[1] 안상선. 「비즈니스를위한데이터과학」 강의 교안, 12. 효과적인 비즈니스 데이터 시각화. 인공지능융합학과. — 월급 예(200·300·350·400·1,000만 원), 평균·중앙값·최빈값, 분산·표준편차·변동계수(A·B 회사 연봉), 왜도·첨도 공식, 신용카드 사용 금액의 양의 편향, 공분산·상관계수와 해석 기준, 상관과 인과(아이스크림·익사, 해적·기온), 목적별 차트, 박스 플롯·캔들·히트맵·네트워크, Matplotlib·Seaborn 실습(자산 배분 40·30·15·10·5%), 대시보드 5초 규칙은 교안 본문을 옮김. 실습 링크: <a href="https://colab.research.google.com/drive/1CqE-oK109zyiZqScpqwa2m6fWbyzNhNh?usp=sharing" target="_blank" rel="noopener">Colab</a>',

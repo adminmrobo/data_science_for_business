@@ -10,7 +10,10 @@ PACK = os.environ.get('PACK') or ([p for p in __import__('glob').glob('/root/.cl
 SERIES = '비즈니스를 위한 데이터 과학 연구실'
 BASE_URL = 'https://adminmrobo.github.io/data_science_for_business/'
 DATE = '2026-11-09'
-VERSION = '1.0'
+VERSION = '1.1'
+sys.path.insert(0, HERE)
+from abbr import ABBR
+from plain import PLAIN
 
 def load(n):
     spec = importlib.util.spec_from_file_location('w' + n, os.path.join(HERE, 'pages', 'w%s.py' % n))
@@ -130,6 +133,19 @@ KG_SECTION = '''<!-- 지식 색인 -->
   <p class="muted" style="font-size:13px" id="verLine"></p>
 </div></section>'''
 
+def plain_box(n, body):
+    what, why, work, code = PLAIN[n]
+    txt = re.sub(r'<script.*?</script>', ' ', body, flags=re.S)
+    txt = re.sub(r'<[^>]+>', ' ', txt)
+    found = sorted({t for t in re.findall(r'(?<![A-Za-z])([A-Z][A-Z0-9]{1,}(?:-[A-Z]+)?)(?![a-z])', txt) if t in ABBR})
+    ab = ''.join('<div><dt>%s</dt><dd><b>%s</b> — %s</dd></div>' % (k, html.escape(ABBR[k][0]), html.escape(ABBR[k][1])) for k in found)
+    codeline = '<p class="pnote">이 주에는 파이썬 코드가 조금 나옵니다. <b>코드를 몰라도 됩니다.</b> 버튼과 슬라이더만 움직여도 내용을 모두 따라올 수 있고, 코드는 접힌 상자 안에 넣어 두었습니다.</p>' if code else '<p class="pnote">코드나 수식을 몰라도 됩니다. 버튼과 슬라이더를 움직이며 결과가 어떻게 바뀌는지만 보면 됩니다.</p>'
+    det = ('<details class="abbr"><summary>이 페이지에 나오는 영어 약어 풀이 (%d개)</summary><dl>%s</dl></details>' % (len(found), ab)) if found else ''
+    return ('<section class="plain" id="plain" aria-label="처음 오신 분께"><div class="wrap"><div class="plainbox">'
+            '<h2>처음 오신 분께 — 이 페이지를 3줄로</h2><dl class="p3">'
+            '<div><dt>무엇을</dt><dd>%s</dd></div><div><dt>왜 중요한가</dt><dd>%s</dd></div><div><dt>업무에서는</dt><dd>%s</dd></div></dl>%s%s'
+            '</div></div></section>\n') % (html.escape(what), html.escape(why), html.escape(work), codeline, det)
+
 def page(n):
     m = load(n)
     slug = m.SLUG
@@ -195,6 +211,7 @@ def page(n):
                '<script>\n' + ejs + '\n</script>\n'
                '<script>\n(function(){\n"use strict";\nvar GL=' + jdump(gl_js) + ';\nvar CORE=' + jdump(m.CORE) + ';\nvar QZ=' + jdump({k: [{kk: vv for kk, vv in it.items() if kk != 'assess'} for it in v] for k, v in m.QZ.items()}) + ';\n'
                + pjs + '\nLAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:' + jdump(m.KGPATH) + '});\n})();\n</script>\n</body>\n</html>\n')
+    body = body.replace('</header>', '</header>\n' + plain_box(n, body), 1)
     out = head + NAVTPL.format(links=links) + '\n' + cover + body + '\n' + KG_SECTION.replace('{ph}', m.SEARCH_PH) + foot + scripts
     p = os.path.join(REPO, fname)
     open(p, 'w', encoding='utf-8').write(out)

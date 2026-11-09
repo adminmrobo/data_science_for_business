@@ -12,7 +12,7 @@ PREVNEXT = '<a href="week06_classification_2.html"><small>← 이전 · 6주차<
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:concept/confusion-matrix', 'lab:metric/precision-recall', 'lab:metric/roc-auc', 'lab:method/ensemble', 'lab:concept/learning-rate-batch', 'lab:method/cost-threshold']
 KGPATH = ['concept/confusion-matrix', 'limitation/no-alt-metric', 'metric/precision-recall', 'limitation/threshold-dependent', 'metric/roc-auc', 'limitation/eval-not-improve', 'method/ensemble', 'limitation/single-learner', 'concept/learning-rate-batch', 'limitation/no-money', 'method/cost-threshold']
-TODO = ['교안 [1]의 발행 연도·학기 표기 확인', '교안 5쪽 "TN을 1종 오류…" 문장(FP의 오기로 보임) 저자 확인', '"유지 비용이 신규 획득보다 5~25배 저렴" 원칙의 원 출처 확인(교안 인용)']
+TODO = ['교안 [1]의 발행 연도·학기 표기 확인', '"유지 비용이 신규 획득보다 5~25배 저렴" 원칙의 원 출처 확인(교안 인용)']
 
 SOURCES = [
  '[1] 안상선. 「비즈니스를위한데이터과학」 강의 교안, 07. 비즈니스 데이터 분석 모델의 평가. 인공지능융합학과. — 혼동행렬(TP·TN·FP·FN, 1종·2종 오류), 정확도·정밀도·재현율·F1, 공항 수하물 검사 비유, ROC·TPR·FPR·임계값·AUC 해석, macro·weighted·micro 평균, KNN·SVM 최적화, 특성 공학·스케일링, 배깅·부스팅·스태킹, 배치·에포크·학습률, K-폴드 교차검증, 고객 세분화(RFM)·이탈 예측·추천·캠페인 최적화는 교안 본문을 옮김. 실습 링크: <a href="https://colab.research.google.com/drive/19DG0jyEa9xiO42jNdu3ykKWLWlf8AbZk?usp=sharing" target="_blank" rel="noopener">Colab</a>',

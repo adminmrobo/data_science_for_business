@@ -12,14 +12,14 @@ PREVNEXT = '<a href="week07_model_evaluation.html"><small>← 이전 · 7주차<
 EXTRA_SPRITES = ['fly_arms', 'robo_sigh', 'doc_judge', 'asst_spark', 'fly_cry', 'fly_coffee', 'robo_happy', 'asst_firm', 'robo_meh', 'robo_blush', 'asst_shock', 'asst_report', 'fly_magnify', 'robo_calc', 'doc_think']
 ABOUT = ['lab:method/knn-regression', 'lab:method/linear-regression', 'lab:method/polynomial-regression', 'lab:metric/mse-rmse-mae', 'lab:metric/r2']
 KGPATH = ['method/knn-regression', 'limitation/no-extrapolation', 'method/linear-regression', 'limitation/straight-only', 'method/polynomial-regression', 'limitation/no-error-size', 'metric/mse-rmse-mae', 'limitation/scale-free', 'metric/r2']
-TODO = ['교안 [1]의 발행 연도·학기 표기 확인', '교안 그림의 선형(0.935/0.873)·다항(0.976/0.962) 점수가 어떤 분할에서 나왔는지 확인(random_state=42 분할에서는 0.940/0.825, 0.971/0.978)']
+TODO = ['교안 [1]의 발행 연도·학기 표기 확인']
 
 SOURCES = [
  '[1] 안상선. 「비즈니스를위한데이터과학」 강의 교안, 09. 데이터 분석 모형: 회귀모형(1). 인공지능융합학과. — 회귀와 분류의 차이, 양궁 과녁 비유, KNN·선형·비선형(다항·지수·로그) 회귀, 최소제곱법, reshape(−1, 1), 농어 56마리 길이·무게 데이터와 KNN 점수(훈련 0.9699, 시험 0.9928), MSE·RMSE·MAE, SST·SSR·SSE, R²·수정 R² 해석 기준, 배터리 수명·보험료·대출 심사 사례는 교안 본문과 실습 코드를 옮김. 실습 링크: <a href="https://colab.research.google.com/drive/1--zDpgF4sd9_I87Pj4JxsSMRkTxXE8rB?usp=sharing" target="_blank" rel="noopener">Colab</a>',
  '[2] Fish Market 데이터셋(Kaggle 공개 데이터). — 농어(Perch) 56마리 길이·무게. 원 출처와 이용 조건은 확인 필요.',
  '[3] scikit-learn 문서: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" target="_blank" rel="noopener">train_test_split</a>, <a href="https://scikit-learn.org/stable/modules/linear_model.html" target="_blank" rel="noopener">Linear Models</a>, <a href="https://scikit-learn.org/stable/modules/neighbors.html#regression" target="_blank" rel="noopener">Nearest Neighbors Regression</a>.']
 ILLUSTRATIVE = [
- '훈련·시험 분할은 scikit-learn train_test_split(random_state=42)이 고르는 시험 인덱스 14개를 그대로 옮겨 왔습니다. KNN 점수는 교안과 같고, 선형·다항 점수는 교안 그림과 다릅니다(교안 그림은 다른 분할로 보임).',
+ '훈련·시험 분할은 scikit-learn train_test_split(random_state=42)이 고르는 시험 인덱스 14개를 그대로 옮겨 왔습니다. KNN 점수는 교안과 같습니다. 선형·다항 점수는 교안 그림의 값을 이 분할로 다시 계산한 값으로 바꿨습니다.',
  '④칸의 "+600g 오기"는 지표의 민감도를 보이려고 일부러 넣은 값입니다.',
  '⑤칸의 난수 변수 12개는 무게와 무관하게 만든 값입니다(시드 13).',
  '대결의 큰 농어 10마리(45~48cm)는 교안 데이터에 맞춘 거듭제곱 관계에 잡음을 더해 만든 설명용 예시값입니다.']
