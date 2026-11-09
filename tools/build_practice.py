@@ -82,6 +82,7 @@ JS = r'''
 (function(){
 var S=window.SPRITE||{},A=window.SPRITE_ALIAS||{};
 document.querySelectorAll('img[data-who]').forEach(function(i){var k=i.dataset.who+'_'+i.dataset.mood;var s=S[k]||S[A[k]];if(s)i.src=s;});
+var c=document.querySelector('.cover[data-img]');if(c&&S[c.dataset.img]){var im=document.createElement('img');im.className='cv';im.alt=c.dataset.alt;im.width=1600;im.height=900;im.src=S[c.dataset.img];var fb=c.querySelector('.fallback');if(fb)fb.remove();c.insertBefore(im,c.firstChild);}
 var WEEKS=__WEEKS__,FILES=__FILES__,st={};
 function rec(key,w,ok){st[key]={w:w,ok:ok};score();}
 document.querySelectorAll('.pq').forEach(function(q){
@@ -148,7 +149,11 @@ def build(key):
   <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>계산 문제는 엑셀이나 계산기로 따라 할 수 있는 숫자만 골랐어. 풀이는 한 줄씩 적어 둘게.</p></div></div>
 </div></div></header>
 '''.format(series=SERIES, no=P['no'], title=E(P['title']), q=E(P['q']), lead=E(P['lead']), nq=nq, nc=nc, rng=rng)
-    body = hero
+    cover = ('<!-- lab-cover -->\n<header class="cover" id="cover" data-img="cover_w%02d" data-alt="%s" role="img" aria-label="%s">'
+             '<div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt="">'
+             '<span class="prop">✏️</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div>'
+             '<span class="cover-chip">%s · %d주차 연습</span></header>\n<!-- /lab-cover -->\n') % (P['no'], E(P['cover_alt']), E(P['cover_alt']), SERIES, P['no'], )
+    body = cover + hero
     body = body + plain_box(key, hero + qh + ch)
     body += '''<section class="level" id="quiz"><div class="wrap stack">
   <div class="lvhead"><h2>1부 · 교안 연습문제 ({nq}문)</h2><p class="lead">교안 각 주차 끝의 연습문제입니다. 보기를 고르면 바로 정답과 해설이 나옵니다.</p></div>
@@ -193,7 +198,7 @@ def build(key):
 </style>
 </head>
 <body>
-<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>연구실</a><div class="links"><a href="#plain">처음이라면</a><a href="#quiz">1부 연습문제</a><a href="#calc">2부 계산 문제</a><a href="#score">내 점수</a></div></div></nav>
+<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>연구실</a><div class="links"><a href="#hero">시작</a><a href="#plain">처음이라면</a><a href="#quiz">1부 연습문제</a><a href="#calc">2부 계산 문제</a><a href="#score">내 점수</a></div></div></nav>
 {body}
 {foot}
 <script>

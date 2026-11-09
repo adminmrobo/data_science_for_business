@@ -7,7 +7,7 @@
 | 주제 은유 | arrows stuck around the bullseye at different distances, with faint lines measuring how far each one missed |
 | 네 캐릭터 포즈 | 박사: at the back center drawing a smooth curve through dots on the chalkboard / 조수: reading the scale and writing a number on a blank card / 초파리 연구원: on the left facing right, measuring a fish with a long ruler / 주판봇: on the right facing left, averaging five small fish cards with the abacus |
 | 대체 글 (alt) | 네 캐릭터가 양궁 과녁 앞에서 농어를 저울에 올리고 칠판의 점들 위로 곡선을 긋는 표지 |
-| 앞 표지와 다른 점 | 앞 표지: 7주차: 2×2 성적표와 저울. 장소·소품·포즈를 겹치지 않게 함 |
+| 앞 표지와 다른 점 | 앞 표지: 8주차 연습: 문제지 책상과 채점표. 장소·소품·포즈를 겹치지 않게 함 |
 | 결과 암시 | 없음 (대결 전 장면) · 이 페이지 대결 결과: C(조건부: 범위 안 KNN 27g 대 곡선 47g, 범위 밖 KNN 485g 대 곡선 209g) — 표지에는 드러내지 않음 |
 
 **참고 이미지 (함께 올리기):** 네 캐릭터 기본 그림 4장 (기준: GitHub `adminmrobo/fruitfly-lab-expressions`).

@@ -38,6 +38,7 @@ week02_data_collection.html        2주차
 week03_analysis_prep.html          3주차
 practice/                          실습 사례 (추가 예정)
 data/KG_00_registry.json           시리즈 개념 등록부 (페이지 사이 ID 통일)
+docs/IMG_INDEX.md                  이미지 전체 목록 (페이지별 그림 키·크기·우선순위·상태, 만드는 순서)
 docs/IMG_*.md, docs/COVER_*.md     이미지 제작 명세서, 글 표지 지시문 (Genspark용 프롬프트)
 tools/                             제작 도구 (공용 엔진, 조립기, 점검 스크립트)
 ```

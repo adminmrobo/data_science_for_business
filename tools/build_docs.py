@@ -57,7 +57,7 @@ PAGES = {
    place='a night lab with an archery target on the wall, a kitchen scale with a medium fish on it, and a chalkboard full of dots with a smooth curve drawn through them',
    meta='arrows stuck around the bullseye at different distances, with faint lines measuring how far each one missed',
    pose=('at the back center drawing a smooth curve through dots on the chalkboard', 'reading the scale and writing a number on a blank card', 'on the left facing right, measuring a fish with a long ruler', 'on the right facing left, averaging five small fish cards with the abacus'),
-   alt='네 캐릭터가 양궁 과녁 앞에서 농어를 저울에 올리고 칠판의 점들 위로 곡선을 긋는 표지', duel='C(조건부: 범위 안 KNN 27g 대 곡선 47g, 범위 밖 KNN 485g 대 곡선 209g)', prev='7주차: 2×2 성적표와 저울'),
+   alt='네 캐릭터가 양궁 과녁 앞에서 농어를 저울에 올리고 칠판의 점들 위로 곡선을 긋는 표지', duel='C(조건부: 범위 안 KNN 27g 대 곡선 47g, 범위 밖 KNN 485g 대 곡선 209g)', prev='8주차 연습: 문제지 책상과 채점표'),
  '10': dict(title='10주차 · S자 곡선과 스무고개', key='w10', anchor='B 연구실: S자 칠판과 질문 나무',
    place='a night lab with a chalkboard showing a smooth S-shaped curve, a small potted tree whose branches end in colored marble jars, and a spice rack on the side',
    meta='a tree whose every branch split sorts marbles by color, next to a spice rack where some jars are almost empty',
@@ -83,6 +83,16 @@ PAGES = {
    meta='marbles gathering by themselves into colored groups, speech bubbles sorted into a green tray and a red tray, and a layered tower of circles drawing a round boundary',
    pose=('at the back center looking up at the layered tower', 'sorting speech-bubble cards into green and red trays', 'on the left facing right, stacking one more layer of glowing circles on the tower', 'on the right facing left, drawing one straight line with a ruler across a sheet'),
    alt='네 캐릭터가 색깔별로 모인 구슬 무리, 말풍선 리뷰 더미, 층층이 쌓인 신경망 탑을 둘러보는 표지', duel='D(무승부, 직선 문제: 신경망 89.75% 대 로지스틱 89.50%)', prev='13주차: 조종석 계기판'),
+ '08': dict(title='8주차 · 연습 ① 1~7주차 문제풀이', key='w08', anchor='B 연구실: 시험 전날 밤의 문제풀이 책상',
+   place='a cozy night study corner of the laboratory with a long desk covered in blank answer sheets, seven small glowing folders stacked in a row, a desk lamp and a big wall chalkboard left blank',
+   meta='seven small glowing folders lined up like a staircase (one per week reviewed), a red pencil and a stack of blank answer sheets with tick boxes',
+   pose=('standing at the chalkboard holding a piece of chalk, looking back at the desk', 'holding a blank score sheet and a red pencil, cheerful', 'on the left facing right, scratching his helmet over an answer sheet with a pencil', 'on the right facing left, working fast on a wooden abacus beside a stack of sheets'),
+   alt='밤의 연구실 공부 책상에서 네 캐릭터가 일곱 개의 빛나는 폴더와 빈 답안지를 앞에 두고 문제를 푸는 표지', duel=None, prev='7주차: 2×2 성적표와 저울'),
+ '15': dict(title='15주차 · 연습 ② 9~14주차 문제풀이', key='w15', anchor='B 연구실: 마지막 밤의 복습 테이블',
+   place='a round review table in the night laboratory at the end of the season, six glowing folders arranged in a circle, a calculator-like wooden abacus, colorful sticky notes on a corkboard behind, a window showing a winter night',
+   meta='six glowing folders in a circle (one per week reviewed) around a single lit candle-like lamp, sticky notes without writing, a finished stack of answer sheets tied with ribbon',
+   pose=('at the back center holding up a blank finished answer sheet proudly', 'pinning a blank sticky note on the corkboard', 'on the left facing right, flipping through a glowing folder with a magnifying glass', 'on the right facing left, tapping the abacus with one arm raised'),
+   alt='한 시즌의 마지막 밤, 둥근 복습 테이블에 놓인 여섯 개의 빛나는 폴더를 네 캐릭터가 둘러싸고 마무리하는 표지', duel=None, prev='14주차: 구슬 무리와 신경망 탑'),
 }
 
 def prompt(p):
@@ -217,12 +227,125 @@ def img_md(k, p):
 '''.format(t=p['title'], anc=p['anchor'], duel=p['duel'], place=p['place'], tbl=tbl, n=n, k=k, hero=hero, outro=outro, fo=fo, ro=ro, alt=alt, alt0=p['alt'],
            man=json.dumps(man, ensure_ascii=False, indent=1))
 
+PRACTICE = ('08', '15')
+FILES = {'index': 'index.html', '01': 'week01_business_data_science.html', '02': 'week02_data_collection.html', '03': 'week03_analysis_prep.html',
+         '04': 'week04_analysis_concepts.html', '05': 'week05_classification_1.html', '06': 'week06_classification_2.html', '07': 'week07_model_evaluation.html',
+         '08': 'week08_practice_1.html', '09': 'week09_regression_1.html', '10': 'week10_regression_2.html', '11': 'week11_time_series.html',
+         '12': 'week12_visualization.html', '13': 'week13_bi_kpi.html', '14': 'week14_advanced_analytics.html', '15': 'week15_practice_2.html'}
+ORDER = ['index', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15']
+
+def img_practice_md(k, p):
+    n = p['key']
+    return '''# {t} — 이미지 제작 명세서
+
+| 항목 | 내용 |
+|---|---|
+| 페이지 | {f} |
+| 모드 / 주 앵커 | 연습(문제풀이) / {anc} |
+| 대결 | 없음 (연습 페이지) |
+| 새로 그릴 그림 | P1 1장 (표지) |
+| 재사용 | 표정 전부 (캐릭터 팩) |
+| 그림이 없을 때 | 대체 표지(CSS + 캐릭터 넷)로 이미 완성 상태 |
+
+## 필요한 그림 전체
+
+| # | 키 | 판 | 크기 | 상태 | 우선 | 들어가는 곳 | 대신 쓰는 그림 |
+|---|---|---|---|---|---|---|---|
+| 1 | cover_{n} | L | 1920×1080 | 새로 (COVER_{k}) | P1 | 맨 위 글 표지 | 대체 표지(CSS + 캐릭터 넷) |
+| 2 | thumb_{n} | I | 600×400 | 새로 (표지 3:2 자르기) | P2 | 목차 카드 | 이모지 카드 |
+| 3 | og_{n} | K | 1200×630 | 새로 (표지 자르기) | P3 | 공유 미리보기 | 없음 |
+| 4 | 표정 키 전부 | A~D | 96px | 재사용 (캐릭터 팩 @5269662) | — | 등장인물·말풍선 | 픽셀 지도 |
+
+연습 페이지에는 히어로 무대·아웃트로 장면 자리가 없습니다. 표지 한 장이면 됩니다.
+'''.format(t=p['title'], f=FILES[k], anc=p['anchor'], n=n, k=k)
+
+def page_imgs(k, p):
+    """(키, 판, 크기, 우선, 종류, 명세서) 목록"""
+    n = p['key'] if k != 'index' else 'index'
+    cov = 'COVER_%s.md' % ('00_index' if k == 'index' else k)
+    out = [('cover_' + n, 'L', '1920×1080', 'P1', '그림(새로)', cov)]
+    if k not in PRACTICE and k != 'index':
+        out += [('sc_%s_hero' % n, 'E', '1200×800', 'P1', '그림(새로)', 'IMG_%s.md 3-2' % k),
+                ('sc_%s_outro' % n, 'E', '1200×800', 'P2', '그림(새로)', 'IMG_%s.md 3-3' % k)]
+    if k != 'index':
+        out.append(('thumb_' + n, 'I', '600×400', 'P2', '표지 자르기', '—'))
+    out.append(('og_' + n, 'K', '1200×630', 'P3', '표지 자르기', '—'))
+    return out
+
+def index_md():
+    import re
+    rows, total, faces, done = [], {'그림(새로)': 0, '표지 자르기': 0}, {}, 0
+    for k in ORDER:
+        p = PAGES[k]; f = FILES[k]
+        try:
+            h = open(os.path.join(REPO, f), encoding='utf-8').read()
+        except OSError:
+            h = ''
+        have = set(re.findall(r'"([a-z0-9_]+)":"data:image', h))
+        fs = sorted(set(re.findall(r'data-(?:img|mood)="((?:doc|asst|fly|robo)_[a-z]+)"', h)) | {w + '_' + m for w, m in re.findall(r'data-who="(doc|asst|fly|robo)" data-mood="([a-z]+)"', h)})
+        faces[k] = fs
+        for key, plate, size, pr, kind, spec in page_imgs(k, p):
+            ok = key in have
+            done += ok
+            total[kind] += 1
+            name = '목차' if k == 'index' else ('%d주차' % int(k))
+            rows.append('| %s | `%s` | %s | %s | %s | %s | %s | %s |' % (name, key, kind, plate, size, pr, spec, '✅ 들어감' if ok else '☐ 없음'))
+    allfaces = sorted(set(x for v in faces.values() for x in v))
+    face_rows = '\n'.join('| %s | %s |' % ('목차' if k == 'index' else '%d주차' % int(k), ' · '.join('`%s`' % x for x in faces[k])) for k in ORDER)
+    n_new, n_crop = total['그림(새로)'], total['표지 자르기']
+    return '''# 이미지 전체 목록 (IMG_INDEX)
+
+{series}에 들어가는 그림을 한곳에 모은 목록입니다. 주차별 상세 프롬프트는 각 명세서(`COVER_NN.md`, `IMG_NN.md`)에 있습니다.
+이 파일은 `tools/build_docs.py`가 페이지 HTML을 읽어 만들므로, 그림을 넣은 뒤 다시 돌리면 상태 칸이 갱신됩니다.
+
+## 1. 한눈에 보기
+
+| 구분 | 장수 | 설명 |
+|---|---|---|
+| 새로 그릴 그림 | **{n_new}장** | 표지 16(목차 + 15주차) · 히어로 무대 13 · 아웃트로 13 |
+| 표지에서 자르는 그림 | {n_crop}장 | 목차 카드(thumb, 3:2) 15 · 공유 미리보기(og, 1200×630) 16 — 따로 그리지 않음 |
+| 재사용(캐릭터 팩) | 표정 {nf}종 | 이미 모든 페이지에 들어 있음. 새로 그리지 않음 |
+| 지금 들어간 그림 | {done}장 | 나머지 페이지는 대체 표지·캔버스 무대로 이미 완성 상태 |
+
+연습 페이지(8·15주차)는 대결이 없어서 히어로 무대·아웃트로 자리가 없고 표지만 필요합니다.
+
+## 2. 만드는 순서 (권장)
+
+| 단계 | 그림 | 장수 | 이유 |
+|---|---|---|---|
+| 1 | 목차 표지 `cover_index` | 1 | 시리즈의 첫 기준 그림. 이후 모든 그림의 참고 이미지로 함께 올림 |
+| 2 | 주차 표지 `cover_w01` ~ `cover_w15` | 15 | 페이지 맨 위에 바로 보이고, thumb·og를 여기서 잘라 냄 |
+| 3 | 히어로 무대 `sc_wNN_hero` | 13 | 결과를 암시하지 않는 대결 전 장면 |
+| 4 | 아웃트로 `sc_wNN_outro` | 13 | 대결 결과(표정 기준)가 드러나는 장면 |
+| 5 | thumb·og 자르기 | 31 | 표지에서 잘라 WebP로 저장 |
+
+## 3. 전체 목록
+
+| 페이지 | 키 | 종류 | 판 | 크기 | 우선 | 프롬프트 위치 | 상태 |
+|---|---|---|---|---|---|---|---|
+{rows}
+
+## 4. 페이지별 재사용 표정 (캐릭터 팩 @5269662)
+
+| 페이지 | 표정 키 |
+|---|---|
+{face_rows}
+
+## 5. 넘겨주실 때
+- 파일 이름을 키와 같게 해 주세요. 예: `cover_w07.png`, `sc_w07_hero.png`
+- 받은 뒤 처리: 비율·글자·네 캐릭터 확인 → WebP(표지 1600×900, 220 KB 이하) → 페이지 `SPRITE`에 넣기 → 390·768·1280 폭 점검 → 이 목록 다시 생성
+- 페이지 한 편의 그림 합계는 표지 포함 600 KB 이하로 둡니다.
+'''.format(series=SERIES, n_new=n_new, n_crop=n_crop, nf=len(allfaces), done=done, rows='\n'.join(rows), face_rows=face_rows)
+
 def main():
     d = os.path.join(REPO, 'docs'); os.makedirs(d, exist_ok=True)
     for k, p in PAGES.items():
         open(os.path.join(d, 'COVER_%s.md' % ('00_index' if k == 'index' else k)), 'w', encoding='utf-8').write(cover_md(k, p))
-        if k != 'index':
+        if k in PRACTICE:
+            open(os.path.join(d, 'IMG_%s.md' % k), 'w', encoding='utf-8').write(img_practice_md(k, p))
+        elif k != 'index':
             open(os.path.join(d, 'IMG_%s.md' % k), 'w', encoding='utf-8').write(img_md(k, p))
+    open(os.path.join(d, 'IMG_INDEX.md'), 'w', encoding='utf-8').write(index_md())
     print('docs written')
 
 if __name__ == '__main__':

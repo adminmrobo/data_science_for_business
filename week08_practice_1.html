@@ -316,7 +316,10 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 </style>
 </head>
 <body>
-<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>연구실</a><div class="links"><a href="#plain">처음이라면</a><a href="#quiz">1부 연습문제</a><a href="#calc">2부 계산 문제</a><a href="#score">내 점수</a></div></div></nav>
+<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>연구실</a><div class="links"><a href="#hero">시작</a><a href="#plain">처음이라면</a><a href="#quiz">1부 연습문제</a><a href="#calc">2부 계산 문제</a><a href="#score">내 점수</a></div></div></nav>
+<!-- lab-cover -->
+<header class="cover" id="cover" data-img="cover_w08" data-alt="밤의 연구실 공부 책상에서 네 캐릭터가 일곱 개의 빛나는 폴더와 빈 답안지를 앞에 두고 문제를 푸는 표지" role="img" aria-label="밤의 연구실 공부 책상에서 네 캐릭터가 일곱 개의 빛나는 폴더와 빈 답안지를 앞에 두고 문제를 푸는 표지"><div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt=""><span class="prop">✏️</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div><span class="cover-chip">비즈니스를 위한 데이터 과학 연구실 · 8주차 연습</span></header>
+<!-- /lab-cover -->
 <header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text">
   <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 8주차 · 연습</span>
   <h1>연습 ① — 1~7주차 문제풀이</h1>
@@ -368,6 +371,7 @@ var SPRITE_FACING={"asst_e07": "left", "doc_e08": "left", "fly_e10": "left", "fl
 (function(){
 var S=window.SPRITE||{},A=window.SPRITE_ALIAS||{};
 document.querySelectorAll('img[data-who]').forEach(function(i){var k=i.dataset.who+'_'+i.dataset.mood;var s=S[k]||S[A[k]];if(s)i.src=s;});
+var c=document.querySelector('.cover[data-img]');if(c&&S[c.dataset.img]){var im=document.createElement('img');im.className='cv';im.alt=c.dataset.alt;im.width=1600;im.height=900;im.src=S[c.dataset.img];var fb=c.querySelector('.fallback');if(fb)fb.remove();c.insertBefore(im,c.firstChild);}
 var WEEKS=[1, 2, 3, 4, 5, 6, 7],FILES={"1": "week01_business_data_science.html", "2": "week02_data_collection.html", "3": "week03_analysis_prep.html", "4": "week04_analysis_concepts.html", "5": "week05_classification_1.html", "6": "week06_classification_2.html", "7": "week07_model_evaluation.html"},st={};
 function rec(key,w,ok){st[key]={w:w,ok:ok};score();}
 document.querySelectorAll('.pq').forEach(function(q){
