@@ -152,14 +152,14 @@ def plain_box(n, body):
     txt = re.sub(r'<[^>]+>', ' ', txt)
     found = sorted({t for t in re.findall(r'(?<![A-Za-z])([A-Z][A-Z0-9]{1,}(?:-[A-Z]+)?)(?![a-z])', txt) if t in ABBR})
     ab = ''.join('<div><dt>%s</dt><dd><b>%s</b> — %s</dd></div>' % (k, html.escape(ABBR[k][0]), html.escape(ABBR[k][1])) for k in found)
-    codeline = '<p class="pnote">이 주에는 파이썬 코드가 조금 나옵니다. <b>코드를 몰라도 됩니다.</b> 버튼과 슬라이더만 움직여도 내용을 모두 따라올 수 있고, 코드는 접힌 상자 안에 넣어 두었습니다.</p>' if code else '<p class="pnote">코드나 수식을 몰라도 됩니다. 버튼과 슬라이더를 움직이며 결과가 어떻게 바뀌는지만 보면 됩니다.</p>'
+    codeline = '<p class="pnote">'+('이 페이지에는' if n.startswith('S') else '이 주에는')+' 파이썬 코드가 조금 나옵니다. <b>코드를 몰라도 됩니다.</b> 버튼과 슬라이더만 움직여도 내용을 모두 따라올 수 있고, 코드는 접힌 상자 안에 넣어 두었습니다.</p>' if code else '<p class="pnote">코드나 수식을 몰라도 됩니다. 버튼과 슬라이더를 움직이며 결과가 어떻게 바뀌는지만 보면 됩니다.</p>'
     det = ('<details class="abbr"><summary>이 페이지에 나오는 영어 약어 풀이 (%d개)</summary><dl>%s</dl></details>' % (len(found), ab)) if found else ''
     return ('<section class="plain" id="plain" aria-label="처음 오신 분께"><div class="wrap"><div class="plainbox">'
             '<h2>처음 오신 분께 — 이 페이지를 3줄로</h2><dl class="p3">'
             '<div><dt>무엇을</dt><dd>%s</dd></div><div><dt>왜 중요한가</dt><dd>%s</dd></div><div><dt>업무에서는</dt><dd>%s</dd></div></dl>%s%s'
             '</div></div></section>\n') % (html.escape(what), html.escape(why), html.escape(work), codeline, det)
 
-MODEL_LV = {('04', 'lv2'), ('05', 'lv4'), ('06', 'lv3'), ('07', 'lv4'), ('09', 'lv1'), ('09', 'lv2'), ('09', 'lv3'),
+MODEL_LV = {('S1', 'lv3'), ('S1', 'lv4'), ('04', 'lv2'), ('05', 'lv4'), ('06', 'lv3'), ('07', 'lv4'), ('09', 'lv1'), ('09', 'lv2'), ('09', 'lv3'),
             ('10', 'lv1'), ('10', 'lv2'), ('10', 'lv3'), ('10', 'lv5'), ('11', 'lv2'), ('11', 'lv5'), ('14', 'lv1'), ('14', 'lv5')}
 
 def easy_box(n, lv):
@@ -207,10 +207,11 @@ def page(n):
     slug = m.SLUG
     fname = m.FILE
     url = BASE_URL + fname
+    NL = getattr(m, 'NUMLABEL', n + '주차')
     meta = {'title': m.TITLE, 'series': SERIES, 'number': n, 'creator': [{'name': '안상선', 'role': 'author', 'affiliation': '(주)M-Robo 대표', 'url': 'https://www.ahnboat.xyz'}],
             'date': DATE, 'version': VERSION, 'language': ['ko'], 'license': '', 'url': url, 'domain': m.DOMAIN,
             'about': m.ABOUT, 'educationalLevel': '입문~중급', 'learningResourceType': 'interactive explainer', 'basedOn': [r['id'] for r in m.REFS if r['lab']['role'] == 'primary'],
-            'suggestedCitation': '안상선 (2026). %s. %s %s주차, v%s. %s' % (m.TITLE, SERIES, n, VERSION, url),
+            'suggestedCitation': '안상선 (2026). %s. %s %s, v%s. %s' % (m.TITLE, SERIES, NL, VERSION, url),
             'todo': ['페이지 서지: 라이선스 빈칸 (저자가 정할 것)'] + getattr(m, 'TODO', [])}
     kg = build_kg(m, slug)
     ld = jsonld(kg, meta)
@@ -226,7 +227,7 @@ def page(n):
     cover = ('<!-- lab-cover -->\n<header class="cover" id="cover" data-img="cover_w%s" data-alt="%s" role="img" aria-label="%s">'
              '<div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt="">'
              '<span class="prop">%s</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div>'
-             '<span class="cover-chip">%s · %s주차</span></header>\n<!-- /lab-cover -->\n') % (n, html.escape(m.COVER_ALT), html.escape(m.COVER_ALT), m.COVER_PROP, SERIES, n)
+             '<span class="cover-chip">%s · %s</span></header>\n<!-- /lab-cover -->\n') % (n, html.escape(m.COVER_ALT), html.escape(m.COVER_ALT), m.COVER_PROP, SERIES, NL)
     head = '''<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -248,18 +249,19 @@ def page(n):
 <body>
 <div id="prog"></div>
 <div id="tip" role="tooltip"></div>
-'''.format(title=html.escape(m.TITLE), desc=html.escape(m.DESC), date=DATE, url=url, ogimg=BASE_URL + 'img/og_w%s.jpg' % n, css=css)
+'''.format(title=html.escape(m.TITLE), desc=html.escape(m.DESC), date=DATE, url=url, ogimg=BASE_URL + getattr(m, 'OGIMG', 'img/og_w%s.jpg' % n), css=css)
     foot = '''
 <footer id="footer"><div class="wrap stack">
   <div class="serieslinks">{prevnext}</div>
   <div><h3>출처</h3><ol style="margin:0;padding-left:20px">{src}</ol></div>
   <div><h3>예시값·설명용 모형인 것</h3><ul style="margin:0;padding-left:20px">{ill}</ul></div>
-  <p>글 · 안상선 (<a href="https://www.ahnboat.xyz" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · (주)M-Robo 대표 · {series} {n}주차 · v{ver} · {date}<br>이 페이지는 저자의 강의 교안 「비즈니스를위한데이터과학」 {n}주차를 연구실 해설 형식으로 다시 쓴 것입니다. 교안에 나온 기업 사례는 교안이 인용한 기사·자료의 내용이며, 시점이 지난 사례일 수 있습니다.<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
+  <p>글 · 안상선 (<a href="https://www.ahnboat.xyz" target="_blank" rel="noopener">www.ahnboat.xyz</a>) · (주)M-Robo 대표 · {series} {nl} · v{ver} · {date}<br>{origin}<br>캐릭터: 박사 · 조수(하루) · 초파리 연구원 · 주판봇 — 캐릭터 이름·설정·그림의 저작권은 안상선(개인)에게 있으며 허락 없이 쓸 수 없습니다. 그림: 캐릭터 팩 (fruitfly-lab-expressions @ 5269662).</p>
 </div></footer>
 
 <div id="study" aria-live="polite"><span id="stRead">읽은 곳 0%</span><span id="stQuiz">퀴즈 0/0</span><button class="bt" type="button" id="stGloss">밑줄: 핵심</button></div>
 '''.format(prevnext=m.PREVNEXT, src=''.join('<li>%s</li>' % s for s in m.SOURCES), ill=''.join('<li>%s</li>' % s for s in m.ILLUSTRATIVE),
-           series=SERIES, n=n, ver=VERSION, date=DATE)
+           series=SERIES, nl=NL, ver=VERSION, date=DATE,
+           origin=getattr(m, 'FOOT_ORIGIN', '이 페이지는 저자의 강의 교안 「비즈니스를위한데이터과학」 %s주차를 연구실 해설 형식으로 다시 쓴 것입니다. 교안에 나온 기업 사례는 교안이 인용한 기사·자료의 내용이며, 시점이 지난 사례일 수 있습니다.' % n))
     scripts = ('<script>\n' + spr + '\n</script>\n'
                '<script type="application/json" id="kg-raw">' + jdump(kg) + '</script>\n'
                '<script type="application/ld+json" id="kg-ld">' + jdump(ld) + '</script>\n'

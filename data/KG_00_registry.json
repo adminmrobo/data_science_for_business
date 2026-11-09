@@ -1,6 +1,6 @@
 {
  "series": "비즈니스를 위한 데이터 과학 연구실",
- "version": "330",
+ "version": "363",
  "concepts": [
   {
    "id": "lab:analogy/airport",
@@ -112,6 +112,22 @@
    ],
    "pages": [
     "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:analogy/copy-memo",
+   "type": "Analogy",
+   "label": {
+    "ko": "요점 메모로 다시 쓰기 ↔ 오토인코더 병목",
+    "en": "summary memo ↔ bottleneck"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -308,6 +324,22 @@
    ]
   },
   {
+   "id": "lab:analogy/receipt",
+   "type": "Analogy",
+   "label": {
+    "ko": "영수증 더미에서 튀는 금액 고르기 ↔ Z 점수",
+    "en": "odd receipt ↔ z-score"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:analogy/relay",
    "type": "Analogy",
    "label": {
@@ -433,6 +465,22 @@
    ],
    "pages": [
     "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:analogy/twenty-questions",
+   "type": "Analogy",
+   "label": {
+    "ko": "스무고개 몇 번 만에 맞히나 ↔ 고립 숲 경로 길이",
+    "en": "twenty questions ↔ path length"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -628,6 +676,22 @@
    ]
   },
   {
+   "id": "lab:claim/if-score",
+   "type": "Claim",
+   "label": {
+    "ko": "고립 숲 점수 s(x)가 1에 가까우면 이상, 모두 0.5 근처면 뚜렷한 이상이 없다",
+    "en": "IF score near 1 means anomaly"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:claim/knn-default-5",
    "type": "Claim",
    "label": {
@@ -689,6 +753,22 @@
    ],
    "pages": [
     "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:claim/linear-ae-pca",
+   "type": "Claim",
+   "label": {
+    "ko": "직선(선형) 오토인코더는 주성분 분석과 같은 공간을 배운다",
+    "en": "linear autoencoder spans the PCA subspace"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -868,6 +948,22 @@
    ]
   },
   {
+   "id": "lab:claim/sklearn-sign",
+   "type": "Claim",
+   "label": {
+    "ko": "scikit-learn score_samples는 원 논문 점수의 반대 부호로, 낮을수록 이상이다",
+    "en": "sklearn score_samples: lower is more abnormal"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:claim/smart-example",
    "type": "Claim",
    "label": {
@@ -945,6 +1041,38 @@
    ],
    "pages": [
     "dsb_w04_analysis_concepts"
+   ]
+  },
+  {
+   "id": "lab:concept/anomaly-detection",
+   "type": "Concept",
+   "label": {
+    "ko": "이상 탐지",
+    "en": "anomaly detection"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
+   "id": "lab:concept/anomaly-score",
+   "type": "Concept",
+   "label": {
+    "ko": "이상 점수",
+    "en": "anomaly score"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -1639,6 +1767,7 @@
     "stats"
    ],
    "pages": [
+    "dsb_s1_anomaly_detection",
     "dsb_w03_analysis_prep"
    ]
   },
@@ -2275,6 +2404,22 @@
    ]
   },
   {
+   "id": "lab:dataset/meal-200",
+   "type": "Dataset",
+   "label": {
+    "ko": "예시 식대 결제 200건",
+    "en": "synthetic meal payments (200)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:dataset/monthly-sales",
    "type": "Dataset",
    "label": {
@@ -2288,6 +2433,22 @@
    ],
    "pages": [
     "dsb_w11_time_series"
+   ]
+  },
+  {
+   "id": "lab:dataset/pay-292",
+   "type": "Dataset",
+   "label": {
+    "ko": "예시 결제 292건(금액·횟수, 두 무리)",
+    "en": "synthetic payments, two groups (292)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -2324,6 +2485,22 @@
    ]
   },
   {
+   "id": "lab:dataset/store-146",
+   "type": "Dataset",
+   "label": {
+    "ko": "예시 매장 방문객 146일 × 24시간",
+    "en": "synthetic store traffic (146 days)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:dataset/study-pass",
    "type": "Dataset",
    "label": {
@@ -2353,6 +2530,22 @@
    ],
    "pages": [
     "dsb_w13_bi_kpi"
+   ]
+  },
+  {
+   "id": "lab:dataset/trip-150",
+   "type": "Dataset",
+   "label": {
+    "ko": "예시 출장 150건(일수·출장비)",
+    "en": "synthetic business trips (150)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -2723,6 +2916,22 @@
    ]
   },
   {
+   "id": "lab:limitation/many-columns",
+   "type": "Limitation",
+   "label": {
+    "ko": "칸이 많고 패턴이 중요한 데이터에 약하다",
+    "en": "weak on long patterns"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:limitation/meaning-unknown",
    "type": "Limitation",
    "label": {
@@ -3027,6 +3236,38 @@
    ]
   },
   {
+   "id": "lab:limitation/one-column",
+   "type": "Limitation",
+   "label": {
+    "ko": "한 번에 한 칸만 본다",
+    "en": "one column at a time"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
+   "id": "lab:limitation/one-oval",
+   "type": "Limitation",
+   "label": {
+    "ko": "데이터가 타원 하나라고 가정한다",
+    "en": "assumes a single oval"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:limitation/one-question",
    "type": "Limitation",
    "label": {
@@ -3200,6 +3441,22 @@
    ],
    "pages": [
     "dsb_w09_regression_1"
+   ]
+  },
+  {
+   "id": "lab:limitation/score-not-decision",
+   "type": "Limitation",
+   "label": {
+    "ko": "점수는 결정이 아니다",
+    "en": "a score is not a decision"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -3427,6 +3684,22 @@
    ]
   },
   {
+   "id": "lab:method/autoencoder",
+   "type": "Method",
+   "label": {
+    "ko": "오토인코더",
+    "en": "autoencoder"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:method/chart-choice",
    "type": "Method",
    "label": {
@@ -3633,6 +3906,22 @@
    ]
   },
   {
+   "id": "lab:method/isolation-forest",
+   "type": "Method",
+   "label": {
+    "ko": "고립 숲",
+    "en": "Isolation Forest"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:method/k-tuning",
    "type": "Method",
    "label": {
@@ -3791,6 +4080,22 @@
    ]
   },
   {
+   "id": "lab:method/mahalanobis",
+   "type": "Method",
+   "label": {
+    "ko": "마할라노비스 거리",
+    "en": "Mahalanobis distance"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:method/mean-imputation",
    "type": "Method",
    "label": {
@@ -3851,6 +4156,22 @@
    ]
   },
   {
+   "id": "lab:method/pca",
+   "type": "Method",
+   "label": {
+    "ko": "주성분 분석",
+    "en": "principal component analysis"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:method/polynomial-regression",
    "type": "Method",
    "label": {
@@ -3867,6 +4188,22 @@
    ]
   },
   {
+   "id": "lab:method/reconstruction-error",
+   "type": "Method",
+   "label": {
+    "ko": "복원 오차",
+    "en": "reconstruction error"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:method/ridge-lasso",
    "type": "Method",
    "label": {
@@ -3880,6 +4217,22 @@
    ],
    "pages": [
     "dsb_w10_regression_2"
+   ]
+  },
+  {
+   "id": "lab:method/robust-z",
+   "type": "Method",
+   "label": {
+    "ko": "중앙값·MAD로 만든 튼튼한 Z 점수",
+    "en": "robust z-score (median/MAD)"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -4024,6 +4377,22 @@
    ]
   },
   {
+   "id": "lab:method/thresholding",
+   "type": "Method",
+   "label": {
+    "ko": "문턱값 정하기",
+    "en": "thresholding"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:method/train-test-split",
    "type": "Method",
    "label": {
@@ -4053,6 +4422,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:method/z-score",
+   "type": "Method",
+   "label": {
+    "ko": "Z 점수",
+    "en": "z-score"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -4183,6 +4568,22 @@
    ]
   },
   {
+   "id": "lab:metric/f1",
+   "type": "Metric",
+   "label": {
+    "ko": "F1 점수",
+    "en": "F1 score"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:metric/inventory-kpi",
    "type": "Metric",
    "label": {
@@ -4304,6 +4705,22 @@
    ],
    "pages": [
     "dsb_w03_analysis_prep"
+   ]
+  },
+  {
+   "id": "lab:metric/precision-at-k",
+   "type": "Metric",
+   "label": {
+    "ko": "경보 k건 중 진짜 이상 수",
+    "en": "hits in top-k alarms"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -4443,6 +4860,7 @@
     "biz"
    ],
    "pages": [
+    "dsb_s1_anomaly_detection",
     "dsb_w01_business_data_science",
     "dsb_w02_data_collection",
     "dsb_w03_analysis_prep",
@@ -4471,6 +4889,7 @@
     "biz"
    ],
    "pages": [
+    "dsb_s1_anomaly_detection",
     "dsb_w01_business_data_science",
     "dsb_w02_data_collection",
     "dsb_w03_analysis_prep",
@@ -4718,6 +5137,22 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:task/fraud-screening",
+   "type": "Task",
+   "label": {
+    "ko": "결제·전표·설비 이상 골라내기",
+    "en": "screening unusual records"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -5006,6 +5441,38 @@
    ]
   },
   {
+   "id": "lab:work/baldi1989",
+   "type": "Work",
+   "label": {
+    "ko": "Baldi, Hornik (1989)",
+    "en": "Baldi & Hornik 1989"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
+   "id": "lab:work/chandola2009",
+   "type": "Work",
+   "label": {
+    "ko": "Chandola, Banerjee, Kumar (2009) 이상 탐지 서베이",
+    "en": "Chandola et al. 2009"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:work/cs231n",
    "type": "Work",
    "label": {
@@ -5119,6 +5586,22 @@
    ]
   },
   {
+   "id": "lab:work/infographic",
+   "type": "Work",
+   "label": {
+    "ko": "인포그래픽 「Anomaly Detection Mathematics」",
+    "en": "infographic: Anomaly Detection Mathematics"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
    "id": "lab:work/koreatech2025",
    "type": "Work",
    "label": {
@@ -5132,6 +5615,38 @@
    ],
    "pages": [
     "dsb_w02_data_collection"
+   ]
+  },
+  {
+   "id": "lab:work/liu2008",
+   "type": "Work",
+   "label": {
+    "ko": "Liu, Ting, Zhou (2008) Isolation Forest",
+    "en": "Liu et al. 2008"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
+   ]
+  },
+  {
+   "id": "lab:work/mahalanobis1936",
+   "type": "Work",
+   "label": {
+    "ko": "Mahalanobis (1936)",
+    "en": "Mahalanobis 1936"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
@@ -5215,6 +5730,22 @@
     "dsb_w09_regression_1",
     "dsb_w10_regression_2",
     "dsb_w14_advanced_analytics"
+   ]
+  },
+  {
+   "id": "lab:work/sklearn-if",
+   "type": "Work",
+   "label": {
+    "ko": "scikit-learn IsolationForest 문서",
+    "en": "scikit-learn IsolationForest docs"
+   },
+   "domain": [
+    "ai",
+    "stats",
+    "biz"
+   ],
+   "pages": [
+    "dsb_s1_anomaly_detection"
    ]
   },
   {
