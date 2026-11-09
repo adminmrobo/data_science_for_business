@@ -281,6 +281,54 @@ details.abbr dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px
 details.abbr dl>div{display:flex;gap:8px;font-size:14px;line-height:1.5}
 details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b646)}
 @media (max-width:520px){.plainbox .p3>div{grid-template-columns:1fr;gap:2px}}
+.easy{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.easy>div{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.ez-why{border-top:3px solid var(--gfp,#7fd18b)!important}
+.ez-math{border-top:3px solid var(--seq,#9ab8ff)!important}
+.ez-h{font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.ez-k{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);letter-spacing:.04em}
+.ez-why p{margin:0 0 8px;line-height:1.7;word-break:keep-all}
+.ez-why p b{color:var(--text)}
+.ez-like{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--muted)}
+.ez-like b{color:var(--gfp,#7fd18b)!important;margin-right:4px}
+.ez-school{margin:0 0 10px;font-size:14px;color:var(--muted);word-break:keep-all}
+.ez-school b{color:var(--seq,#9ab8ff);margin-right:4px}
+.ez-pieces{margin:0;display:flex;flex-direction:column;gap:2px}
+.ez-pieces>div{display:grid;grid-template-columns:minmax(0,44%) 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.55}
+.ez-pieces dt{font-weight:500;color:var(--amber,#f1b646);overflow-wrap:anywhere}
+.ez-pieces dd{margin:0;word-break:keep-all}
+.ez-try{margin-top:10px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.7}
+.ez-try b{color:var(--amber,#f1b646)}
+.ez-try p{margin:4px 0 0}
+.ez-try p b{color:var(--text)}
+@media (max-width:860px){.easy{grid-template-columns:1fr}}
+@media (max-width:520px){.ez-pieces>div{grid-template-columns:1fr;gap:2px}}
+.ez-say{margin:0 0 10px}
+.ez-say.ez-c{margin:10px 0 0}
+.ez-say .who{width:44px;height:44px}
+.ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
+/* ── 여백 완화 (2026-11-09): 빽빽함 줄이기 ── */
+body{line-height:1.8}
+.level{padding-block:88px}
+.level>.wrap.stack{gap:40px}
+.pair{gap:20px}
+.pair>div{padding:20px 22px}
+.pair p{margin:8px 0 0}
+.panel{padding:22px;gap:18px}
+.explain{padding:22px 24px;gap:12px}
+.explain ol,.explain ul{display:flex;flex-direction:column;gap:10px;padding-left:22px;margin:4px 0}
+.explain .limit{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(241,182,70,.35)}
+.easy{gap:20px}
+.easy>div{padding:20px 22px}
+.dialog.lvtalk{gap:14px;padding:18px 20px;border-radius:12px;background:linear-gradient(180deg,rgba(154,184,255,.05),transparent);border:1px dashed var(--rule)}
+.dialog .say p{margin:2px 0 0;line-height:1.7}
+details.code,details.abbr,details.math{margin-top:4px}
+@media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
 
 </style>
 </head>
@@ -374,8 +422,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>편의점 점주가 지난 30일 영수증 더미(데이터)를 그래프로 그리고(정보), "비 오는 날 우산이 많이 팔린다"는 걸 알아낸 뒤(지식), 내일 예보를 보고 우산을 몇 개 들일지 정합니다(지혜).</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>원시 숫자 → 의미를 붙인 표·그래프 → 패턴·원인 분석 → 실천할 결정. 계단을 오를수록 가공 수준과 가치가 올라갑니다.<sup>[1]</sup> 마지막 계단은 모델이 아니라 사람의 결정입니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>계단은 넷입니다. 숫자 그대로(데이터) → 표·그래프로 정리해 뜻이 보이는 상태(정보) → 왜 그런지 패턴을 찾은 상태(지식) → 그래서 무엇을 할지 정한 상태(지혜). 위로 갈수록 손이 더 가고 값어치도 커집니다.<sup>[1]</sup> 마지막 계단은 컴퓨터가 아니라 사람이 결정합니다.</p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>영수증 30일치가 있어요. 이걸로 내일 우산을 몇 개 들일지 정할 수 있을까요?</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>30일 평균만 내면 끝이지! 하루 평균만큼 들이면 돼.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>비 온 날이랑 맑은 날을 섞어서 평균 내면 둘 다 안 맞을걸. 네 계단을 차례로 눌러 보자.</p></div></div></div>
   <section class="panel" aria-label="DIKW 계단 실험">
     <h3>편의점 우산 판매 30일 — 계단을 하나씩 올라 보기</h3>
     <div class="ctrl"><div class="group" id="dikwBtns" role="group" aria-label="계단 고르기"><span class="glabel">계단</span></div></div>
@@ -407,8 +456,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>"돌아온 비행기에서 총알 자국이 많은 곳을 장갑으로 덮자." 교안이 인용한 엘렌버그(2016)의 이야기입니다.<sup>[2]</sup> 그런데 기록에 남은 것은 <b>돌아온</b> 비행기뿐입니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>관측 데이터가 결과(살아남음)에 따라 걸러지면, 분석 결과도 걸러진 쪽으로 기웁니다. 성공한 기업, 남아 있는 고객, 살아남은 상품만 보는 분석이 모두 같은 구조입니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>데이터가 결과에 따라 미리 걸러져 있으면(살아남은 것만 남으면), 분석도 그 걸러진 쪽으로 기웁니다. 성공한 회사만, 남아 있는 고객만, 잘 팔린 상품만 보고 내린 결론이 모두 같은 함정에 빠집니다.</p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>돌아온 비행기의 총알 자국 기록입니다. 장갑을 어디에 덧대야 할까요?</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>자국이 제일 많은 날개! 많이 맞는 데를 막아야지.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="magnify" data-img="fly_magnify" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>잠깐, 못 돌아온 비행기는 이 기록에 없잖아. 엔진 생존 확률을 바꿔 보면서 봐.</p></div></div></div>
   <section class="panel" aria-label="생존자 편향 실험">
     <h3>비행기 400대 출격 — 돌아온 비행기에 남은 자국</h3>
     <div class="ctrl">
@@ -441,8 +491,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 사례입니다.<sup>[1]</sup> 라이터를 가진 사람이 폐암에 더 많이 걸린다는 표를 보고 "라이터를 금지하자"고 하면 이상합니다. 라이터와 폐암 뒤에 흡연이 함께 있기 때문입니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>두 변수가 함께 움직이는 것(상관)은 원인-결과(인과)를 보장하지 않습니다. 둘 다에 영향을 주는 제3의 변수(교란 변수)를 나눠서 보면 상관이 사라지기도 합니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>두 숫자가 함께 오르내린다고(상관) 하나가 다른 하나의 원인(인과)이라는 뜻은 아닙니다. 둘 모두에 영향을 주는 숨은 원인(여기서는 흡연)이 있을 수 있습니다. 숨은 원인이 같은 사람끼리 나눠 보면, 함께 움직이던 모습이 사라지기도 합니다.</p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>표를 보면 라이터를 가진 사람의 폐암 비율이 훨씬 높아요.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>그럼 라이터를 금지하면 폐암이 줄겠네!</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>라이터 가진 사람은 대부분 담배를 피우잖아. 흡연자끼리만 따로 나눠 보자.</p></div></div></div>
   <section class="panel" aria-label="교란 변수 실험">
     <h3>가상 인구 2,000명 — 라이터 소지와 폐암 발생</h3>
     <div class="ctrl"><div class="group" id="splitBtns" role="group" aria-label="보는 방법"><span class="glabel">보는 방법</span></div></div>
@@ -454,9 +505,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   <div class="explain"><h4>풀이</h4><ol>
     <li>이 가상 인구에서 폐암 위험은 <b>흡연</b>으로만 정해지게 만들었습니다. 라이터는 폐암에 아무 영향이 없습니다.</li>
     <li>그런데 담배를 피우는 사람은 대부분 라이터를 갖고 있습니다. 그래서 전체로 보면 라이터 소지자의 폐암 비율이 훨씬 높습니다.</li>
-    <li>흡연자끼리, 비흡연자끼리 나눠 보면 라이터가 있든 없든 폐암 비율이 거의 같습니다. 교란 변수를 '고정'했기 때문입니다.</li>
+    <li>흡연자끼리, 비흡연자끼리 나눠 보면 라이터가 있든 없든 폐암 비율이 거의 같습니다. 숨은 원인(흡연)이 같은 사람끼리 비교했기 때문입니다.</li>
     <li>교안이 함께 경고한 <b>확증 편향</b>도 여기서 생깁니다. "라이터가 문제다"라고 믿는 사람에게는 전체 표만으로도 충분한 증거처럼 보입니다.</li>
-  </ol><p class="limit">이 칸의 한계: 이번에는 우리가 교란 변수(흡연)를 알고 있었습니다. 현실에서는 숨은 변수를 다 모를 수 있습니다. 원인을 확인하려면 무작위로 나눈 실험이 필요합니다. → ④칸</p></div>
+  </ol><p class="limit">이 칸의 한계: 이번에는 우리가 숨은 원인(흡연)을 알고 있었습니다. 현실에서는 숨은 변수를 다 모를 수 있습니다. 원인을 확인하려면 무작위로 나눈 실험이 필요합니다. → ④칸</p></div>
   <details class="math"><summary>수식으로 보기</summary><div>
     <p class="num">전체 비율 차이 = P(폐암 | 라이터 있음) − P(폐암 | 라이터 없음)</p>
     <p class="num">층별 비율 차이 = P(폐암 | 라이터 있음, 흡연 = s) − P(폐암 | 라이터 없음, 흡연 = s), s ∈ {흡연, 비흡연}</p>
@@ -474,8 +525,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>이메일 제목 A와 B 중 무엇을 쓸지 정합니다. 고객을 무작위로 두 집단으로 나눠 A와 B를 동시에 보내고, 반응률을 비교합니다. 교안은 버튼 색, 제목, 레이아웃 같은 웹사이트·이메일 실험을 예로 듭니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">통계로는</div><p>무작위 할당은 ③칸의 교란 변수를 두 집단에 고르게 나눠 줍니다. 그래서 차이가 나면 그 원인을 A·B의 차이로 볼 수 있습니다. 다만 표본이 작으면 우연한 차이가 크게 보입니다.</p></div>
+    <div><div class="tag nn">통계로는</div><p>고객을 제비뽑기로 두 집단에 나누면, 나이·소득 같은 다른 조건이 두 집단에 골고루 섞입니다. 그래서 반응률에 차이가 나면 "제목 A·B의 차이 때문"이라고 말할 수 있습니다. 다만 사람 수가 적으면 우연한 차이가 크게 보일 수 있습니다.</p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="board" data-img="doc_board" alt="" aria-hidden="true"><div><b class="name">박사</b><p>이메일 제목 A와 B, 어느 쪽이 나은지 실험으로 정해 봅시다.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>100명씩만 보내도 충분해. 많이 나온 쪽으로 가자.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>100명이면 우연히 뒤집힐 수도 있어. 인원을 늘려 가며 1,000번 반복해 보자.</p></div></div></div>
   <section class="panel" aria-label="A/B 테스트 반복 실험">
     <h3>같은 실험을 1,000번 반복하면 — 표본 크기와 결정의 정확도</h3>
     <div class="ctrl">

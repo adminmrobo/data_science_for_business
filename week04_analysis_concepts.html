@@ -307,6 +307,28 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-say.ez-c{margin:10px 0 0}
 .ez-say .who{width:44px;height:44px}
 .ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
+/* ── 여백 완화 (2026-11-09): 빽빽함 줄이기 ── */
+body{line-height:1.8}
+.level{padding-block:88px}
+.level>.wrap.stack{gap:40px}
+.pair{gap:20px}
+.pair>div{padding:20px 22px}
+.pair p{margin:8px 0 0}
+.panel{padding:22px;gap:18px}
+.explain{padding:22px 24px;gap:12px}
+.explain ol,.explain ul{display:flex;flex-direction:column;gap:10px;padding-left:22px;margin:4px 0}
+.explain .limit{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(241,182,70,.35)}
+.easy{gap:20px}
+.easy>div{padding:20px 22px}
+.dialog.lvtalk{gap:14px;padding:18px 20px;border-radius:12px;background:linear-gradient(180deg,rgba(154,184,255,.05),transparent);border:1px dashed var(--rule)}
+.dialog .say p{margin:2px 0 0;line-height:1.7}
+details.code,details.abbr,details.math{margin-top:4px}
+@media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
 
 </style>
 </head>
@@ -351,7 +373,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     </div>
   </div>
 </header>
-<section class="plain" id="plain" aria-label="처음 오신 분께"><div class="wrap"><div class="plainbox"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><dl class="p3"><div><dt>무엇을</dt><dd>엑셀부터 파이썬까지 분석 도구와, 사람이 규칙을 짜는 방식 vs 데이터에서 규칙을 배우는 머신러닝을 비교합니다.</dd></div><div><dt>왜 중요한가</dt><dd>문제 종류(분류·예측·묶기)에 맞는 방법을 고르지 않으면 시간과 돈을 낭비합니다.</dd></div><div><dt>업무에서는</dt><dd>외주나 데이터팀에 일을 맡길 때 &quot;이건 분류 문제인가, 숫자 예측 문제인가&quot;부터 함께 정합니다.</dd></div></dl><p class="pnote">코드나 수식을 몰라도 됩니다. 버튼과 슬라이더를 움직이며 결과가 어떻게 바뀌는지만 보면 됩니다.</p><details class="abbr"><summary>이 페이지에 나오는 영어 약어 풀이 (17개)</summary><dl><div><dt>AI</dt><dd><b>인공지능</b> — 사람처럼 판단·예측하도록 만든 컴퓨터 프로그램</dd></div><div><dt>BI</dt><dd><b>비즈니스 인텔리전스</b> — 회사 데이터를 모아 보고서·대시보드로 보여 주는 도구와 활동</dd></div><div><dt>F1</dt><dd><b>F1 점수</b> — 정밀도와 재현율의 조화평균. 둘 다 높아야 높음</dd></div><div><dt>FP</dt><dd><b>거짓 양성</b> — 실제는 음성인데 양성이라고 잘못 경보한 경우(1종 오류)</dd></div><div><dt>KNN</dt><dd><b>k-최근접 이웃</b> — 가장 가까운 k개 사례를 보고 답을 정하는 방법</dd></div><div><dt>MAE</dt><dd><b>평균 절대 오차</b> — 예측이 평균 몇만큼 빗나갔는지(단위 그대로)</dd></div><div><dt>MATLAB</dt><dd><b>매트랩</b> — 수치 계산용 상용 프로그램</dd></div><div><dt>MSE</dt><dd><b>평균 제곱 오차</b> — 오차를 제곱해 평균. 큰 오차에 민감</dd></div><div><dt>PCA</dt><dd><b>주성분 분석</b> — 많은 변수를 핵심 몇 개 축으로 줄이는 방법</dd></div><div><dt>RMSE</dt><dd><b>평균 제곱근 오차</b> — MSE의 제곱근. 단위가 원래 값과 같아짐</dd></div><div><dt>ROI</dt><dd><b>투자 수익률</b> — (이익 − 비용) ÷ 비용</dd></div><div><dt>SARSA</dt><dd><b>SARSA</b> — 강화학습 알고리즘의 하나</dd></div><div><dt>SAS</dt><dd><b>SAS</b> — 통계 분석용 상용 프로그램</dd></div><div><dt>SPSS</dt><dd><b>SPSS</b> — 통계 분석용 상용 프로그램</dd></div><div><dt>STATA</dt><dd><b>스타타</b> — 통계 분석용 상용 프로그램</dd></div><div><dt>SVM</dt><dd><b>서포트 벡터 머신</b> — 두 집단 사이의 여유 폭이 가장 넓은 경계선을 찾는 방법</dd></div><div><dt>TCO</dt><dd><b>총소유비용</b> — 구입비에 운영·유지비까지 더한 전체 비용</dd></div></dl></details></div></div></section>
+<section class="plain" id="plain" aria-label="처음 오신 분께"><div class="wrap"><div class="plainbox"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><dl class="p3"><div><dt>무엇을</dt><dd>엑셀부터 파이썬까지 분석 도구와, 사람이 규칙을 짜는 방식 vs 데이터에서 규칙을 배우는 머신러닝을 비교합니다.</dd></div><div><dt>왜 중요한가</dt><dd>문제 종류(분류·예측·묶기)에 맞는 방법을 고르지 않으면 시간과 돈을 낭비합니다.</dd></div><div><dt>업무에서는</dt><dd>외주나 데이터팀에 일을 맡길 때 &quot;이건 분류 문제인가, 숫자 예측 문제인가&quot;부터 함께 정합니다.</dd></div></dl><p class="pnote">코드나 수식을 몰라도 됩니다. 버튼과 슬라이더를 움직이며 결과가 어떻게 바뀌는지만 보면 됩니다.</p><details class="abbr"><summary>이 페이지에 나오는 영어 약어 풀이 (15개)</summary><dl><div><dt>AI</dt><dd><b>인공지능</b> — 사람처럼 판단·예측하도록 만든 컴퓨터 프로그램</dd></div><div><dt>BI</dt><dd><b>비즈니스 인텔리전스</b> — 회사 데이터를 모아 보고서·대시보드로 보여 주는 도구와 활동</dd></div><div><dt>F1</dt><dd><b>F1 점수</b> — 정밀도와 재현율의 조화평균. 둘 다 높아야 높음</dd></div><div><dt>FP</dt><dd><b>거짓 양성</b> — 실제는 음성인데 양성이라고 잘못 경보한 경우(1종 오류)</dd></div><div><dt>KNN</dt><dd><b>k-최근접 이웃</b> — 가장 가까운 k개 사례를 보고 답을 정하는 방법</dd></div><div><dt>MAE</dt><dd><b>평균 절대 오차</b> — 예측이 평균 몇만큼 빗나갔는지(단위 그대로)</dd></div><div><dt>MSE</dt><dd><b>평균 제곱 오차</b> — 오차를 제곱해 평균. 큰 오차에 민감</dd></div><div><dt>PCA</dt><dd><b>주성분 분석</b> — 많은 변수를 핵심 몇 개 축으로 줄이는 방법</dd></div><div><dt>RMSE</dt><dd><b>평균 제곱근 오차</b> — MSE의 제곱근. 단위가 원래 값과 같아짐</dd></div><div><dt>ROI</dt><dd><b>투자 수익률</b> — (이익 − 비용) ÷ 비용</dd></div><div><dt>SARSA</dt><dd><b>SARSA</b> — 강화학습 알고리즘의 하나</dd></div><div><dt>SAS</dt><dd><b>SAS</b> — 통계 분석용 상용 프로그램</dd></div><div><dt>SPSS</dt><dd><b>SPSS</b> — 통계 분석용 상용 프로그램</dd></div><div><dt>SVM</dt><dd><b>서포트 벡터 머신</b> — 두 집단 사이의 여유 폭이 가장 넓은 경계선을 찾는 방법</dd></div><div><dt>TCO</dt><dd><b>총소유비용</b> — 구입비에 운영·유지비까지 더한 전체 비용</dd></div></dl></details></div></div></section>
 
 
 <section class="level" id="cast"><div class="wrap stack">
@@ -396,8 +418,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>저울 하나로 끝날 실험에 분석 장비를 들이면 돈과 시간이 새고, 반대로 정밀 측정이 필요한데 줄자를 들면 결과가 틀립니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>교안의 네 계열: 스프레드시트(엑셀·구글 시트), 상용 통계 도구(SAS·SPSS·MATLAB·STATA), 오픈소스(Python·R), 시각화·BI(Tableau·Power BI).<sup>[1]</sup> 소규모는 스프레드시트, 중규모 이상은 통계 패키지나 프로그래밍 언어를 고려합니다.</p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>교안은 도구를 네 무리로 나눕니다.<sup>[1]</sup> 엑셀·구글 시트 같은 스프레드시트, 돈을 내고 쓰는 통계 프로그램(SAS·SPSS 등), 무료로 쓰는 프로그래밍 언어(Python·R), 그림으로 보여 주는 BI 도구(Tableau·Power BI). 작은 데이터는 스프레드시트로 충분하고, 커질수록 통계 프로그램이나 프로그래밍을 고려합니다.</p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>엑셀, 통계 프로그램, 파이썬, BI 도구. 무엇으로 분석할까요?</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>제일 비싼 게 제일 좋지!</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>데이터 크기와 하려는 일을 고르면 어울리는 도구 점수가 나와요. 직접 눌러 보세요.</p></div></div></div>
   <section class="panel" aria-label="도구 추천기">
     <h3>프로젝트 조건을 고르면 — 어울리는 도구 묶음</h3>
     <div class="ctrl" style="flex-direction:column;align-items:flex-start">
@@ -421,7 +444,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     <li>막대 점수는 교안의 비교표와 도구 선택 가이드를 규칙으로 옮긴 것입니다(정성 비교를 숫자로 나타낸 도식).</li>
     <li>초보자 학습 경로: 스프레드시트 → 시각화 도구 → 통계 프로그램 → 프로그래밍 언어.<sup>[1]</sup></li>
     <li>오픈소스는 라이선스가 무료지만 학습·기술 지원 비용이 들 수 있어, 2주차의 TCO처럼 총소유비용으로 봅니다.<sup>[1]</sup></li>
-    <li>재현성을 위해 conda·pip 가상 환경, Docker, Git·GitHub로 버전과 환경을 기록합니다.<sup>[1]</sup></li>
+    <li>다른 사람이 같은 결과를 다시 낼 수 있도록, 쓴 프로그램의 버전과 분석 과정을 기록해 둡니다(교안: 가상 환경, Git·GitHub 등).<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 도구는 정했지만, 그 안에서 판단 규칙을 사람이 짤지 데이터가 배우게 할지는 아직 정하지 않았습니다. → ②칸</p></div>
   <div class="quiz" data-quiz="lv1"></div>
 </div></section>
@@ -435,8 +458,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>은행이 대출을 심사할 때, 예전에는 사람이 "연소득 3,000만 원 이상이고 연체가 없으면 승인" 같은 규칙을 직접 적었습니다. 그런데 고객 특성이 수십 가지가 되면 사람이 모든 조합의 규칙을 적을 수 없습니다. 그래서 <b>과거 승인·연체 기록을 보고 규칙을 컴퓨터가 찾게 하는 것</b>이 머신러닝입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 수학 문제는 "식을 줄 테니 답을 구하라"이고, 머신러닝은 "답을 잔뜩 줄 테니 식을 구하라"입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>f(x)니 함수니… 머신러닝이 수학 시간의 함수랑 무슨 상관이에요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 일차함수 y = ax + b에서, a와 b를 주지 않고 점 몇 개만 준 뒤 a·b를 구하는 문제와 같습니다.</p><dl class="ez-pieces"><div><dt>y = f(x)</dt><dd>x(입력: 소득·연체 횟수…)를 넣으면 y(출력: 승인/거절)가 나오는 함수</dd></div><div><dt>규칙 기반</dt><dd>f의 모양과 숫자를 사람이 정함 — "소득 ≥ 3,000이면 승인"</dd></div><div><dt>머신러닝</dt><dd>f의 모양만 정하고, 안의 숫자는 과거 데이터(x와 정답 y)를 보고 컴퓨터가 채움</dd></div><div><dt>학습</dt><dd>그 빈칸 숫자를 채우는 과정. 다 채우면 평범한 함수가 됨</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>점 (1, 3), (2, 5), (3, 7)을 보고 "y = 2x + 1"이라는 규칙을 찾아내는 것이 학습입니다. 찾은 뒤 x = 10을 넣으면 21을 예측합니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>수학 문제를 거꾸로 푸는 거네요. 답을 잔뜩 보고 식을 찾는 것!</p></div></div></div></div>
   <div class="pair">
     <div><div class="tag fly">은행에서는</div><p>전통적 방식은 데이터를 보고 전문가와 담당 직원의 의견을 반영해 판단 기준을 직접 입력합니다. 머신러닝은 데이터와 과거 결과(정상 상환·연체)로 판단 기준을 자동으로 만들고, 그중 결과가 가장 좋은 기준을 고릅니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>규칙 기반은 로직이 명확하고 예측 가능하지만 유연성이 부족합니다. 머신러닝은 복잡한 패턴과 새 데이터에 적응하지만, 해석이 어렵고 대량의 학습 데이터가 필요합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>사람이 쓴 규칙은 왜 그렇게 판단했는지 분명하고 결과를 예상하기 쉽지만, 새로운 상황에 유연하지 않습니다. 머신러닝은 복잡한 패턴과 새 데이터에 맞춰 가지만, 판단 이유를 설명하기 어렵고 과거 기록이 많이 필요합니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>대출 심사 규칙을 사람이 쓸까요, 과거 기록에서 배우게 할까요?</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>소득 얼마 이상, 부채 얼마 이하! 네모 규칙이면 충분해.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>진짜 경계가 비스듬하면 네모로는 못 따라가. 슬라이더로 가장 좋은 네모를 찾아봐.</p></div></div></div>
   <section class="panel" aria-label="규칙과 머신러닝 비교 실험">
     <h3>과거 대출 600건으로 만들고, 처음 보는 400건으로 채점</h3>
     <div class="ctrl">
@@ -470,8 +494,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>모델이 연습 문제(훈련 데이터)에서 100점을 받아도, 문제를 외운 것인지 원리를 배운 것인지는 처음 보는 문제로 시험해야 압니다. 그런데 시험을 한 번만 보면 문제가 쉬웠는지 운이 좋았는지 모릅니다. 그래서 <b>데이터를 여러 조각으로 나눠 돌아가며 시험 보는 것</b>이 교차 검증입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 모의고사를 다섯 번 보고 평균을 내면, 한 번 본 점수보다 실력을 더 정확히 압니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>5겹이라는 게 시험을 다섯 번 본다는 뜻이에요?</p></div></div><dl class="ez-pieces"><div><dt>훈련 / 검증 / 시험</dt><dd>공부용 / 공부 방법 고르기용 / 마지막 채점용(끝까지 봉인)</dd></div><div><dt>5겹(5-fold)</dt><dd>데이터를 5조각으로 나눠, 한 조각은 시험 · 네 조각은 공부를 5번 바꿔 가며 반복</dd></div><div><dt>평균 점수</dt><dd>5번 점수의 평균 = 처음 보는 데이터에서의 실력 추정</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>데이터 100건 → 20건씩 5조각. 다섯 번의 시험 점수가 0.80, 0.84, 0.78, 0.82, 0.86이면 평균 = 4.10 ÷ 5 = <b>0.82</b>. 점수가 0.78~0.86으로 흔들리는 폭도 함께 봅니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>한 번 점수는 운일 수 있으니, 다섯 번 평균을 보고 흔들리는 폭도 같이 보는 거군요.</p></div></div></div></div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>연습 문제만 달달 외운 학생은 연습 문제로 치면 100점이지만, 처음 보는 시험지에서는 무너집니다. 그래서 시험지는 따로 봉인해 둡니다.</p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>훈련 데이터만 너무 잘 외워 새 데이터에 대응하지 못하는 현상이 <b>과적합</b>입니다. 교안은 훈련·검증·시험을 60:20:20 또는 70:15:15로 나누고, 교차 검증으로 제한된 데이터를 최대한 활용하라고 합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>공부한 문제만 너무 잘 외워 처음 보는 문제를 못 푸는 상태를 과적합이라고 합니다. 교안은 데이터를 공부용·점검용·시험용으로 60:20:20이나 70:15:15로 나누고, 데이터가 적으면 돌아가며 시험 보는 교차 검증을 쓰라고 합니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>K = 1로 했더니 공부한 데이터에서는 100% 맞혀요!</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="magnify" data-img="fly_magnify" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>그건 자기 자신을 이웃으로 삼아서 그래. 처음 보는 데이터로 시험해 봐야 알지.</p></div></div><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="board" data-img="doc_board" alt="" aria-hidden="true"><div><b class="name">박사</b><p>데이터를 다섯 묶음으로 나눠 돌아가며 시험 보는 모습을 보세요.</p></div></div></div>
   <section class="panel" aria-label="과적합과 교차 검증 실험">
     <h3>KNN의 K를 바꾸며 — 훈련 정확도와 시험 정확도, 5겹 교차 검증</h3>
     <div class="ctrl"><div class="group"><label class="glabel" for="kk">K (이웃 수)</label><input type="range" id="kk" min="1" max="51" step="2" value="1"><span class="val" id="kkv">1</span></div></div>
@@ -511,8 +536,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
     </tbody></table></div>
   <div class="pair">
     <div><div class="tag fly">마트에서는</div><p>라면을 산 손님이 달걀도 함께 사는지 봅니다. 교안의 예: 손님 5명 중 라면 3명, 달걀 4명, 둘 다 3명.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p><b>지지도</b> = 둘 다 산 비율, <b>신뢰도</b> = 라면을 산 사람 중 달걀도 산 비율, <b>향상도</b> = 신뢰도 ÷ 달걀의 전체 구매 비율. 향상도가 1보다 크면 우연보다 함께 잘 팔립니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>세 숫자로 봅니다. 지지도 = 둘 다 산 손님의 비율. 신뢰도 = 라면을 산 손님 중 달걀도 산 비율. 향상도 = 신뢰도 ÷ 달걀을 산 손님의 비율. 향상도가 1보다 크면 우연보다 함께 잘 팔린다는 뜻입니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>라면을 산 손님은 달걀도 살까요? 손님 다섯 명의 장바구니입니다.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>다섯 명이면 계산은 금방이지. 지지도, 신뢰도, 향상도!</p></div></div></div>
   <section class="panel" aria-label="장바구니 분석 계산기">
     <h3>장바구니 계산기 — 칸을 눌러 구매를 바꿔 보기</h3>
     <div class="ctrl"><div class="group" id="ruleBtns" role="group" aria-label="규칙"><span class="glabel">규칙</span></div><div class="group"><button class="bt" type="button" id="bkReset">교안 예시로 되돌리기</button></div></div>
@@ -524,7 +550,7 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   <div class="explain"><h4>풀이</h4><ol>
     <li>교안 예시 그대로면 지지도 3/5 = 0.6, 신뢰도 3/3 = 1.0, 향상도 1.0 ÷ (4/5) = 1.25입니다. 함께 구매될 가능성이 우연보다 25% 높습니다.<sup>[1]</sup></li>
     <li>신뢰도가 높아도 달걀을 거의 모든 사람이 산다면 향상도는 1에 가깝습니다. "누구나 사는 물건"과의 연관은 정보가 없습니다.</li>
-    <li>Apriori는 자주 팔리는 상품부터 단계별로 조합을 찾고, FP-Growth는 트리 구조로 더 빠르게 찾습니다.<sup>[1]</sup></li>
+    <li>영수증이 많으면 조합이 너무 많아서, 자주 팔리는 상품부터 차례로 조합을 늘려 가며 찾는 방법을 씁니다(교안: Apriori, FP-Growth).<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 손님 5명의 연관은 우연일 수 있습니다(1주차 ④칸의 표본 크기). 그리고 어떤 모델을 고르든 그 판단이 공정한지, 설명할 수 있는지는 따로 따져야 합니다. → 정리의 윤리적 고려</p></div>
   <div class="quiz" data-quiz="lv4"></div>
 </div></section>

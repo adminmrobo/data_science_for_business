@@ -297,3 +297,20 @@ dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;pad
 dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
 dl.codemap dd{margin:0;word-break:keep-all}
 @media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
+/* ── 여백 완화 (2026-11-09): 빽빽함 줄이기 ── */
+body{line-height:1.8}
+.level{padding-block:88px}
+.level>.wrap.stack{gap:40px}
+.pair{gap:20px}
+.pair>div{padding:20px 22px}
+.pair p{margin:8px 0 0}
+.panel{padding:22px;gap:18px}
+.explain{padding:22px 24px;gap:12px}
+.explain ol,.explain ul{display:flex;flex-direction:column;gap:10px;padding-left:22px;margin:4px 0}
+.explain .limit{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(241,182,70,.35)}
+.easy{gap:20px}
+.easy>div{padding:20px 22px}
+.dialog.lvtalk{gap:14px;padding:18px 20px;border-radius:12px;background:linear-gradient(180deg,rgba(154,184,255,.05),transparent);border:1px dashed var(--rule)}
+.dialog .say p{margin:2px 0 0;line-height:1.7}
+details.code,details.abbr,details.math{margin-top:4px}
+@media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}

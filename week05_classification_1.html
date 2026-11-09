@@ -312,6 +312,23 @@ dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;pad
 dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
 dl.codemap dd{margin:0;word-break:keep-all}
 @media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
+/* ── 여백 완화 (2026-11-09): 빽빽함 줄이기 ── */
+body{line-height:1.8}
+.level{padding-block:88px}
+.level>.wrap.stack{gap:40px}
+.pair{gap:20px}
+.pair>div{padding:20px 22px}
+.pair p{margin:8px 0 0}
+.panel{padding:22px;gap:18px}
+.explain{padding:22px 24px;gap:12px}
+.explain ol,.explain ul{display:flex;flex-direction:column;gap:10px;padding-left:22px;margin:4px 0}
+.explain .limit{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(241,182,70,.35)}
+.easy{gap:20px}
+.easy>div{padding:20px 22px}
+.dialog.lvtalk{gap:14px;padding:18px 20px;border-radius:12px;background:linear-gradient(180deg,rgba(154,184,255,.05),transparent);border:1px dashed var(--rule)}
+.dialog .say p{margin:2px 0 0;line-height:1.7}
+details.code,details.abbr,details.math{margin-top:4px}
+@media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
 
 </style>
 </head>
@@ -396,8 +413,9 @@ dl.codemap dd{margin:0;word-break:keep-all}
   </div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>같은 시약도 비커(자유롭게 붓고 덜기), 밀봉 앰풀(못 바꿈), 이름표 붙은 서랍(이름으로 찾기), 중복 없는 견본 상자에 담으면 다룰 수 있는 방법이 달라집니다.</p></div>
-    <div><div class="tag nn">파이썬에서는</div><p>List는 순서 있고 바꿀 수 있음, Tuple은 바꿀 수 없음, Dictionary는 키-값 쌍, Set은 중복 없음, NumPy Array는 같은 타입의 빠른 숫자 계산, pandas DataFrame은 레이블이 붙은 2차원 표입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">파이썬에서는</div><p>파이썬에는 데이터를 담는 그릇이 여러 개 있습니다. 순서대로 담고 바꿀 수 있는 목록(List), 한 번 담으면 못 바꾸는 목록(Tuple), 이름표로 꺼내는 서랍(Dictionary), 중복을 없애는 상자(Set), 숫자 계산이 빠른 배열(Array), 엑셀처럼 행과 열이 있는 표(DataFrame).<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>파이썬에는 데이터를 담는 그릇이 여러 개 있어요. 같은 값도 그릇에 따라 다르게 굴러갑니다.</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>그릇을 고르고 "× 2 하기"를 눌러 보세요. 목록과 배열의 결과가 완전히 달라요.</p></div></div></div>
   <section class="panel" aria-label="데이터 구조 실험대">
     <h3>같은 동작, 다른 그릇 — 결과를 비교해 보기</h3>
     <div class="ctrl"><div class="group" id="dsBtns" role="group" aria-label="그릇"><span class="glabel">그릇</span></div></div>
@@ -407,9 +425,9 @@ dl.codemap dd{margin:0;word-break:keep-all}
   </section>
   <div class="explain"><h4>풀이</h4><ol>
     <li>리스트 × 2는 <b>반복</b>(값이 두 번 나열), 배열 × 2는 <b>원소마다 곱셈</b>입니다. 숫자 계산에는 NumPy 배열을 씁니다.</li>
-    <li>튜플은 값을 바꾸려 하면 TypeError가 납니다. 바뀌면 안 되는 값(좌표, 설정)을 담습니다.</li>
+    <li>튜플은 값을 바꾸려 하면 오류가 납니다. 바뀌면 안 되는 값(좌표, 설정)을 담습니다.</li>
     <li>딕셔너리에 같은 키를 다시 넣으면 나중 값으로 덮어씁니다. 셋은 중복을 허용하지 않습니다(교안 연습문제).<sup>[1]</sup></li>
-    <li>NumPy·pandas는 <code>import numpy as np</code>, <code>import pandas as pd</code>를 먼저 실행해야 씁니다.<sup>[1]</sup></li>
+    <li>배열(NumPy)과 표(pandas) 도구는 쓰기 전에 먼저 불러오는 줄을 실행해야 합니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 그릇을 알았으니 이제 실제 생선 측정값을 담아야 합니다. 담다가 생기는 실수(개수 불일치, 단위 혼동)는 그릇이 막아 주지 않습니다. → ②칸</p></div>
   <div class="quiz" data-quiz="lv1"></div>
 </div></section>
@@ -422,8 +440,9 @@ dl.codemap dd{margin:0;word-break:keep-all}
   </div>
   <div class="pair">
     <div><div class="tag fly">어시장에서는</div><p>도미는 크고 무겁고, 빙어는 작고 가볍습니다. 측정 장부에 길이를 적다가 무게 칸을 한 줄 빼먹거나, 한 마리만 kg으로 적으면 장부가 어긋납니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>연속형 특성(길이, 무게)으로 범주형 목표(종류)를 예측하는 이진 분류 문제입니다. 데이터를 넣은 뒤에는 세 가지를 확인합니다. 길이와 무게의 개수가 같은지(개수 세기), 0cm 같은 불가능한 값이 없는지(최솟값·최댓값), 튀는 점이 없는지(산점도)입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>길이와 무게(숫자)로 종류(도미냐 빙어냐)를 맞히는, 답이 둘인 분류 문제입니다. 데이터를 넣은 뒤에는 세 가지를 확인합니다. 길이와 무게의 개수가 같은지(개수 세기), 0cm 같은 불가능한 값이 없는지(최솟값·최댓값), 튀는 점이 없는지(산점도)입니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>도미 35마리, 빙어 14마리의 길이와 무게를 장부에 옮겼어요.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>옮기다가 한 줄 빠뜨리거나 kg으로 적은 건 없어? 실수 버튼을 하나씩 눌러 봐.</p></div></div></div>
   <section class="panel" aria-label="데이터 점검 실험">
     <h3>측정 장부에 실수를 넣어 보고 — 점검이 잡아내는지 확인</h3>
     <div class="ctrl"><div class="group" id="errBtns" role="group" aria-label="실수 넣기"><span class="glabel">실수 넣기</span></div></div>
@@ -448,8 +467,9 @@ dl.codemap dd{margin:0;word-break:keep-all}
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>사진마다 "이건 도미" 이름표를 붙이는 일을 데이터 라벨링이라고 합니다. 교안은 데이터 댐 일자리 뉴스를 함께 봅니다. 이름표가 틀리면 모델은 틀린 것을 배웁니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>모델은 문자열 대신 숫자 라벨을 씁니다. 도미 = 1, 빙어 = 0. 특성(fish_data)과 정답(fish_target)의 순서가 정확히 맞아야 하고, 클래스별 개수(35 대 14)를 확인해 불균형을 봅니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>모델은 "도미", "빙어" 같은 글자 대신 숫자 정답을 씁니다. 도미 = 1, 빙어 = 0. 생선 목록과 정답 목록의 순서가 정확히 맞아야 하고, 종류별 마릿수(35 대 14)를 세어 한쪽으로 쏠렸는지도 봅니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>길이와 무게가 따로 있어요. 모델에는 어떻게 넣어야 할까요?</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>한 마리씩 [길이, 무게]로 짝 짓고, 도미는 1, 빙어는 0이라고 정답을 붙여요.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>순서가 한 칸만 어긋나도 정답이 다 틀려. "빙어 먼저 입력"을 눌러 봐.</p></div></div></div>
   <section class="panel" aria-label="zip과 라벨링">
     <h3>fish_data와 fish_target — 순서가 어긋나면 어떻게 될까</h3>
     <div class="ctrl"><div class="group" id="lbBtns" role="group" aria-label="라벨 상태"><span class="glabel">라벨</span></div></div>
@@ -475,8 +495,9 @@ dl.codemap dd{margin:0;word-break:keep-all}
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>생선의 길이와 무게만 보고 도미인지 빙어인지 맞히고 싶습니다. "30cm 넘으면 도미" 같은 규칙을 사람이 정할 수도 있지만, 경계에 걸친 생선에서 자주 틀립니다. <b>KNN은 규칙을 만들지 않고, 비슷한 과거 사례를 찾아 다수결로 정합니다.</b> 가장 단순한 머신러닝 모델이라 첫 모델로 씁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 전학 온 친구가 어느 동아리에 갈지 맞히려면, 그 친구와 취향이 가장 비슷한 친구 5명이 어느 동아리인지 보면 됩니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>√ 안에 제곱이 두 개… 이거 꼭 이렇게 복잡하게 재야 해요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 3학년 피타고라스 정리로 두 점 사이 거리를 구하는 계산 그대로입니다.</p><dl class="ez-pieces"><div><dt>거리 d = √((길이 차)² + (무게 차)²)</dt><dd>두 생선이 얼마나 닮았나. 좌표평면의 두 점 사이 거리(피타고라스 정리)</dd></div><div><dt>K</dt><dd>몇 마리 이웃에게 물어볼지. 기본값 5</dd></div><div><dt>다수결</dt><dd>K마리 중 가장 많은 종으로 판정. 도미 3 · 빙어 2면 도미</dd></div><div><dt>fit · predict · score</dt><dd>데이터 저장하기 · 새 생선 판정하기 · 정답률 채점하기</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>두 점 (1, 2)와 (4, 6)의 거리 = √(3² + 4²) = √25 = <b>5</b>.<br>새 생선의 가까운 이웃 5마리가 도미·도미·빙어·도미·빙어 → 도미 3표 → <b>도미</b>(확률 3 ÷ 5 = 0.6).</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>피타고라스 정리였어요! 점 두 개 사이의 직선 거리를 잰 것뿐이네요.</p></div></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 비유입니다. 새 친구가 왔을 때 가장 가까운 K명이 대부분 축구부면 "새 친구도 축구부겠지"라고 추측합니다. K가 너무 적으면 한 명의 이상한 의견에 휘둘리고, 너무 많으면 의견이 섞여 판단이 흐려집니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>KNN은 학습 때 따로 계산하지 않고 훈련 데이터를 저장합니다. 예측 때 새 점과 모든 점의 거리(기본: 유클리드)를 재고, 가장 가까운 K개의 다수결로 정합니다. 동점을 피하려 K는 보통 홀수를 씁니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>KNN은 공부할 때 따로 계산하지 않고 생선 기록을 저장만 해 둡니다. 새 생선이 오면 저장된 모든 생선과의 거리(좌표 사이의 직선 거리)를 재고, 가장 가까운 K마리의 다수결로 정합니다. 표가 같아지지 않게 K는 보통 홀수로 씁니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>드디어 첫 모델입니다. 새 생선이 오면 가장 가까운 이웃에게 물어봅니다.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>정답률 100%! 완벽한 모델이야.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="magnify" data-img="fly_magnify" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>공부한 생선으로 다시 채점했잖아. 그리고 25cm·150g 생선을 한번 눌러 봐.</p></div></div></div>
   <section class="panel" aria-label="KNN 예측 실험">
     <h3>그림을 눌러 새 생선을 놓아 보기 — 이웃과 투표 보기</h3>
     <div class="ctrl">
@@ -490,7 +511,7 @@ dl.codemap dd{margin:0;word-break:keep-all}
   </section>
   <div class="explain"><h4>풀이</h4><ol>
     <li>학습에 쓴 생선으로 다시 채점하면 정답률 1.0(100%)이 나옵니다. 교안은 같은 데이터로 평가하면 과적합 여부를 판단하기 어렵다고 경고합니다.<sup>[1]</sup> 4주차 ③칸의 K = 1과 같은 함정입니다.</li>
-    <li><code>predict_proba()</code>는 이웃 중 각 클래스의 비율입니다. K = 5에서 0.6이면 이웃 5마리 중 3마리가 도미라는 뜻입니다.</li>
+    <li>모델이 내는 확률은 이웃 중 각 종류가 차지한 비율입니다. K = 5에서 0.6이면 이웃 5마리 중 3마리가 도미라는 뜻입니다.</li>
     <li>그림의 가로(0~45cm)와 세로(0~1,100g) 눈금이 달라서, 눈으로 보는 "가까움"과 KNN이 재는 거리가 다를 수 있습니다. 25cm·150g 생선을 눌러 보세요. 이 문제는 6주차 표준화에서 풉니다.</li>
   </ol><p class="limit">이 칸의 한계: 도미와 빙어는 너무 쉽게 갈립니다. 중간 크기인 농어가 끼어들고, 시험 데이터를 따로 떼고, 눈금을 맞추면 무엇이 달라질까요? → 6주차</p></div>
   <div class="bridges">

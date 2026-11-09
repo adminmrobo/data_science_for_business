@@ -15,6 +15,7 @@ sys.path.insert(0, HERE)
 from abbr import ABBR
 from plain import PLAIN
 from easy import EASY, ASK
+from talk import DLG
 
 def load(n):
     spec = importlib.util.spec_from_file_location('w' + n, os.path.join(HERE, 'pages', 'w%s.py' % n))
@@ -184,6 +185,23 @@ def add_easy(n, body):
         body = body[:j] + easy_box(n, lv) + body[j:]
     return body
 
+NAMES = {'doc': '박사', 'asst': '조수', 'fly': '초파리 연구원', 'robo': '주판봇'}
+
+def add_talk(n, body):
+    for (wk, lv), lines in DLG.items():
+        if wk != n:
+            continue
+        i = body.find('<section class="level" id="%s">' % lv)
+        end = body.find('<section class="level"', i + 10)
+        j = body.find('<section class="panel"', i)
+        if j < 0 or (end > 0 and j > end):
+            j = body.find('<div class="explain">', i)
+        assert i >= 0 and j > i, (n, lv)
+        says = ''.join('<div class="say" data-who="%s"><img class="who" data-who="%s" data-mood="%s" data-img="%s_%s" alt="" aria-hidden="true"><div><b class="name">%s</b><p>%s</p></div></div>'
+                       % (w, w, m, w, m, NAMES[w], t) for w, m, t in lines)
+        body = body[:j] + '<div class="dialog lvtalk" aria-label="연구실 대화">' + says + '</div>\n  ' + body[j:]
+    return body
+
 def page(n):
     m = load(n)
     slug = m.SLUG
@@ -200,7 +218,7 @@ def page(n):
     pjs = open(os.path.join(HERE, 'pages', 'w%s.js' % n), encoding='utf-8').read()
     css = open(os.path.join(HERE, 'engine.css'), encoding='utf-8').read() + getattr(m, 'CSS', '')
     ejs = open(os.path.join(HERE, 'engine.js'), encoding='utf-8').read()
-    keys = set(re.findall(r'data-img="((?:doc|asst|fly|robo)_[a-z]+)"', body)) | set(m.EXTRA_SPRITES) | {'asst_report', 'doc_front', 'asst_smile', 'fly_clip', 'robo_smile', 'fly_point', 'robo_coin', 'asst_shock', 'asst_spark'}
+    keys = set(re.findall(r'data-img="((?:doc|asst|fly|robo)_[a-z]+)"', body)) | set(m.EXTRA_SPRITES) | {'asst_report', 'doc_front', 'asst_smile', 'fly_clip', 'robo_smile', 'fly_point', 'robo_coin', 'asst_shock', 'asst_spark'} | {'%s_%s' % (w, m) for (wk, lv), ls in DLG.items() if wk == n for w, m, t in ls}
     keys |= {'cover_w%s' % n, 'sc_w%s_hero' % n, 'sc_w%s_outro' % n}
     spr = sprites(keys)
     links = ''.join('<a href="%s">%s</a>' % (h, t) for h, t in m.NAV) + '<a href="#kg">지식 색인</a><a href="#export">꾸러미</a>'
@@ -252,6 +270,7 @@ def page(n):
                + pjs + '\nLAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:' + jdump(m.KGPATH) + '});\n})();\n</script>\n</body>\n</html>\n')
     body = body.replace('</header>', '</header>\n' + plain_box(n, body), 1)
     body = add_easy(n, body)
+    body = add_talk(n, body)
     out = head + NAVTPL.format(links=links) + '\n' + cover + body + '\n' + KG_SECTION.replace('{ph}', m.SEARCH_PH) + foot + scripts
     p = os.path.join(REPO, fname)
     open(p, 'w', encoding='utf-8').write(out)

@@ -307,6 +307,28 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
 .ez-say.ez-c{margin:10px 0 0}
 .ez-say .who{width:44px;height:44px}
 .ez-say p{font-size:14px}
+dl.codemap{margin:10px 0 0;display:flex;flex-direction:column}
+dl.codemap>div{display:grid;grid-template-columns:minmax(0,46%) 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--rule);font-size:14px;line-height:1.5}
+dl.codemap dt code{font-size:13px;color:var(--amber,#f1b646);overflow-wrap:anywhere;background:none}
+dl.codemap dd{margin:0;word-break:keep-all}
+@media (max-width:520px){dl.codemap>div{grid-template-columns:1fr;gap:2px}}
+/* ── 여백 완화 (2026-11-09): 빽빽함 줄이기 ── */
+body{line-height:1.8}
+.level{padding-block:88px}
+.level>.wrap.stack{gap:40px}
+.pair{gap:20px}
+.pair>div{padding:20px 22px}
+.pair p{margin:8px 0 0}
+.panel{padding:22px;gap:18px}
+.explain{padding:22px 24px;gap:12px}
+.explain ol,.explain ul{display:flex;flex-direction:column;gap:10px;padding-left:22px;margin:4px 0}
+.explain .limit{margin-top:6px;padding-top:12px;border-top:1px dashed rgba(241,182,70,.35)}
+.easy{gap:20px}
+.easy>div{padding:20px 22px}
+.dialog.lvtalk{gap:14px;padding:18px 20px;border-radius:12px;background:linear-gradient(180deg,rgba(154,184,255,.05),transparent);border:1px dashed var(--rule)}
+.dialog .say p{margin:2px 0 0;line-height:1.7}
+details.code,details.abbr,details.math{margin-top:4px}
+@media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
 
 </style>
 </head>
@@ -394,8 +416,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">회사에서는</div><p>"고객 만족도를 높이자"는 회의는 쉽게 끝나지만, 석 달 뒤 성공했는지 아무도 모릅니다. 무엇을, 얼마나, 언제까지, 어떻게 잴지 빠져 있기 때문입니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>목표를 Specific · Measurable · Achievable · Relevant · Time-bound로 바꾸면, 분석할 데이터와 성공 지표(KPI)가 정해집니다. 교안의 예: "3개월 내 고객 이탈률을 15%에서 10%로 감소시켜 연간 매출 5% 증대".<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>목표를 구체적이고(Specific), 잴 수 있고(Measurable), 해낼 수 있고(Achievable), 사업과 관련 있고(Relevant), 기한이 있게(Time-bound) 바꾸면, 어떤 데이터를 모으고 무엇으로 성공을 잴지(KPI)가 저절로 정해집니다. 교안의 예: "3개월 안에 고객 이탈률을 15%에서 10%로 줄여 연간 매출 5% 늘리기".<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>"고객 만족도를 높이자." 석 달 뒤 성공했는지 어떻게 알까요?</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>무엇을, 얼마나, 언제까지 잴지 다섯 칸에 채워 보면 목표가 숫자가 돼요.</p></div></div></div>
   <section class="panel" aria-label="SMART 목표 조립기">
     <h3>목표 조립기 — 조각을 골라 SMART 다섯 글자를 모두 켜 보기</h3>
     <div class="ctrl" style="flex-direction:column;align-items:flex-start">
@@ -431,8 +454,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>설문에서 소득 칸을 비워 둔 사람이 30% 있습니다. 누가 비웠을까요? 아무나 비웠다면 지워도 괜찮지만, 젊은 사람이 주로 비웠다면 지우는 순간 표본이 나이 든 쪽으로 기웁니다.</p></div>
-    <div><div class="tag nn">통계로는</div><p>교안의 결측 메커니즘 셋입니다.<sup>[1]</sup> <b>MCAR</b>(완전 무작위 결측) · <b>MAR</b>(다른 관측 변수에 따라 빠짐, 예: 나이) · <b>MNAR</b>(빠진 값 자체 때문에 빠짐, 예: 고소득자가 소득을 숨김). 처리 방법은 메커니즘에 맞춰 골라야 합니다.</p></div>
+    <div><div class="tag nn">통계로는</div><p>빈칸이 생긴 이유는 세 가지입니다.<sup>[1]</sup> ① 아무 이유 없이 빠짐 ② 다른 칸(예: 나이)과 관련 있게 빠짐 ③ 그 값 자체 때문에 빠짐(예: 소득이 높은 사람이 소득을 숨김). 이유에 따라 지워도 되는지, 무엇으로 채울지가 달라집니다.</p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>소득 칸이 비어 있는 사람이 꽤 있어요. 빈칸은 어떻게 할까요?</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>빈칸 있는 줄은 지우면 깔끔하지!</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>누가 비웠는지 먼저 봐야 해. 젊은 사람이 주로 비웠다면 지우는 순간 평균이 틀어져.</p></div></div></div>
   <section class="panel" aria-label="결측값 처리 실험">
     <h3>평균 연소득 추정 — 결측 메커니즘과 처리 방법을 바꿔 보기</h3>
     <div class="ctrl">
@@ -467,8 +491,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 120명의 1회 구매액 중 몇 명만 금액이 유난히 큽니다. 입력 실수일 수도, 진짜 VIP일 수도 있습니다. 눈으로 "튀어 보인다"고 하면 사람마다 기준이 달라서, <b>모두가 같은 결론을 내는 숫자 기준</b>이 필요합니다.</p><p class="ez-like"><b>쉽게 말하면</b> 반 평균이 70점인 시험에서 100점은 "얼마나 튀는가"를 재려면, 점수 차이(30점)를 그 반의 보통 들쭉날쭉함(표준편차)으로 나눠 봅니다. 그 몫이 Z점수입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>Z는 왜 표준편차로 나눠요? 그냥 평균이랑 차이만 보면 안 되나요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 「자료의 정리」에서 배운 평균·사분위수, 고등학교 「통계」의 표준화와 같은 계산입니다.</p><dl class="ez-pieces"><div><dt>Z = (x − 평균) ÷ 표준편차</dt><dd>평균에서 몇 걸음 떨어졌는지. 한 걸음 = 표준편차 1개</dd></div><div><dt>|Z| > 3</dt><dd>세 걸음 넘게 떨어지면 이상값 후보. 정규분포라면 1,000명 중 3명 정도만 그렇게 멉니다</dd></div><div><dt>IQR = Q3 − Q1</dt><dd>가운데 50% 사람들이 퍼진 폭. Q1은 하위 25%, Q3은 상위 25% 경계</dd></div><div><dt>Q1 − 1.5·IQR, Q3 + 1.5·IQR</dt><dd>이 울타리 밖이면 이상값 후보(상자그림의 수염 끝)</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>평균 50만 원, 표준편차 10만 원일 때 구매액 85만 원 → Z = (85 − 50) ÷ 10 = 3.5 → 이상값 후보.<br>Q1 = 20, Q3 = 40(만 원)이면 IQR = 20 → 울타리 20 − 30 = −10 ~ 40 + 30 = 70 → 150만 원은 울타리 밖.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>아, 차이 35만 원이 큰지 작은지는 "평소에 얼마나 들쭉날쭉한지"에 대 봐야 아는 거군요.</p></div></div></div></div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>구매액 목록에 999만 9,999원과 −5만 원이 있습니다. 입력 실수입니다. 120만 원짜리 구매 세 건도 있습니다. 이건 진짜 VIP 고객일 수 있습니다. 둘을 똑같이 지우면 중요한 고객을 잃습니다.</p></div>
-    <div><div class="tag nn">통계로는</div><p>통계적 방법(Z-score, IQR, 수정 Z-score)으로 후보를 찾고, 처리(제거·변환·캡핑·별도 분석)는 도메인 지식으로 정합니다. 교안은 이상값 자체가 중요한 의미를 가지면 별도로 분석하라고 합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로는</div><p>먼저 통계 기준(평균에서 너무 먼 값, 사분위 울타리 밖의 값)으로 "이상해 보이는 후보"를 찾습니다. 그다음 지울지·고칠지·따로 볼지는 업무를 아는 사람이 정합니다. 교안은 튀는 값이 중요한 뜻을 가지면 따로 분석하라고 합니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>구매액 목록에 999만 원과 −5만 원, 그리고 120만 원짜리 세 건이 있습니다.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>튀는 건 다 지우자! 그래야 평균이 예뻐.</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="magnify" data-img="fly_magnify" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>−5만 원은 실수지만 120만 원은 진짜 VIP일 수도 있어. 기준을 바꿔 가며 비교해 봐.</p></div></div></div>
   <section class="panel" aria-label="이상값 탐지 실험">
     <h3>구매액 120건 — 탐지 규칙과 처리 방법 바꿔 보기</h3>
     <div class="ctrl">
@@ -497,8 +522,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">도서관에서는</div><p>교안의 도서관 비유입니다.<sup>[1]</sup> 모든 책은 고유한 번호가 있어야 하고(개체 무결성), 없는 책은 대출할 수 없고(참조 무결성), 나이는 0~150 사이, 성별은 정해진 값만 들어가야 합니다(도메인 무결성).</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>데이터 품질은 데이터가 의도된 목적에 얼마나 맞는지의 척도입니다. 교안은 6차원으로 재고, 정확도 비율·필드 완전성·참조 무결성 비율 같은 지표를 씁니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>데이터 품질은 "이 데이터가 쓰려는 목적에 얼마나 맞나"입니다. 교안은 여섯 가지로 잽니다. 맞는 값인가(정확성), 빈칸 없는가(완전성), 서로 어긋나지 않나(일관성), 제때 들어왔나(적시성), 규칙에 맞나(유효성), 중복 없나(유일성).<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>같은 주문이 세 번, 무게는 kg과 lb가 섞여 있고, 나이가 999인 사람도 있어요.</p></div></div><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="board" data-img="doc_board" alt="" aria-hidden="true"><div><b class="name">박사</b><p>하나씩 고칠 때마다 품질 점수가 어떻게 오르는지 보세요.</p></div></div></div>
   <section class="panel" aria-label="중복 제거와 품질 점수 실험">
     <h3>주문 기록 12줄 — 정제 단계를 하나씩 켜 보기</h3>
     <div class="ctrl"><div class="group" id="fixBtns" role="group" aria-label="정제 단계"><span class="glabel">정제 단계</span></div></div>
@@ -529,8 +555,9 @@ details.abbr dt{flex:none;min-width:64px;font-weight:700;color:var(--amber,#f1b6
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>깨끗해진 데이터를 받으면 바로 모델에 넣고 싶어집니다. 그 전에 그림부터 그립니다. 한 변수의 모양(단변량), 두 변수의 관계(이변량), 여러 변수의 패턴(다변량) 순서입니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">통계로는</div><p>치우친 분포에서는 평균과 중앙값이 갈립니다. 피어슨 상관계수는 직선 관계를, 스피어만 상관계수는 순위 기반이라 휘어진 단조 관계와 극단값에 강합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">통계로는</div><p>한쪽으로 치우친 데이터에서는 평균과 중앙값이 벌어집니다. 두 숫자가 함께 움직이는 정도는 두 가지로 잽니다. 피어슨은 "얼마나 직선에 가까운가", 스피어만은 "순위가 함께 오르내리나"를 봐서, 휘어진 관계나 튀는 값에 덜 흔들립니다.<sup>[1]</sup></p></div>
   </div>
+  <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>깨끗해진 데이터, 바로 모델에 넣고 싶죠? 그 전에 그림부터 그립니다.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>광고비랑 매출이 같이 오르네. 광고비가 원인이야!</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>목 좋은 매장이 광고도 많이 하는 걸 수도 있어. 튀는 매장 하나 넣고 빼면서 봐.</p></div></div></div>
   <section class="panel" aria-label="탐색적 데이터 분석 실험">
     <h3>매장 60곳 — 분포와 관계를 그려 보기</h3>
     <div class="ctrl">
