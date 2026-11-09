@@ -27,14 +27,6 @@
 | 14 | 비즈니스를 위한 고급 분석 기법 | [정답 없이, 글 속에서, 층을 쌓아](week14_advanced_analytics.html) | K-means → 연관 규칙 → 감성 분석 → TF-IDF → 신경망 | 무승부 |
 | 15 | 연습 ② | [9~14주차 문제풀이](week15_practice_2.html) | 교안 연습문제 18문 → 계산·사례 문제 6문 → 주차별 점수 | 연습 |
 
-## 특강
-
-| 특강 | 주제 | 페이지 | 사다리 | 대결 |
-|---|---|---|---|---|
-| ① | 이상 탐지 | [평소와 다른 한 건 찾기](special01_anomaly_detection.html) | Z 점수 → 마할라노비스 거리 → 고립 숲 → 복원 오차 → 문턱값 | 주판봇 승 |
-
-특강 ①은 소셜미디어에 공유된 인포그래픽 「Anomaly Detection Mathematics」(작성자 미상)를 연구실 형식으로 다시 쓴 것입니다. 외국어판(en·zh·ja·uz·ru·vi)은 `special01_anomaly_detection.{언어}.html`입니다.
-
 실습 사례는 [`practice/`](practice/)에 추가할 예정입니다.
 
 ## 파일
@@ -44,7 +36,6 @@ index.html                         목차
 week01_business_data_science.html  1주차 (한 파일, 그림·데이터·코드 포함)
 week02_data_collection.html        2주차
 week03_analysis_prep.html          3주차
-special01_anomaly_detection.html  특강 ① 이상 탐지 (+ .en .zh .ja .uz .ru .vi 외국어판)
 practice/                          실습 사례 (추가 예정)
 data/KG_00_registry.json           시리즈 개념 등록부 (페이지 사이 ID 통일)
 docs/IMG_INDEX.md                  이미지 전체 목록 (페이지별 그림 키·크기·우선순위·상태, 만드는 순서)

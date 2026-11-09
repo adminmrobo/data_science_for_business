@@ -67,7 +67,7 @@ a.wk:hover{{border-color:var(--seq)}}
 </style>
 </head>
 <body>
-<nav class="top" aria-label="바로가기"><div class="wrap"><a class="logo" href="#top"><i></i>연구실</a><div class="links"><a href="#start">처음이라면</a><a href="#weeks">주차</a><a href="#special">특강</a><a href="#practice">실습 사례</a><a href="#how">보는 법</a><a href="#about">저자·출처</a></div></div></nav>
+<nav class="top" aria-label="바로가기"><div class="wrap"><a class="logo" href="#top"><i></i>연구실</a><div class="links"><a href="#start">처음이라면</a><a href="#weeks">주차</a><a href="#practice">실습 사례</a><a href="#how">보는 법</a><a href="#about">저자·출처</a></div></div></nav>
 <!-- lab-cover -->
 <header class="cover" id="top" data-img="cover_index" data-alt="밤의 연구실 복도. 주차마다 다른 색 빛이 새는 문들 앞에 박사·조수·초파리 연구원·주판봇이 서 있는 표지" role="img" aria-label="밤의 연구실 복도 앞에 선 네 캐릭터 표지"><div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt=""><span class="prop">📚</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div><span class="cover-chip">{series}</span></header>
 <!-- /lab-cover -->
@@ -91,11 +91,6 @@ a.wk:hover{{border-color:var(--seq)}}
   <h2>주차별 해설</h2>
   <div class="weeks">{cards}</div>
   <p class="muted" style="font-size:14px">대결 결과는 시리즈 전체에서 한쪽으로 쏠리지 않게 설계합니다. 전체 13편: 초파리 승 4 · 주판봇 승 4 · 무승부 2 · 조건부 3.</p>
-</div></section>
-<section class="level" id="special"><div class="wrap stack">
-  <h2>특강</h2>
-  <p class="lead">교안 밖의 주제를 같은 연구실 형식으로 더합니다. 주차 해설과 함께 보면 좋은 곳을 카드에 적었습니다.</p>
-  <div class="weeks"><a class="wk" href="special01_anomaly_detection.html"><span class="no">특강 ①</span><span class="ico" aria-hidden="true">🔎</span><b>평소와 다른 한 건 찾기</b><small>주제: 이상 탐지 · 함께 보기 3·7·14주차</small><p class="muted">Z 점수 · 마할라노비스 거리 · 고립 숲 · 복원 오차 · 문턱값</p><span class="lvtag g">대결: 주판봇 승</span></a></div>
 </div></section>
 <section class="level" id="practice"><div class="wrap stack">
   <h2>실습 사례 <span class="lvtag">추가 예정</span></h2>
