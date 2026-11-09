@@ -127,6 +127,10 @@ function initProgress(){function onScroll(){var h=document.documentElement,max=h
 var KG,REF,META,byId={},tyOn={},renderList;
 var TYKO={Concept:'개념',Method:'방법',Task:'문제',Metric:'지표',Dataset:'데이터',Claim:'주장',Work:'문헌',Term:'용어',Analogy:'비유',Question:'질문',Limitation:'한계',Simulation:'시뮬레이션',QuizItem:'퀴즈',Framework:'분석 틀',Standard:'기준·법령',Assumption:'가정',Theory:'이론',Indicator:'지표(공식)',Distribution:'분포'};
 var PKO={broader:'더 넓은 개념',partOf:'부분',prerequisiteOf:'먼저 알아야 함',hasLimitation:'한계',addressedBy:'해결',contrastsWith:'대비',analogyOf:'비유',solves:'푼다',evaluatedBy:'지표',evaluatedOn:'데이터',supports:'근거',assertedIn:'출처',demonstratedBy:'시뮬레이션',assesses:'퀴즈가 확인',explainedIn:'설명',raises:'질문을 낳음',relatedTo:'관련',governedBy:'기준·법령',assumes:'가정',measuredBy:'잰다'};
+/* 지식 색인 표시용: 번역판(<html lang>)이면 그 언어 라벨을 쓴다 */
+var UIL=(document.documentElement.lang||'ko').slice(0,2);
+function LB(n){return (n.label&&n.label[UIL])||n.label.ko;}
+function DF(n){return (n.definition&&(n.definition[UIL]||n.definition.ko))||'';}
 function initKG(path){KG=JSON.parse($('#kg-raw').textContent);REF=JSON.parse($('#refs-csl').textContent);META=JSON.parse($('#page-meta').textContent);
   KG.nodes.forEach(function(n){byId[n.id]=n;});
   var types=[];KG.nodes.forEach(function(n){if(n.type!=='QuizItem'&&n.type!=='Simulation'&&types.indexOf(n.type)<0)types.push(n.type);});
@@ -135,15 +139,15 @@ function initKG(path){KG=JSON.parse($('#kg-raw').textContent);REF=JSON.parse($('
     b.addEventListener('click',function(){tyOn[t]=!tyOn[t];b.setAttribute('aria-pressed',tyOn[t]);renderList();});tg.appendChild(b);});
   renderList=function(){var q=$('#kgq').value.trim().toLowerCase();
     var list=KG.nodes.filter(function(n){if(!tyOn[n.type])return false;if(!q)return true;
-      var hay=[n.label.ko,n.label.en,(n.altLabel&&n.altLabel.ko||[]).join(' '),n.definition?n.definition.ko:''].join(' ').toLowerCase();return hay.indexOf(q)>=0;});
-    $('#kgList').innerHTML=list.map(function(n){var out=KG.edges.filter(function(e){return e.s===n.id||e.o===n.id}).map(function(e){var other=e.s===n.id?e.o:e.s;return (PKO[e.p.slice(4)]||e.p)+': '+byId[other].label.ko;});
-      return '<details id="kgi_'+n.id.replace(/[^a-z0-9]/gi,'_')+'"><summary><b>'+n.label.ko+'</b><span class="ty">'+(TYKO[n.type]||n.type)+'</span><span class="muted" style="font-size:13px">'+n.label.en+'</span></summary>'+
-        (n.definition?'<p>'+n.definition.ko+'</p>':'')+'<p class="muted">'+out.slice(0,6).join(' · ')+'</p><p><a href="'+n.anchor+'">설명 보러 가기 →</a>'+(n.evidence?' <span class="muted">근거 '+n.evidence.length+'</span>':'')+'</p></details>';}).join('')||'<p class="muted">찾는 항목이 없습니다.</p>';};
+      var hay=[LB(n),n.label.en,(n.altLabel&&n.altLabel.ko||[]).join(' '),n.definition?DF(n):''].join(' ').toLowerCase();return hay.indexOf(q)>=0;});
+    $('#kgList').innerHTML=list.map(function(n){var out=KG.edges.filter(function(e){return e.s===n.id||e.o===n.id}).map(function(e){var other=e.s===n.id?e.o:e.s;return (PKO[e.p.slice(4)]||e.p)+': '+LB(byId[other]);});
+      return '<details id="kgi_'+n.id.replace(/[^a-z0-9]/gi,'_')+'"><summary><b>'+LB(n)+'</b><span class="ty">'+(TYKO[n.type]||n.type)+'</span><span class="muted" style="font-size:13px">'+n.label.en+'</span></summary>'+
+        (n.definition?'<p>'+DF(n)+'</p>':'')+'<p class="muted">'+out.slice(0,6).join(' · ')+'</p><p><a href="'+n.anchor+'">설명 보러 가기 →</a>'+(n.evidence?' <span class="muted">근거 '+n.evidence.length+'</span>':'')+'</p></details>';}).join('')||'<p class="muted">찾는 항목이 없습니다.</p>';};
   $('#kgq').addEventListener('input',renderList);renderList();
   var cnt={};KG.nodes.forEach(function(n){cnt[n.type]=(cnt[n.type]||0)+1;});
   $('#kgStat').textContent='노드 '+KG.nodes.length+'개 · 관계 '+KG.edges.length+'개 · '+Object.keys(cnt).map(function(t){return (TYKO[t]||t)+' '+cnt[t]}).join(', ')+' · 외부 매핑 확인 0건';
-  $('#kgPath').innerHTML=path.map(function(id,i){var n=byId['lab:'+id];return (i?'<i>→</i>':'')+'<span class="'+(n.type==='Limitation'?'lim':'')+'">'+n.label.ko+'</span>';}).join('');
-  $('#kgQ').innerHTML=KG.nodes.filter(function(n){return n.type==='Question'}).map(function(n){return '<li><a href="'+n.anchor+'">'+n.label.ko+'</a></li>';}).join('');
+  $('#kgPath').innerHTML=path.map(function(id,i){var n=byId['lab:'+id];return (i?'<i>→</i>':'')+'<span class="'+(n.type==='Limitation'?'lim':'')+'">'+LB(n)+'</span>';}).join('');
+  $('#kgQ').innerHTML=KG.nodes.filter(function(n){return n.type==='Question'}).map(function(n){return '<li><a href="'+n.anchor+'">'+LB(n)+'</a></li>';}).join('');
   (function(){var c=$('#kgG');var nodes=KG.nodes.filter(function(n){return n.type!=='QuizItem'&&n.type!=='Simulation'});if(nodes.length>80)nodes=nodes.slice(0,80);var idx={};nodes.forEach(function(n,i){idx[n.id]=i;});
     var edges=KG.edges.filter(function(e){return idx[e.s]!==undefined&&idx[e.o]!==undefined});
     var r=rng(5),P=nodes.map(function(){return {x:r(),y:r(),vx:0,vy:0}});
@@ -156,11 +160,11 @@ function initKG(path){KG=JSON.parse($('#kg-raw').textContent);REF=JSON.parse($('
     function draw(){var W=fitC(c,420),x=c.getContext('2d');grid(x,W,420);scr=P.map(function(p){return {x:30+(p.x-mx)/(Mx-mx||1)*(W-160),y:30+(p.y-my)/(My-my||1)*360};});
       edges.forEach(function(e){var a=scr[idx[e.s]],b=scr[idx[e.o]];x.strokeStyle=e.p==='lab:hasLimitation'||e.p==='lab:addressedBy'?'rgba(240,96,77,.45)':e.p==='lab:prerequisiteOf'?'rgba(94,227,156,.5)':'rgba(157,155,184,.22)';x.lineWidth=1.2;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();});
       x.font='500 11px '+FONT;x.textBaseline='middle';
-      nodes.forEach(function(n,i){var s=scr[i];x.fillStyle=col(n.type);x.beginPath();x.arc(s.x,s.y,n.type==='Method'?6:4.5,0,7);x.fill();x.fillStyle=C.text;x.textAlign='left';x.fillText(n.label.ko.length>14?n.label.ko.slice(0,13)+'…':n.label.ko,s.x+8,s.y);});
+      nodes.forEach(function(n,i){var s=scr[i];x.fillStyle=col(n.type);x.beginPath();x.arc(s.x,s.y,n.type==='Method'?6:4.5,0,7);x.fill();x.fillStyle=C.text;x.textAlign='left';x.fillText(LB(n).length>14?LB(n).slice(0,13)+'…':LB(n),s.x+8,s.y);});
       stamp(x,W,'배치는 의미 축이 아님');}
     c.addEventListener('click',function(e){var rc=c.getBoundingClientRect(),px=e.clientX-rc.left,py=e.clientY-rc.top,best=-1,bd=400;
       scr.forEach(function(s,i){var d=(s.x-px)*(s.x-px)+(s.y-py)*(s.y-py);if(d<bd){bd=d;best=i;}});
-      if(best>=0){var n=nodes[best];tyOn[n.type]=true;var tb=$('#ty_'+n.type);if(tb)tb.setAttribute('aria-pressed','true');$('#kgq').value=n.label.ko;renderList();var d=$('#kgList details');if(d){d.open=true;d.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'});}}});
+      if(best>=0){var n=nodes[best];tyOn[n.type]=true;var tb=$('#ty_'+n.type);if(tb)tb.setAttribute('aria-pressed','true');$('#kgq').value=LB(n);renderList();var d=$('#kgList details');if(d){d.open=true;d.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'});}}});
     addMod(c,draw);})();
   $('#qJson').addEventListener('click',function(){var o=$('#kgOut');o.hidden=false;o.textContent=JSON.stringify(KG,null,2);});
   $('#qMer').addEventListener('click',function(){var o=$('#kgOut');o.hidden=false;o.textContent=toMermaid(KG);});
@@ -237,10 +241,10 @@ function initExport(){var claims=KG.nodes.filter(function(n){return n.type==='Cl
   $('#citeOut').textContent=citeF[curC];$('#citeCopy').addEventListener('click',function(){copyText(citeF[curC],$('#citeOut'),$('#citeMsg'));});
   var ROLE={primary:'주 자료',background:'배경',data:'수치',figure:'그림',software:'소프트웨어'};
   $('#refList').innerHTML=REF.map(function(r){var v=r.lab.verified,ok=v.title&&v.authors&&v.year&&v.venue;var au=names(r.author).join(', ');
-    var sup=r.lab.supports.map(function(s){return byId[s]?'<a href="#kg" data-kg="'+s+'">'+byId[s].label.ko+'</a>':'';}).join(', ');
+    var sup=r.lab.supports.map(function(s){return byId[s]?'<a href="#kg" data-kg="'+s+'">'+LB(byId[s])+'</a>':'';}).join(', ');
     return '<li>'+(au?au+(yr(r)?' ('+yr(r)+')':'')+'. ':'')+'<i>'+r.title+'</i>'+(r['container-title']?'. '+r['container-title']:'')+(r.publisher?'. '+r.publisher:'')+(r.URL?'. <a href="'+r.URL+'" target="_blank" rel="noopener">'+r.URL+'</a>':'')+
       ' <span class="lvtag">'+ROLE[r.lab.role]+'</span><span class="badge '+(ok?'ok':'no')+'">'+(ok?'확인됨':'확인 필요')+'</span><details style="margin-top:4px"><summary class="muted" style="font-size:13px">뒷받침하는 개념 '+r.lab.supports.length+'개</summary><p style="font-size:14px">'+sup+'</p><p class="muted" style="font-size:13px">'+r.lab.checkedBy+(r.lab.note?' · '+r.lab.note:'')+'</p></details></li>';}).join('');
-  $$('#refList a[data-kg]').forEach(function(a){a.addEventListener('click',function(){var n=byId[a.dataset.kg];$('#kgq').value=n.label.ko;tyOn[n.type]=true;renderList();var d=$('#kgList details');if(d)d.open=true;});});
+  $$('#refList a[data-kg]').forEach(function(a){a.addEventListener('click',function(){var n=byId[a.dataset.kg];$('#kgq').value=LB(n);tyOn[n.type]=true;renderList();var d=$('#kgList details');if(d)d.open=true;});});
   var SC={all:'전체',concepts:'개념·방법만',claims:'주장 + 출처만',path:'선수 관계만'},scope='all',fileI=0,files=buildPackage(scope);
   var sg=$('#scopeG');Object.keys(SC).forEach(function(k){var b=document.createElement('button');b.className='bt';b.type='button';b.id='sc_'+k;b.textContent=SC[k];b.setAttribute('aria-pressed',k===scope);
     b.addEventListener('click',function(){scope=k;$$('#scopeG .bt').forEach(function(z){z.setAttribute('aria-pressed',z===b)});files=buildPackage(scope);showFile();});sg.appendChild(b);});
