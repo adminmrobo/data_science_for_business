@@ -66,7 +66,7 @@
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>정의</small></div><h2>문제 정의 — 막연한 바람을 SMART 목표로</h2></div>
-    <p class="sub"><span class="lvtag g">틀: SMART · 문제 유형 4가지</span><span class="lvtag">업무: 고객 이탈 줄이기</span></p>
+    <p class="sub"><span class="lvtag g">틀: 잴 수 있는 목표 · 문제 유형 4가지</span><span class="lvtag">업무: 고객 이탈 줄이기</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">회사에서는</div><p>"고객 만족도를 높이자"는 회의는 쉽게 끝나지만, 석 달 뒤 성공했는지 아무도 모릅니다. 무엇을, 얼마나, 언제까지, 어떻게 잴지 빠져 있기 때문입니다.</p></div>
@@ -103,7 +103,7 @@
 <section class="level" id="lv2"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">2<small>정제</small></div><h2>결측값 — 빈칸을 지울까, 채울까</h2></div>
-    <p class="sub"><span class="lvtag g">방법: 삭제 · 평균 대체 · KNN 대체</span><span class="lvtag">데이터: 고객 200명 나이와 연소득</span></p>
+    <p class="sub"><span class="lvtag g">방법: 지우기 · 평균으로 채우기 · 비슷한 사람 값으로 채우기</span><span class="lvtag">데이터: 고객 200명 나이와 연소득</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>설문에서 소득 칸을 비워 둔 사람이 30% 있습니다. 누가 비웠을까요? 아무나 비웠다면 지워도 괜찮지만, 젊은 사람이 주로 비웠다면 지우는 순간 표본이 나이 든 쪽으로 기웁니다.</p></div>
@@ -138,7 +138,7 @@
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>정제</small></div><h2>이상값 — 오류일까, VIP일까</h2></div>
-    <p class="sub"><span class="lvtag g">방법: IQR · Z-score · 수정 Z-score</span><span class="lvtag">데이터: 고객 120명 1회 구매액</span></p>
+    <p class="sub"><span class="lvtag g">방법: 가운데 절반 범위 · 평균에서 몇 걸음 · 중앙값에서 몇 걸음</span><span class="lvtag">데이터: 고객 120명 1회 구매액</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>구매액 목록에 999만 9,999원과 −5만 원이 있습니다. 입력 실수입니다. 120만 원짜리 구매 세 건도 있습니다. 이건 진짜 VIP 고객일 수 있습니다. 둘을 똑같이 지우면 중요한 고객을 잃습니다.</p></div>
@@ -200,7 +200,7 @@
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">5<small>탐색</small></div><h2>탐색적 데이터 분석(EDA) — 처음 들여다보기</h2></div>
-    <p class="sub"><span class="lvtag g">단변량: 평균·중앙값·왜도 · 이변량: 피어슨·스피어만</span><span class="lvtag">데이터: 매장 60곳 광고비와 매출</span></p>
+    <p class="sub"><span class="lvtag g">칸 하나: 평균·중앙값·기울어짐 · 칸 둘: 함께 움직이는 정도</span><span class="lvtag">데이터: 매장 60곳 광고비와 매출</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">현장에서는</div><p>깨끗해진 데이터를 받으면 바로 모델에 넣고 싶어집니다. 그 전에 그림부터 그립니다. 한 변수의 모양(단변량), 두 변수의 관계(이변량), 여러 변수의 패턴(다변량) 순서입니다.<sup>[1]</sup></p></div>

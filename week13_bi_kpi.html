@@ -411,7 +411,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>통합</small></div><h2>BI 파이프라인과 ETL — 출처마다 다른 데이터를 하나로</h2></div>
-    <p class="sub"><span class="lvtag g">Extract · Transform · Load</span><span class="lvtag">데이터: 매장 POS · 온라인몰 · 배달앱 7일(예시)</span></p>
+    <p class="sub"><span class="lvtag g">꺼내기 → 다듬기 → 넣기(ETL)</span><span class="lvtag">데이터: 매장 POS · 온라인몰 · 배달앱 7일(예시)</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>출처마다 단위·날짜·중복이 다른 데이터를 다듬지 않고 합치면, 대시보드의 첫 숫자부터 틀립니다.</p>
   <div class="pair">
@@ -471,7 +471,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>퍼널</small></div><h2>광고 퍼널 — 노출에서 매출까지 숫자가 줄어드는 길</h2></div>
-    <p class="sub"><span class="lvtag g">CPC = 광고비 ÷ 클릭 · CPA = 광고비 ÷ 전환 · ROAS = 매출 ÷ 광고비</span></p>
+    <p class="sub"><span class="lvtag g">클릭당 비용 · 구매당 비용 · 광고비 대비 매출</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>광고는 노출·클릭이 아니라 최종 매출(광고비 대비 매출)로 판단합니다.</p>
   <div class="pair">
@@ -503,7 +503,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>몫</small></div><h2>어트리뷰션 — 매출을 채널에 나눠 주는 규칙</h2></div>
-    <p class="sub"><span class="lvtag g">퍼스트 클릭 · 라스트 클릭 · 선형 분배</span><span class="lvtag">데이터: 구매 고객 8명의 여정(예시)</span></p>
+    <p class="sub"><span class="lvtag g">규칙: 첫 광고에 몰기 · 마지막 광고에 몰기 · 똑같이 나누기</span><span class="lvtag">데이터: 구매 고객 8명의 여정(예시)</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>매출을 채널에 나누는 규칙을 바꾸면 "가장 잘한 채널"이 바뀝니다. 규칙부터 합의합니다.</p>
   <div class="pair">
@@ -530,7 +530,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">5<small>수익성</small></div><h2>CLV와 CAC — 한 고객의 일생과 데려온 값</h2></div>
-    <p class="sub"><span class="lvtag g">CLV ≈ 연간 이익 × r ÷ (1 + i − r) + 연간 이익</span><span class="lvtag">건강한 기준: CLV : CAC ≥ 3 : 1</span></p>
+    <p class="sub"><span class="lvtag g">고객 가치: 해마다 남는 이익을 오늘 돈으로 모두 더하기</span><span class="lvtag">건강한 기준: CLV : CAC ≥ 3 : 1</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>고객 한 명이 남길 이익이 데려온 비용의 3배 이상이면 건강한 성장입니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 한 명을 데려오는 데 10만 원이 들었다면, 그 고객이 앞으로 그 이상을 벌어 줘야 합니다. 그런데 고객은 해마다 일부가 떠나고, 미래의 돈은 지금 돈보다 가치가 낮습니다. <b>이 둘을 반영해 한 고객이 일생 동안 남길 이익을 지금 돈으로 환산한 값</b>이 CLV입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 정기 구독자 한 명의 가치는 "1년 이익 × 앞으로 몇 년 더 남을지"인데, 내년 돈은 이자만큼 깎아서 셉니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>(1 + i − r)로 나누는 건 어디서 나온 식이에요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 고등학교 등비급수(무한히 이어지는 r배씩 줄어드는 합) a ÷ (1 − 공비)를 쓴 식입니다. 공비가 r ÷ (1 + i)입니다.</p><dl class="ez-pieces"><div><dt>연간 이익 m</dt><dd>고객 한 명이 1년에 남기는 이익</dd></div><div><dt>유지율 r</dt><dd>내년에도 남아 있을 확률(예: 0.8)</dd></div><div><dt>할인율 i</dt><dd>미래 돈을 지금 가치로 깎는 비율(이 페이지 10%)</dd></div><div><dt>CLV ≈ m + m·r ÷ (1 + i − r)</dt><dd>올해 이익 + 내년부터 끝없이 이어지는 이익의 합</dd></div><div><dt>CLV : CAC ≥ 3 : 1</dt><dd>데려온 비용의 3배 이상을 벌면 건강</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>m = 10만 원, r = 0.8, i = 0.1 → 10 + 10 × 0.8 ÷ (1.1 − 0.8) = 10 + 8 ÷ 0.3 ≈ 10 + 26.7 = <b>36.7만 원</b>. CAC가 10만 원이면 3.7 : 1 → 건강.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>고등학교 등비급수였어요! 해마다 r배씩 줄어드는 이익을 끝까지 더한 값이네요.</p></div></div></div></div>

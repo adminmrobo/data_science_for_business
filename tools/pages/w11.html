@@ -63,7 +63,7 @@
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>그림</small></div><h2>차트 고르기 — 시간은 선으로, 분포는 상자로</h2></div>
-    <p class="sub"><span class="lvtag g">이상값: Q1 − 1.5·IQR 미만, Q3 + 1.5·IQR 초과</span><span class="lvtag">데이터: 분기 매출 · 일매출 90일(예시)</span></p>
+    <p class="sub"><span class="lvtag g">튀는 값: 가운데 절반 범위에서 너무 멀리 나간 값</span><span class="lvtag">데이터: 분기 매출 · 일매출 90일(예시)</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 분기별 매출 예입니다. 같은 숫자를 선형 차트로 그리면 오르내림이 바로 보이지만, 파이 차트로 그리면 "어느 분기가 먼저였는지"가 사라집니다. 파이는 전체 대비 비율용입니다.<sup>[1]</sup></p></div>
@@ -90,7 +90,7 @@
 <section class="level" id="lv2"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">2<small>기억</small></div><h2>자기상관 — 이번 달은 지난달을 얼마나 닮았나</h2></div>
-    <p class="sub"><span class="lvtag g">AR(2): Yₜ = φ₁Yₜ₋₁ + φ₂Yₜ₋₂ + εₜ</span><span class="lvtag">점선: 95% 신뢰구간 ±1.96 ÷ √n</span></p>
+    <p class="sub"><span class="lvtag g">방법: 이번 달 = 지난달·지지난달의 영향 + 우연</span><span class="lvtag">점선: 95% 신뢰구간 ±1.96 ÷ √n</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 친구 관계 비유입니다. A가 B에게, B가 C에게 영향을 주면 A와 C도 닮아 보입니다(ACF). PACF는 B를 거친 간접 영향을 빼고 A와 C의 직접 연결만 봅니다.<sup>[1]</sup></p></div>
@@ -121,7 +121,7 @@
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>분해</small></div><h2>시계열 분해 — 추세 + 계절성 + 불규칙성</h2></div>
-    <p class="sub"><span class="lvtag g">추세: 12개월 중심 이동평균</span><span class="lvtag">데이터: 월매출 72개월(예시)</span></p>
+    <p class="sub"><span class="lvtag g">추세: 앞뒤 12개월을 평균 내 흔들림 지우기</span><span class="lvtag">데이터: 월매출 72개월(예시)</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>아이스크림 가게 매출은 해마다 조금씩 늘고(추세), 여름마다 뛰고(계절성), 몇 해 주기로 경기에 따라 출렁이고(주기성), 가끔 이유 없이 튑니다(불규칙성).<sup>[1]</sup></p></div>
@@ -149,7 +149,7 @@
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>정상화</small></div><h2>정상성과 차분 — 수준 대신 변화를 본다</h2></div>
-    <p class="sub"><span class="lvtag g">1차 차분: ΔYₜ = Yₜ − Yₜ₋₁</span><span class="lvtag">2차 차분: Δ²Yₜ = ΔYₜ − ΔYₜ₋₁</span></p>
+    <p class="sub"><span class="lvtag g">차분: 이번 달 − 지난달</span><span class="lvtag">2차 차분: Δ²Yₜ = ΔYₜ − ΔYₜ₋₁</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>키가 매년 크는 아이의 "키"는 해마다 평균이 달라지지만, "올해 큰 만큼"은 해마다 비슷합니다. 수준이 아닌 변화량을 보면 평균이 일정해집니다.</p></div>
@@ -180,7 +180,7 @@
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">5<small>예측</small></div><h2>AR과 ARIMA — 과거 p개로 다음 값을</h2></div>
-    <p class="sub"><span class="lvtag g">AR(p): Yₜ = c + φ₁Yₜ₋₁ + … + φₚYₜ₋ₚ + εₜ</span><span class="lvtag">평가: MAPE = 평균 |실제 − 예측| ÷ 실제</span></p>
+    <p class="sub"><span class="lvtag g">방법: 과거 몇 달로 다음 달 맞히기</span><span class="lvtag">평가: MAPE = 평균 |실제 − 예측| ÷ 실제</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>다음 달 매출을 점칠 때 지난 몇 달을 돌아볼지 정하는 것이 p, 그 전에 "변화량"으로 바꿀지 정하는 것이 d입니다. MA는 지난번 예측이 얼마나 빗나갔는지를 다음 예측에 반영합니다.<sup>[1]</sup></p></div>

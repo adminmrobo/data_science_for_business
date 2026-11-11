@@ -4,7 +4,7 @@
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 7주차 · 비즈니스 데이터 분석 모델의 평가</span>
       <h1>정확도 95%의 함정</h1>
       <p class="q">이탈 고객을 한 명도 못 찾는 모델이 정확도 1등을 할 수 있을까?</p>
-      <p class="lead">6주차까지는 정확도 하나로 모델을 채점했습니다. 이번 주는 그 점수를 의심합니다. 이탈 고객이 5%뿐인 데이터에서 혼동행렬을 그리고, 정밀도·재현율·F1, 임계값과 ROC·AUC를 직접 움직여 봅니다. 이어서 모델을 더 좋게 만드는 두 가지 손잡이(앙상블, 학습률·배치)를 돌리고, 마지막에는 "정확도가 높은 모델"과 "돈을 버는 모델"이 같은지 겨룹니다.</p>
+      <p class="lead">6주차까지는 정확도 하나로 모델을 채점했습니다. 이번 주는 그 점수를 의심합니다. 이탈 고객이 5%뿐인 데이터에서 혼동행렬을 그리고, 정밀도·재현율·F1, 기준선과 ROC·AUC를 직접 움직여 봅니다. 이어서 모델을 더 좋게 만드는 두 가지 손잡이(앙상블, 학습률·배치)를 돌리고, 마지막에는 "정확도가 높은 모델"과 "돈을 버는 모델"이 같은지 겨룹니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi r"><b id="heroLazy">–</b><span>"아무도 이탈 안 함"이라고만 답하는 모델의 정확도<sup>계산</sup></span></div>
         <div class="kpi i"><b>4칸</b><span>맞힘·놓침·헛경보를 나눠 세는 표(혼동행렬)<sup>[1]</sup></span></div>
@@ -44,9 +44,9 @@
 <section class="level" id="why"><div class="wrap stack">
   <div class="lvhead"><h2>왜 정확도 하나로는 모자라나</h2></div>
   <div class="steps">
-    <div><b>1. 클래스가 기울어 있다</b><p>이탈·사기·불량처럼 비즈니스가 찾고 싶은 쪽은 대개 소수입니다. 전체의 95%가 음성이면 "모두 음성"이라고만 답해도 정확도 95%입니다.<sup>[1]</sup></p></div>
+    <div><b>1. 종류가 기울어 있다</b><p>이탈·사기·불량처럼 비즈니스가 찾고 싶은 쪽은 대개 소수입니다. 전체의 95%가 음성이면 "모두 음성"이라고만 답해도 정확도 95%입니다.<sup>[1]</sup></p></div>
     <div><b>2. 틀림의 값이 다르다</b><p>암을 놓치는 오류와 건강한 사람을 다시 검사하는 오류는 무게가 다릅니다. 사기 탐지의 FP는 고객 불편, FN은 금전 손실입니다.<sup>[1]</sup></p></div>
-    <div><b>3. 판정 기준은 사람이 정한다</b><p>모델은 확률을 내고, "몇 % 이상이면 이탈로 본다"는 임계값은 비즈니스가 정합니다. 기준을 바꾸면 같은 모델의 점수표가 바뀝니다.<sup>[1]</sup></p></div>
+    <div><b>3. 판정 기준은 사람이 정한다</b><p>모델은 확률을 내고, "몇 % 이상이면 이탈로 본다"는 기준선은 비즈니스가 정합니다. 기준을 바꾸면 같은 모델의 점수표가 바뀝니다.<sup>[1]</sup></p></div>
   </div>
 </div></section>
 
@@ -70,7 +70,7 @@
     <div><div class="tag nn">머신러닝에서는</div><p>혼동행렬은 가로줄에 "실제", 세로칸에 "모델의 판정"을 놓은 네 칸 표입니다. 이탈을 이탈로 맞힘(TP), 유지를 유지로 맞힘(TN), 유지 고객을 이탈이라고 잘못 경보함(FP, 1종 오류), 이탈 고객을 놓침(FN, 2종 오류). 정확도는 맞힌 두 칸을 전체로 나눈 값입니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="혼동행렬 실험">
-    <h3>이탈 비율을 바꾸며 두 모델 비교 — 임계값 0.5</h3>
+    <h3>이탈 비율을 바꾸며 두 모델 비교 — 기준선 0.5</h3>
     <div class="ctrl"><div class="group"><label class="glabel" for="rate">이탈 고객 비율</label><input type="range" id="rate" min="0" max="5" step="1" value="2"><span class="val" id="ratev">5%</span></div></div>
     <div class="cwrap"><canvas id="c1" class="wide" aria-label="왼쪽은 모두 유지로 답하는 모델, 오른쪽은 학습한 모델의 혼동행렬"></canvas></div>
     <section class="kpis k4" id="k1k"></section>
@@ -79,7 +79,7 @@
   <div class="explain"><h4>풀이</h4><ol>
     <li>이탈 비율 5%에서 "아무도 이탈 안 함" 모델은 TP가 0인데 정확도는 학습한 모델과 비슷하거나 더 높습니다.</li>
     <li>혼동행렬을 보면 바로 드러납니다. 왼쪽 표의 위 오른쪽 칸(TP)이 비어 있습니다. 교안의 "95%가 음성인 데이터" 예와 같습니다.<sup>[1]</sup></li>
-    <li>FN이 많으면 그 클래스를 놓치는 경향, FP가 많으면 그 클래스로 과하게 분류하는 경향입니다.<sup>[1]</sup></li>
+    <li>FN이 많으면 그 종류를 놓치는 경향, FP가 많으면 그 종류로 과하게 분류하는 경향입니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 정확도가 소용없다는 건 알았지만, 대신 무엇을 볼지는 아직 없습니다. → ②칸 정밀도·재현율</p></div>
   <div class="note"><b>교안에서 바꾼 곳</b>: 교안 5쪽의 "TN을 1종 오류 또는 거짓 경보라고도 하는데…"를 이 페이지에서는 <b>"FP를 1종 오류 또는 거짓 경보라고도 하는데…"</b>로 바꿉니다. 1종 오류(거짓 경보)는 실제로는 음성인데 양성이라고 잘못 판단한 경우, 곧 FP입니다.</div>
   <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>confusion_matrix(y_test, y_pred)</code></dt><dd>시험 데이터의 실제 답과 모델 판정을 네 칸 표로 세기</dd></div></dl></details>
@@ -89,27 +89,27 @@
 <!-- ② 정밀도·재현율 -->
 <section class="level" id="lv2"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">2<small>기준</small></div><h2>정밀도와 재현율 — 임계값을 움직이면</h2></div>
-    <p class="sub"><span class="lvtag g">정밀도 = TP ÷ (TP + FP) · 재현율 = TP ÷ (TP + FN)</span><span class="lvtag">일상: 공항 수하물 검사</span></p>
+    <div class="hexrow"><div class="hexno">2<small>기준</small></div><h2>정밀도와 재현율 — 기준선을 움직이면</h2></div>
+    <p class="sub"><span class="lvtag g">정밀도: 잡은 것 중 진짜 비율 · 재현율: 진짜 중 잡은 비율</span><span class="lvtag">일상: 공항 수하물 검사</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 공항 검색대입니다. 수상한 짐을 모두 열면 밀수품은 덜 놓칩니다(재현율↑). 대신 멀쩡한 짐도 많이 열어 민원이 늘어납니다(정밀도↓). 검사를 느슨하게 하면 민원은 줄지만 위험물이 빠져나갑니다(재현율↓).<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>모델은 고객마다 "떠날 확률"을 내고, 그 확률이 기준선(임계값)을 넘으면 "이탈"로 판정합니다. 기준선을 낮추면 더 많이 잡아내지만(재현율↑) 헛짚는 경우도 늘어납니다(정밀도↓). F1은 두 점수를 함께 보는 평균이라, 한쪽만 높으면 낮게 나옵니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="임계값 실험">
-    <h3>이탈 확률 분포와 임계값 — 고객 2,000명 · 이탈 10%</h3>
+    <h3>이탈 확률 분포와 기준선 — 고객 2,000명 · 이탈 10%</h3>
     <div class="ctrl"><div class="group"><label class="glabel" for="th">판정 기준선(임계값)</label><input type="range" id="th" min="0.05" max="0.95" step="0.05" value="0.5"><span class="val" id="thv">0.50</span></div></div>
     <div class="cwrap"><canvas id="c2" class="wide" aria-label="왼쪽은 이탈·유지 고객의 예측 확률 막대그림과 임계값 선, 오른쪽은 임계값에 따른 정밀도·재현율·F1 곡선"></canvas></div>
     <section class="kpis k4" id="k2k"></section>
     <div class="insight" id="ins2" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li>임계값을 0.2로 내려 보세요. 이탈 고객을 많이 찾지만(재현율↑) 유지 고객도 많이 걸립니다(정밀도↓).</li>
+    <li>기준선을 0.2로 내려 보세요. 이탈 고객을 많이 찾지만(재현율↑) 유지 고객도 많이 걸립니다(정밀도↓).</li>
     <li>스팸 필터는 정상 메일을 스팸함에 넣지 않으려 정밀도를, 암 진단·불량품 검출은 놓치지 않으려 재현율을 중시합니다.<sup>[1]</sup></li>
     <li>조화평균은 낮은 값에 더 큰 가중치를 줍니다. 정밀도 0.9, 재현율 0.1이면 산술평균은 0.5지만 F1은 0.18입니다.</li>
-  </ol><p class="limit">이 칸의 한계: 임계값 하나마다 점수표가 하나씩 나옵니다. 임계값과 상관없이 모델 자체의 실력을 한 숫자로 비교할 수는 없을까요? → ③칸 ROC·AUC</p></div>
-  <details class="math"><summary>다중 클래스의 평균 (교안)</summary><div>
-    <p class="num">macro = 클래스별 점수의 단순 평균 · weighted = 클래스 크기로 가중 평균 · micro = 모든 문제를 합쳐 전체 정답률</p>
+  </ol><p class="limit">이 칸의 한계: 기준선 하나마다 점수표가 하나씩 나옵니다. 기준선과 상관없이 모델 자체의 실력을 한 숫자로 비교할 수는 없을까요? → ③칸 ROC·AUC</p></div>
+  <details class="math"><summary>다중 종류의 평균 (교안)</summary><div>
+    <p class="num">macro = 종류별 점수의 단순 평균 · weighted = 종류 크기로 가중 평균 · micro = 모든 문제를 합쳐 전체 정답률</p>
     <p class="muted">교안 예: 수학 80, 영어 70, 과학 90 → macro (80 + 70 + 90) ÷ 3 = 80점. 수학 10문제(80), 영어 5문제(70) → weighted (80×10 + 70×5) ÷ 15 = 76.7점.<sup>[1]</sup></p>
   </div></details>
   <div class="quiz" data-quiz="lv2"></div>
@@ -118,8 +118,8 @@
 <!-- ③ ROC·AUC -->
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>ROC 곡선과 AUC — 모든 임계값을 한 장에</h2></div>
-    <p class="sub"><span class="lvtag g">TPR = 재현율 · FPR = FP ÷ (FP + TN)</span><span class="lvtag">일상: 한 경기 대신 시즌 전체 기록</span></p>
+    <div class="hexrow"><div class="hexno">3<small>곡선</small></div><h2>ROC 곡선과 AUC — 모든 기준선을 한 장에</h2></div>
+    <p class="sub"><span class="lvtag g">곡선: 기준선마다 "잡은 비율"과 "헛경보 비율"</span><span class="lvtag">일상: 한 경기 대신 시즌 전체 기록</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 KNN 암 진단 예입니다. 이웃 10명 중 5명이 환자면 암으로 보는 관대한 기준과 7명은 돼야 암으로 보는 엄격한 기준. 기준을 낮추면 환자를 덜 놓치지만(TPR↑) 건강한 사람도 더 잘못 진단합니다(FPR↑).<sup>[1]</sup></p></div>
@@ -136,7 +136,7 @@
     <div class="insight" id="ins3" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li>임계값을 1에서 0으로 내리면 점이 (0, 0)에서 (1, 1)로 곡선을 따라 이동합니다. 임계값을 낮추면 TPR과 FPR이 함께 오릅니다.<sup>[1]</sup></li>
+    <li>기준선을 1에서 0으로 내리면 점이 (0, 0)에서 (1, 1)로 곡선을 따라 이동합니다. 기준선을 낮추면 TPR과 FPR이 함께 오릅니다.<sup>[1]</sup></li>
     <li>교안의 AUC 해석: 0.5 무작위, 0.7~0.8 적절, 0.8~0.9 좋음, 0.9 이상 매우 뛰어남. 0.5보다 작으면 예측을 뒤집으면 됩니다.<sup>[1]</sup></li>
     <li>"쌍 뽑기"를 눌러 보세요. 이탈 고객 한 명과 유지 고객 한 명을 무작위로 1,000쌍 뽑아, 이탈 고객 점수가 더 높은 비율을 셉니다. 그 비율이 AUC와 거의 같습니다.</li>
   </ol><p class="limit">이 칸의 한계: AUC는 모델을 고르는 데 좋지만, 떠나는 고객이 극히 적으면 실제보다 좋아 보일 수 있어 정밀도·재현율 곡선도 함께 봅니다.<sup>[1]</sup> 그리고 평가만으로는 모델이 좋아지지 않습니다. 어떻게 키울까요? → ④칸 앙상블</p></div>
@@ -148,7 +148,7 @@
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>묶음</small></div><h2>앙상블 — 여럿이 투표하면 왜 나아지나</h2></div>
-    <p class="sub"><span class="lvtag g">배깅 · 부스팅 · 스태킹 · 보팅</span><span class="lvtag">일상: 여러 전문가의 의견 모으기</span></p>
+    <p class="sub"><span class="lvtag g">방법: 여러 모델이 투표하기</span><span class="lvtag">일상: 여러 전문가의 의견 모으기</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>중요한 결정은 여러 전문가에게 묻습니다. 단, 같은 배경의 사람만 모이면 같은 실수를 함께 합니다. 의견이 다양해야 서로의 실수가 상쇄됩니다.<sup>[1]</sup></p></div>
@@ -181,7 +181,7 @@
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">5<small>학습</small></div><h2>배치·에포크·학습률 — 얼마씩, 몇 번, 얼마나 크게</h2></div>
-    <p class="sub"><span class="lvtag g">1에포크 = 훈련 데이터를 한 번 다 보기</span><span class="lvtag">일상: 교과서를 몇 쪽씩 읽고 노트 정리하기</span></p>
+    <p class="sub"><span class="lvtag g">설정: 한 번에 얼마나 크게 고칠지(학습률)</span><span class="lvtag">일상: 교과서를 몇 쪽씩 읽고 노트 정리하기</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>100쪽 교과서를 5쪽씩 읽고 정리하면 20번 정리(세밀하지만 가끔 엉뚱), 50쪽씩이면 2번 정리(안정적이지만 느림). 교과서 전체를 한 번 끝내는 것이 1에포크. 틀린 문제를 보고 풀이법을 너무 크게 고치면 다른 문제까지 틀리고, 너무 조금 고치면 같은 실수를 반복합니다(학습률).<sup>[1]</sup></p></div>
@@ -198,27 +198,27 @@
     <div class="insight" id="ins5" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li>학습률 0.003 + 풀 배치: 20에포크 동안 갱신이 20번뿐이라 손실이 거의 줄지 않습니다.</li>
-    <li>학습률 30 + 하나씩 고치기(배치 1): 한 명씩 크게 고치다 보니 손실이 튀어 오릅니다. 정답 주변을 헤매는 모습입니다.<sup>[1]</sup></li>
+    <li>학습률 0.003 + 풀 배치: 20에포크 동안 갱신이 20번뿐이라 틀린 정도가 거의 줄지 않습니다.</li>
+    <li>학습률 30 + 하나씩 고치기(배치 1): 한 명씩 크게 고치다 보니 틀린 정도가 튀어 오릅니다. 정답 주변을 헤매는 모습입니다.<sup>[1]</sup></li>
     <li>같은 학습률이라도 배치가 작으면 1에포크 안의 갱신 횟수가 많아 빨리 내려갑니다. 대신 곡선이 덜 매끄럽습니다.</li>
     <li>교안은 49마리처럼 작은 데이터에서는 작은 묶음이 통계적으로 불안정할 수 있어 전체를 한 번에 학습하는 편이 안정적일 수 있다고 덧붙입니다.<sup>[1]</sup></li>
-  </ol><p class="limit">이 칸의 한계: 손실이 낮아져도 그 모델로 돈을 벌지는 따로 따져야 합니다. 임계값을 어디에 두느냐가 남았습니다. → 대결</p></div>
+  </ol><p class="limit">이 칸의 한계: 틀린 정도가 낮아져도 그 모델로 돈을 벌지는 따로 따져야 합니다. 기준선을 어디에 두느냐가 남았습니다. → 대결</p></div>
   <div class="bridges">
     <div class="bridge field"><h4>현장에 옮기면</h4><p>이탈 예측의 진짜 목표는 예측이 아니라 이탈 방지입니다. 고위험군에는 맞춤 할인, 중위험군에는 사용법 안내처럼 위험도별로 다르게 대응하고, 리텐션 캠페인의 ROI를 A/B 테스트로 확인합니다. 이탈 고객은 대개 소수라 SMOTE 같은 오버샘플링이나 비용 민감 학습을 함께 씁니다.<sup>[1]</sup></p><p class="lim">한계: 캠페인 뒤에야 알 수 있는 정보(캠페인 후 방문 기록 등)를 예측 변수에 넣으면 데이터 유출로 점수가 부풀려집니다.<sup>[1]</sup></p></div>
-    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>대형 언어모델도 같은 손잡이로 학습합니다. 수천 개 문장을 한 배치로 묶고, 학습률을 처음에 조금 올렸다가(워밍업) 천천히 줄이는 스케줄을 흔히 씁니다.</p><p class="lim">비유의 한계: 언어모델은 보통 데이터 전체를 한두 에포크만 보며, 손실도 이 칸의 로지스틱 손실과 달리 다음 단어 예측 손실입니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>대형 언어모델도 같은 손잡이로 학습합니다. 수천 개 문장을 한 배치로 묶고, 학습률을 처음에 조금 올렸다가(워밍업) 천천히 줄이는 스케줄을 흔히 씁니다.</p><p class="lim">비유의 한계: 언어모델은 보통 데이터 전체를 한두 에포크만 보며, 틀린 정도도 이 칸의 로지스틱 회귀의 틀린 정도와 달리 다음 단어 예측 틀린 정도입니다.</p></div>
   </div>
   <div class="quiz" data-quiz="lv5"></div>
 </div></section>
 
 <!-- 대결 -->
 <section class="level" id="duel"><div class="wrap stack">
-  <div class="lvhead"><h2>대결 — 정확도로 고른 임계값 vs 장부로 고른 임계값</h2><p class="lead">같은 이탈 예측 모델을 씁니다. 검증 고객 3,000명으로 임계값을 하나씩 정한 뒤, 처음 보는 시험 고객 3,000명에게 쿠폰 캠페인을 했을 때 남는 돈을 겨룹니다.</p></div>
+  <div class="lvhead"><h2>대결 — 정확도로 고른 기준선 vs 장부로 고른 기준선</h2><p class="lead">같은 이탈 예측 모델을 씁니다. 검증 고객 3,000명으로 기준선을 하나씩 정한 뒤, 처음 보는 시험 고객 3,000명에게 쿠폰 캠페인을 했을 때 남는 돈을 겨룹니다.</p></div>
   <div class="eq" style="white-space:normal">쿠폰 한 장 = 2만 원(이탈로 판정한 고객 모두에게) · 이탈 고객이 쿠폰을 받으면 절반이 남아 고객 가치 30만 원의 절반 = 15만 원 회수 · 순이익 = (제대로 잡은 이탈 고객 수 × 15만 원) − (쿠폰을 준 고객 수 × 2만 원)</div>
   <div class="duel" id="duelBox">
     <div class="vs">
-      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 정확도가 가장 높은 임계값</b><p>"제일 많이 맞히는 기준이 제일 좋은 기준이지."</p></div>
+      <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 정확도가 가장 높은 기준선</b><p>"제일 많이 맞히는 기준이 제일 좋은 기준이지."</p></div>
       <div class="mid">VS</div>
-      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 순이익이 가장 큰 임계값</b><p>"쿠폰 2만 원으로 15만 원을 지킬 수 있으면 좀 헛쏴도 남는 장사야."</p></div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 순이익이 가장 큰 기준선</b><p>"쿠폰 2만 원으로 15만 원을 지킬 수 있으면 좀 헛쏴도 남는 장사야."</p></div>
     </div>
     <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
     <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
@@ -239,10 +239,10 @@
     <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
     <tbody>
       <tr><td><b>① 혼동행렬</b></td><td>정확도 뒤의 TP·TN·FP·FN을 본다</td><td>대신 볼 지표가 없다</td><td>정밀도·재현율</td></tr>
-      <tr><td><b>② 정밀도·재현율</b></td><td>임계값에 따른 상충관계, F1</td><td>임계값마다 답이 다르다</td><td>ROC·AUC</td></tr>
-      <tr><td><b>③ ROC·AUC</b></td><td>모든 임계값의 실력을 한 숫자로</td><td>평가만으로는 안 좋아진다</td><td>앙상블</td></tr>
+      <tr><td><b>② 정밀도·재현율</b></td><td>기준선에 따른 상충관계, F1</td><td>기준선마다 답이 다르다</td><td>ROC·AUC</td></tr>
+      <tr><td><b>③ ROC·AUC</b></td><td>모든 기준선의 실력을 한 숫자로</td><td>평가만으로는 안 좋아진다</td><td>앙상블</td></tr>
       <tr><td><b>④ 앙상블</b></td><td>다양한 모델의 다수결로 실수 상쇄</td><td>개별 학습 방법은 그대로</td><td>배치·학습률</td></tr>
-      <tr><td><b>⑤ 배치·학습률</b></td><td>큰 데이터를 나눠 안정적으로 학습</td><td>돈이 되는 기준은 따로</td><td>대결: 비용 기반 임계값</td></tr>
+      <tr><td><b>⑤ 배치·학습률</b></td><td>큰 데이터를 나눠 안정적으로 학습</td><td>돈이 되는 기준은 따로</td><td>대결: 비용 기반 기준선</td></tr>
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>혼동행렬(TP·TN·FP·FN), 정확도·정밀도·재현율·F1, ROC 곡선과 AUC, 그리고 이를 계산하는 파이썬 도구.</p></div>

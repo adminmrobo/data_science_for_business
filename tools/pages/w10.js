@@ -59,7 +59,7 @@ function draw2(){var t=auto2?auto2.t:FR[f2][0]+(+$('#th2').value)/100*(FR[f2][1]
   box(Y0+12,'분할 전',cA,g0);box(Y0+82,(f2?'알코올':'잔당')+' ≤ '+t.toFixed(1),cL,gl);box(Y0+152,(f2?'알코올':'잔당')+' > '+t.toFixed(1),cR,gr);
   txt(x,'● 레드(1)  ● 화이트(0)',X1,Y0+222,C.muted,11);stamp(x,W,'예시 데이터 · 300병');
   kpis($('#k2k'),[['m',g0.toFixed(3),'나누기 전 섞임(지니)'],['i',gw.toFixed(3),'나눈 뒤 섞임(지니)'],[auto2?'g':'a',(g0-gw).toFixed(3),'줄어든 섞임(정보 이득)'],['a',L.length+' : '+R.length,'왼쪽 : 오른쪽 병 수']]);
-  $('#ins2').innerHTML=auto2?'<p class="g">최적 분할: '+FN[auto2.f]+' ≤ '+auto2.t.toFixed(2)+'. 불순도를 '+(g0-gw).toFixed(3)+'만큼 줄여, 두 특성의 어떤 기준값보다 큽니다. 이것이 나무의 뿌리 질문입니다.</p>':(g0-gw)<.02?'<p class="a">거의 줄지 않았습니다. 이 칸막이로는 양쪽이 여전히 섞여 있습니다.</p>':'<p class="g">불순도가 '+g0.toFixed(3)+' → '+gw.toFixed(3)+'로 줄었습니다. 더 큰 이득을 주는 자리가 있을까요?</p>';}
+  $('#ins2').innerHTML=auto2?'<p class="g">최적 분할: '+FN[auto2.f]+' ≤ '+auto2.t.toFixed(2)+'. 섞임 정도를 '+(g0-gw).toFixed(3)+'만큼 줄여, 두 특성의 어떤 기준값보다 큽니다. 이것이 나무의 뿌리 질문입니다.</p>':(g0-gw)<.02?'<p class="a">거의 줄지 않았습니다. 이 칸막이로는 양쪽이 여전히 섞여 있습니다.</p>':'<p class="g">섞임 정도가 '+g0.toFixed(3)+' → '+gw.toFixed(3)+'로 줄었습니다. 더 큰 이득을 주는 자리가 있을까요?</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
 /* ---------- ③ 깊이 ---------- */
@@ -115,7 +115,7 @@ function draw4(){var n=+$('#nf').value,d=+$('#dg4').value,cnt=binom(n+d,d)-1,c=$
   var M=plain(d),X1=X0+Wd+56,W1=W-X1-16,ymin=-400,ymax=1400,sx=function(v){return X1+v/50*W1},sy=function(v){return Y0+Hh-(v-ymin)/(ymax-ymin)*Hh};x.strokeStyle=C.rule;x.strokeRect(X1,Y0,W1,Hh);[0,500,1000].forEach(function(v){txt(x,v+'g',X1-4,sy(v),C.muted,9,'right');});[10,20,30,40].forEach(function(v){txt(x,v+'cm',sx(v),Y0+Hh+12,C.muted,9,'center');});
   x.save();x.beginPath();x.rect(X1,Y0,W1,Hh);x.clip();x.strokeStyle=C.eye;x.lineWidth=2;x.beginPath();for(var l=6;l<=48;l+=.2){var p=M.f(l);l>6?x.lineTo(sx(l),sy(p)):x.moveTo(sx(l),sy(p));}x.stroke();x.lineWidth=1;
   XTR.forEach(function(v,i){x.fillStyle=C.info;x.beginPath();x.arc(sx(v),sy(YTR[i]),2.8,0,7);x.fill();});XTE.forEach(function(v,i){x.fillStyle=C.amber;x.beginPath();x.arc(sx(v),sy(YTE[i]),3.2,0,7);x.fill();});x.restore();
-  txt(x,'농어 길이 '+d+'차 · 규제 없음',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
+  txt(x,'농어 길이 '+d+'차 · 벌점 없음',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
   var S=sens(M.f),te=r2(YTE,XTE.map(M.f));
   kpis($('#k4k'),[['a',cnt.toLocaleString('ko-KR')+'개','특성 '+n+'개 · '+d+'차 → 새 특성 수'],['r',fmtN(maxAbs(M.w)),'가장 큰 계수 |w|(농어 '+d+'차)'],['m',S.d.toFixed(1)+'g','0.1cm 차이에 예측이 가장 크게 변하는 폭'],[te<.9?'r':'g',te.toFixed(3),'시험 데이터 설명력(R²)']]);
   $('#ins4').innerHTML=d>=6?'<p class="r">'+d+'차: 계수 절댓값이 '+fmtN(maxAbs(M.w))+'까지 커졌고, 시험 R²는 '+te.toFixed(2)+'입니다. 계수들이 서로 거대한 값으로 상쇄하며 겨우 균형을 맞추고 있어, 범위 끝에서 곡선이 튑니다.</p>':'<p class="g">특성 '+n+'개를 '+d+'차로 늘리면 '+cnt.toLocaleString('ko-KR')+'개. 농어 '+d+'차 회귀의 가장 큰 계수는 '+fmtN(maxAbs(M.w))+', 시험 R² '+te.toFixed(3)+'.</p>';}
@@ -135,7 +135,7 @@ function draw5(){var a=ALS[+$('#al').value],M=reg(rg,a),c=$('#c5'),W=fitC(c,300)
   txt(x,'계수 8개 (막대 높이 기준 ±'+fmtN(mx)+')',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
   var tr=r2(YTR,XTR.map(M.f)),te=r2(YTE,XTE.map(M.f)),nz=M.w.filter(function(w){return Math.abs(w)>1e-6}).length;
   kpis($('#k5k'),[['i',tr.toFixed(4),'공부 데이터 설명력(R²)'],[te<.9?'r':'g',te.toFixed(4),'시험 데이터 설명력(R²)'],['a',fmtN(maxAbs(M.w)),'가장 큰 계수 크기'],['m',nz+' / 8','남은 재료(0이 아닌 계수)']]);
-  $('#ins5').innerHTML=rg==='none'?'<p class="r">규제 없음: 훈련 R² '+tr.toFixed(4)+'로 가장 높지만 시험 R²는 '+te.toFixed(2)+'. 계수 '+fmtN(maxAbs(M.w))+'짜리 곡선이 8.4cm 농어에서 크게 빗나갑니다.</p>':a>=100?'<p class="a">α = '+a+': 고삐가 너무 셉니다. 훈련 '+tr.toFixed(3)+', 시험 '+te.toFixed(3)+'로 둘 다 내려갔습니다(과소적합).</p>':rg==='lasso'?'<p class="g">라쏘 α = '+a+': 계수 '+(8-nz)+'개가 정확히 0이 되어 특성 '+nz+'개만 남았습니다. 시험 R² '+te.toFixed(3)+'.</p>':'<p class="g">릿지 α = '+a+': 특성 8개를 모두 쓰되 가장 큰 계수가 '+fmtN(maxAbs(M.w))+'로 줄었습니다. 시험 R² '+te.toFixed(3)+'.</p>';}
+  $('#ins5').innerHTML=rg==='none'?'<p class="r">벌점 없음: 훈련 R² '+tr.toFixed(4)+'로 가장 높지만 시험 R²는 '+te.toFixed(2)+'. 계수 '+fmtN(maxAbs(M.w))+'짜리 곡선이 8.4cm 농어에서 크게 빗나갑니다.</p>':a>=100?'<p class="a">α = '+a+': 고삐가 너무 셉니다. 훈련 '+tr.toFixed(3)+', 시험 '+te.toFixed(3)+'로 둘 다 내려갔습니다(과소적합).</p>':rg==='lasso'?'<p class="g">라쏘 α = '+a+': 계수 '+(8-nz)+'개가 정확히 0이 되어 특성 '+nz+'개만 남았습니다. 시험 R² '+te.toFixed(3)+'.</p>':'<p class="g">릿지 α = '+a+': 특성 8개를 모두 쓰되 가장 큰 계수가 '+fmtN(maxAbs(M.w))+'로 줄었습니다. 시험 R² '+te.toFixed(3)+'.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 
 /* ---------- 대결: 교차 검증으로 고른 릿지 vs 규제 없음 ---------- */
@@ -143,5 +143,5 @@ function cvRidge(){var P=prep(8),idx=XTR.map(function(_,i){return i}),r=rng(0);f
   var best=null;ALS.forEach(function(a){var sc=[];for(var k=0;k<5;k++){var va=idx.filter(function(_,q){return q%5===k}),tr=idx.filter(function(_,q){return q%5!==k}),M=fitRidge(P,a,tr.map(function(q){return P.X[q]}),tr.map(function(q){return YTR[q]}));sc.push(r2(va.map(function(q){return YTR[q]}),va.map(function(q){return M.f(XTR[q])})));}var m=mean(sc);if(!best||m>best.cv)best={a:a,cv:m};});return best;}
 LAB.Duel({el:'#duelBox',higherIsBetter:false,drawMargin:1,metric:'시험 농어 14마리 RMSE(g) — 작을수록 좋음',fmt:function(v){return Math.round(v).toLocaleString('ko-KR')+'g'},
   run:function(){var b=cvRidge(),F=fitRidge(prep(8),b.a),R=plain(8),fr=rmse(YTE,XTE.map(F.f)),rr=rmse(YTE,XTE.map(R.f));this.max=Math.max(fr,rr)*1.05;this.bigGap=1e9;this.info={a:b.a,cv:b.cv,trF:r2(YTR,XTR.map(F.f)),trR:r2(YTR,XTR.map(R.f)),p84F:F.f(8.4),p84R:R.f(8.4)};return {fly:fr,robo:rr};},
-  report:function(r){var I=this.info;return '교차 검증이 고른 α는 '+I.a+'(검증 R² 평균 '+I.cv.toFixed(3)+')예요. 훈련 R²는 주판봇 '+I.trR.toFixed(4)+', 초파리 '+I.trF.toFixed(4)+'로 주판봇이 조금 높았지만, 8.4cm 농어(실제 5.9g)를 초파리는 '+Math.round(I.p84F)+'g, 주판봇은 '+fmtN(I.p84R)+'g으로 예측했어요.';},
+  report:function(r){var I=this.info;return '돌아가며 시험이 고른 α는 '+I.a+'(검증 R² 평균 '+I.cv.toFixed(3)+')예요. 훈련 R²는 주판봇 '+I.trR.toFixed(4)+', 초파리 '+I.trF.toFixed(4)+'로 주판봇이 조금 높았지만, 8.4cm 농어(실제 5.9g)를 초파리는 '+Math.round(I.p84F)+'g, 주판봇은 '+fmtN(I.p84R)+'g으로 예측했어요.';},
   verdict:function(r,res){return '훈련 점수는 시험 점수가 아니다. 특성을 늘렸으면 계수에 고삐를. '+(res==='F'?'초파리 승.':res==='R'?'주판봇 승.':'이번 판은 나눠 갖는다.');}});

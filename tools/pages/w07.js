@@ -28,7 +28,7 @@ function draw1(){var rate=RATES[+$('#rate').value],D=d1(rate),mL=cm(D,2),mM=cm(D
   txt(x,'정확도 '+pct(aL.acc,1),X1+S/2,60+S+22,aL.acc>=aM.acc?C.amber:C.muted,13,'center',700);txt(x,'정확도 '+pct(aM.acc,1),X2+S/2,60+S+22,aM.acc>aL.acc?C.amber:C.muted,13,'center',700);
   stamp(x,W,'예시 데이터 · 고객 2,000명');
   var nPos=mM.tp+mM.fn;kpis($('#k1k'),[['i',nPos+'명','실제 이탈 고객'],['r',pct(aL.acc,1)+' · 찾은 이탈 0명','"아무도 이탈 안 함"'],['g',pct(aM.acc,1)+' · 찾은 이탈 '+mM.tp+'명','학습한 모델'],['a',mM.fn+'명','학습한 모델이 놓친 이탈(FN)']]);
-  $('#ins1').innerHTML=aL.acc>=aM.acc?'<p class="r">이탈 '+Math.round(rate*100)+'%: 아무것도 찾지 못하는 모델의 정확도('+pct(aL.acc,1)+')가 학습한 모델('+pct(aM.acc,1)+')보다 높거나 같습니다. 정확도로 고르면 쓸모없는 모델이 뽑힙니다.</p>':'<p class="a">이탈 '+Math.round(rate*100)+'%: 이제 학습한 모델의 정확도가 더 높습니다. 클래스가 덜 기울면 정확도의 함정이 약해집니다. 그래도 놓친 이탈 '+mM.fn+'명은 정확도에 드러나지 않습니다.</p>';}
+  $('#ins1').innerHTML=aL.acc>=aM.acc?'<p class="r">이탈 '+Math.round(rate*100)+'%: 아무것도 찾지 못하는 모델의 정확도('+pct(aL.acc,1)+')가 학습한 모델('+pct(aM.acc,1)+')보다 높거나 같습니다. 정확도로 고르면 쓸모없는 모델이 뽑힙니다.</p>':'<p class="a">이탈 '+Math.round(rate*100)+'%: 이제 학습한 모델의 정확도가 더 높습니다. 종류가 덜 기울면 정확도의 함정이 약해집니다. 그래도 놓친 이탈 '+mM.fn+'명은 정확도에 드러나지 않습니다.</p>';}
 addMod($('#c1'),function(dt){if(!dt)draw1();});
 
 /* ---------- ② 정밀도·재현율 ---------- */
@@ -45,10 +45,10 @@ function draw2(){var t=+$('#th').value,m=cm(D2,t),M=met(m),c=$('#c2'),W=fitC(c,3
   txt(x,'예측한 이탈 확률',X0+Wd/2,H-16,C.muted,11,'center');
   var X1=X0+Wd+50,tx=function(v){return X1+v*Wd},ty=function(v){return Y0+Hh-v*Hh};x.strokeStyle=C.rule;x.strokeRect(X1,Y0,Wd,Hh);[0,.5,1].forEach(function(v){txt(x,v.toFixed(1),X1-4,ty(v),C.muted,10,'right');txt(x,v.toFixed(1),tx(v),Y0+Hh+12,C.muted,10,'center');});
   [['P',C.info,'정밀도'],['R',C.eye,'재현율'],['F',C.gfp,'F1']].forEach(function(s,j){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();var st=0;CUR2.forEach(function(q,i){if(s[0]==='P'&&q.none)return;var px=tx(TS[i]),py=ty(q[s[0]]);st?x.lineTo(px,py):x.moveTo(px,py);st=1;});x.stroke();x.lineWidth=1;txt(x,'— '+s[2],X1+24+j*62,Y0+12,s[1],11,'left',700);});
-  x.setLineDash([3,3]);x.strokeStyle=C.text;x.beginPath();x.moveTo(tx(t),Y0);x.lineTo(tx(t),Y0+Hh);x.stroke();x.setLineDash([]);txt(x,'임계값',X1+Wd/2,H-16,C.muted,11,'center');
+  x.setLineDash([3,3]);x.strokeStyle=C.text;x.beginPath();x.moveTo(tx(t),Y0);x.lineTo(tx(t),Y0+Hh);x.stroke();x.setLineDash([]);txt(x,'기준선',X1+Wd/2,H-16,C.muted,11,'center');
   stamp(x,W,'예시 데이터');
   kpis($('#k2k'),[['i',pct(M.P,1),'정밀도 · '+m.tp+' ÷ ('+m.tp+' + '+m.fp+')'],['r',pct(M.R,1),'재현율 · '+m.tp+' ÷ ('+m.tp+' + '+m.fn+')'],['g',M.F.toFixed(3),'F1'],['m',pct(M.acc,1),'정확도']]);
-  $('#ins2').innerHTML=t<=.25?'<p class="a">관대한 기준: 이탈 고객의 '+pct(M.R,0)+'를 찾지만, "이탈" 판정의 '+pct(1-M.P,0)+'는 헛짚은 것입니다(FP '+m.fp+'명). 공항의 "엄격한 수하물 체크"와 같습니다.</p>':t>=.7?'<p class="a">엄격한 기준: "이탈" 판정은 '+pct(M.P,0)+'가 맞지만 이탈 고객의 '+pct(1-M.R,0)+'를 놓칩니다(FN '+m.fn+'명).</p>':'<p class="g">임계값 '+t.toFixed(2)+': 정밀도 '+pct(M.P,0)+', 재현율 '+pct(M.R,0)+'. 하나를 올리면 다른 하나가 내려갑니다.</p>';}
+  $('#ins2').innerHTML=t<=.25?'<p class="a">관대한 기준: 이탈 고객의 '+pct(M.R,0)+'를 찾지만, "이탈" 판정의 '+pct(1-M.P,0)+'는 헛짚은 것입니다(FP '+m.fp+'명). 공항의 "엄격한 수하물 체크"와 같습니다.</p>':t>=.7?'<p class="a">엄격한 기준: "이탈" 판정은 '+pct(M.P,0)+'가 맞지만 이탈 고객의 '+pct(1-M.R,0)+'를 놓칩니다(FN '+m.fn+'명).</p>':'<p class="g">기준선 '+t.toFixed(2)+': 정밀도 '+pct(M.P,0)+', 재현율 '+pct(M.R,0)+'. 하나를 올리면 다른 하나가 내려갑니다.</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
 /* ---------- ③ ROC·AUC ---------- */
@@ -62,7 +62,7 @@ function draw3(){var t=+$('#th3').value,c=$('#c3'),W=fitC(c,320),H=320,x=c.getCo
   x.setLineDash([4,4]);x.strokeStyle=C.muted;x.beginPath();x.moveTo(sx(0),sy(0));x.lineTo(sx(1),sy(1));x.stroke();x.setLineDash([]);
   [[RW,C.amber],[RS,C.gfp]].forEach(function(s){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();s[0].pts.forEach(function(p,i){i?x.lineTo(sx(p[0]),sy(p[1])):x.moveTo(sx(p[0]),sy(p[1]));});x.stroke();x.lineWidth=1;});
   var ms=met(cm(D2,t,'p')),mw=met(cm(D2,t,'w'));[[ms,C.gfp],[mw,C.amber]].forEach(function(s){x.fillStyle=s[1];x.beginPath();x.arc(sx(s[0].fpr),sy(s[0].R),6,0,7);x.fill();x.strokeStyle=C.text;x.stroke();});
-  var lx=X0+S+18;txt(x,'— 강한 모델(특성 둘) AUC '+RS.auc.toFixed(3),lx,Y0+14,C.gfp,11,'left',700);txt(x,'— 약한 모델(특성 하나) AUC '+RW.auc.toFixed(3),lx,Y0+32,C.amber,11,'left',700);txt(x,'- - 랜덤 추측선 AUC 0.5',lx,Y0+50,C.muted,11);txt(x,'● 임계값 '+t.toFixed(2)+'의 위치',lx,Y0+68,C.text,11);txt(x,'세로: TPR(재현율)',lx,Y0+86,C.muted,11);
+  var lx=X0+S+18;txt(x,'— 강한 모델(특성 둘) AUC '+RS.auc.toFixed(3),lx,Y0+14,C.gfp,11,'left',700);txt(x,'— 약한 모델(특성 하나) AUC '+RW.auc.toFixed(3),lx,Y0+32,C.amber,11,'left',700);txt(x,'- - 랜덤 추측선 AUC 0.5',lx,Y0+50,C.muted,11);txt(x,'● 기준선 '+t.toFixed(2)+'의 위치',lx,Y0+68,C.text,11);txt(x,'세로: TPR(재현율)',lx,Y0+86,C.muted,11);
   stamp(x,W,'예시 데이터');
   kpis($('#k3k'),[['g',RS.auc.toFixed(3),'강한 모델 AUC'],['a',RW.auc.toFixed(3),'약한 모델 AUC'],['i','('+ms.fpr.toFixed(2)+', '+ms.R.toFixed(2)+')','강한 모델 (헛경보율, 잡아낸 비율)'],['m',PAIR==null?'—':pct(PAIR,1),'쌍 뽑기: 이탈 점수가 더 높은 비율']]);
   $('#ins3').innerHTML=PAIR!=null?'<p class="g">무작위 1,000쌍 중 '+pct(PAIR,1)+'에서 이탈 고객의 점수가 더 높았습니다. AUC '+RS.auc.toFixed(3)+'와 거의 같습니다. AUC는 "줄 세우기 실력"입니다.</p>':'<p class="g">강한 모델의 곡선이 약한 모델보다 왼쪽 위에 있습니다. 같은 FPR에서 더 많은 이탈 고객을 찾습니다. 두 곡선 모두 대각선 위라 동전 던지기보다 낫습니다.</p>';}
@@ -95,11 +95,11 @@ function draw5(){var lr=LRS[+$('#lr').value],R=trainLR(lr,bs),c=$('#c5'),W=fitC(
   x.strokeStyle=C.rule;x.strokeRect(X0,Y0,Wd,Hh);[0,.4,.8,1.2].forEach(function(v){txt(x,v.toFixed(1),X0-4,sy(v),C.muted,10,'right');});[0,5,10,15,20].forEach(function(e){txt(x,e+'에포크',sx(e),Y0+Hh+12,C.muted,10,'center');});
   LRS.forEach(function(l){if(l===lr)return;var Q=trainLR(l,bs);x.strokeStyle='rgba(157,155,184,.35)';x.beginPath();Q.L.forEach(function(v,e){e?x.lineTo(sx(e),sy(v)):x.moveTo(sx(e),sy(v));});x.stroke();txt(x,String(l),sx(20)+3,sy(Q.L[20]),C.muted,9);});
   x.strokeStyle=C.gfp;x.lineWidth=2.5;x.beginPath();R.L.forEach(function(v,e){e?x.lineTo(sx(e),sy(v)):x.moveTo(sx(e),sy(v));});x.stroke();x.lineWidth=1;
-  var best=trainLR(.3,32).L[20];x.setLineDash([3,3]);x.strokeStyle=C.info;x.beginPath();x.moveTo(X0,sy(best));x.lineTo(X0+Wd,sy(best));x.stroke();x.setLineDash([]);txt(x,'도달 가능한 손실 ≈ '+best.toFixed(3),X0+Wd-4,sy(best)-8,C.info,10,'right');
+  var best=trainLR(.3,32).L[20];x.setLineDash([3,3]);x.strokeStyle=C.info;x.beginPath();x.moveTo(X0,sy(best));x.lineTo(X0+Wd,sy(best));x.stroke();x.setLineDash([]);txt(x,'도달 가능한 틀린 정도 ≈ '+best.toFixed(3),X0+Wd-4,sy(best)-8,C.info,10,'right');
   txt(x,'— 학습률 '+lr+' · 배치 '+bs+' (흐린 선: 다른 학습률)',X0+8,Y0+14,C.gfp,11,'left',700);stamp(x,W,'예시 데이터 · 로지스틱 회귀');
   var fin=R.L[20],per=Math.ceil(800/bs);kpis($('#k5k'),[['i',per+'번','1에포크의 갱신 횟수(800 ÷ '+bs+')'],['a',R.steps+'번','전체 20바퀴 동안 고친 횟수'],[fin>best+.05?'r':'g',fin.toFixed(3),'20바퀴 뒤 남은 오차(손실)'],['m',pct(R.acc,1),'시험 정확도(임계값 0.5)']]);
   var jumpy=R.L.slice(10).some(function(v,i,a){return i&&v>a[i-1]+.02;});
-  $('#ins5').innerHTML=fin>.6&&lr<=.03?'<p class="a">학습률 '+lr+' · 갱신 '+R.steps+'번: 너무 조금씩, 너무 드물게 고쳐 아직 시작점(0.693) 근처입니다.</p>':fin>best+.05||jumpy?'<p class="r">학습률 '+lr+': 한 번에 너무 크게 고쳐 손실이 '+(jumpy?'오르내립니다':'충분히 내려가지 못합니다')+'. 정답 주변을 헤매는 모습입니다.</p>':'<p class="g">학습률 '+lr+' · 배치 '+bs+': 손실이 '+fin.toFixed(3)+'까지 내려갔습니다. 도달 가능한 수준에 가깝습니다.</p>';}
+  $('#ins5').innerHTML=fin>.6&&lr<=.03?'<p class="a">학습률 '+lr+' · 갱신 '+R.steps+'번: 너무 조금씩, 너무 드물게 고쳐 아직 시작점(0.693) 근처입니다.</p>':fin>best+.05||jumpy?'<p class="r">학습률 '+lr+': 한 번에 너무 크게 고쳐 틀린 정도가 '+(jumpy?'오르내립니다':'충분히 내려가지 못합니다')+'. 정답 주변을 헤매는 모습입니다.</p>':'<p class="g">학습률 '+lr+' · 배치 '+bs+': 틀린 정도가 '+fin.toFixed(3)+'까지 내려갔습니다. 도달 가능한 수준에 가깝습니다.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 
 /* ---------- 대결: 비용 기반 임계값 ---------- */
@@ -108,5 +108,5 @@ function profit(m){return m.tp*15-(m.tp+m.fp)*2;}
 LAB.Duel({el:'#duelBox',higherIsBetter:true,drawMargin:1,max:800,bigGap:1000,metric:'시험 고객 1,000명당 캠페인 순이익(만 원)',fmt:function(v){return Math.round(v).toLocaleString('ko-KR')+'만 원'},
   run:function(){var bA=TT.reduce(function(b,t){var a=met(cm(VD,t)).acc;return a>b[1]?[t,a]:b},[0,-1]),bP=TT.reduce(function(b,t){var p=profit(cm(VD,t));return p>b[1]?[t,p]:b},[0,-1e9]);
     var mA=cm(TD,bA[0]),mP=cm(TD,bP[0]);this.info={tA:bA[0],tP:bP[0],mA:mA,mP:mP,accA:met(mA).acc,accP:met(mP).acc};return {fly:profit(mA)/3,robo:profit(mP)/3};},
-  report:function(r){var I=this.info;return '초파리 연구원의 임계값은 '+I.tA.toFixed(2)+'(시험 정확도 '+pct(I.accA,1)+'), 주판봇은 '+I.tP.toFixed(2)+'(정확도 '+pct(I.accP,1)+')예요. 주판봇은 쿠폰을 '+(I.mP.tp+I.mP.fp)+'장 뿌려 이탈 고객 '+I.mP.tp+'명에게 닿았고, 초파리는 '+(I.mA.tp+I.mA.fp)+'장으로 '+I.mA.tp+'명에게 닿았어요.';},
-  verdict:function(r,res){return '정확도가 낮은 쪽이 돈을 더 벌었다. 임계값은 틀림의 값으로 정한다. '+(res==='R'?'주판봇 승.':res==='F'?'초파리 승.':'이번 판은 나눠 갖는다.');}});
+  report:function(r){var I=this.info;return '초파리 연구원의 기준선은 '+I.tA.toFixed(2)+'(시험 정확도 '+pct(I.accA,1)+'), 주판봇은 '+I.tP.toFixed(2)+'(정확도 '+pct(I.accP,1)+')예요. 주판봇은 쿠폰을 '+(I.mP.tp+I.mP.fp)+'장 뿌려 이탈 고객 '+I.mP.tp+'명에게 닿았고, 초파리는 '+(I.mA.tp+I.mA.fp)+'장으로 '+I.mA.tp+'명에게 닿았어요.';},
+  verdict:function(r,res){return '정확도가 낮은 쪽이 돈을 더 벌었다. 기준선은 틀림의 값으로 정한다. '+(res==='R'?'주판봇 승.':res==='F'?'초파리 승.':'이번 판은 나눠 갖는다.');}});

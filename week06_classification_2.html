@@ -400,18 +400,18 @@ details.code,details.abbr,details.math{margin-top:4px}
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 6주차의 세 교시</h2></div>
-  <div class="flowchips" aria-label="6주차 흐름"><span>1교시: 다중 클래스 KNN · K 최적화 · SVM</span><i>→</i><span>2교시: 데이터 나누기(순서대로·무작위·비율 지키기)</span><i>→</i><span class="lim">3교시: 표준화와 특성 선택</span></div>
+  <div class="flowchips" aria-label="6주차 흐름"><span>1교시: 다중 종류 KNN · K 최적화 · SVM</span><i>→</i><span>2교시: 데이터 나누기(순서대로·무작위·비율 지키기)</span><i>→</i><span class="lim">3교시: 표준화와 특성 선택</span></div>
   <div class="pair">
     <div><div class="tag fly">KNN</div><p>가까운 K개 이웃의 다수결. 경계가 데이터 모양을 따라 울퉁불퉁하게 생깁니다. 거리에 의존하므로 눈금(스케일)에 민감합니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">SVM</div><p>두 클래스 사이 여백(마진)이 가장 넓은 경계를 찾습니다. 경계 가까운 점(서포트 벡터)이 경계를 정하고, 커널(선형·다항식·RBF·시그모이드)로 곡선 경계도 만듭니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">SVM</div><p>두 종류 사이 여백(마진)이 가장 넓은 경계를 찾습니다. 경계 가까운 점(서포트 벡터)이 경계를 정하고, 커널(선형·다항식·RBF·시그모이드)로 곡선 경계도 만듭니다.<sup>[1]</sup></p></div>
   </div>
 </div></section>
 
 <!-- ① 3클래스 -->
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">1<small>확장</small></div><h2>다중 클래스 KNN — 농어가 끼어들면</h2></div>
-    <p class="sub"><span class="lvtag g">라벨: Bream = 0 · Perch = 1 · Smelt = 2</span><span class="lvtag">데이터: 도미 35 · 농어 10 · 빙어 14</span></p>
+    <div class="hexrow"><div class="hexno">1<small>확장</small></div><h2>다중 종류 KNN — 농어가 끼어들면</h2></div>
+    <p class="sub"><span class="lvtag g">정답 번호: 도미 0 · 농어 1 · 빙어 2</span><span class="lvtag">데이터: 도미 35 · 농어 10 · 빙어 14</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>종류가 셋으로 늘어도 다수결 원리는 같습니다. 다만 경계에 선 생선이 늘어 더 어려워집니다.</p>
   <div class="pair">
@@ -427,9 +427,9 @@ details.code,details.abbr,details.math{margin-top:4px}
     <div class="insight" id="ins1" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li>투표 비율이 곧 모델이 내는 확률입니다. 세 클래스면 확률도 세 개이고 합은 1입니다.</li>
+    <li>투표 비율이 곧 모델이 내는 확률입니다. 세 종류면 확률도 세 개이고 합은 1입니다.</li>
     <li>농어 영역 근처(15~24cm)를 눌러 보면 이웃이 섞여 확률이 갈리는 곳이 보입니다.</li>
-    <li>교안은 농어 10마리가 다른 종류보다 적어 클래스 불균형도 함께 생긴다고 짚습니다.<sup>[1]</sup></li>
+    <li>교안은 농어 10마리가 다른 종류보다 적어 종류 불균형도 함께 생긴다고 짚습니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: K를 5로 그냥 두었습니다. K는 어떻게 골라야 할까요? 이 데이터는 너무 깔끔해 대부분의 K에서 100%가 나옵니다. → ②칸</p></div>
   <div class="quiz" data-quiz="lv1"></div>
 </div></section>
@@ -438,7 +438,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv2"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">2<small>조정</small></div><h2>K값 최적화 — 너무 작지도, 너무 크지도 않게</h2></div>
-    <p class="sub"><span class="lvtag g">곡선: K에 따른 훈련·시험 정확도</span><span class="lvtag">데이터: 겹치는 두 집단(예시)</span></p>
+    <p class="sub"><span class="lvtag g">곡선: 이웃 수(K)에 따른 공부·시험 점수</span><span class="lvtag">데이터: 겹치는 두 집단(예시)</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>이웃을 너무 적게 보면 우연에 흔들리고, 너무 많이 보면 엉뚱한 무리까지 섞입니다. 시험 점수로 알맞은 수를 고릅니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>KNN은 "몇 명에게 물어볼지(K)"를 사람이 정해야 합니다. K가 너무 작으면 우연히 가까이 있던 한 마리에 휘둘리고, 너무 크면 멀리 있는 다른 종까지 끌어와 뭉개집니다. 그래서 <b>여러 K를 시험해 시험 점수가 가장 좋은 K를 고릅니다.</b></p><p class="ez-like"><b>쉽게 말하면</b> 길을 물을 때 한 사람에게만 물으면 그 사람이 틀릴 수 있고, 동네 사람 전부에게 물으면 엉뚱한 동네 사람 말까지 섞입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>K는 공식이 없는데, 그럼 몇으로 해야 맞는 거예요?</p></div></div><dl class="ez-pieces"><div><dt>K = 1</dt><dd>가장 가까운 한 마리만 봄 → 훈련 점수는 100%지만 처음 보는 생선에 약함(과적합)</dd></div><div><dt>K가 클수록</dt><dd>경계가 매끄러워지다가 너무 크면 소수 종을 무시함(과소적합)</dd></div><div><dt>훈련 점수 vs 시험 점수</dt><dd>두 점수가 함께 높고 차이가 작은 K가 좋은 K</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>이웃 7마리 중 도미 4, 농어 3 → K = 7이면 도미(4 ÷ 7 ≈ 0.57). 같은 생선에서 가장 가까운 3마리가 농어 2, 도미 1이면 K = 3일 때는 <b>농어</b>. K에 따라 답이 바뀝니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>정답 공식은 없고, 여러 K로 시험 보고 제일 잘 나오는 걸 고르는 거군요.</p></div></div></div></div>
@@ -466,7 +466,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>경계</small></div><h2>SVM — 가장 넓은 길을 내는 경계</h2></div>
-    <p class="sub"><span class="lvtag g">커널: 선형 · RBF(방사 기저 함수)</span><span class="lvtag">일상: 두 동네 사이에 가장 넓은 길 내기</span></p>
+    <p class="sub"><span class="lvtag g">경계 모양: 곧은 선 · 구불구불한 곡선</span><span class="lvtag">일상: 두 동네 사이에 가장 넓은 길 내기</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>SVM은 두 무리 사이에 가장 넓은 길을 내서 새 데이터에도 덜 틀립니다. 경계 모양을 바꾸면 곡선으로도 가릅니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>두 종을 나누는 직선은 무수히 많습니다. 아무 직선이나 고르면 경계에 바짝 붙은 생선이 조금만 달라도 틀립니다. <b>SVM은 양쪽 생선과 가장 멀리 떨어진, "가장 넓은 길"의 가운데 선을 고릅니다.</b> 여유가 넓을수록 새 데이터에 덜 흔들립니다.</p><p class="ez-like"><b>쉽게 말하면</b> 두 마을 사이에 도로를 낼 때, 양쪽 집을 건드리지 않으면서 가장 넓은 도로를 내고 그 중앙선을 경계로 삼는 것과 같습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>w₁x₁ + w₂x₂ + b = 0… 글자가 너무 많아요. 이게 선이에요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 일차함수 y = −2x + 10의 그래프가 경계선이고, 점이 그래프 위에 있는지 아래에 있는지로 나누는 것입니다.</p><dl class="ez-pieces"><div><dt>w₁x₁ + w₂x₂ + b = 0</dt><dd>경계선. 일차함수 그래프를 x₁, x₂로 쓴 것</dd></div><div><dt>값 > 0이면 한쪽, < 0이면 다른 쪽</dt><dd>점을 식에 넣어 부호로 판정</dd></div><div><dt>마진</dt><dd>경계선에서 가장 가까운 점까지의 거리(도로 폭의 절반). 이것을 최대로</dd></div><div><dt>서포트 벡터</dt><dd>도로 가장자리에 닿은 점들. 경계는 이 점들만으로 정해짐</dd></div><div><dt>RBF 커널</dt><dd>직선으로 못 나누는 데이터를 곡선 경계로 나누게 해 주는 장치</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>경계 2x₁ + x₂ − 10 = 0에 점 (3, 6)을 넣으면 6 + 6 − 10 = <b>2 &gt; 0</b> → 위쪽 종. 점 (2, 3)은 4 + 3 − 10 = <b>−3 &lt; 0</b> → 아래쪽 종.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>일차함수 그래프를 다르게 쓴 거였네요. 점을 넣어서 0보다 크면 위, 작으면 아래!</p></div></div></div></div>
@@ -535,7 +535,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">5<small>눈금</small></div><h2>표준화 — 길이와 무게를 같은 눈금으로</h2></div>
-    <p class="sub"><span class="lvtag g">Z-점수: (값 − 평균) ÷ 표준편차</span><span class="lvtag">교안 사례: New Fish 25cm · 150g</span></p>
+    <p class="sub"><span class="lvtag g">눈금 맞추기: 평균에서 몇 걸음 떨어졌나</span><span class="lvtag">교안 사례: New Fish 25cm · 150g</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>cm와 g을 그대로 더하면 무게가 판단을 독차지합니다. "평균에서 몇 걸음"으로 바꿔 눈금을 맞춥니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>KNN은 거리로 판단하는데, 길이(cm)는 10~40 정도이고 무게(g)는 10~1,000입니다. 그대로 재면 무게 차이가 거리를 거의 다 차지해서 길이는 무시됩니다. <b>단위를 같은 눈금으로 맞추는 것</b>이 표준화입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 키(cm)와 몸무게(kg)를 그대로 더해 "체격 점수"를 만들면 키가 점수를 독차지합니다. 둘 다 "평균에서 몇 걸음"으로 바꿔야 공평합니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>평균을 빼고 표준편차로 나누면 숫자가 왜 공평해져요?</p></div></div><dl class="ez-pieces"><div><dt>z = (값 − 평균) ÷ 표준편차</dt><dd>평균에서 표준편차 몇 개만큼 떨어졌나</dd></div><div><dt>z = 0</dt><dd>딱 평균</dd></div><div><dt>z = −1</dt><dd>평균보다 표준편차 하나만큼 작음</dd></div><div><dt>표준화 후</dt><dd>모든 특성이 평균 0, 표준편차 1 → 단위가 사라짐</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>길이 평균 30, 표준편차 10 → 25cm는 z = (25 − 30) ÷ 10 = <b>−0.5</b>.<br>무게 평균 500, 표준편차 300 → 150g은 z = (150 − 500) ÷ 300 ≈ <b>−1.17</b>.<br>표준화 전 거리 차이: 길이 5 vs 무게 350 → 표준화 후: 0.5 vs 1.17.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>단위가 사라지고 "평균에서 몇 걸음"만 남으니까, cm랑 g을 같은 자로 잴 수 있네요.</p></div></div></div></div>
@@ -557,7 +557,7 @@ details.code,details.abbr,details.math{margin-top:4px}
     <li><b>Z-점수 표준화</b>: 이웃 5마리가 모두 도미 → 도미. 교안의 결과와 같습니다.<sup>[1]</sup></li>
     <li><b>Min-Max</b>(0~1로 줄이기)도 눈금을 맞춰 줍니다. 교안은 이 밖에 Robust 스케일링(중앙값 기반), Unit Vector 스케일링을 소개하고, 방법에 따라 정확도가 달라질 수 있다고 말합니다.<sup>[1]</sup></li>
     <li>무게를 로그로 바꾸거나 길이와 무게를 조합한 새 특성을 만드는 일은 특성 공학(10주차)으로 이어집니다.<sup>[1]</sup></li>
-  </ol><p class="limit">이 칸의 한계: 지금까지는 정확도 하나로만 평가했습니다. 클래스가 불균형하거나 틀림의 비용이 다르면 정확도만으로는 부족합니다. → 7주차: 모델의 평가</p></div>
+  </ol><p class="limit">이 칸의 한계: 지금까지는 정확도 하나로만 평가했습니다. 종류가 불균형하거나 틀림의 비용이 다르면 정확도만으로는 부족합니다. → 7주차: 모델의 평가</p></div>
   <div class="bridges">
     <div class="bridge field"><h4>현장에 옮기면</h4><p>고객 데이터의 나이(20~70), 연소득(2,000만~1억), 방문 횟수(0~50)를 그대로 KNN·K-means에 넣으면 소득이 거리를 지배합니다. 표준화 기준(평균·표준편차)은 훈련 데이터로만 정하고, 시험·운영 데이터에는 그 기준을 그대로 적용합니다. 시험 데이터까지 섞어 기준을 정하면 4주차의 봉인한 시험지를 미리 본 셈입니다.</p><p class="lim">한계: 의사결정 트리처럼 거리를 쓰지 않는 모델은 표준화의 영향이 거의 없습니다.</p></div>
     <div class="bridge gen"><h4>생성 AI로 치면</h4><p>문장을 숫자 벡터(임베딩)로 바꿔 비교할 때도 벡터 길이를 1로 맞추는 정규화를 흔히 합니다. 교안의 Unit Vector 스케일링과 같은 생각입니다. 길이가 다르면 긴 벡터가 유사도를 지배하기 때문입니다.</p><p class="lim">비유의 한계: 임베딩의 각 차원은 길이·무게처럼 사람이 읽을 수 있는 뜻을 갖지 않습니다.</p></div>
@@ -592,14 +592,14 @@ details.code,details.abbr,details.math{margin-top:4px}
   <div class="tw"><table class="tb" aria-label="다섯 칸 비교">
     <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
     <tbody>
-      <tr><td><b>① 3클래스 KNN</b></td><td>세 종류를 투표 비율로 판정한다</td><td>K를 그냥 정했다</td><td>K 최적화</td></tr>
+      <tr><td><b>① 3종류 KNN</b></td><td>세 종류를 투표 비율로 판정한다</td><td>K를 그냥 정했다</td><td>K 최적화</td></tr>
       <tr><td><b>② K 최적화</b></td><td>과적합과 과소적합 사이의 K를 찾는다</td><td>경계가 울퉁불퉁하다</td><td>SVM</td></tr>
       <tr><td><b>③ SVM</b></td><td>마진이 가장 넓은 경계, 커널로 곡선 경계</td><td>점수를 잰 방법을 안 따졌다</td><td>데이터 분할</td></tr>
       <tr><td><b>④ 데이터 분할</b></td><td>무작위·층화로 공정한 시험을 만든다</td><td>눈금 차이는 그대로다</td><td>표준화</td></tr>
       <tr><td><b>⑤ 표준화</b></td><td>특성을 같은 눈금으로 맞춘다</td><td>정확도 하나로만 평가했다</td><td>7주차: 평가 지표</td></tr>
     </tbody></table></div>
   <div class="steps">
-    <div><b>교안 정리 1</b><p>다중 클래스 KNN(농어 추가), K값에 따른 정확도 변화, SVM(가장 넓은 길 경계, 경계를 정한 점, 곡선 경계, 봐주는 정도·구불구불한 정도).</p></div>
+    <div><b>교안 정리 1</b><p>다중 종류 KNN(농어 추가), K값에 따른 정확도 변화, SVM(가장 넓은 길 경계, 경계를 정한 점, 곡선 경계, 봐주는 정도·구불구불한 정도).</p></div>
     <div><b>교안 정리 2</b><p>순서대로 분할하면 0% 정확도. 골고루 섞어 나누고(무작위), 종류 비율을 맞추고(층화), 섞는 순서 번호를 고정한다.</p></div>
     <div><b>교안 정리 3</b><p>새 생선(25cm, 150g)이 빙어로 잘못 판정 → 눈금을 맞춘(표준화) 뒤 도미로 바르게 판정, KNN·SVM 모두 100%. 표준화와 특성 선택.</p></div>
   </div>

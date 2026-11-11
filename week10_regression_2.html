@@ -382,9 +382,9 @@ details.code,details.abbr,details.math{margin-top:4px}
   <h2>등장인물과 이 페이지 사용법</h2>
   <div class="cast">
     <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
-    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">불순도와 계수를 셉니다.</p></div>
-    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">규제(릿지) 편.</p></div>
-    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">특성 많이, 규제 없이 편.</p></div>
+    <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">섞임 정도와 계수를 셉니다.</p></div>
+    <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">벌점(릿지) 편.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">특성 많이, 벌점 없이 편.</p></div>
   </div>
   <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. ①칸의 공부시간-합격, ②③칸의 와인 모양 데이터는 교안의 예를 본떠 만든 예시 데이터입니다(교안 실습의 Fish Market 7종·Wine 데이터를 이 페이지에 그대로 싣지는 않았습니다). ④⑤칸과 대결은 9주차와 같은 교안 농어 56마리, 교안 코드와 같은 분할입니다.</p>
 </div></section>
@@ -394,13 +394,13 @@ details.code,details.abbr,details.math{margin-top:4px}
   <div class="steps">
     <div><b>1. 확률이 필요하다</b><p>스팸인가 아닌가, 합격인가 불합격인가. 회귀식의 출력은 −∞~+∞라 그대로는 확률이 아닙니다. 시그모이드로 0~1에 가둡니다.<sup>[1]</sup></p></div>
     <div><b>2. 설명이 필요하다</b><p>"나이 30세 이상이고 소득 5,000만 원 이상이면 대출 승인" 같은 규칙은 고객과 규제기관에 그대로 보여 줄 수 있습니다. 의사결정나무가 만드는 것이 이런 규칙입니다.<sup>[1]</sup></p></div>
-    <div><b>3. 좋은 재료가 필요하다</b><p>때로는 복잡한 알고리즘보다 좋은 특성 하나가 더 효과적입니다. 다만 특성이 늘면 과적합도 늘어 규제가 함께 필요합니다.<sup>[1]</sup></p></div>
+    <div><b>3. 좋은 재료가 필요하다</b><p>때로는 복잡한 알고리즘보다 좋은 특성 하나가 더 효과적입니다. 다만 특성이 늘면 과적합도 늘어 벌점이 함께 필요합니다.<sup>[1]</sup></p></div>
   </div>
 </div></section>
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 10주차의 세 교시</h2></div>
-  <div class="flowchips" aria-label="10주차 흐름"><span>1교시: 로지스틱 회귀 · 시그모이드 · 의사결정나무 · 지니 불순도 · 가지치기</span><i>→</i><span>2교시: 실습(생선 종류 여럿 맞히기 · 와인 두 종류 맞히기 · 돌아가며 시험 보기 · 설정값 자동 찾기)</span><i>→</i><span class="lim">3교시: 특성공학(재료 늘리기) · 릿지 · 라쏘(계수에 벌점)</span></div>
+  <div class="flowchips" aria-label="10주차 흐름"><span>1교시: 로지스틱 회귀 · 시그모이드 · 의사결정나무 · 지니 섞임 정도 · 가지치기</span><i>→</i><span>2교시: 실습(생선 종류 여럿 맞히기 · 와인 두 종류 맞히기 · 돌아가며 시험 보기 · 설정값 자동 찾기)</span><i>→</i><span class="lim">3교시: 특성공학(재료 늘리기) · 릿지 · 라쏘(계수에 벌점)</span></div>
   <div class="pair">
     <div><div class="tag fly">로지스틱 회귀</div><p>z = w₀ + w₁x₁ + … 로 점수를 계산하고, 시그모이드로 확률을 만들어 0.5를 기준으로 나눕니다. 이름은 회귀지만 일은 분류입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">의사결정나무</div><p>스무고개처럼 "특성 ≤ 기준값?"을 묻고 갈라 내려가, 잎(리프)에서 결론을 냅니다. 갈 때마다 섞인 정도(지니 불순도)가 가장 많이 줄어드는 질문을 고릅니다.<sup>[1]</sup></p></div>
@@ -411,7 +411,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>확률</small></div><h2>로지스틱 회귀 — 직선 점수를 S자 확률로</h2></div>
-    <p class="sub"><span class="lvtag g">z = w₀ + w₁x → p = σ(z)</span><span class="lvtag">데이터: 공부시간-합격 40명(예시)</span></p>
+    <p class="sub"><span class="lvtag g">방법: 점수 → S자 곡선 → 0~1 확률</span><span class="lvtag">데이터: 공부시간-합격 40명(예시)</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>예/아니오 문제는 점수를 S자 곡선에 넣어 0~1 확률로 바꿉니다. 확률이 있으면 행동 기준을 내가 정할 수 있습니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>"합격/불합격"처럼 답이 둘인 문제에 직선 회귀를 쓰면 1.3이나 −0.2처럼 확률이 될 수 없는 숫자가 나옵니다. <b>직선으로 점수를 낸 뒤, 그 점수를 0~1 사이로 눌러 주는 S자 곡선(시그모이드)에 넣으면 확률이 됩니다.</b> 이것이 로지스틱 회귀입니다. 이름은 회귀지만 분류 모델입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 일기예보가 "비가 온다/안 온다" 대신 "비 올 확률 70%"라고 말하는 것과 같습니다. 확률을 알면 우산을 챙길 기준(예: 50%)을 내가 정할 수 있습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>e의 마이너스 z승이요? 지수가 나오니까 손이 안 가요.</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 1단계는 중학교 일차함수, 2단계는 고등학교 지수함수 e<sup>x</sup>입니다.</p><dl class="ez-pieces"><div><dt>z = w₀ + w₁·x</dt><dd>1단계: 일차함수로 점수 계산. w₁ = 기울기(영향력), w₀ = 절편(기준 이동)</dd></div><div><dt>σ(z) = 1 ÷ (1 + e<sup>−z</sup>)</dt><dd>2단계: 점수를 0~1로 누름. e ≈ 2.718</dd></div><div><dt>z = 0이면 0.5</dt><dd>1 ÷ (1 + 1) = 0.5. 경계선</dd></div><div><dt>z가 크면 1에, 작으면 0에 가까움</dt><dd>e<sup>−z</sup>가 0에 가까워지거나 아주 커지기 때문</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>z = −4 + 1 × (공부 시간)일 때<br>4시간 → z = 0 → <b>0.5</b>, 6시간 → z = 2 → 1 ÷ (1 + 1/7.39) ≈ <b>0.88</b>, 2시간 → z = −2 → ≈ <b>0.12</b>.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>일차함수로 점수를 내고, 그 점수를 S자 곡선에 넣어 0~1로 누른 것뿐이네요. z = 0이면 딱 50%!</p></div></div></div></div>
@@ -446,13 +446,13 @@ details.code,details.abbr,details.math{margin-top:4px}
 <!-- ② 지니 불순도 -->
 <section class="level" id="lv2"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">2<small>질문</small></div><h2>첫 질문 고르기 — 지니 불순도를 가장 많이 줄이는 분할</h2></div>
-    <p class="sub"><span class="lvtag g">Gini = 1 − Σ pᵢ²</span><span class="lvtag">데이터: 레드·화이트 와인 모양의 예시 300병</span></p>
+    <div class="hexrow"><div class="hexno">2<small>질문</small></div><h2>첫 질문 고르기 — 지니 섞임 정도를 가장 많이 줄이는 분할</h2></div>
+    <p class="sub"><span class="lvtag g">지표: 상자가 얼마나 섞였나(지니)</span><span class="lvtag">데이터: 레드·화이트 와인 모양의 예시 300병</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>첫 질문은 답을 가장 깔끔하게 가르는 것으로 고릅니다. 상자의 섞임(지니)이 가장 많이 줄어드는 질문입니다.</p>
-  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>로지스틱 회귀는 확률은 잘 내지만 "왜 그렇게 판단했는지"를 현장 담당자에게 말하기 어렵습니다. <b>"당도가 5 이상인가?" 같은 예/아니오 질문을 이어 가면, 판단 과정이 그대로 규칙이 됩니다.</b> 이때 어떤 질문을 먼저 할지 정하는 기준이 지니 불순도입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 스무고개에서 첫 질문은 "동물인가요?"처럼 후보를 반으로 확 줄이는 질문이 좋습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>1 − Σ p²… 비율을 왜 제곱해서 빼요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 비율을 제곱해 더하는 계산은 고등학교 확률에서 "두 번 뽑아 같은 색일 확률"과 같습니다. 지니는 "두 번 뽑아 다른 색일 확률"입니다.</p><dl class="ez-pieces"><div><dt>지니 = 1 − Σ (비율)²</dt><dd>한 칸에 섞인 정도. 한 종류뿐이면 0, 반반이면 0.5(가장 섞임)</dd></div><div><dt>질문 전 지니 − 질문 후 지니</dt><dd>그 질문으로 줄어든 섞임 = 질문의 가치</dd></div><div><dt>가장 많이 줄이는 질문</dt><dd>이 질문을 첫 질문으로 고름</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>10병 중 레드 8, 화이트 2 → 지니 = 1 − (0.8² + 0.2²) = 1 − 0.68 = <b>0.32</b>.<br>레드 5, 화이트 5 → 1 − 0.5 = <b>0.5</b>. 레드 10 → 1 − 1 = <b>0</b>.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>한 종류만 있으면 0, 반반이면 0.5. "얼마나 섞였나"를 재는 점수였어요.</p></div></div></div></div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>로지스틱 회귀는 확률은 잘 내지만 "왜 그렇게 판단했는지"를 현장 담당자에게 말하기 어렵습니다. <b>"당도가 5 이상인가?" 같은 예/아니오 질문을 이어 가면, 판단 과정이 그대로 규칙이 됩니다.</b> 이때 어떤 질문을 먼저 할지 정하는 기준이 상자의 섞임 정도(지니 불순도)입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 스무고개에서 첫 질문은 "동물인가요?"처럼 후보를 반으로 확 줄이는 질문이 좋습니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>1 − Σ p²… 비율을 왜 제곱해서 빼요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 비율을 제곱해 더하는 계산은 고등학교 확률에서 "두 번 뽑아 같은 색일 확률"과 같습니다. 지니는 "두 번 뽑아 다른 색일 확률"입니다.</p><dl class="ez-pieces"><div><dt>지니 = 1 − Σ (비율)²</dt><dd>한 칸에 섞인 정도. 한 종류뿐이면 0, 반반이면 0.5(가장 섞임)</dd></div><div><dt>질문 전 지니 − 질문 후 지니</dt><dd>그 질문으로 줄어든 섞임 = 질문의 가치</dd></div><div><dt>가장 많이 줄이는 질문</dt><dd>이 질문을 첫 질문으로 고름</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>10병 중 레드 8, 화이트 2 → 지니 = 1 − (0.8² + 0.2²) = 1 − 0.68 = <b>0.32</b>.<br>레드 5, 화이트 5 → 1 − 0.5 = <b>0.5</b>. 레드 10 → 1 − 1 = <b>0</b>.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>한 종류만 있으면 0, 반반이면 0.5. "얼마나 섞였나"를 재는 점수였어요.</p></div></div></div></div>
   <div class="pair">
-    <div><div class="tag fly">일상으로 치면</div><p>색이 다른 구슬이 섞인 상자를 칸막이 하나로 나눕니다. 칸막이를 어디에 꽂아야 양쪽 칸이 한 색에 가까워질까요? 한 색만 있으면 불순도 0, 반반이면 0.5입니다.<sup>[1]</sup></p></div>
+    <div><div class="tag fly">일상으로 치면</div><p>색이 다른 구슬이 섞인 상자를 칸막이 하나로 나눕니다. 칸막이를 어디에 꽂아야 양쪽 칸이 한 색에 가까워질까요? 한 색만 있으면 섞임 정도 0, 반반이면 0.5입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>의사결정나무는 가능한 모든 질문(어떤 특성을, 어디서 자를지)을 시험해 보고, 질문 뒤에 상자가 가장 한 색에 가까워지는 질문을 고릅니다. 질문 전과 후의 섞임 차이를 정보 이득이라고 합니다. 교안 그림의 첫 상자는 80개, 40 대 40이라 섞임(지니)이 0.5입니다.<sup>[1]</sup></p></div>
   </div>
   <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>이번엔 확률 대신 "예/아니오 질문"으로 가릅니다. 첫 질문은 무엇이 좋을까요?</p></div></div><div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>칸막이를 꽂았을 때 양쪽이 한 색에 가까워지는 자리가 좋은 질문이야.</p></div></div><div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>섞임 점수(지니)를 계산해서 제일 많이 줄어드는 곳을 찾으면 돼!</p></div></div></div>
@@ -509,7 +509,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>재료</small></div><h2>특성공학 — 재료를 늘리면 커지는 계수</h2></div>
-    <p class="sub"><span class="lvtag g">설정: 몇 제곱까지 새 특성을 만들지(차수)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
+    <p class="sub"><span class="lvtag g">설정: 몇 제곱까지 새 재료를 만들지(차수)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>재료(특성)를 곱해 늘리면 곡선을 잡지만, 너무 늘리면 계수가 폭발해 엉뚱한 예측을 합니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>농어 길이 하나만으로는 무게를 정확히 못 맞히니, 길이², 길이×높이처럼 <b>특성을 곱해서 새 특성을 만들어</b> 줍니다. 특성이 늘면 곡선 관계를 잡지만, 너무 늘면 계수가 엄청나게 커지면서 훈련 데이터를 외웁니다.</p><p class="ez-like"><b>쉽게 말하면</b> 재료를 늘리면 요리가 다양해지지만, 재료가 손님 수보다 많아지면 손님 한 명 한 명 입맛에만 맞춘 요리가 됩니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>특성 3개가 어떻게 55개가 돼요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 다항식 전개 (a + b)² = a² + 2ab + b²에서 나오는 항들이 새 특성입니다.</p><dl class="ez-pieces"><div><dt>degree(차수)</dt><dd>몇 제곱까지 만들지. 2면 a², ab, b²까지</dd></div><div><dt>특성 수</dt><dd>원래 특성 3개, degree 2 → 9개, degree 5 → 55개로 빠르게 증가</dd></div><div><dt>계수 폭발</dt><dd>특성이 데이터 수에 가까워지면 계수가 수만~수십만이 되어 작은 차이에도 예측이 크게 출렁임</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>특성 2개(길이 a, 높이 b), degree 2 → a, b, a², ab, b² = <b>5개</b>. 특성 3개, degree 2 → <b>9개</b>(a, b, c, a², b², c², ab, ac, bc).</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>(a + b)²를 전개할 때 생기는 항들이 다 새 특성이 되는 거네요. 차수를 올리면 금방 불어나요.</p></div></div></div></div>
@@ -530,7 +530,7 @@ details.code,details.abbr,details.math{margin-top:4px}
   </section>
   <div class="explain"><h4>풀이</h4><ol>
     <li>특성 n개를 d차까지 늘리면 새 특성 수는 조합 공식 C(n + d, d) − 1로 셉니다. 3개·3차 = 19, 3개·5차 = 55로 교안과 같습니다.<sup>[1]</sup></li>
-    <li>오른쪽은 농어 길이 하나를 1~8차로 늘려(표준화 후) 규제 없이 맞춘 곡선입니다. 차수가 오르면 계수 절댓값이 수천~수백만으로 커지고, 길이 0.1cm 차이에 예측이 크게 흔들리는 곳이 생깁니다. 교안의 "0.1cm 증가에 38.7g 대 1.2g" 비교는 이 페이지에서 직접 계산한 값으로 바꿉니다. 위 KPI "0.1cm 차이에 예측이 가장 크게 변하는 폭"이 그 값이며, 차수를 바꿀 때마다 다시 계산됩니다.<sup>[1]</sup></li>
+    <li>오른쪽은 농어 길이 하나를 1~8차로 늘려(표준화 후) 벌점 없이 맞춘 곡선입니다. 차수가 오르면 계수 절댓값이 수천~수백만으로 커지고, 길이 0.1cm 차이에 예측이 크게 흔들리는 곳이 생깁니다. 교안의 "0.1cm 증가에 38.7g 대 1.2g" 비교는 이 페이지에서 직접 계산한 값으로 바꿉니다. 위 KPI "0.1cm 차이에 예측이 가장 크게 변하는 폭"이 그 값이며, 차수를 바꿀 때마다 다시 계산됩니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 특성을 늘리면 표현력은 늘지만 계수가 날뜁니다. 계수에 고삐를 채울 방법은? → ⑤칸 릿지·라쏘</p></div>
   <details class="code"><summary>교안의 파이썬 코드로 보면 (몰라도 됩니다)</summary><dl class="codemap"><div><dt><code>PolynomialFeatures(degree=2)</code></dt><dd>길이², 길이×높이처럼 2제곱까지의 새 특성을 자동으로 만드는 도구</dd></div><div><dt><code>poly.fit_transform(train_input)</code></dt><dd>원래 표를 새 특성이 붙은 넓은 표로 바꾸기</dd></div></dl></details>
   <div class="quiz" data-quiz="lv4"></div>
@@ -539,18 +539,18 @@ details.code,details.abbr,details.math{margin-top:4px}
 <!-- ⑤ 릿지·라쏘 -->
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">5<small>규제</small></div><h2>릿지와 라쏘 — 계수 다이어트와 특성 선택</h2></div>
-    <p class="sub"><span class="lvtag g">비용 = 오차 + α × (계수 크기)</span><span class="lvtag">Ridge: L2(제곱) · Lasso: L1(절댓값)</span></p>
+    <div class="hexrow"><div class="hexno">5<small>벌점</small></div><h2>릿지와 라쏘 — 계수 다이어트와 특성 선택</h2></div>
+    <p class="sub"><span class="lvtag g">방법: 틀린 정도 + 계수가 크면 벌점</span><span class="lvtag">Ridge: L2(제곱) · Lasso: L1(절댓값)</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>재료는 다 두되 계수가 커지면 벌점을 줍니다. 릿지는 모두 조금씩 줄이고, 라쏘는 쓸모없는 재료를 뺍니다.</p>
-  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>특성을 많이 만들면 계수가 폭발해 처음 보는 데이터에서 무너집니다. 특성을 다 버리면 곡선을 못 잡습니다. <b>특성은 두되 "계수는 작게 유지하라"는 벌점을 더하는 것</b>이 규제입니다. 벌점을 제곱으로 매기면 릿지, 절댓값으로 매기면 라쏘입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 릿지는 정해진 크기의 여행 가방에 모든 짐을 조금씩 눌러 담기, 라쏘는 중요하지 않은 짐을 아예 빼 버리기입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>α 곱하기 계수 크기를 왜 비용에 더해요? 오차만 줄이면 되는 거 아니에요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 절댓값과 제곱입니다. 둘 다 "부호와 상관없이 크기만 재는" 방법입니다.</p><dl class="ez-pieces"><div><dt>비용 = 오차 + α × 계수 크기</dt><dd>맞히는 것(오차)과 계수를 작게 하는 것(벌점)을 함께 고려</dd></div><div><dt>α(알파)</dt><dd>벌점의 무게. 0이면 규제 없음, 클수록 계수를 강하게 누름</dd></div><div><dt>릿지(L2) = Σ 계수²</dt><dd>모든 계수를 조금씩 줄임. 0이 되지는 않음</dd></div><div><dt>라쏘(L1) = Σ |계수|</dt><dd>쓸모없는 계수를 정확히 0으로 만듦 → 특성 선택</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>계수가 (3, −4)이면 릿지 벌점 = 9 + 16 = <b>25</b>, 라쏘 벌점 = 3 + 4 = <b>7</b>. α = 0.1이면 비용에 각각 2.5, 0.7이 더해집니다. 계수를 (3, 0)으로 줄이면 라쏘 벌점은 3으로 크게 줄어, 라쏘는 0을 만드는 쪽을 좋아합니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>계수가 커지는 걸 벌점으로 막는 거였어요. 제곱으로 벌주면 릿지, 절댓값이면 라쏘!</p></div></div></div></div>
+  <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 모델을 쓰나</h3><p>특성을 많이 만들면 계수가 폭발해 처음 보는 데이터에서 무너집니다. 특성을 다 버리면 곡선을 못 잡습니다. <b>특성은 두되 "계수는 작게 유지하라"는 벌점을 더하는 것</b>입니다(규제). 벌점을 제곱으로 매기면 릿지, 절댓값으로 매기면 라쏘입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 릿지는 정해진 크기의 여행 가방에 모든 짐을 조금씩 눌러 담기, 라쏘는 중요하지 않은 짐을 아예 빼 버리기입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>α 곱하기 계수 크기를 왜 비용에 더해요? 오차만 줄이면 되는 거 아니에요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 절댓값과 제곱입니다. 둘 다 "부호와 상관없이 크기만 재는" 방법입니다.</p><dl class="ez-pieces"><div><dt>비용 = 오차 + α × 계수 크기</dt><dd>맞히는 것(오차)과 계수를 작게 하는 것(벌점)을 함께 고려</dd></div><div><dt>α(알파)</dt><dd>벌점의 무게. 0이면 벌점 없음, 클수록 계수를 강하게 누름</dd></div><div><dt>릿지(L2) = Σ 계수²</dt><dd>모든 계수를 조금씩 줄임. 0이 되지는 않음</dd></div><div><dt>라쏘(L1) = Σ |계수|</dt><dd>쓸모없는 계수를 정확히 0으로 만듦 → 특성 선택</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>계수가 (3, −4)이면 릿지 벌점 = 9 + 16 = <b>25</b>, 라쏘 벌점 = 3 + 4 = <b>7</b>. α = 0.1이면 비용에 각각 2.5, 0.7이 더해집니다. 계수를 (3, 0)으로 줄이면 라쏘 벌점은 3으로 크게 줄어, 라쏘는 0을 만드는 쪽을 좋아합니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>계수가 커지는 걸 벌점으로 막는 거였어요. 제곱으로 벌주면 릿지, 절댓값이면 라쏘!</p></div></div></div></div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>교안의 양념 비유입니다. 릿지는 모든 양념을 조금씩 써서 조화로운 맛을, 라쏘는 핵심 양념 두세 개만 골라 깔끔한 맛을 냅니다. α는 양념 조절의 강도입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>릿지는 "계수를 제곱해 더한 값"에, 라쏘는 "계수 크기를 그냥 더한 값"에 벌점을 줍니다. 라쏘는 덜 중요한 계수를 아예 0으로 만들어 쓸 재료를 골라 줍니다. α가 클수록 벌점이 세지며, 알맞은 α는 공부용 데이터 안에서 돌아가며 시험해(교차 검증) 찾습니다.<sup>[1]</sup></p></div>
   </div>
   <div class="dialog lvtalk" aria-label="연구실 대화"><div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="board" data-img="doc_board" alt="" aria-hidden="true"><div><b class="name">박사</b><p>재료는 다 두되, 계수가 커지면 벌점을 줍시다. 이것이 릿지와 라쏘입니다.</p></div></div><div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>α를 0에서부터 올려 보세요. 막대가 눌리고, 라쏘에서는 하나씩 0이 돼요.</p></div></div></div>
   <section class="panel" aria-label="릿지·라쏘 실험">
-    <h3>농어 길이 8차 다항 특성(표준화) + 규제</h3>
+    <h3>농어 길이 8차 다항 특성(표준화) + 벌점</h3>
     <div class="ctrl">
       <div class="group" id="rgBtns" role="group" aria-label="규제"><span class="glabel">벌점 방식(규제)</span></div>
       <div class="group"><label class="glabel" for="al">벌점 세기(α)</label><input type="range" id="al" min="0" max="5" step="1" value="2"><span class="val" id="alv">0.1</span></div>
@@ -560,24 +560,24 @@ details.code,details.abbr,details.math{margin-top:4px}
     <div class="insight" id="ins5" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li>규제 없음: 계수 수백만, 시험 R² 음수. 규제를 켜면 α = 0.1 정도에서도 계수가 수백 이하로 줄고 시험 R²가 0.98대로 돌아옵니다.</li>
+    <li>벌점 없음: 계수 수백만, 시험 R² 음수. 벌점을 켜면 α = 0.1 정도에서도 계수가 수백 이하로 줄고 시험 R²가 0.98대로 돌아옵니다.</li>
     <li>라쏘로 바꾸고 α를 올려 보세요. 막대가 하나씩 0이 됩니다. 남은 특성이 "핵심 양념"입니다.</li>
     <li>α를 100까지 올리면 둘 다 너무 단순해져 훈련·시험 모두 떨어집니다(과소적합). 모든 특성이 중요하면 릿지, 특성 선택이 필요하면 라쏘가 바람직합니다.<sup>[1]</sup></li>
-  </ol><p class="limit">이 칸의 한계: α를 시험 데이터로 고르면 시험지를 미리 본 셈입니다. 훈련 데이터 안에서 교차 검증으로 고르는 것이 정석입니다. → 대결</p></div>
+  </ol><p class="limit">이 칸의 한계: α를 시험 데이터로 고르면 시험지를 미리 본 셈입니다. 훈련 데이터 안에서 돌아가며 시험으로 고르는 것이 정석입니다. → 대결</p></div>
   <details class="math"><summary>계산 방법</summary><div>
     <p class="num">Ridge: min ‖y − Xw‖² + α‖w‖² (닫힌 해) · Lasso: min (1/2n)‖y − Xw‖² + α‖w‖₁ (좌표 하강)</p>
-    <p class="muted">scikit-learn Ridge·Lasso와 같은 목적함수입니다. 특성은 훈련 데이터로 표준화하고 절편은 규제하지 않습니다.</p>
+    <p class="muted">scikit-learn Ridge·Lasso와 같은 목적함수입니다. 특성은 훈련 데이터로 표준화하고 절편에는 벌점을 주지 않습니다.</p>
   </div></details>
   <div class="bridges">
     <div class="bridge field"><h4>현장에 옮기면</h4><p>금융 데이터에서는 이동평균, 변동성, 모멘텀, RSI 같은 도메인 특성이, 시계열에서는 지연(lag)·차분·계절성 분해가 효과적입니다. EDA → 가설 → 특성 생성 → 검증 → 개선을 반복하고, 어떤 특성을 왜 만들었는지 기록합니다. 전처리·특성공학·모델을 Pipeline으로 묶으면 시험 데이터가 섞여 드는 실수를 줄입니다.<sup>[1]</sup></p><p class="lim">한계: 특성 선택 도구(SelectKBest 등)는 빠르지만 특성 간 상호작용은 보지 못합니다.<sup>[1]</sup></p></div>
-    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>대형 언어모델 학습에도 가중치 감쇠(weight decay)라는 L2 계열 규제가 거의 언제나 들어갑니다. 계수(가중치)가 커져 작은 입력 변화에 출력이 날뛰는 것을 막는 같은 생각입니다.</p><p class="lim">비유의 한계: 언어모델은 특성을 사람이 만들지 않고 모델이 스스로 표현을 학습합니다.</p></div>
+    <div class="bridge gen"><h4>생성 AI로 치면</h4><p>대형 언어모델 학습에도 가중치 감쇠(weight decay)라는 L2 계열 벌점이 거의 언제나 들어갑니다. 계수(가중치)가 커져 작은 입력 변화에 출력이 날뛰는 것을 막는 같은 생각입니다.</p><p class="lim">비유의 한계: 언어모델은 특성을 사람이 만들지 않고 모델이 스스로 표현을 학습합니다.</p></div>
   </div>
   <div class="quiz" data-quiz="lv5"></div>
 </div></section>
 
 <!-- 대결 -->
 <section class="level" id="duel"><div class="wrap stack">
-  <div class="lvhead"><h2>대결 — 특성은 다 쓰되, 고삐를 채울 것인가</h2><p class="lead">두 사람 모두 농어 길이를 8차까지 늘린 특성 8개를 씁니다. 초파리 연구원은 릿지를 쓰되 α를 훈련 42마리 안에서 5겹 교차 검증으로 고르고, 주판봇은 규제 없이 그대로 맞춥니다. 시험 농어 14마리의 RMSE(g)로 겨룹니다. 작을수록 좋습니다.</p></div>
+  <div class="lvhead"><h2>대결 — 특성은 다 쓰되, 고삐를 채울 것인가</h2><p class="lead">두 사람 모두 농어 길이를 8차까지 늘린 특성 8개를 씁니다. 초파리 연구원은 릿지를 쓰되 α를 훈련 42마리 안에서 다섯 번 돌아가며 시험해 고르고, 주판봇은 벌점 없이 그대로 맞춥니다. 시험 농어 14마리의 RMSE(g)로 겨룹니다. 작을수록 좋습니다.</p></div>
   <div class="duel" id="duelBox">
     <div class="vs">
       <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 8차 특성 + 릿지(교차 검증 α)</b><p>"양념은 다 넣되 한 숟갈씩만."</p></div>
@@ -603,14 +603,14 @@ details.code,details.abbr,details.math{margin-top:4px}
     <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
     <tbody>
       <tr><td><b>① 로지스틱 회귀</b></td><td>회귀식을 확률로, 비용 최소화</td><td>규칙으로 설명하기 어렵다</td><td>의사결정나무</td></tr>
-      <tr><td><b>② 지니 분할</b></td><td>불순도를 가장 줄이는 질문</td><td>질문 하나로는 부족</td><td>깊이·가지치기</td></tr>
+      <tr><td><b>② 지니 분할</b></td><td>섞임 정도를 가장 줄이는 질문</td><td>질문 하나로는 부족</td><td>깊이·가지치기</td></tr>
       <tr><td><b>③ 깊이</b></td><td>if-then 규칙, 과적합 조절</td><td>주어진 특성만 묻는다</td><td>특성공학</td></tr>
       <tr><td><b>④ 특성공학</b></td><td>제곱·교차항으로 표현력 확장</td><td>계수가 날뛴다</td><td>릿지·라쏘</td></tr>
-      <tr><td><b>⑤ 릿지·라쏘</b></td><td>계수 규제, 특성 선택</td><td>α를 정직하게 골라야</td><td>대결: 교차 검증</td></tr>
+      <tr><td><b>⑤ 릿지·라쏘</b></td><td>계수 벌점, 특성 선택</td><td>α를 정직하게 골라야</td><td>대결: 돌아가며 시험</td></tr>
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>로지스틱 회귀(S자 곡선, 영향력·기준점, 틀린 정도), 의사결정나무(스무고개, 지니 불순도, 가지치기, 해석가능성).</p></div>
-    <div><b>교안 정리 2</b><p>Fish Market(종류 여럿)·Wine(답 둘) 분류 실습, 표준화, 성적표 출력, 나무 그림 그리기, 특성 중요도, 교차 검증, 설정값 자동 찾기.</p></div>
+    <div><b>교안 정리 2</b><p>Fish Market(종류 여럿)·Wine(답 둘) 분류 실습, 표준화, 성적표 출력, 나무 그림 그리기, 특성 중요도, 돌아가며 시험, 설정값 자동 찾기.</p></div>
     <div><b>교안 정리 3</b><p>특성공학(재료 늘리기), 재료가 너무 많을 때의 문제, 릿지·라쏘(계수에 벌점), 쓸 재료를 자동으로 고르는 방법들, 업무 지식으로 만든 재료.</p></div>
   </div>
 </div></section>
@@ -621,7 +621,7 @@ details.code,details.abbr,details.math{margin-top:4px}
   <figure class="scene" data-scene="sc_w10_outro" hidden><img alt="고삐 달린 곡선 앞에서 팔짱 낀 초파리 연구원과, 끝이 튀어 오른 곡선 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수"></figure>
   <div class="dialog">
     <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>로지스틱 회귀는 점수를 S자 곡선에 넣어 0~1 확률로 바꾼다.</li><li>의사결정나무는 가장 깔끔하게 가르는 질문을 잇고, 질문 횟수에 상한을 둬 외우기를 막는다.</li><li>재료를 늘리면 계수에 벌점을 함께 주고, 벌점 세기는 돌아가며 시험 봐서 고른다.</li></ul></div></div>
-    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="arms" data-img="fly_arms" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>특성 8개를 다 썼는데도 안 무너졌지. 고삐 값은 내가 고른 게 아니라 교차 검증이 고른 거야.</p></div></div>
+    <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="arms" data-img="fly_arms" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>특성 8개를 다 썼는데도 안 무너졌지. 고삐 값은 내가 고른 게 아니라 돌아가며 시험이 고른 거야.</p></div></div>
     <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="sigh" data-img="robo_sigh" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>훈련 점수는 내가 1등이었는데… 계수 하나가 수백만이면 장부가 터지는구나.</p></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>11주차에는 모델 최적화를 마무리하고 시계열로 넘어가요. ②칸에서 "최적 분할 찾기"도 눌러 보세요.</p></div></div>
   </div>
@@ -1036,7 +1036,7 @@ function draw2(){var t=auto2?auto2.t:FR[f2][0]+(+$('#th2').value)/100*(FR[f2][1]
   box(Y0+12,'분할 전',cA,g0);box(Y0+82,(f2?'알코올':'잔당')+' ≤ '+t.toFixed(1),cL,gl);box(Y0+152,(f2?'알코올':'잔당')+' > '+t.toFixed(1),cR,gr);
   txt(x,'● 레드(1)  ● 화이트(0)',X1,Y0+222,C.muted,11);stamp(x,W,'예시 데이터 · 300병');
   kpis($('#k2k'),[['m',g0.toFixed(3),'나누기 전 섞임(지니)'],['i',gw.toFixed(3),'나눈 뒤 섞임(지니)'],[auto2?'g':'a',(g0-gw).toFixed(3),'줄어든 섞임(정보 이득)'],['a',L.length+' : '+R.length,'왼쪽 : 오른쪽 병 수']]);
-  $('#ins2').innerHTML=auto2?'<p class="g">최적 분할: '+FN[auto2.f]+' ≤ '+auto2.t.toFixed(2)+'. 불순도를 '+(g0-gw).toFixed(3)+'만큼 줄여, 두 특성의 어떤 기준값보다 큽니다. 이것이 나무의 뿌리 질문입니다.</p>':(g0-gw)<.02?'<p class="a">거의 줄지 않았습니다. 이 칸막이로는 양쪽이 여전히 섞여 있습니다.</p>':'<p class="g">불순도가 '+g0.toFixed(3)+' → '+gw.toFixed(3)+'로 줄었습니다. 더 큰 이득을 주는 자리가 있을까요?</p>';}
+  $('#ins2').innerHTML=auto2?'<p class="g">최적 분할: '+FN[auto2.f]+' ≤ '+auto2.t.toFixed(2)+'. 섞임 정도를 '+(g0-gw).toFixed(3)+'만큼 줄여, 두 특성의 어떤 기준값보다 큽니다. 이것이 나무의 뿌리 질문입니다.</p>':(g0-gw)<.02?'<p class="a">거의 줄지 않았습니다. 이 칸막이로는 양쪽이 여전히 섞여 있습니다.</p>':'<p class="g">섞임 정도가 '+g0.toFixed(3)+' → '+gw.toFixed(3)+'로 줄었습니다. 더 큰 이득을 주는 자리가 있을까요?</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
 /* ---------- ③ 깊이 ---------- */
@@ -1092,7 +1092,7 @@ function draw4(){var n=+$('#nf').value,d=+$('#dg4').value,cnt=binom(n+d,d)-1,c=$
   var M=plain(d),X1=X0+Wd+56,W1=W-X1-16,ymin=-400,ymax=1400,sx=function(v){return X1+v/50*W1},sy=function(v){return Y0+Hh-(v-ymin)/(ymax-ymin)*Hh};x.strokeStyle=C.rule;x.strokeRect(X1,Y0,W1,Hh);[0,500,1000].forEach(function(v){txt(x,v+'g',X1-4,sy(v),C.muted,9,'right');});[10,20,30,40].forEach(function(v){txt(x,v+'cm',sx(v),Y0+Hh+12,C.muted,9,'center');});
   x.save();x.beginPath();x.rect(X1,Y0,W1,Hh);x.clip();x.strokeStyle=C.eye;x.lineWidth=2;x.beginPath();for(var l=6;l<=48;l+=.2){var p=M.f(l);l>6?x.lineTo(sx(l),sy(p)):x.moveTo(sx(l),sy(p));}x.stroke();x.lineWidth=1;
   XTR.forEach(function(v,i){x.fillStyle=C.info;x.beginPath();x.arc(sx(v),sy(YTR[i]),2.8,0,7);x.fill();});XTE.forEach(function(v,i){x.fillStyle=C.amber;x.beginPath();x.arc(sx(v),sy(YTE[i]),3.2,0,7);x.fill();});x.restore();
-  txt(x,'농어 길이 '+d+'차 · 규제 없음',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
+  txt(x,'농어 길이 '+d+'차 · 벌점 없음',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
   var S=sens(M.f),te=r2(YTE,XTE.map(M.f));
   kpis($('#k4k'),[['a',cnt.toLocaleString('ko-KR')+'개','특성 '+n+'개 · '+d+'차 → 새 특성 수'],['r',fmtN(maxAbs(M.w)),'가장 큰 계수 |w|(농어 '+d+'차)'],['m',S.d.toFixed(1)+'g','0.1cm 차이에 예측이 가장 크게 변하는 폭'],[te<.9?'r':'g',te.toFixed(3),'시험 데이터 설명력(R²)']]);
   $('#ins4').innerHTML=d>=6?'<p class="r">'+d+'차: 계수 절댓값이 '+fmtN(maxAbs(M.w))+'까지 커졌고, 시험 R²는 '+te.toFixed(2)+'입니다. 계수들이 서로 거대한 값으로 상쇄하며 겨우 균형을 맞추고 있어, 범위 끝에서 곡선이 튑니다.</p>':'<p class="g">특성 '+n+'개를 '+d+'차로 늘리면 '+cnt.toLocaleString('ko-KR')+'개. 농어 '+d+'차 회귀의 가장 큰 계수는 '+fmtN(maxAbs(M.w))+', 시험 R² '+te.toFixed(3)+'.</p>';}
@@ -1112,7 +1112,7 @@ function draw5(){var a=ALS[+$('#al').value],M=reg(rg,a),c=$('#c5'),W=fitC(c,300)
   txt(x,'계수 8개 (막대 높이 기준 ±'+fmtN(mx)+')',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
   var tr=r2(YTR,XTR.map(M.f)),te=r2(YTE,XTE.map(M.f)),nz=M.w.filter(function(w){return Math.abs(w)>1e-6}).length;
   kpis($('#k5k'),[['i',tr.toFixed(4),'공부 데이터 설명력(R²)'],[te<.9?'r':'g',te.toFixed(4),'시험 데이터 설명력(R²)'],['a',fmtN(maxAbs(M.w)),'가장 큰 계수 크기'],['m',nz+' / 8','남은 재료(0이 아닌 계수)']]);
-  $('#ins5').innerHTML=rg==='none'?'<p class="r">규제 없음: 훈련 R² '+tr.toFixed(4)+'로 가장 높지만 시험 R²는 '+te.toFixed(2)+'. 계수 '+fmtN(maxAbs(M.w))+'짜리 곡선이 8.4cm 농어에서 크게 빗나갑니다.</p>':a>=100?'<p class="a">α = '+a+': 고삐가 너무 셉니다. 훈련 '+tr.toFixed(3)+', 시험 '+te.toFixed(3)+'로 둘 다 내려갔습니다(과소적합).</p>':rg==='lasso'?'<p class="g">라쏘 α = '+a+': 계수 '+(8-nz)+'개가 정확히 0이 되어 특성 '+nz+'개만 남았습니다. 시험 R² '+te.toFixed(3)+'.</p>':'<p class="g">릿지 α = '+a+': 특성 8개를 모두 쓰되 가장 큰 계수가 '+fmtN(maxAbs(M.w))+'로 줄었습니다. 시험 R² '+te.toFixed(3)+'.</p>';}
+  $('#ins5').innerHTML=rg==='none'?'<p class="r">벌점 없음: 훈련 R² '+tr.toFixed(4)+'로 가장 높지만 시험 R²는 '+te.toFixed(2)+'. 계수 '+fmtN(maxAbs(M.w))+'짜리 곡선이 8.4cm 농어에서 크게 빗나갑니다.</p>':a>=100?'<p class="a">α = '+a+': 고삐가 너무 셉니다. 훈련 '+tr.toFixed(3)+', 시험 '+te.toFixed(3)+'로 둘 다 내려갔습니다(과소적합).</p>':rg==='lasso'?'<p class="g">라쏘 α = '+a+': 계수 '+(8-nz)+'개가 정확히 0이 되어 특성 '+nz+'개만 남았습니다. 시험 R² '+te.toFixed(3)+'.</p>':'<p class="g">릿지 α = '+a+': 특성 8개를 모두 쓰되 가장 큰 계수가 '+fmtN(maxAbs(M.w))+'로 줄었습니다. 시험 R² '+te.toFixed(3)+'.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 
 /* ---------- 대결: 교차 검증으로 고른 릿지 vs 규제 없음 ---------- */
@@ -1120,7 +1120,7 @@ function cvRidge(){var P=prep(8),idx=XTR.map(function(_,i){return i}),r=rng(0);f
   var best=null;ALS.forEach(function(a){var sc=[];for(var k=0;k<5;k++){var va=idx.filter(function(_,q){return q%5===k}),tr=idx.filter(function(_,q){return q%5!==k}),M=fitRidge(P,a,tr.map(function(q){return P.X[q]}),tr.map(function(q){return YTR[q]}));sc.push(r2(va.map(function(q){return YTR[q]}),va.map(function(q){return M.f(XTR[q])})));}var m=mean(sc);if(!best||m>best.cv)best={a:a,cv:m};});return best;}
 LAB.Duel({el:'#duelBox',higherIsBetter:false,drawMargin:1,metric:'시험 농어 14마리 RMSE(g) — 작을수록 좋음',fmt:function(v){return Math.round(v).toLocaleString('ko-KR')+'g'},
   run:function(){var b=cvRidge(),F=fitRidge(prep(8),b.a),R=plain(8),fr=rmse(YTE,XTE.map(F.f)),rr=rmse(YTE,XTE.map(R.f));this.max=Math.max(fr,rr)*1.05;this.bigGap=1e9;this.info={a:b.a,cv:b.cv,trF:r2(YTR,XTR.map(F.f)),trR:r2(YTR,XTR.map(R.f)),p84F:F.f(8.4),p84R:R.f(8.4)};return {fly:fr,robo:rr};},
-  report:function(r){var I=this.info;return '교차 검증이 고른 α는 '+I.a+'(검증 R² 평균 '+I.cv.toFixed(3)+')예요. 훈련 R²는 주판봇 '+I.trR.toFixed(4)+', 초파리 '+I.trF.toFixed(4)+'로 주판봇이 조금 높았지만, 8.4cm 농어(실제 5.9g)를 초파리는 '+Math.round(I.p84F)+'g, 주판봇은 '+fmtN(I.p84R)+'g으로 예측했어요.';},
+  report:function(r){var I=this.info;return '돌아가며 시험이 고른 α는 '+I.a+'(검증 R² 평균 '+I.cv.toFixed(3)+')예요. 훈련 R²는 주판봇 '+I.trR.toFixed(4)+', 초파리 '+I.trF.toFixed(4)+'로 주판봇이 조금 높았지만, 8.4cm 농어(실제 5.9g)를 초파리는 '+Math.round(I.p84F)+'g, 주판봇은 '+fmtN(I.p84R)+'g으로 예측했어요.';},
   verdict:function(r,res){return '훈련 점수는 시험 점수가 아니다. 특성을 늘렸으면 계수에 고삐를. '+(res==='F'?'초파리 승.':res==='R'?'주판봇 승.':'이번 판은 나눠 갖는다.');}});
 
 LAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:["method/logistic-regression","limitation/hard-to-explain","concept/gini-split","limitation/one-question","method/decision-tree","limitation/given-features","concept/feature-engineering","limitation/exploding-coef","method/ridge-lasso"]});

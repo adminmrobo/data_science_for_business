@@ -414,7 +414,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv1"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">1<small>정의</small></div><h2>문제 정의 — 막연한 바람을 SMART 목표로</h2></div>
-    <p class="sub"><span class="lvtag g">틀: SMART · 문제 유형 4가지</span><span class="lvtag">업무: 고객 이탈 줄이기</span></p>
+    <p class="sub"><span class="lvtag g">틀: 잴 수 있는 목표 · 문제 유형 4가지</span><span class="lvtag">업무: 고객 이탈 줄이기</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>"만족도를 높이자"는 목표가 아닙니다. 무엇을·얼마나·언제까지 잴지 정해야 분석이 시작됩니다.</p>
   <div class="pair">
@@ -453,7 +453,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv2"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">2<small>정제</small></div><h2>결측값 — 빈칸을 지울까, 채울까</h2></div>
-    <p class="sub"><span class="lvtag g">방법: 삭제 · 평균 대체 · KNN 대체</span><span class="lvtag">데이터: 고객 200명 나이와 연소득</span></p>
+    <p class="sub"><span class="lvtag g">방법: 지우기 · 평균으로 채우기 · 비슷한 사람 값으로 채우기</span><span class="lvtag">데이터: 고객 200명 나이와 연소득</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>빈칸 있는 줄을 그냥 지우면 평균이 틀어질 수 있습니다. 누가 왜 비웠는지부터 봅니다.</p>
   <div class="pair">
@@ -490,7 +490,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>정제</small></div><h2>이상값 — 오류일까, VIP일까</h2></div>
-    <p class="sub"><span class="lvtag g">방법: IQR · Z-score · 수정 Z-score</span><span class="lvtag">데이터: 고객 120명 1회 구매액</span></p>
+    <p class="sub"><span class="lvtag g">방법: 가운데 절반 범위 · 평균에서 몇 걸음 · 중앙값에서 몇 걸음</span><span class="lvtag">데이터: 고객 120명 1회 구매액</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>튀는 값은 실수일 수도, 가장 중요한 고객일 수도 있습니다. 지우기 전에 업무를 아는 사람이 판단합니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>고객 120명의 1회 구매액 중 몇 명만 금액이 유난히 큽니다. 입력 실수일 수도, 진짜 VIP일 수도 있습니다. 눈으로 "튀어 보인다"고 하면 사람마다 기준이 달라서, <b>모두가 같은 결론을 내는 숫자 기준</b>이 필요합니다.</p><p class="ez-like"><b>쉽게 말하면</b> 반 평균이 70점인 시험에서 100점은 "얼마나 튀는가"를 재려면, 점수 차이(30점)를 그 반의 보통 들쭉날쭉함(표준편차)으로 나눠 봅니다. 그 몫이 Z점수입니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>Z는 왜 표준편차로 나눠요? 그냥 평균이랑 차이만 보면 안 되나요?</p></div></div><p class="ez-school"><b>학교 수학으로 보면</b> 중학교 「자료의 정리」에서 배운 평균·사분위수, 고등학교 「통계」의 표준화와 같은 계산입니다.</p><dl class="ez-pieces"><div><dt>Z = (x − 평균) ÷ 표준편차</dt><dd>평균에서 몇 걸음 떨어졌는지. 한 걸음 = 표준편차 1개</dd></div><div><dt>|Z| > 3</dt><dd>세 걸음 넘게 떨어지면 이상값 후보. 정규분포라면 1,000명 중 3명 정도만 그렇게 멉니다</dd></div><div><dt>IQR = Q3 − Q1</dt><dd>가운데 50% 사람들이 퍼진 폭. Q1은 하위 25%, Q3은 상위 25% 경계</dd></div><div><dt>Q1 − 1.5·IQR, Q3 + 1.5·IQR</dt><dd>이 울타리 밖이면 이상값 후보(상자그림의 수염 끝)</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>평균 50만 원, 표준편차 10만 원일 때 구매액 85만 원 → Z = (85 − 50) ÷ 10 = 3.5 → 이상값 후보.<br>Q1 = 20, Q3 = 40(만 원)이면 IQR = 20 → 울타리 20 − 30 = −10 ~ 40 + 30 = 70 → 150만 원은 울타리 밖.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>아, 차이 35만 원이 큰지 작은지는 "평소에 얼마나 들쭉날쭉한지"에 대 봐야 아는 거군요.</p></div></div></div></div>
@@ -557,7 +557,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv5"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">5<small>탐색</small></div><h2>탐색적 데이터 분석(EDA) — 처음 들여다보기</h2></div>
-    <p class="sub"><span class="lvtag g">단변량: 평균·중앙값·왜도 · 이변량: 피어슨·스피어만</span><span class="lvtag">데이터: 매장 60곳 광고비와 매출</span></p>
+    <p class="sub"><span class="lvtag g">칸 하나: 평균·중앙값·기울어짐 · 칸 둘: 함께 움직이는 정도</span><span class="lvtag">데이터: 매장 60곳 광고비와 매출</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>모델에 넣기 전에 그림부터 그립니다. 평균과 중앙값이 벌어지면 튀는 값이 있다는 신호입니다.</p>
   <div class="pair">

@@ -493,7 +493,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">3<small>검증</small></div><h2>데이터 분할과 교차 검증 — 외운 것과 배운 것</h2></div>
-    <p class="sub"><span class="lvtag g">방법: 훈련·검증·시험 분할, 5겹 교차 검증</span><span class="lvtag">연구실: 봉인한 시험지</span></p>
+    <p class="sub"><span class="lvtag g">방법: 공부용·점검용·시험용 나누기, 다섯 번 돌아가며 시험</span><span class="lvtag">연구실: 봉인한 시험지</span></p>
   </div>
   <p class="takeaway"><b>이 칸의 결론</b>공부한 문제로 본 점수는 실력이 아닙니다. 처음 보는 데이터로 여러 번 시험해야 진짜 실력이 보입니다.</p>
   <div class="easy" aria-label="쉽게 풀어 보기"><div class="ez-why"><h3 class="ez-h"><span class="ez-k">먼저</span>왜 이 방법을 쓰나</h3><p>모델이 연습 문제(훈련 데이터)에서 100점을 받아도, 문제를 외운 것인지 원리를 배운 것인지는 처음 보는 문제로 시험해야 압니다. 그런데 시험을 한 번만 보면 문제가 쉬웠는지 운이 좋았는지 모릅니다. 그래서 <b>데이터를 여러 조각으로 나눠 돌아가며 시험 보는 것</b>이 교차 검증입니다.</p><p class="ez-like"><b>쉽게 말하면</b> 모의고사를 다섯 번 보고 평균을 내면, 한 번 본 점수보다 실력을 더 정확히 압니다.</p></div><div class="ez-math"><h3 class="ez-h"><span class="ez-k">수식</span>수학 수식을 어려워하는 조수가 대신 물어봅니다</h3><div class="say ez-say ez-q" data-who="asst"><img class="who" data-who="asst" data-mood="shock" data-img="asst_shock" alt="" aria-hidden="true"><div><b class="name">조수</b><p>5겹이라는 게 시험을 다섯 번 본다는 뜻이에요?</p></div></div><dl class="ez-pieces"><div><dt>훈련 / 검증 / 시험</dt><dd>공부용 / 공부 방법 고르기용 / 마지막 채점용(끝까지 봉인)</dd></div><div><dt>5겹(5-fold)</dt><dd>데이터를 5조각으로 나눠, 한 조각은 시험 · 네 조각은 공부를 5번 바꿔 가며 반복</dd></div><div><dt>평균 점수</dt><dd>5번 점수의 평균 = 처음 보는 데이터에서의 실력 추정</dd></div></dl><div class="ez-try"><b>숫자로 한 번 해 보기</b><p>데이터 100건 → 20건씩 5조각. 다섯 번의 시험 점수가 0.80, 0.84, 0.78, 0.82, 0.86이면 평균 = 4.10 ÷ 5 = <b>0.82</b>. 점수가 0.78~0.86으로 흔들리는 폭도 함께 봅니다.</p></div><div class="say ez-say ez-c" data-who="asst"><img class="who" data-who="asst" data-mood="spark" data-img="asst_spark" alt="" aria-hidden="true"><div><b class="name">조수</b><p>한 번 점수는 운일 수 있으니, 다섯 번 평균을 보고 흔들리는 폭도 같이 보는 거군요.</p></div></div></div></div>
@@ -528,7 +528,7 @@ details.code,details.abbr,details.math{margin-top:4px}
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
     <div class="hexrow"><div class="hexno">4<small>선택</small></div><h2>문제 유형별 모델 고르기 — 장바구니 분석까지</h2></div>
-    <p class="sub"><span class="lvtag g">지표: 지지도 · 신뢰도 · 향상도</span><span class="lvtag">교안 사례: 라면과 달걀</span></p>
+    <p class="sub"><span class="lvtag g">지표: 얼마나 흔한가 · 얼마나 믿을 만한가 · 우연보다 얼마나 강한가</span><span class="lvtag">교안 사례: 라면과 달걀</span></p>
   </div>
   <div class="tw"><table class="tb" aria-label="문제 유형별 대표 모델">
     <thead><tr><th>문제 유형</th><th>대표 모델 (교안)</th><th>평가 지표</th><th>산업 사례 (교안)</th></tr></thead>
