@@ -17,6 +17,7 @@ from plain import PLAIN
 from easy import EASY, ASK
 from talk import DLG
 from take import TAKE
+import building
 
 def load(n):
     spec = importlib.util.spec_from_file_location('w' + n, os.path.join(HERE, 'pages', 'w%s.py' % n))
@@ -227,7 +228,8 @@ def page(n):
     ld = jsonld(kg, meta)
     body = open(os.path.join(HERE, 'pages', 'w%s.html' % n), encoding='utf-8').read()
     pjs = open(os.path.join(HERE, 'pages', 'w%s.js' % n), encoding='utf-8').read()
-    css = open(os.path.join(HERE, 'engine.css'), encoding='utf-8').read() + getattr(m, 'CSS', '')
+    bcss, btag = building.assets(int(n))
+    css = open(os.path.join(HERE, 'engine.css'), encoding='utf-8').read() + getattr(m, 'CSS', '') + bcss
     ejs = open(os.path.join(HERE, 'engine.js'), encoding='utf-8').read()
     keys = set(re.findall(r'data-img="((?:doc|asst|fly|robo)_[a-z]+)"', body)) | set(m.EXTRA_SPRITES) | {'asst_report', 'doc_front', 'asst_smile', 'fly_clip', 'robo_smile', 'fly_point', 'robo_coin', 'asst_shock', 'asst_spark'} | {'%s_%s' % (w, m) for (wk, lv), ls in DLG.items() if wk == n for w, m, t in ls}
     keys |= {'cover_w%s' % n, 'sc_w%s_hero' % n, 'sc_w%s_outro' % n}
@@ -278,12 +280,12 @@ def page(n):
                '<script type="application/json" id="page-meta">' + jdump(meta) + '</script>\n'
                '<script>\n' + ejs + '\n</script>\n'
                '<script>\n(function(){\n"use strict";\nvar GL=' + jdump(gl_js) + ';\nvar CORE=' + jdump(m.CORE) + ';\nvar QZ=' + jdump({k: [{kk: vv for kk, vv in it.items() if kk != 'assess'} for it in v] for k, v in m.QZ.items()}) + ';\n'
-               + pjs + '\nLAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:' + jdump(m.KGPATH) + '});\n})();\n</script>\n</body>\n</html>\n')
+               + pjs + '\nLAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:' + jdump(m.KGPATH) + '});\n})();\n</script>\n' + btag + '</body>\n</html>\n')
     body = body.replace('</header>', '</header>\n' + plain_box(n, body), 1)
     body = add_easy(n, body)
     body = add_talk(n, body)
     body = add_take(n, body)
-    out = head + NAVTPL.format(links=links) + '\n' + cover + body + '\n' + KG_SECTION.replace('{ph}', m.SEARCH_PH) + foot + scripts
+    out = head + NAVTPL.format(links=links) + '\n' + cover + building.floor_html(int(n)) + body + '\n' + KG_SECTION.replace('{ph}', m.SEARCH_PH) + foot + scripts
     p = os.path.join(REPO, fname)
     open(p, 'w', encoding='utf-8').write(out)
     # 등록부 갱신분

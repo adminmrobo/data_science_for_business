@@ -331,6 +331,69 @@ details.code,details.abbr,details.math{margin-top:4px}
 @media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
 .takeaway{margin:0;padding:14px 18px;border-radius:10px;background:rgba(127,209,139,.08);border:1px solid rgba(127,209,139,.35);font-size:16px;line-height:1.7;word-break:keep-all}
 .takeaway b{display:inline-block;margin-right:10px;padding:1px 10px;border-radius:999px;background:var(--gfp,#7fd18b);color:#10131a;font-size:12px;font-weight:700;vertical-align:2px}
+/* 본사 건물 — 목차 3D 건물 · 주차별 이번 주의 층 */
+.bld-floor{padding-block:56px 40px;border-bottom:1px solid var(--rule);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+.bld-grid{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;align-items:start}
+.bld-main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.bld-main h2{margin:0;font-size:clamp(22px,3.2vw,30px);line-height:1.35;word-break:keep-all}
+.bld-ask{margin:0;font-size:17px;word-break:keep-all}
+.bld-ask b{display:inline-block;margin-right:10px;padding:1px 10px;border-radius:999px;background:var(--c);color:#10131a;font-size:12px;vertical-align:2px}
+.bld-3d{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--rule);background:radial-gradient(ellipse at 50% 30%,#1f2c3a,#0f151c 75%);overflow:hidden}
+.bld-3d.tall{aspect-ratio:4/5;max-height:780px;position:sticky;top:72px}
+.bld-3d:not(.on)::after{content:"3D 건물을 불러오는 중…";position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px}
+.bld-3d.off::after{content:"3D를 불러오지 못했습니다(오프라인 등). 아래 목록으로 이동하세요."}
+.bld-3d.off .bld-reset{display:none}
+.bld-cv{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.bld-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.bld-lb{position:absolute;left:0;top:0;white-space:nowrap;font:500 12px/1.3 inherit;color:#e9eef3;background:rgba(14,20,27,.82);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:3px 8px;margin:0;translate:0 -50%;pointer-events:auto}
+button.bld-lb{cursor:pointer;font-family:inherit}
+.bld-lb.fl{border-left:4px solid var(--c);translate:6px -50%}
+.bld-lb.fl.hi,.bld-lb.room.hi{background:#f4f6f8;color:#10131a}
+.bld-lb.mini{opacity:.7;translate:-50% -50%;font-size:11px}
+.bld-lb.co{translate:-50% -100%;font-size:13px;border-color:#2fb5c4}
+.bld-lb.room{translate:-50% -100%;display:flex;gap:6px;align-items:center;border-color:var(--c)}
+.bld-lb.room.duel{border-color:#e07a5f}
+.bld-lb .no{font-weight:700;color:var(--c)}.bld-lb.duel .no{color:#e07a5f}.bld-lb.hi .no{color:#10131a}
+.bld-lb.core{translate:-50% -100%;opacity:.85;font-size:11px}
+.bld-lb.flname{font-size:13px;border-left:4px solid var(--c);translate:0 -100%}
+.bld-reset{position:absolute;right:10px;top:10px;z-index:2;font-size:12px;padding:4px 10px}
+.bld-rooms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.bld-rooms a{display:flex;gap:8px;align-items:baseline;padding:10px 12px;border:1px solid var(--rule);border-radius:10px;text-decoration:none;color:var(--text);background:var(--panel);flex-wrap:wrap}
+.bld-rooms a:hover,.bld-rooms a.hi{border-color:var(--c)}
+.bld-rooms .no{color:var(--c);font-weight:700}
+.bld-rooms small{color:var(--muted);font-size:12px;margin-left:auto}
+.bld-note{font-size:13px;margin:0}
+.bld-lift{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+.bld-lift a{font-size:14px;text-decoration:none;padding:8px 12px;border:1px solid var(--rule);border-radius:10px;color:var(--text);text-align:center}
+.bld-lift a:first-child{justify-self:start}.bld-lift a:last-child{justify-self:end}
+.bld-lift a:hover{border-color:var(--seq)}
+/* 옆의 층 안내판(엘리베이터 버튼판) */
+.bld-stack{display:flex;flex-direction:column;gap:3px;position:sticky;top:70px}
+.bld-stack .roof{font-size:10px;letter-spacing:.12em;text-align:center;padding:6px;border-radius:8px 8px 2px 2px;background:#10161e;color:#2fb5c4;border:1px solid #2fb5c4;font-weight:700}
+.bld-stack .lobby{font-size:11px;text-align:center;padding:5px;border-radius:2px 2px 8px 8px;background:#2a3540;color:var(--muted)}
+.bld-stack a{display:flex;gap:8px;align-items:center;padding:3px 8px;font-size:12px;text-decoration:none;color:var(--muted);border-left:4px solid var(--c);background:rgba(255,255,255,.03);border-radius:2px;white-space:nowrap;overflow:hidden}
+.bld-stack a b{color:var(--text);min-width:26px}
+.bld-stack a span{overflow:hidden;text-overflow:ellipsis}
+.bld-stack a:hover{background:rgba(255,255,255,.08)}
+.bld-stack a.cur{background:var(--c);color:#10131a;font-weight:700}.bld-stack a.cur b{color:#10131a}
+.bld-stack a em{font-style:normal;font-size:10px;margin-left:auto}
+/* 목차 */
+.bld-tower{padding-block:28px 40px;border-bottom:1px solid var(--rule)}
+.tw-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:start}
+.tw-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.tw-side h1{margin:0;font-size:clamp(26px,3.6vw,40px);line-height:1.25;word-break:keep-all}
+.bld-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.bld-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:6px;vertical-align:-1px}
+.tw-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.tw-list a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-left:4px solid var(--c);border-radius:4px;background:var(--panel);text-decoration:none;color:var(--text);font-size:14px}
+.tw-list a b{min-width:30px;color:var(--c)}
+.tw-list a span{display:flex;flex-direction:column;min-width:0}
+.tw-list small{color:var(--muted);font-size:12px}
+.tw-list a:hover,.tw-list a.hi{background:rgba(255,255,255,.08)}
+@media (max-width:900px){.tw-grid{grid-template-columns:1fr}.bld-3d.tall{aspect-ratio:1/1;position:relative;top:auto}}
+@media (max-width:760px){.bld-grid{grid-template-columns:1fr}.bld-stack{position:static;flex-direction:row;flex-wrap:wrap;gap:4px}
+ .bld-stack .roof,.bld-stack .lobby{display:none}.bld-stack a{padding:3px 7px;border-left-width:3px}.bld-stack a span,.bld-stack a em{display:none}
+ .bld-3d{aspect-ratio:1/1}.bld-lift{grid-template-columns:1fr}.bld-lift a{justify-self:stretch!important}}
 
 </style>
 </head>
@@ -344,6 +407,21 @@ details.code,details.abbr,details.math{margin-top:4px}
 <!-- lab-cover -->
 <header class="cover" id="cover" data-img="cover_w10" data-alt="네 캐릭터가 S자 곡선이 그려진 칠판과 가지를 뻗은 질문 나무 앞에서 가위와 양념통을 든 표지" role="img" aria-label="네 캐릭터가 S자 곡선이 그려진 칠판과 가지를 뻗은 질문 나무 앞에서 가위와 양념통을 든 표지"><div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt=""><span class="prop">🌳</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div><span class="cover-chip">비즈니스를 위한 데이터 과학 연구실 · 10주차</span></header>
 <!-- /lab-cover -->
+<section class="bld-floor" id="floor" style="--c:#a07de0" aria-label="이번 주의 층"><div class="wrap">
+  <div class="bld-grid">
+    <nav class="bld-stack" aria-label="본사 건물 층 안내"><div class="roof">OCEANMARKET GLOBAL</div><a class="lv" href="week15_practice_2.html" data-fl="15" style="--c:#f0b44c"><b>15F</b><span>임원 연수실 · 연습 ②</span></a><a class="lv" href="week14_advanced_analytics.html" data-fl="14" style="--c:#2fb5c4"><b>14F</b><span>AI 연구소</span></a><a class="lv" href="week13_bi_kpi.html" data-fl="13" style="--c:#2fb5c4"><b>13F</b><span>마케팅 · BI 상황실</span></a><a class="lv" href="week12_visualization.html" data-fl="12" style="--c:#2fb5c4"><b>12F</b><span>경영보고 · 시각화실</span></a><a class="lv" href="week11_time_series.html" data-fl="11" style="--c:#a07de0"><b>11F</b><span>수요예측 · 재무실</span></a><a class="lv cur" href="week10_regression_2.html" data-fl="10" style="--c:#a07de0"><b>10F</b><span>신사업 심사실</span> <em>지금 여기</em></a><a class="lv" href="week09_regression_1.html" data-fl="9" style="--c:#a07de0"><b>9F</b><span>상품 계량 · 가격팀</span></a><a class="lv" href="week08_practice_1.html" data-fl="8" style="--c:#f0b44c"><b>8F</b><span>사내 연수원 · 연습 ①</span></a><a class="lv" href="week07_model_evaluation.html" data-fl="7" style="--c:#3fbf8f"><b>7F</b><span>고객관리 · 이탈방지팀</span></a><a class="lv" href="week06_classification_2.html" data-fl="6" style="--c:#3fbf8f"><b>6F</b><span>수산 품질연구소 B · 3종 선별</span></a><a class="lv" href="week05_classification_1.html" data-fl="5" style="--c:#3fbf8f"><b>5F</b><span>수산 품질연구소 A · 선별 라인</span></a><a class="lv" href="week04_analysis_concepts.html" data-fl="4" style="--c:#5b8def"><b>4F</b><span>분석 기획실</span></a><a class="lv" href="week03_analysis_prep.html" data-fl="3" style="--c:#5b8def"><b>3F</b><span>데이터 품질관리팀</span></a><a class="lv" href="week02_data_collection.html" data-fl="2" style="--c:#5b8def"><b>2F</b><span>데이터 수집센터</span></a><a class="lv" href="week01_business_data_science.html" data-fl="1" style="--c:#5b8def"><b>1F</b><span>경영전략실</span></a><div class="lobby">로비 · 광장</div></nav>
+    <div class="bld-main">
+      <span class="eyebrow">오션마켓 글로벌 본사 · 엘리베이터 안내</span>
+      <h2>🛗 10층에 도착했습니다 — 신사업 심사실</h2>
+      <p class="bld-ask"><b>이 층의 질문</b>예/아니오를 확률로, 판단을 규칙으로 바꿀 수 있나?</p>
+      <p class="lead">합격 여부와 와인 등급을 가리는 심사실입니다. 확률로 판정하고, 스무고개 규칙을 만들고, 재료를 늘리되 벌점을 줍니다.</p>
+      <div class="bld-3d" id="floor3d"><button class="bt bld-reset" type="button" id="bldReset">시점 처음으로</button></div>
+      <ol class="bld-rooms"><li><a href="#lv1" data-room="lv1"><span class="no">①</span><b>확률 판정실</b><small></small></a></li><li><a href="#lv2" data-room="lv2"><span class="no">②</span><b>스무고개실</b><small></small></a></li><li><a href="#lv3" data-room="lv3"><span class="no">③</span><b>깊이 조정실</b><small></small></a></li><li><a href="#lv4" data-room="lv4"><span class="no">④</span><b>재료 실험실</b><small></small></a></li><li><a href="#lv5" data-room="lv5"><span class="no">⑤</span><b>계수 다이어트실</b><small></small></a></li><li><a href="#duel" data-room="duel"><span class="no">⚔</span><b>대결 회의실</b><small>이번 주의 대결</small></a></li></ol>
+      <p class="muted bld-note">방(3D 바닥이나 아래 목록)을 누르면 그 칸으로 내려갑니다. 화면을 끌면 층을 돌려 볼 수 있습니다. 교육용 가상 기업입니다. 회사 이름·부서·숫자는 모두 설명을 위해 만든 것이며 실제 기업과 관계없습니다.</p>
+      <div class="bld-lift"><a href="week09_regression_1.html">▼ 9F · 상품 계량 · 가격팀</a><a href="index.html#tower">건물 전체 보기</a><a href="week11_time_series.html">▲ 11F · 수요예측 · 재무실</a></div>
+    </div>
+  </div>
+</div></section>
 <header class="hero" id="hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
@@ -1125,6 +1203,252 @@ LAB.Duel({el:'#duelBox',higherIsBetter:false,drawMargin:1,metric:'시험 농어 
 
 LAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:["method/logistic-regression","limitation/hard-to-explain","concept/gini-split","limitation/one-question","method/decision-tree","limitation/given-features","concept/feature-engineering","limitation/exploding-coef","method/ridge-lasso"]});
 })();
+</script>
+<script type="application/json" id="bld-data">{"company": {"name": "오션마켓 글로벌", "en": "OCEANMARKET GLOBAL", "tag": "12개국에서 수산물·식품을 사고팔고 온라인몰을 운영하는 가상 다국적 기업", "note": "교육용 가상 기업입니다. 회사 이름·부서·숫자는 모두 설명을 위해 만든 것이며 실제 기업과 관계없습니다."}, "groups": [{"color": "#5b8def", "label": "데이터 기초 (1~4층)"}, {"color": "#3fbf8f", "label": "분류 (5~7층)"}, {"color": "#f0b44c", "label": "연수원 · 연습 (8·15층)"}, {"color": "#a07de0", "label": "회귀 · 시계열 (9~11층)"}, {"color": "#2fb5c4", "label": "보고 · BI · 고급 분석 (12~14층)"}], "floors": [{"n": 1, "dept": "경영전략실", "ask": "숫자는 많은데 왜 결정은 틀릴까?", "story": "임원 회의에 올라온 숫자가 결정이 되기까지 어떤 계단을 오르고, 어디서 함정에 빠지는지 따져 보는 층입니다.", "color": "#5b8def", "file": "week01_business_data_science.html", "rooms": [{"id": "lv1", "name": "전략 회의실 · 네 계단", "prop": "board"}, {"id": "lv2", "name": "해지 고객 기록실", "prop": "shelf"}, {"id": "lv3", "name": "시장 조사실", "prop": "desk"}, {"id": "lv4", "name": "A/B 실험실", "prop": "screen"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 2, "dept": "데이터 수집센터", "ask": "데이터는 어디서, 얼마에, 얼마나 빨리 들어오나?", "story": "12개국 매장·온라인몰·협력사의 데이터가 들어오는 입구입니다. 수집 방법, 처리 속도, 서버 비용, 개인정보를 정합니다.", "color": "#5b8def", "file": "week02_data_collection.html", "rooms": [{"id": "lv1", "name": "산업별 데이터 지도실", "prop": "board"}, {"id": "lv2", "name": "수집 창구", "prop": "desk"}, {"id": "lv3", "name": "실시간 처리실", "prop": "screen"}, {"id": "lv4", "name": "서버실", "prop": "server"}, {"id": "lv5", "name": "개인정보 보호실", "prop": "shelf"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 3, "dept": "데이터 품질관리팀", "ask": "분석 전에 무엇을 손봐야 하나?", "story": "들어온 데이터의 빈칸·튀는 값·중복을 고치고 품질 점수를 매깁니다. 분석 시간의 대부분이 이 층에서 쓰입니다.", "color": "#5b8def", "file": "week03_analysis_prep.html", "rooms": [{"id": "lv1", "name": "목표 설정실", "prop": "board"}, {"id": "lv2", "name": "빈칸 복구실", "prop": "desk"}, {"id": "lv3", "name": "이상값 검사대", "prop": "lab"}, {"id": "lv4", "name": "품질 점수판", "prop": "screen"}, {"id": "lv5", "name": "탐색 분석실", "prop": "desk"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 4, "dept": "분석 기획실", "ask": "어떤 도구와 어떤 모델로 풀까?", "story": "문제를 받으면 도구를 고르고, 사람이 쓴 규칙과 데이터에서 배운 규칙 중 무엇을 쓸지, 어떻게 시험할지 정합니다.", "color": "#5b8def", "file": "week04_analysis_concepts.html", "rooms": [{"id": "lv1", "name": "도구실", "prop": "shelf"}, {"id": "lv2", "name": "대출 심사 데스크", "prop": "desk"}, {"id": "lv3", "name": "시험 출제실", "prop": "board"}, {"id": "lv4", "name": "장바구니 분석실", "prop": "screen"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 5, "dept": "수산 품질연구소 A · 선별 라인", "ask": "들어온 생선이 도미인지 빙어인지 기계가 가릴 수 있나?", "story": "길이와 무게를 재서 기록하고, 정답을 붙여, 처음으로 자동 선별 모델(KNN)을 가르치는 층입니다.", "color": "#3fbf8f", "file": "week05_classification_1.html", "rooms": [{"id": "lv1", "name": "용기 보관실", "prop": "shelf"}, {"id": "lv2", "name": "계측대", "prop": "lab"}, {"id": "lv3", "name": "정답 붙이는 데스크", "prop": "desk"}, {"id": "lv4", "name": "자동 선별기", "prop": "lab"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 6, "dept": "수산 품질연구소 B · 3종 선별", "ask": "농어까지 섞이면 어떻게 가리나?", "story": "종류가 셋으로 늘어난 선별 라인입니다. 이웃 수를 고르고, 경계선을 긋고, 시험 데이터를 떼고, cm와 g의 눈금을 맞춥니다.", "color": "#3fbf8f", "file": "week06_classification_2.html", "rooms": [{"id": "lv1", "name": "3종 선별대", "prop": "lab"}, {"id": "lv2", "name": "이웃 수 조정실", "prop": "desk"}, {"id": "lv3", "name": "경계선 설계실", "prop": "board"}, {"id": "lv4", "name": "시험 샘플실", "prop": "shelf"}, {"id": "lv5", "name": "눈금 맞춤실", "prop": "lab"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 7, "dept": "고객관리 · 이탈방지팀", "ask": "정확도 95%짜리 이탈 예측, 믿어도 되나?", "story": "떠날 고객에게 쿠폰을 보내는 팀입니다. 모델의 성적표를 네 칸으로 나눠 읽고, 쿠폰을 보낼 기준선을 돈으로 정합니다.", "color": "#3fbf8f", "file": "week07_model_evaluation.html", "rooms": [{"id": "lv1", "name": "성적표실", "prop": "screen"}, {"id": "lv2", "name": "쿠폰 기준선 회의실", "prop": "meet"}, {"id": "lv3", "name": "모델 비교실", "prop": "screen"}, {"id": "lv4", "name": "모델 위원회실", "prop": "meet"}, {"id": "lv5", "name": "학습 조정실", "prop": "desk"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 8, "dept": "사내 연수원 · 연습 ①", "ask": "1~7층에서 배운 것, 문제로 확인하기", "story": "새 내용 없이 문제만 푸는 층입니다. 틀린 문제는 해당 층으로 돌아가 다시 봅니다.", "color": "#f0b44c", "file": "week08_practice_1.html", "rooms": [{"id": "quiz", "name": "교안 문제 풀이실", "prop": "desk"}, {"id": "calc", "name": "계산·사례 문제실", "prop": "desk"}, {"id": "score", "name": "성적표 게시판", "prop": "board"}]}, {"n": 9, "dept": "상품 계량 · 가격팀", "ask": "길이만 보고 무게(값)를 맞힐 수 있나?", "story": "생선 무게를 예측해 가격을 매기는 팀입니다. 이웃 평균, 직선, 곡선으로 맞혀 보고 얼마나 빗나갔는지 잽니다.", "color": "#a07de0", "file": "week09_regression_1.html", "rooms": [{"id": "lv1", "name": "이웃 평균 저울", "prop": "lab"}, {"id": "lv2", "name": "직선 예측실", "prop": "board"}, {"id": "lv3", "name": "곡선 예측실", "prop": "board"}, {"id": "lv4", "name": "오차 측정실", "prop": "desk"}, {"id": "lv5", "name": "설명력 보고실", "prop": "screen"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 10, "dept": "신사업 심사실", "ask": "예/아니오를 확률로, 판단을 규칙으로 바꿀 수 있나?", "story": "합격 여부와 와인 등급을 가리는 심사실입니다. 확률로 판정하고, 스무고개 규칙을 만들고, 재료를 늘리되 벌점을 줍니다.", "color": "#a07de0", "file": "week10_regression_2.html", "rooms": [{"id": "lv1", "name": "확률 판정실", "prop": "desk"}, {"id": "lv2", "name": "스무고개실", "prop": "board"}, {"id": "lv3", "name": "깊이 조정실", "prop": "desk"}, {"id": "lv4", "name": "재료 실험실", "prop": "lab"}, {"id": "lv5", "name": "계수 다이어트실", "prop": "screen"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 11, "dept": "수요예측 · 재무실", "ask": "다음 달 매출은 지난 매출에서 얼마나 읽히나?", "story": "월매출을 시간 순서대로 읽는 층입니다. 지난달과 얼마나 닮았는지, 계절 반복이 있는지 보고 다음 달을 예측합니다.", "color": "#a07de0", "file": "week11_time_series.html", "rooms": [{"id": "lv1", "name": "차트실", "prop": "screen"}, {"id": "lv2", "name": "닮음 분석실", "prop": "desk"}, {"id": "lv3", "name": "추세·계절 분해실", "prop": "board"}, {"id": "lv4", "name": "변화 측정실", "prop": "desk"}, {"id": "lv5", "name": "예측실", "prop": "screen"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 12, "dept": "경영보고 · 시각화실", "ask": "숫자 하나와 차트 한 장으로 어떻게 말하나?", "story": "임원 보고서를 만드는 층입니다. 대표값·흩어짐·기울어짐·함께 움직임을 읽고, 목적에 맞는 차트를 고릅니다.", "color": "#2fb5c4", "file": "week12_visualization.html", "rooms": [{"id": "lv1", "name": "대표값 데스크", "prop": "desk"}, {"id": "lv2", "name": "흩어짐 측정실", "prop": "desk"}, {"id": "lv3", "name": "결제액 꼬리 분석실", "prop": "screen"}, {"id": "lv4", "name": "관계 분석실", "prop": "board"}, {"id": "lv5", "name": "차트 갤러리", "prop": "screen"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 13, "dept": "마케팅 · BI 상황실", "ask": "경영 계기판에는 무엇을 올리나?", "story": "12개국 데이터를 하나로 모아 계기판을 만드는 상황실입니다. 재고, 광고, 채널별 성과, 고객 가치를 한 화면에서 봅니다.", "color": "#2fb5c4", "file": "week13_bi_kpi.html", "rooms": [{"id": "lv1", "name": "데이터 파이프라인실", "prop": "server"}, {"id": "lv2", "name": "재고 관제실", "prop": "screen"}, {"id": "lv3", "name": "광고 퍼널실", "prop": "screen"}, {"id": "lv4", "name": "성과 분배 회의실", "prop": "meet"}, {"id": "lv5", "name": "고객 가치 분석실", "prop": "desk"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 14, "dept": "AI 연구소", "ask": "정답이 없을 때, 글일 때, 경계가 휘었을 때는?", "story": "고급 분석을 맡는 연구소입니다. 고객을 묶고, 함께 팔리는 상품을 찾고, 고객의 글을 읽고, 신경망을 시험합니다.", "color": "#2fb5c4", "file": "week14_advanced_analytics.html", "rooms": [{"id": "lv1", "name": "고객 세분화실", "prop": "board"}, {"id": "lv2", "name": "장바구니 규칙실", "prop": "desk"}, {"id": "lv3", "name": "고객의 소리 센터", "prop": "screen"}, {"id": "lv4", "name": "핵심 단어실", "prop": "desk"}, {"id": "lv5", "name": "신경망실", "prop": "server"}, {"id": "duel", "name": "대결 회의실", "prop": "meet"}]}, {"n": 15, "dept": "임원 연수실 · 연습 ②", "ask": "9~14층에서 배운 것, 문제로 확인하기", "story": "꼭대기 층 연수실입니다. 회귀·시계열·시각화·BI·고급 분석 문제를 풀고, 틀린 곳의 층으로 내려가 다시 봅니다.", "color": "#f0b44c", "file": "week15_practice_2.html", "rooms": [{"id": "quiz", "name": "교안 문제 풀이실", "prop": "desk"}, {"id": "calc", "name": "계산·사례 문제실", "prop": "desk"}, {"id": "score", "name": "성적표 게시판", "prop": "board"}]}], "cur": 10}</script>
+<script>
+/* 오션마켓 글로벌 본사 3D — 목차(건물 전체)와 주차 페이지(이번 주의 층)를 같은 코드로 그린다.
+   three.js는 CDN에서 읽는다. 읽지 못하면(오프라인·WebGL 없음) HTML 목록만 남는다. */
+(function () {
+  var raw = document.getElementById('bld-data');
+  if (!raw) return;
+  var DATA = JSON.parse(raw.textContent);
+  var host = document.getElementById('tower3d') || document.getElementById('floor3d');
+  if (!host) return;
+  var MODE = host.id === 'tower3d' ? 'tower' : 'floor';
+  var URL3 = 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js';
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    import(URL3).then(function (T) { try { (MODE === 'tower' ? tower : floor)(T); host.classList.add('on'); } catch (e) { console.warn('3D 건물을 그리지 못했습니다', e); } })
+      .catch(function () { host.classList.add('off'); });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); start(); } }); }, { rootMargin: '200px' });
+    io.observe(host);
+  } else start();
+
+  /* ---------- 공통: 장면 · 카메라 · 끌어서 돌리기 · 라벨 ---------- */
+  function stage(T, fit, opts) {
+    var cv = document.createElement('canvas'); cv.className = 'bld-cv'; host.appendChild(cv);
+    var lab = document.createElement('div'); lab.className = 'bld-labels'; host.appendChild(lab);
+    var R = new T.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+    R.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    R.shadowMap.enabled = true; R.shadowMap.type = T.PCFSoftShadowMap;
+    var S = new T.Scene();
+    var cam = new T.OrthographicCamera(-10, 10, 10, -10, 0.1, 400);
+    S.add(new T.HemisphereLight('#dfe9ff', '#1b2330', 1.15));
+    var sun = new T.DirectionalLight('#ffffff', 1.6); sun.position.set(18, 30, 12); sun.castShadow = true;
+    sun.shadow.mapSize.set(1024, 1024); var sc = sun.shadow.camera; sc.left = -24; sc.right = 24; sc.top = 24; sc.bottom = -24; sc.far = 90; sun.shadow.bias = -0.0008;
+    S.add(sun);
+    var az = opts.az, el = opts.el, target = opts.target, dirty = true, labels = [];
+    function place() {
+      var d = 60; cam.position.set(target.x + d * Math.cos(el) * Math.sin(az), target.y + d * Math.sin(el), target.z + d * Math.cos(el) * Math.cos(az));
+      cam.lookAt(target.x, target.y, target.z);
+    }
+    function size() {
+      var w = host.clientWidth, h = host.clientHeight; if (!w || !h) return;
+      R.setSize(w, h, false); var a = w / h, f = fit(a);
+      cam.left = -f * a; cam.right = f * a; cam.top = f; cam.bottom = -f; cam.updateProjectionMatrix(); dirty = true;
+    }
+    function label(html, pos, cls, onclick) {
+      var e = document.createElement(onclick ? 'button' : 'div'); e.className = 'bld-lb ' + (cls || ''); e.innerHTML = html;
+      if (onclick) { e.type = 'button'; e.addEventListener('click', onclick); }
+      lab.appendChild(e); var L = { el: e, pos: pos }; labels.push(L); return L;
+    }
+    var v = new T.Vector3();
+    function drawLabels() {
+      var w = host.clientWidth, h = host.clientHeight;
+      labels.forEach(function (L) { v.copy(L.pos).project(cam); L.el.style.transform = 'translate(' + ((v.x + 1) / 2 * w).toFixed(1) + 'px,' + ((1 - v.y) / 2 * h).toFixed(1) + 'px)'; });
+    }
+    var anim = null;
+    function loop() { requestAnimationFrame(loop); if (anim && anim()) dirty = true; if (!dirty) return; dirty = false; place(); R.render(S, cam); drawLabels(); }
+    /* 끌기 = 돌리기, 짧게 누르기 = 고르기 */
+    var down = null, ray = new T.Raycaster(), ndc = new T.Vector2();
+    function pick(ev, list) {
+      var r = cv.getBoundingClientRect(); ndc.set((ev.clientX - r.left) / r.width * 2 - 1, -(ev.clientY - r.top) / r.height * 2 + 1);
+      ray.setFromCamera(ndc, cam); var hit = ray.intersectObjects(list, false)[0]; return hit ? hit.object : null;
+    }
+    cv.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY, az: az, el: el, moved: false }; });
+    window.addEventListener('pointerup', function () { setTimeout(function () { down = null; }, 0); });
+    cv.addEventListener('pointermove', function (e) {
+      if (down && (e.buttons & 1)) {
+        var dx = e.clientX - down.x, dy = e.clientY - down.y;
+        if (Math.abs(dx) + Math.abs(dy) > 5) { down.moved = true; az = down.az - dx * 0.008; el = Math.max(0.25, Math.min(1.1, down.el + dy * 0.005)); dirty = true; }
+      }
+    });
+    cv.style.touchAction = 'pan-y';
+    window.addEventListener('resize', size); size(); requestAnimationFrame(loop);
+    return { T: T, S: S, R: R, cam: cam, cv: cv, label: label, pick: pick, dirtyNow: function () { dirty = true; }, wasDrag: function () { return down && down.moved; }, setAnim: function (f) { anim = f; }, reset: function () { az = opts.az; el = opts.el; dirty = true; } };
+  }
+  function kit(T, S) {
+    var M = function (c, o) { return new T.MeshStandardMaterial(Object.assign({ color: c, roughness: .78, metalness: .05 }, o || {})); };
+    function box(w, h, d, m, x, y, z, p) { var g = new T.Mesh(new T.BoxGeometry(w, h, d), typeof m === 'string' ? M(m) : m); g.position.set(x, y, z); g.castShadow = true; g.receiveShadow = true; (p || S).add(g); return g; }
+    function cyl(r1, r2, h, m, x, y, z, p, seg) { var g = new T.Mesh(new T.CylinderGeometry(r1, r2, h, seg || 12), typeof m === 'string' ? M(m) : m); g.position.set(x, y, z); g.castShadow = true; (p || S).add(g); return g; }
+    function tex(w, h, draw) { var c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); var t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; t.anisotropy = 4; return t; }
+    function tree(x, z, s) { s = s || 1; cyl(.08 * s, .1 * s, .5 * s, '#6b4f36', x, .25 * s, z); var c = new T.Mesh(new T.ConeGeometry(.45 * s, 1.1 * s, 8), M('#3f8f5f')); c.position.set(x, 1 * s, z); c.castShadow = true; S.add(c); }
+    return { M: M, box: box, cyl: cyl, tex: tex, tree: tree };
+  }
+  function glow(T, hex) { return new T.Color(hex); }
+  function narrow() { return host.clientWidth < 620; }
+
+  /* ---------- 가구: 방의 성격을 한눈에 ---------- */
+  function props(T, K, kind, g, w, d, color) {
+    var dark = '#2c3640', light = '#e7ecef', wood = '#b08a63';
+    function desk(x, z) { K.box(.9, .06, .5, wood, x, .42, z, g); K.box(.06, .4, .45, dark, x - .4, .2, z, g); K.box(.06, .4, .45, dark, x + .4, .2, z, g);
+      K.box(.42, .28, .03, '#111a22', x, .62, z - .12, g); K.box(.38, .24, .01, K.M(color, { emissive: color, emissiveIntensity: .6 }), x, .62, z - .1, g);
+      K.box(.3, .06, .3, '#46525e', x, .26, z + .45, g); K.box(.3, .3, .05, '#46525e', x, .45, z + .6, g); }
+    if (kind === 'desk') { var n = w > 3 ? 3 : 2; for (var i = 0; i < n; i++) desk(-w / 2 + w / (n) * (i + .5), -.2); return; }
+    if (kind === 'meet') { K.box(Math.min(2.4, w * .6), .07, .9, wood, 0, .42, 0, g); for (var j = -1; j <= 1; j++) { K.box(.3, .3, .3, '#46525e', j * .7, .2, .75, g); K.box(.3, .3, .3, '#46525e', j * .7, .2, -.75, g); }
+      K.box(Math.min(1.6, w * .45), .9, .05, '#111a22', 0, 1.05, -d / 2 + .25, g); K.box(Math.min(1.5, w * .42), .8, .02, K.M(color, { emissive: color, emissiveIntensity: .5 }), 0, 1.05, -d / 2 + .28, g); return; }
+    if (kind === 'server') { for (var s = 0; s < 4; s++) { var x = -w / 2 + .7 + s * .75; if (x > w / 2 - .4) break; K.box(.55, 1.5, .7, '#1d252d', x, .75, -.3, g);
+      for (var l = 0; l < 5; l++) K.box(.5, .03, .02, K.M(l % 2 ? '#43e08a' : color, { emissive: l % 2 ? '#43e08a' : color, emissiveIntensity: 1 }), x, .3 + l * .25, .06, g); } return; }
+    if (kind === 'lab') { K.box(Math.min(2.6, w * .7), .08, .8, light, 0, .48, -.1, g); K.box(Math.min(2.4, w * .65), .44, .7, '#8fa0ad', 0, .22, -.1, g);
+      for (var c = 0; c < 3; c++) { K.box(.45, .25, .32, '#3a7fb8', -.6 + c * .6, .65, -.1, g); K.box(.36, .04, .26, '#cfe8ff', -.6 + c * .6, .79, -.1, g); }
+      K.box(.5, .5, .5, '#d9a441', w / 2 - .6, .25, .7, g); return; }
+    if (kind === 'screen') { var sw = Math.min(2.8, w * .75); K.box(sw, 1.2, .08, '#111a22', 0, 1.0, -d / 2 + .3, g);
+      for (var r = 0; r < 2; r++) for (var q = 0; q < 3; q++) K.box(sw / 3 - .08, .5, .02, K.M(q === 1 && r === 0 ? '#f0b44c' : color, { emissive: q === 1 && r === 0 ? '#f0b44c' : color, emissiveIntensity: .7 }), -sw / 3 + q * sw / 3, .72 + r * .56, -d / 2 + .35, g);
+      desk(0, .5); return; }
+    if (kind === 'board') { K.box(Math.min(2, w * .55), 1, .05, '#f4f6f8', 0, 1.0, -d / 2 + .25, g); K.box(Math.min(2, w * .55), .06, .1, '#5a6570', 0, .48, -d / 2 + .27, g);
+      for (var b = 0; b < 3; b++) K.box(.35, .04, .02, color, -.5 + b * .45, 1.1 - b * .18, -d / 2 + .28, g);
+      K.cyl(.45, .45, .06, wood, 0, .42, .4, g, 20); K.cyl(.06, .06, .4, dark, 0, .2, .4, g); return; }
+    if (kind === 'shelf') { for (var f = 0; f < 3; f++) { var sx = -w / 2 + .7 + f * .9; if (sx > w / 2 - .4) break; K.box(.75, 1.4, .35, '#6b4f36', sx, .7, -d / 2 + .35, g);
+      for (var y = 0; y < 3; y++) K.box(.6, .3, .25, ['#5b8def', '#e07a5f', '#3fbf8f'][(f + y) % 3], sx, .3 + y * .42, -d / 2 + .38, g); } desk(0, .5); return; }
+  }
+
+  /* ---------- 목차: 건물 전체 ---------- */
+  function tower(T) {
+    var FL = DATA.floors, N = FL.length, W = 9, D = 6.4, H = 1.0, BASE = .7;
+    var top = BASE + N * H;
+    var st = stage(T, function (a) { return (a < .8 ? 12.6 : 11.6); }, { az: Math.PI / 4.6, el: .52, target: new T.Vector3(0, top / 2 + .4, 0) });
+    var S = st.S, K = kit(T, S);
+    /* 땅 · 광장 */
+    var ground = new T.Mesh(new T.PlaneGeometry(60, 60), K.M('#16202a')); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; S.add(ground);
+    var grid = new T.GridHelper(60, 60, '#24313d', '#1c2833'); grid.position.y = .005; S.add(grid);
+    K.box(W + 5, .12, D + 5, '#33414d', 0, .06, 0);
+    K.box(W + 1.2, BASE, D + 1.2, '#2a3540', 0, BASE / 2, 0);
+    K.box(W * .5, BASE - .1, .05, K.M('#9fd8ff', { transparent: true, opacity: .55, emissive: '#3a8fd0', emissiveIntensity: .35 }), 0, BASE / 2, D / 2 + .62);
+    [[-W / 2 - 1.8, D / 2 + 1.8], [W / 2 + 1.8, D / 2 + 1.8], [-W / 2 - 1.8, -D / 2 - 1.6], [W / 2 + 1.9, -.4], [-W / 2 - 1.9, .3]].forEach(function (p, i) { K.tree(p[0], p[1], .9 + (i % 2) * .2); });
+    /* 광장의 지구본: 다국적 */
+    var globe = new T.Mesh(new T.SphereGeometry(.75, 18, 12), new T.MeshStandardMaterial({ color: '#2fb5c4', wireframe: true, emissive: '#2fb5c4', emissiveIntensity: .6 }));
+    globe.position.set(W / 2 + 1.2, 1.25, D / 2 + 2.2); S.add(globe); K.cyl(.35, .45, .4, '#46525e', W / 2 + 1.2, .2, D / 2 + 2.2);
+    /* 옆 건물: 물류센터 · 데이터센터 */
+    K.box(5, 2.2, 4, '#3b4752', -W / 2 - 5, 1.1, -3.5); K.box(4.6, .1, 3.6, '#56636e', -W / 2 - 5, 2.25, -3.5);
+    K.box(4, 3.2, 3.4, '#2e3a46', W / 2 + 4.6, 1.6, -4.2);
+    for (var r = 0; r < 4; r++) K.box(.08, .08, 3, K.M('#43e08a', { emissive: '#43e08a', emissiveIntensity: 1 }), W / 2 + 2.58, .7 + r * .6, -4.2);
+    var bl = st.label('물류센터', new T.Vector3(-W / 2 - 5, 2.8, -3.5), 'mini'); var bl2 = st.label('데이터센터', new T.Vector3(W / 2 + 4.6, 3.6, -4.2), 'mini');
+    /* 층 */
+    var hits = [], floors = {};
+    FL.forEach(function (f, i) {
+      var g = new T.Group(); g.position.y = BASE + i * H; S.add(g);
+      K.box(W, .12, D, '#d5dce2', 0, .06, 0, g);
+      var col = glow(T, f.color);
+      var glass = new T.Mesh(new T.BoxGeometry(W - .2, H - .12, D - .2), new T.MeshStandardMaterial({ color: col, transparent: true, opacity: .42, roughness: .15, metalness: .2, emissive: col, emissiveIntensity: .12 }));
+      glass.position.y = .06 + (H - .12) / 2; g.add(glass); glass.userData.n = f.n; hits.push(glass);
+      for (var k = 0; k <= 6; k++) { var x = -W / 2 + .1 + k * (W - .2) / 6; K.box(.06, H - .12, .06, '#1f2932', x, .06 + (H - .12) / 2, D / 2 - .08, g); }
+      for (var k2 = 0; k2 <= 4; k2++) { var z = -D / 2 + .1 + k2 * (D - .2) / 4; K.box(.06, H - .12, .06, '#1f2932', W / 2 - .08, .06 + (H - .12) / 2, z, g); }
+      for (var q = 0; q < 4; q++) K.box(.9, .32, .5, '#eef2f5', -W / 2 + 1.4 + q * 2.1, .28, -.6 + (q % 2) * 1.4, g);
+      floors[f.n] = { g: g, glass: glass, base: g.position.y, f: f };
+      var tx = f.n + 'F';
+      floors[f.n].lb = st.label(tx, new T.Vector3(W / 2 + .1, BASE + i * H + H / 2, D / 2 + .1), 'fl', function () { location.href = f.file; });
+      floors[f.n].lb.el.style.setProperty('--c', f.color); if (host.clientWidth < 480 && f.n % 2 === 0) floors[f.n].lb.el.style.display = 'none';
+    });
+    /* 옥상: 간판 · 헬리패드 · 안테나 */
+    K.box(W, .2, D, '#c3cbd2', 0, top + .1, 0);
+    K.box(2.2, .6, 1.6, '#7d8a95', -W / 2 + 1.8, top + .5, -D / 2 + 1.4); K.box(1.4, .5, 1.4, '#7d8a95', -W / 2 + 4, top + .45, -D / 2 + 1.2);
+    var hp = new T.Mesh(new T.CylinderGeometry(1.25, 1.25, .06, 32), new T.MeshStandardMaterial({ map: K.tex(256, 256, function (c, w, h) { c.fillStyle = '#3b4752'; c.fillRect(0, 0, w, h); c.strokeStyle = '#f0b44c'; c.lineWidth = 14; c.beginPath(); c.arc(128, 128, 104, 0, 7); c.stroke(); c.fillStyle = '#ffffff'; c.font = 'bold 130px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('H', 128, 136); }) }));
+    hp.position.set(W / 2 - 1.8, top + .23, .4); S.add(hp);
+    K.cyl(.05, .05, 2.4, '#9aa6b0', -W / 2 + 1.2, top + 1.4, D / 2 - 1); var bk = K.box(.14, .14, .14, K.M('#ff5b5b', { emissive: '#ff5b5b', emissiveIntensity: 1.2 }), -W / 2 + 1.2, top + 2.65, D / 2 - 1);
+    var sign = new T.Mesh(new T.PlaneGeometry(W - .6, 1.0), new T.MeshBasicMaterial({ transparent: true, map: K.tex(1024, 120, function (c, w, h) { c.fillStyle = 'rgba(16,22,30,.92)'; c.fillRect(0, 0, w, h); c.fillStyle = '#2fb5c4'; c.fillRect(0, h - 10, w, 10); c.fillStyle = '#ffffff'; c.font = 'bold 66px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(DATA.company.en, w / 2, h / 2 - 4); }) }));
+    sign.position.set(0, top + .75, D / 2 - .02); S.add(sign); K.box(W - .4, .9, .08, '#10161e', 0, top + .7, D / 2 - .1);
+    st.label('<b>' + DATA.company.name + '</b> 본사', new T.Vector3(0, top + 1.6, 0), 'co');
+    /* 고르기 */
+    var hover = 0, t0 = performance.now();
+    function setHover(n) {
+      if (hover === n) return; hover = n;
+      Object.keys(floors).forEach(function (k) { var F = floors[k], on = +k === n; F.glass.material.opacity = on ? .85 : .42; F.glass.material.emissiveIntensity = on ? .6 : .12; F.lb.el.classList.toggle('hi', on); });
+      document.querySelectorAll('[data-fl]').forEach(function (a) { a.classList.toggle('hi', +a.dataset.fl === n); });
+      st.cv.style.cursor = n ? 'pointer' : 'grab'; st.dirtyNow();
+    }
+    st.setAnim(function () {
+      var moved = false, now = performance.now();
+      Object.keys(floors).forEach(function (k) { var F = floors[k], want = +k === hover ? .55 : 0, x = F.g.position.x; if (Math.abs(want - x) > .002) { F.g.position.x = x + (want - x) * .18; F.lb.pos.x = W / 2 + .1 + F.g.position.x; moved = true; } });
+      globe.rotation.y = (now - t0) / 4000; bk.material.emissiveIntensity = (Math.sin(now / 400) > 0) ? 1.4 : .2;
+      return true;
+    });
+    st.cv.addEventListener('pointermove', function (e) { if (st.wasDrag()) return; var o = st.pick(e, hits); setHover(o ? o.userData.n : 0); });
+    st.cv.addEventListener('pointerleave', function () { setHover(0); });
+    st.cv.addEventListener('click', function (e) { if (st.wasDrag()) return; var o = st.pick(e, hits); if (o) location.href = floors[o.userData.n].f.file; });
+    document.querySelectorAll('[data-fl]').forEach(function (a) { a.addEventListener('mouseenter', function () { setHover(+a.dataset.fl); }); a.addEventListener('mouseleave', function () { setHover(0); }); });
+    var rb = document.getElementById('bldReset'); if (rb) rb.addEventListener('click', st.reset);
+  }
+
+  /* ---------- 주차 페이지: 이번 주의 층 ---------- */
+  function floor(T) {
+    var cur = DATA.cur, F = DATA.floors[cur - 1], rooms = F.rooms.slice();
+    var W = 16, D = 10, COR = 1.7;
+    var slots = rooms.concat([{ id: '_core', name: '엘리베이터', prop: 'core' }]);
+    var nTop = Math.ceil(slots.length / 2), nBot = slots.length - nTop, RD = (D - COR) / 2;
+    var st = stage(T, function (a) { return a < 1.1 ? 11.2 : 7.0; }, { az: Math.PI / 5.2, el: .62, target: new T.Vector3(narrow() ? 1.4 : 0, .6, .4) });
+    var S = st.S, K = kit(T, S), col = F.color;
+    var ground = new T.Mesh(new T.PlaneGeometry(80, 80), K.M('#141c25')); ground.rotation.x = -Math.PI / 2; ground.position.y = -.4; ground.receiveShadow = true; S.add(ground);
+    K.box(W + .6, .4, D + .6, '#cfd6dc', 0, -.2, 0);
+    /* 뒤·왼쪽 바깥 유리벽(인형의 집처럼 앞은 열어 둔다) */
+    var gm = new T.MeshStandardMaterial({ color: col, transparent: true, opacity: .16, roughness: .1 });
+    var wb = new T.Mesh(new T.BoxGeometry(W + .6, 2.4, .08), gm); wb.position.set(0, 1.2, -D / 2 - .26); S.add(wb);
+    var wl = new T.Mesh(new T.BoxGeometry(.08, 2.4, D + .6), gm); wl.position.set(-W / 2 - .26, 1.2, 0); S.add(wl);
+    for (var c = 0; c <= 8; c++) K.box(.12, 2.4, .12, '#26313b', -W / 2 - .26 + c * (W + .52) / 8, 1.2, -D / 2 - .26);
+    for (var c2 = 1; c2 <= 5; c2++) K.box(.12, 2.4, .12, '#26313b', -W / 2 - .26, 1.2, -D / 2 - .26 + c2 * (D + .52) / 5);
+    /* 복도 */
+    K.box(W, .05, COR, '#9aa6b0', 0, .025, 0);
+    var hits = [], R = {}, nums = '①②③④⑤⑥';
+    function room(s, i, row, n, gi) {
+      var w = W / n, x = -W / 2 + w * (i + .5), z = row ? (COR / 2 + RD / 2) : -(COR / 2 + RD / 2);
+      var g = new T.Group(); g.position.set(x, 0, z); S.add(g);
+      if (s.prop === 'core') {
+        K.box(w - .3, .06, RD - .3, '#3b4752', 0, .03, 0, g);
+        K.box(Math.min(2.4, w * .6), 2.3, 1.4, '#2a333c', 0, 1.15, -RD / 2 + 1, g);
+        for (var d = 0; d < 2; d++) { K.box(.7, 1.6, .04, '#b9c3cc', -.45 + d * .9, .82, -RD / 2 + 1.72, g); }
+        var lbl = st.label('🛗 ' + cur + 'F · 엘리베이터', new T.Vector3(x, 2.7, z - RD / 2 + 1), 'core');
+        return;
+      }
+      var isDuel = s.id === 'duel', tc = isDuel ? '#e07a5f' : col;
+      var tile = new T.Mesh(new T.BoxGeometry(w - .25, .08, RD - .25), K.M(tc, { transparent: true, opacity: .32, emissive: tc, emissiveIntensity: .08 }));
+      tile.position.y = .06; tile.receiveShadow = true; g.add(tile); tile.userData.id = s.id; hits.push(tile);
+      var pm = new T.MeshStandardMaterial({ color: '#cfe6ff', transparent: true, opacity: .18, roughness: .05 });
+      var side = new T.Mesh(new T.BoxGeometry(.05, 1.1, RD - .25), pm); side.position.set(w / 2 - .12, .6, 0); g.add(side);
+      var back = new T.Mesh(new T.BoxGeometry(w - .25, 1.1, .05), pm); back.position.set(0, .6, row ? RD / 2 - .12 : -RD / 2 + .12); g.add(back);
+      var inner = new T.Group(); g.add(inner); if (row) inner.rotation.y = Math.PI;
+      props(T, K, s.prop, inner, w - .6, RD - .6, tc);
+      if (isDuel) chars(T, g, w);
+      var no = isDuel ? '⚔' : (s.id.indexOf('lv') === 0 ? nums[+s.id.slice(2) - 1] : nums[gi]);
+      var L = st.label('<span class="no">' + no + '</span>' + (narrow() ? '' : '<span class="nm">' + s.name + '</span>'), new T.Vector3(x, 1.9, z), 'room' + (isDuel ? ' duel' : ''), function () { go(s.id); });
+      R[s.id] = { tile: tile, L: L, g: g };
+    }
+    slots.slice(0, nTop).forEach(function (s, i) { room(s, i, 0, nTop, i); });
+    slots.slice(nTop).forEach(function (s, i) { room(s, i, 1, nBot, nTop + i); });
+    /* 대결 회의실의 네 캐릭터(그림이 있으면) */
+    function chars(T, g, w) {
+      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'];
+      ks.forEach(function (k, i) { var src = SP[k] || SP[AL[k]]; if (!src) return; var t = new T.TextureLoader().load(src, function () { st.dirtyNow(); }); t.colorSpace = T.SRGBColorSpace;
+        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); sp.scale.set(1.05, 1.05, 1); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, 1.05, .9); g.add(sp); });
+    }
+    if (!narrow()) st.label('<b>' + cur + 'F</b> ' + F.dept, new T.Vector3(-W / 2 + .2, 3.0, -D / 2), 'flname');
+    var hover = null;
+    function setHover(id) {
+      if (hover === id) return; hover = id;
+      Object.keys(R).forEach(function (k) { var on = k === id; R[k].tile.material.opacity = on ? .75 : .32; R[k].tile.material.emissiveIntensity = on ? .5 : .08; R[k].L.el.classList.toggle('hi', on); });
+      document.querySelectorAll('[data-room]').forEach(function (a) { a.classList.toggle('hi', a.dataset.room === id); });
+      st.cv.style.cursor = id ? 'pointer' : 'grab'; st.dirtyNow();
+    }
+    function go(id) { var t = document.getElementById(id); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    st.cv.addEventListener('pointermove', function (e) { if (st.wasDrag()) return; var o = st.pick(e, hits); setHover(o ? o.userData.id : null); });
+    st.cv.addEventListener('pointerleave', function () { setHover(null); });
+    st.cv.addEventListener('click', function (e) { if (st.wasDrag()) return; var o = st.pick(e, hits); if (o) go(o.userData.id); });
+    document.querySelectorAll('[data-room]').forEach(function (a) { a.addEventListener('mouseenter', function () { setHover(a.dataset.room); }); a.addEventListener('mouseleave', function () { setHover(null); }); });
+    var rb = document.getElementById('bldReset'); if (rb) rb.addEventListener('click', st.reset);
+  }
+})();
+
 </script>
 </body>
 </html>

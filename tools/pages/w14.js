@@ -55,8 +55,8 @@ function draw2(){var ms=+$('#ms').value/100,mc=+$('#mc').value/100,K=RULES.filte
   var rows=K.slice(0,10).map(function(r){return '<tr><td>'+r.x.map(function(i){return IT[i]}).join(' + ')+' → '+IT[r.y]+'</td><td>'+pct(r.s,1)+'</td><td>'+pct(r.c,0)+'</td><td class="'+(r.l>=1.5?'fix':r.l<1.1?'bad':'')+'">'+r.l.toFixed(2)+'</td></tr>'}).join('');
   $('#rules2').innerHTML='<thead><tr><th>규칙(향상도 순, 최대 10개)</th><th>지지도</th><th>신뢰도</th><th>향상도</th></tr></thead><tbody>'+(rows||'<tr><td colspan="4">조건을 만족하는 규칙이 없습니다.</td></tr>')+'</tbody>';
   var weak=K.filter(function(r){return r.l<1.1}).length;
-  kpis($('#k2k'),[['i',RULES.length+'개','가능한 규칙(1·2개 → 1개)'],['g',K.length+'개','임계값을 통과한 규칙'],['a',weak+'개','통과했지만 향상도 1.1 미만'],['m',K.length?K[0].x.map(function(i){return IT[i]}).join('+')+'→'+IT[K[0].y]:'—','향상도 1위']]);
-  $('#ins2').innerHTML=!K.length?'<p class="r">임계값이 너무 높아 규칙이 하나도 남지 않았습니다.</p>':weak?'<p class="a">통과한 '+K.length+'개 중 '+weak+'개는 향상도가 1.1 미만입니다. 대부분 "커피"처럼 원래 많이 팔리는 상품이 결과인 규칙입니다. 신뢰도만 보면 속습니다.</p>':'<p class="g">남은 '+K.length+'개 규칙이 모두 향상도 1.1 이상입니다. 진열·묶음 할인 후보로 볼 만합니다.</p>';}
+  kpis($('#k2k'),[['i',RULES.length+'개','가능한 규칙(1·2개 → 1개)'],['g',K.length+'개','기준선을 통과한 규칙'],['a',weak+'개','통과했지만 향상도 1.1 미만'],['m',K.length?K[0].x.map(function(i){return IT[i]}).join('+')+'→'+IT[K[0].y]:'—','향상도 1위']]);
+  $('#ins2').innerHTML=!K.length?'<p class="r">기준선이 너무 높아 규칙이 하나도 남지 않았습니다.</p>':weak?'<p class="a">통과한 '+K.length+'개 중 '+weak+'개는 향상도가 1.1 미만입니다. 대부분 "커피"처럼 원래 많이 팔리는 상품이 결과인 규칙입니다. 신뢰도만 보면 속습니다.</p>':'<p class="g">남은 '+K.length+'개 규칙이 모두 향상도 1.1 이상입니다. 진열·묶음 할인 후보로 볼 만합니다.</p>';}
 draw2();
 
 /* ---------- ③ 감성 분석 ---------- */

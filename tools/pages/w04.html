@@ -139,15 +139,15 @@
 <!-- ③ 분할·교차 검증·과적합 -->
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">3<small>검증</small></div><h2>데이터 분할과 교차 검증 — 외운 것과 배운 것</h2></div>
+    <div class="hexrow"><div class="hexno">3<small>검증</small></div><h2>데이터 분할과 돌아가며 시험 — 외운 것과 배운 것</h2></div>
     <p class="sub"><span class="lvtag g">방법: 공부용·점검용·시험용 나누기, 다섯 번 돌아가며 시험</span><span class="lvtag">연구실: 봉인한 시험지</span></p>
   </div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>연습 문제만 달달 외운 학생은 연습 문제로 치면 100점이지만, 처음 보는 시험지에서는 무너집니다. 그래서 시험지는 따로 봉인해 둡니다.</p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>공부한 문제만 너무 잘 외워 처음 보는 문제를 못 푸는 상태를 과적합이라고 합니다. 교안은 데이터를 공부용·점검용·시험용으로 60:20:20이나 70:15:15로 나누고, 데이터가 적으면 돌아가며 시험 보는 교차 검증을 쓰라고 합니다.<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>공부한 문제만 너무 잘 외워 처음 보는 문제를 못 푸는 상태를 과적합이라고 합니다. 교안은 데이터를 공부용·점검용·시험용으로 60:20:20이나 70:15:15로 나누고, 데이터가 적으면 돌아가며 시험 보는 방법(교차 검증)을 쓰라고 합니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="과적합과 교차 검증 실험">
-    <h3>KNN의 K를 바꾸며 — 훈련 정확도와 시험 정확도, 5겹 교차 검증</h3>
+    <h3>KNN의 K를 바꾸며 — 훈련 정확도와 시험 정확도, 다섯 번 돌아가며 시험</h3>
     <div class="ctrl"><div class="group"><label class="glabel" for="kk">K (이웃 수)</label><input type="range" id="kk" min="1" max="51" step="2" value="1"><span class="val" id="kkv">1</span></div></div>
     <div class="cwrap"><canvas id="c3" class="wide" aria-label="왼쪽은 선택한 K로 배운 승인 영역, 오른쪽은 K에 따른 훈련 정확도와 교차 검증 정확도 곡선"></canvas></div>
     <section class="kpis k4" id="k3"></section>
@@ -156,15 +156,15 @@
   </section>
   <div class="explain"><h4>풀이</h4><ol>
     <li>K = 1이면 모든 훈련 기록이 자기 자신을 이웃으로 삼아 훈련 정확도가 100%입니다. 예외 8%까지 외워 경계가 울퉁불퉁해집니다.</li>
-    <li>5겹 교차 검증은 600건을 다섯 묶음으로 나눠, 한 묶음씩 번갈아 검증용으로 쓰고 나머지로 학습합니다. 다섯 점수의 평균과 흩어짐을 함께 봅니다.<sup>[1]</sup></li>
-    <li>K는 교차 검증 점수로 고르고, 봉인한 시험 데이터 400건은 마지막에 한 번만 씁니다. 시험 점수로 K를 고르면 시험지를 미리 본 셈입니다.</li>
+    <li>다섯 번 돌아가며 시험은 600건을 다섯 묶음으로 나눠, 한 묶음씩 번갈아 검증용으로 쓰고 나머지로 학습합니다. 다섯 점수의 평균과 흩어짐을 함께 봅니다.<sup>[1]</sup></li>
+    <li>K는 돌아가며 시험 점수로 고르고, 봉인한 시험 데이터 400건은 마지막에 한 번만 씁니다. 시험 점수로 K를 고르면 시험지를 미리 본 셈입니다.</li>
     <li>K가 너무 작으면 과적합, 너무 크면 경계가 뭉개지는 과소적합입니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 지금까지는 '승인/거절' 분류 하나만 봤습니다. 문제가 군집·연관·예측이면 쓰는 모델과 지표가 달라집니다. → ④칸</p></div>
   <details class="math"><summary>수식으로 보기</summary><div>
-    <p class="num">k겹 교차 검증 점수 = (1/k) Σ<sub>i=1..k</sub> 정확도(묶음 i로 검증, 나머지로 학습)</p>
+    <p class="num">k번 돌아가며 시험 점수 = (1/k) Σ<sub>i=1..k</sub> 정확도(묶음 i로 검증, 나머지로 학습)</p>
     <p class="muted">홀드아웃(한 번 나눠 한 번 평가)은 빠르지만 나누는 방법에 따라 결과가 흔들립니다. 부트스트랩은 복원 추출로 여러 표본을 만들어 성능의 분포를 봅니다.<sup>[1]</sup></p>
   </div></details>
-  <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>K = 1의 훈련 점수 100%는 답안지를 보고 푼 점수예요. 교차 검증 막대를 보세요.</p></div></div>
+  <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>K = 1의 훈련 점수 100%는 답안지를 보고 푼 점수예요. 돌아가며 시험 막대를 보세요.</p></div></div>
   <div class="quiz" data-quiz="lv3"></div>
 </div></section>
 
@@ -231,8 +231,8 @@
     <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
     <tbody>
       <tr><td><b>① 도구</b></td><td>규모·분석·공유·재현 조건으로 도구를 고른다</td><td>판단 규칙을 누가 만들지 모른다</td><td>규칙 vs 머신러닝</td></tr>
-      <tr><td><b>② 규칙 vs 머신러닝</b></td><td>데이터에서 경계 모양을 배운다</td><td>외웠는지 배웠는지 모른다</td><td>분할·교차 검증</td></tr>
-      <tr><td><b>③ 분할·교차 검증</b></td><td>과적합을 잡고 K를 고른다</td><td>분류 외 문제 유형</td><td>문제 유형별 모델</td></tr>
+      <tr><td><b>② 규칙 vs 머신러닝</b></td><td>데이터에서 경계 모양을 배운다</td><td>외웠는지 배웠는지 모른다</td><td>분할·돌아가며 시험</td></tr>
+      <tr><td><b>③ 분할·돌아가며 시험</b></td><td>과적합을 잡고 K를 고른다</td><td>분류 외 문제 유형</td><td>문제 유형별 모델</td></tr>
       <tr><td><b>④ 문제 유형·연관성</b></td><td>유형마다 모델·지표를 고르고 향상도를 계산한다</td><td>작은 표본, 공정성·설명 가능성</td><td>5주차: 실제 데이터로 분류 모델 만들기</td></tr>
     </tbody></table></div>
   <div class="steps">
@@ -247,7 +247,7 @@
   <h2>실험을 마치며</h2>
   <figure class="scene" data-scene="sc_w04_outro" hidden><img alt="승인 영역 지도 앞에서 기뻐하는 주판봇과 머쓱해하는 초파리 연구원, 엄지를 세운 박사와 웃는 조수"></figure>
   <div class="dialog">
-    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>도구는 규모·분석·공유·재현 조건으로 고른다.</li><li>복잡한 경계는 데이터에서 배우는 쪽이 강하지만, 설명 가능성을 대가로 낸다.</li><li>모델은 봉인한 데이터와 교차 검증으로 평가한다.</li></ul></div></div>
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>도구는 규모·분석·공유·재현 조건으로 고른다.</li><li>복잡한 경계는 데이터에서 배우는 쪽이 강하지만, 설명 가능성을 대가로 낸다.</li><li>모델은 봉인한 데이터와 돌아가며 시험으로 평가한다.</li></ul></div></div>
     <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>숫자가 말해 줬잖아. 다음에도 데이터에 투자.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="cry" data-img="fly_cry" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>…네모로는 비스듬한 선을 못 잡는구나. 그래도 K = 1에 속지 않은 건 내 덕이야.</p></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>다음 주에는 진짜 생선 데이터(도미와 빙어)로 파이썬 분류 모델을 처음부터 만들어 볼게요.</p></div></div>

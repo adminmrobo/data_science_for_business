@@ -70,15 +70,15 @@ function draw3(){var k=+$('#kk').value,c=$('#c3'),W=fitC(c,320),H=320,x=c.getCon
   var X0=40,Y0=34,Wd=(W-110)/2,Hh=H-70;knnMap(x,k,X0,Y0,Wd,Hh);plotPts(x,TR,X0,Y0,Wd,Hh,300);axes(x,X0,Y0,Wd,Hh);txt(x,'K = '+k+'로 배운 승인 영역 (훈련 기록 300건 표시)',X0,20,C.info,12,'left',700);
   var X1=X0+Wd+50,W1=W-X1-20,sx=function(kk){return X1+(kk-1)/50*W1},sy=function(v){return Y0+Hh-(v-.7)/.3*Hh};
   x.strokeStyle=C.rule;x.strokeRect(X1,Y0,W1,Hh);[.7,.8,.9,1].forEach(function(v){txt(x,Math.round(v*100)+'%',X1-4,sy(v),C.muted,10,'right');});[1,11,21,31,41,51].forEach(function(v){txt(x,'K='+v,sx(v),Y0+Hh+12,C.muted,10,'center');});
-  [[function(kk){return accTr(kk)},C.amber,'훈련'],[function(kk){return LAB.mean(cvK(kk))},C.gfp,'5겹 교차 검증']].forEach(function(s){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();KS.forEach(function(kk,i){var v=s[0](kk);i?x.lineTo(sx(kk),sy(v)):x.moveTo(sx(kk),sy(v));});x.stroke();x.lineWidth=1;});
-  txt(x,'— 훈련 정확도',X1+6,Y0+12,C.amber,11,'left',700);txt(x,'— 5겹 교차 검증 평균',X1+6,Y0+28,C.gfp,11,'left',700);
+  [[function(kk){return accTr(kk)},C.amber,'훈련'],[function(kk){return LAB.mean(cvK(kk))},C.gfp,'다섯 번 돌아가며 시험']].forEach(function(s){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();KS.forEach(function(kk,i){var v=s[0](kk);i?x.lineTo(sx(kk),sy(v)):x.moveTo(sx(kk),sy(v));});x.stroke();x.lineWidth=1;});
+  txt(x,'— 훈련 정확도',X1+6,Y0+12,C.amber,11,'left',700);txt(x,'— 다섯 번 돌아가며 시험 평균',X1+6,Y0+28,C.gfp,11,'left',700);
   var cs=cvK(k);x.strokeStyle=C.text;x.setLineDash([3,3]);x.beginPath();x.moveTo(sx(k),Y0);x.lineTo(sx(k),Y0+Hh);x.stroke();x.setLineDash([]);
   cs.forEach(function(v){x.fillStyle='rgba(94,227,156,.7)';x.beginPath();x.arc(sx(k),sy(v),3,0,7);x.fill();});
   stamp(x,W,'설명용 모형 · 실제 데이터 아님');
   var best=KS.slice().sort(function(a,b){return LAB.mean(cvK(b))-LAB.mean(cvK(a))})[0],m=LAB.mean(cs);
-  kpis($('#k3'),[['a',pct(accTr(k),1),'훈련 정확도'],['g',pct(m,1),'교차 검증 평균'],['i','±'+(LAB.sd(cs)*100).toFixed(1)+'%p','다섯 겹의 흩어짐'],['m','K = '+best,'교차 검증이 고른 K']]);
+  kpis($('#k3'),[['a',pct(accTr(k),1),'훈련 정확도'],['g',pct(m,1),'돌아가며 시험 평균'],['i','±'+(LAB.sd(cs)*100).toFixed(1)+'%p','다섯 겹의 흩어짐'],['m','K = '+best,'돌아가며 시험이 고른 K']]);
   $('#eq3').innerHTML='5겹 점수: '+cs.map(function(v){return '<b>'+pct(v,1)+'</b>'}).join(' · ')+' → 평균 <em>'+pct(m,1)+'</em> · 봉인한 시험 400건(마지막에만): <i>'+pct(accTe(k),1)+'</i>';
-  $('#ins3').innerHTML=k===1?'<p class="r">K = 1: 훈련 100%인데 교차 검증은 '+pct(m,1)+'. 예외까지 외운 과적합입니다.</p>':k>=35?'<p class="a">K가 크면 경계가 뭉개져 훈련·검증 모두 내려갑니다(과소적합).</p>':'<p class="g">훈련과 교차 검증의 차이가 줄었습니다. 교차 검증이 가장 높은 K는 '+best+'입니다.</p>';}
+  $('#ins3').innerHTML=k===1?'<p class="r">K = 1: 훈련 100%인데 돌아가며 시험은 '+pct(m,1)+'. 예외까지 외운 과적합입니다.</p>':k>=35?'<p class="a">K가 크면 경계가 뭉개져 훈련·검증 모두 내려갑니다(과소적합).</p>':'<p class="g">훈련과 돌아가며 시험의 차이가 줄었습니다. 돌아가며 시험이 가장 높은 K는 '+best+'입니다.</p>';}
 addMod($('#c3'),function(dt){if(!dt)draw3();});
 
 /* ---------- ④ 장바구니 ---------- */

@@ -3,7 +3,7 @@
     <div class="hero-text">
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 14주차 · 비즈니스를 위한 고급 분석 기법</span>
       <h1>정답 없이, 글 속에서, 층을 쌓아</h1>
-      <p class="q">정답 라벨이 없을 때, 숫자가 아니라 글일 때, 경계가 직선이 아닐 때 — 데이터 과학은 어떻게 할까?</p>
+      <p class="q">정답표가 없을 때, 숫자가 아니라 글일 때, 경계가 직선이 아닐 때 — 데이터 과학은 어떻게 할까?</p>
       <p class="lead">마지막 주는 세 갈래의 고급 기법입니다. ① 정답 없이 비슷한 고객끼리 묶고, 함께 팔리는 상품을 찾기(비지도학습) ② 고객의 글에서 칭찬·불만과 핵심 단어 찾기(자연어 처리) ③ 층을 쌓아 곡선 경계를 스스로 배우는 신경망(딥러닝). 대결은 "직선이면 충분한 문제에 딥러닝이 필요할까"입니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi i"><b>3가지</b><span>정답 없이 패턴 찾기: 묶기·함께 팔림·줄이기<sup>[1]</sup></span></div>
@@ -44,7 +44,7 @@
 <section class="level" id="why"><div class="wrap stack">
   <div class="lvhead"><h2>왜 고급 기법인가</h2></div>
   <div class="steps">
-    <div><b>1. 정답 라벨은 비싸다</b><p>비지도학습은 라벨링 비용 없이 대용량 데이터에서 숨은 패턴을 찾습니다. 가설이 없을 때 새로운 관점을 줍니다.<sup>[1]</sup></p></div>
+    <div><b>1. 정답표는 비싸다</b><p>비지도학습은 정답 달기 비용 없이 대용량 데이터에서 숨은 패턴을 찾습니다. 가설이 없을 때 새로운 관점을 줍니다.<sup>[1]</sup></p></div>
     <div><b>2. 고객의 진짜 목소리는 글이다</b><p>리뷰·상담 내역·소셜미디어 같은 비정형 텍스트에는 정량 지표로 드러나지 않는 감정과 니즈가 담겨 있습니다.<sup>[1]</sup></p></div>
     <div><b>3. 세상은 직선이 아니다</b><p>이미지·음성·자연어처럼 복잡한 비선형 패턴은 사람이 특성을 설계하기 어렵습니다. 딥러닝은 원시 데이터에서 특성을 스스로 배웁니다.<sup>[1]</sup></p></div>
   </div>
@@ -98,7 +98,7 @@
     <div><div class="tag nn">비지도학습에서는</div><p>먼저 자주 함께 나오는 상품 묶음을 찾고, 최소 지지도·신뢰도 기준으로 우연한 조합을 걸러 냅니다. 남은 규칙은 진열, 함께 사기 권하기, 더 좋은 상품 권하기, 추천에 씁니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="연관 규칙 실험">
-    <h3>임계값을 바꿔 남는 규칙 보기</h3>
+    <h3>기준선을 바꿔 남는 규칙 보기</h3>
     <div class="ctrl">
       <div class="group"><label class="glabel" for="ms">최소 지지도(%)</label><input type="range" id="ms" min="1" max="20" step="1" value="5"><span class="val" id="msv">5</span></div>
       <div class="group"><label class="glabel" for="mc">최소 신뢰도(%)</label><input type="range" id="mc" min="10" max="90" step="5" value="40"><span class="val" id="mcv">40</span></div>
@@ -108,7 +108,7 @@
     <div class="insight" id="ins2" aria-live="polite"></div>
   </section>
   <div class="explain"><h4>풀이</h4><ol>
-    <li>임계값을 낮추면 규칙이 쏟아지고, 그중엔 우연히 함께 나온 조합도 섞입니다. 올리면 강한 규칙만 남지만 드문 상품의 규칙은 사라집니다.</li>
+    <li>기준선을 낮추면 규칙이 쏟아지고, 그중엔 우연히 함께 나온 조합도 섞입니다. 올리면 강한 규칙만 남지만 드문 상품의 규칙은 사라집니다.</li>
     <li>신뢰도가 높아도 향상도가 1 근처면 "원래 다들 사는 상품"일 뿐입니다. 표의 향상도 열을 함께 보세요(4주차).</li>
   </ol><p class="limit">이 칸의 한계: 영수증은 무엇을 샀는지는 알려 주지만 고객이 어떻게 느꼈는지는 알려 주지 않습니다. 그건 리뷰의 글 속에 있습니다. → ③칸 감성 분석</p></div>
   <div class="quiz" data-quiz="lv2"></div>
@@ -224,7 +224,7 @@
     <thead><tr><th>칸</th><th>새로 생긴 능력</th><th>이 칸의 한계</th><th>다음 칸이 푸는 것</th></tr></thead>
     <tbody>
       <tr><td><b>① 군집</b></td><td>정답 없이 비슷한 고객을 묶는다</td><td>상품 관계는 모른다</td><td>연관 규칙</td></tr>
-      <tr><td><b>② 연관 규칙</b></td><td>임계값으로 의미 있는 짝만 남긴다</td><td>고객의 느낌은 모른다</td><td>감성 분석</td></tr>
+      <tr><td><b>② 연관 규칙</b></td><td>기준선으로 의미 있는 짝만 남긴다</td><td>고객의 느낌은 모른다</td><td>감성 분석</td></tr>
       <tr><td><b>③ 감성 분석</b></td><td>사전과 부정어로 긍·부정 판정</td><td>무엇에 대한 말인지 모른다</td><td>TF-IDF</td></tr>
       <tr><td><b>④ TF-IDF</b></td><td>문서의 핵심 단어를 찾는다</td><td>사람이 정한 특성뿐</td><td>신경망</td></tr>
       <tr><td><b>⑤ 신경망</b></td><td>특성을 스스로 배워 곡선 경계</td><td>비용·해석의 부담</td><td>대결</td></tr>

@@ -2,6 +2,7 @@
 """8주차·15주차 연습(문제풀이) 페이지 조립 — practice_data.py의 문제를 단일 HTML로."""
 import os, sys, html, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import building
 from build import REPO, SERIES, BASE_URL, DATE, VERSION, sprites, plain_box
 from practice_data import PAGES, WEEKFILE
 
@@ -153,7 +154,7 @@ def build(key):
              '<div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt="">'
              '<span class="prop">✏️</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div>'
              '<span class="cover-chip">%s · %d주차 연습</span></header>\n<!-- /lab-cover -->\n') % (P['no'], E(P['cover_alt']), E(P['cover_alt']), SERIES, P['no'], )
-    body = cover + hero
+    body = cover + building.floor_html(P['no']) + hero
     body = body + plain_box(key, hero + qh + ch)
     body += '''<section class="level" id="quiz"><div class="wrap stack">
   <div class="lvhead"><h2>1부 · 교안 연습문제 ({nq}문)</h2><p class="lead">교안 각 주차 끝의 연습문제입니다. 보기를 고르면 바로 정답과 해설이 나옵니다.</p></div>
@@ -205,9 +206,9 @@ def build(key):
 {spr}
 {js}
 </script>
-</body>
+{btag}</body>
 </html>
-'''.format(title=E('%d주차 연습 · %s' % (P['no'], P['title'])), desc=E(P['lead']), url=url, ogimg=BASE_URL + 'img/og_w%02d.jpg' % P['no'], css=css, body=body, foot=foot, spr=spr, js=js)
+'''.format(title=E('%d주차 연습 · %s' % (P['no'], P['title'])), desc=E(P['lead']), url=url, ogimg=BASE_URL + 'img/og_w%02d.jpg' % P['no'], css=css + building.assets(P['no'])[0], body=body, foot=foot, spr=spr, js=js, btag=building.assets(P['no'])[1])
     open(os.path.join(REPO, P['file']), 'w', encoding='utf-8').write(out)
     print('%s %.1f KB  교안 %d문 · 계산 %d문' % (P['file'], len(out.encode()) / 1024, nq, nc))
 

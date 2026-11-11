@@ -2,6 +2,7 @@
 """목차(index.html) 조립 — 주차 카드는 WEEKS 표를 고치면 된다 (ready=True면 링크가 켜짐)."""
 import os, sys, subprocess, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import building
 from build import PACK, REPO, SERIES, BASE_URL, DATE, sprites
 
 WEEKS = [
@@ -50,6 +51,7 @@ def main():
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <style>
 {css}
+{bcss}
 .weeks{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}}
 .wk{{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--text);min-width:0;position:relative}}
 a.wk:hover{{border-color:var(--seq)}}
@@ -67,13 +69,9 @@ a.wk:hover{{border-color:var(--seq)}}
 </style>
 </head>
 <body>
-<nav class="top" aria-label="바로가기"><div class="wrap"><a class="logo" href="#top"><i></i>연구실</a><div class="links"><a href="#start">처음이라면</a><a href="#weeks">주차</a><a href="#practice">실습 사례</a><a href="#how">보는 법</a><a href="#about">저자·출처</a></div></div></nav>
-<!-- lab-cover -->
-<header class="cover" id="top" data-img="cover_index" data-alt="밤의 연구실 복도. 주차마다 다른 색 빛이 새는 문들 앞에 박사·조수·초파리 연구원·주판봇이 서 있는 표지" role="img" aria-label="밤의 연구실 복도 앞에 선 네 캐릭터 표지"><div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt=""><span class="prop">📚</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div><span class="cover-chip">{series}</span></header>
-<!-- /lab-cover -->
-<header class="hero"><div class="wrap" style="padding-block:40px 32px"><div class="stack">
-  <span class="eyebrow">강의 교안 · 연구실 해설 대시보드 시리즈</span>
-  <h1>비즈니스를 위한 데이터 과학 연구실</h1>
+<nav class="top" aria-label="바로가기"><div class="wrap"><a class="logo" href="#tower"><i></i>연구실</a><div class="links"><a href="#tower">본사 건물</a><a href="#start">처음이라면</a><a href="#weeks">주차</a><a href="#practice">실습 사례</a><a href="#how">보는 법</a><a href="#about">저자·출처</a></div></div></nav>
+{tower}<header class="hero"><div class="wrap" style="padding-block:40px 32px"><div class="stack">
+  <h2 style="margin:0">이 시리즈는</h2>
   <p class="q">데이터로 더 나은 비즈니스 결정을 내리려면, 무엇을 알고 무엇을 의심해야 할까?</p>
   <p class="lead">강의 교안 「비즈니스를위한데이터과학」(전 15주)의 13개 주차와 8·15주차 연습(문제풀이)을 박사 · 조수(하루) · 초파리 연구원 · 주판봇이 진행하는 해설 페이지로 다시 썼습니다. 페이지마다 직접 돌려 보는 장난감 실험, 초파리 연구원과 주판봇의 대결, 확인 퀴즈, 지식 색인과 온톨로지·서지 꾸러미가 들어 있습니다. 교안의 실습 사례는 아래 '실습 사례'에 차례로 더합니다.</p>
   <div class="kpis k4"><div class="kpi i"><b>15</b><span>강의 주차(해설 13 · 연습 2)</span></div><div class="kpi g"><b>{ready}</b><span>공개한 주차</span></div><div class="kpi a"><b>2</b><span>연습 주차(8·15주차 문제풀이)</span></div><div class="kpi m"><b>추가 예정</b><span>실습 사례</span></div></div>
@@ -98,6 +96,7 @@ a.wk:hover{{border-color:var(--seq)}}
 </div></section>
 <section class="level" id="how"><div class="wrap stack">
   <h2>이 시리즈를 보는 법</h2>
+<div class="cover" data-img="cover_index" data-alt="밤의 연구실 복도. 주차마다 다른 색 빛이 새는 문들 앞에 박사·조수·초파리 연구원·주판봇이 서 있는 표지" role="img" aria-label="밤의 연구실 복도 앞에 선 네 캐릭터 표지"><div class="fallback" aria-hidden="true"><img data-who="fly" data-mood="point" alt="" style="transform:scaleX(-1)"><img data-who="doc" data-mood="front" alt=""><span class="prop">📚</span><img data-who="asst" data-mood="smile" alt=""><img data-who="robo" data-mood="coin" alt=""></div><span class="cover-chip">{series}</span></div>
   <div class="steps">
     <div><b>사다리를 오른다</b><p>각 주차는 3~5칸의 사다리입니다. 칸마다 앞 칸이 못 푼 문제를 풀고, 자기 한계로 끝나 다음 칸을 부릅니다.</p></div>
     <div><b>직접 돌려 본다</b><p>모든 실험은 브라우저에서 돌아가고, 데이터는 시드를 고정한 장난감 데이터입니다. 캔버스의 노란 도장이 그 표시입니다.</p></div>
@@ -119,9 +118,9 @@ a.wk:hover{{border-color:var(--seq)}}
 (function(){{var S=window.SPRITE||{{}},A=window.SPRITE_ALIAS||{{}};document.querySelectorAll('img[data-who]').forEach(function(i){{var k=i.dataset.who+'_'+i.dataset.mood;var s=S[k]||S[A[k]];if(s)i.src=s;}});
 var c=document.querySelector('.cover[data-img]');if(c&&S[c.dataset.img]){{var im=document.createElement('img');im.className='cv';im.alt=c.dataset.alt;im.width=1600;im.height=900;im.src=S[c.dataset.img];var fb=c.querySelector('.fallback');if(fb)fb.remove();c.insertBefore(im,c.firstChild);}}}})();
 </script>
-</body>
+{btag}</body>
 </html>
-'''.format(css=css, spr=spr, cards=cards, series=SERIES, url=BASE_URL, date=DATE, ready=sum(1 for w in WEEKS if w[6]))
+'''.format(css=css, spr=spr, cards=cards, series=SERIES, url=BASE_URL, date=DATE, ready=sum(1 for w in WEEKS if w[6]), tower=building.tower_html('비즈니스를 위한 데이터 과학 연구실', '강의 교안 · 연구실 해설 시리즈 · 가상 다국적 기업 본사 안내도'), bcss=building.assets()[0], btag=building.assets()[1])
     open(os.path.join(REPO, 'index.html'), 'w', encoding='utf-8').write(out)
     print('index.html %.1f KB' % (len(out.encode()) / 1024))
 
