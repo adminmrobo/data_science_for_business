@@ -4,13 +4,13 @@
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 5주차 · 데이터 분석 모형: 분류모형(1)</span>
       <h1>도미와 빙어</h1>
       <p class="q">생선 49마리의 길이와 무게만으로, 처음 보는 생선의 종류를 맞힐 수 있을까?</p>
-      <p class="lead">이번 주부터 진짜 데이터로 손을 움직입니다. 교안의 Google Colab 실습처럼 파이썬 데이터 구조를 익히고, Fish Market 데이터의 도미 35마리와 빙어 14마리를 입력·점검·시각화한 뒤, 한 마리씩 [길이, 무게] 짝을 지어 정답(라벨)을 붙여 첫 분류 모델 KNN을 학습시킵니다. 화면 속 실험은 교안 코드의 흐름을 그대로 따라갑니다.</p>
+      <p class="lead">이번 주부터 진짜 데이터로 손을 움직입니다. 교안 실습처럼 도미 35마리와 빙어 14마리의 길이·무게를 넣고, 잘 들어갔는지 점검하고, 그림으로 봅니다. 그다음 한 마리씩 [길이, 무게] 짝을 짓고 정답을 붙여 첫 분류 모델(KNN)을 가르칩니다. 화면 속 실험은 교안 코드의 흐름을 그대로 따라갑니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi i"><b>49마리</b><span>도미 35 · 빙어 14<sup>[1][2]</sup></span></div>
         <div class="kpi m"><b>2개 특성</b><span>길이(cm) · 무게(g)<sup>[1]</sup></span></div>
         <div class="kpi a"><b>6가지</b><span>파이썬 데이터 구조<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>K = 5</b><span>KNN 기본값<sup>[1]</sup></span></div>
-        <div class="kpi r"><b>1.0</b><span>학습 데이터로 채점한 정확도<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>5마리</b><span>물어보는 이웃 수(KNN 기본값)<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>100%</b><span>공부한 생선으로 다시 채점한 정답률<sup>[1]</sup></span></div>
         <div class="kpi g"><b id="heroPred">–</b><span>30cm·600g 생선의 예측<sup>계산</sup></span></div>
       </div>
     </div>
@@ -67,7 +67,7 @@
   </div>
   <div class="pair">
     <div><div class="tag fly">연구실에서는</div><p>같은 시약도 비커(자유롭게 붓고 덜기), 밀봉 앰풀(못 바꿈), 이름표 붙은 서랍(이름으로 찾기), 중복 없는 견본 상자에 담으면 다룰 수 있는 방법이 달라집니다.</p></div>
-    <div><div class="tag nn">파이썬에서는</div><p>파이썬에는 데이터를 담는 그릇이 여러 개 있습니다. 순서대로 담고 바꿀 수 있는 목록(List), 한 번 담으면 못 바꾸는 목록(Tuple), 이름표로 꺼내는 서랍(Dictionary), 중복을 없애는 상자(Set), 숫자 계산이 빠른 배열(Array), 엑셀처럼 행과 열이 있는 표(DataFrame).<sup>[1]</sup></p></div>
+    <div><div class="tag nn">파이썬에서는</div><p>파이썬에는 데이터를 담는 그릇이 여러 개 있습니다. ① 바꿀 수 있는 목록(List) ② 못 바꾸는 목록(Tuple) ③ 이름표로 꺼내는 서랍(Dictionary) ④ 중복을 없애는 상자(Set) ⑤ 계산이 빠른 배열(Array) ⑥ 엑셀 같은 표(DataFrame).<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="데이터 구조 실험대">
     <h3>같은 동작, 다른 그릇 — 결과를 비교해 보기</h3>
@@ -114,7 +114,7 @@
 <!-- ③ zip·라벨링 -->
 <section class="level" id="lv3"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">3<small>준비</small></div><h2>zip()으로 묶고 라벨 붙이기</h2></div>
+    <div class="hexrow"><div class="hexno">3<small>준비</small></div><h2>길이·무게를 짝 짓고 정답 붙이기</h2></div>
     <p class="sub"><span class="lvtag g">방법: 한 마리씩 [길이, 무게] 짝 만들기 · 정답표 도미 = 1, 빙어 = 0</span><span class="lvtag">현장: 데이터 라벨링</span></p>
   </div>
   <div class="pair">
@@ -150,7 +150,7 @@
   <section class="panel" aria-label="KNN 예측 실험">
     <h3>그림을 눌러 새 생선을 놓아 보기 — 이웃과 투표 보기</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="kk">K (n_neighbors)</label><input type="range" id="kk" min="1" max="15" step="2" value="5"><span class="val" id="kkv">5</span></div>
+      <div class="group"><label class="glabel" for="kk">물어볼 이웃 수(K)</label><input type="range" id="kk" min="1" max="15" step="2" value="5"><span class="val" id="kkv">5</span></div>
       <div class="group" id="preBtns" role="group" aria-label="예시 생선"><span class="glabel">예시 생선</span></div>
     </div>
     <div class="cwrap"><canvas id="c4" class="wide" aria-label="길이-무게 평면 위 49마리와 새 생선(초록 별), 가장 가까운 K마리로 이어진 선. 눌러서 새 생선 위치를 바꿀 수 있다" style="cursor:crosshair"></canvas></div>
@@ -216,7 +216,7 @@
   <h2>실험을 마치며</h2>
   <figure class="scene" data-scene="sc_w05_outro" hidden><img alt="도미와 빙어 그림 앞에서 커피를 든 초파리 연구원과 어깨를 으쓱하는 주판봇, 턱을 괸 박사와 웃는 조수"></figure>
   <div class="dialog">
-    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>데이터는 목적에 맞는 그릇에 담고, 담은 뒤에 반드시 점검한다.</li><li>특성과 정답은 zip과 라벨로 같은 순서에 맞춘다.</li><li>KNN은 가까운 이웃의 다수결이고, 학습 데이터로 낸 점수는 믿지 않는다.</li></ul></div></div>
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>데이터는 목적에 맞는 그릇에 담고, 담은 뒤에 반드시 점검한다.</li><li>길이·무게와 정답은 한 마리씩 같은 순서로 짝 짓는다.</li><li>KNN은 가까운 이웃의 다수결이고, 공부한 데이터로 낸 점수는 믿지 않는다.</li></ul></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>이번 판은 둘 다 49마리를 다 맞혔어요. 데이터가 너무 쉬웠던 거예요.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>쉬운 데이터에선 무게 하나도 통하네. 중간 크기 생선이 나오면 다시 보자.</p></div></div>
     <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="meh" data-img="robo_meh" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>본전은 지켰다. 다음 주 농어 판에서 승부 보자고.</p></div></div>

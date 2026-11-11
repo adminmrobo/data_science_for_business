@@ -119,7 +119,7 @@ function draw5(){var S=kStats(gA,gZ,gS),rows=CUS.map(function(c){var g=gen(c,gA,
   rows.sort(function(p,q){return p.n-q.n||(p.g.age+p.g.zip).localeCompare(q.g.age+q.g.zip)});
   $('#kTable').innerHTML='<thead><tr><th>가명 ID</th><th>나이</th><th>성별</th><th>우편번호</th><th>월 구매액</th><th>같은 조합 인원</th></tr></thead><tbody>'+rows.map(function(r){var bad=r.n===1;
     return '<tr><td>'+r.c.id+'</td><td'+(gA?' class="fix"':'')+'>'+r.g.age+'</td><td'+(gS?' class="fix"':'')+'>'+r.g.sex+'</td><td'+(gZ?' class="fix"':'')+'>'+r.g.zip+'</td><td>'+r.c.buy.toLocaleString('ko-KR')+'</td><td class="'+(bad?'bad':r.n<3?'miss':'')+'">'+r.n+'명'+(bad?' · 특정 가능':'')+'</td></tr>';}).join('')+'</tbody>';
-  kpis($('#k5'),[['r',S.uniq+'명','혼자인 고객(k = 1)'],['a','k = '+S.k,'가장 작은 묶음'],['i',S.groups+'개','남은 묶음 수(정보량)'],['g',pct((40-S.uniq)/40),'특정되지 않는 고객']]);
+  kpis($('#k5'),[['r',S.uniq+'명','같은 조합이 혼자뿐인 고객(k = 1)'],['a','k = '+S.k,'가장 작은 묶음'],['i',S.groups+'개','남은 묶음 수(정보량)'],['g',pct((40-S.uniq)/40),'특정되지 않는 고객']]);
   $('#ins5').innerHTML=S.k>=3?'<p class="g">모든 묶음이 '+S.k+'명 이상입니다. 다만 묶음이 '+S.groups+'개로 줄어 지역·나이별 분석은 그만큼 거칠어졌습니다.</p>':
     (S.uniq?'<p class="r">이름을 지웠는데도 '+S.uniq+'명은 같은 조합이 혼자뿐입니다. 다른 데이터와 맞춰 보면 누구인지 알 수 있습니다.</p>':'<p class="a">혼자인 고객은 없지만 k = '+S.k+'입니다. 두 명 중 한 명으로 좁혀지는 것도 위험할 수 있습니다.</p>');}
 draw5();

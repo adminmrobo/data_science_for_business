@@ -42,7 +42,7 @@ function draw1(){var K=+$('#kk').value,S=+$('#it').value,R=kmeans(K,S),c=$('#c1'
   x.strokeStyle=C.amber;x.lineWidth=2;x.beginPath();ins.forEach(function(v,i){i?x.lineTo(ex(i+2),ey(v)):x.moveTo(ex(i+2),ey(v));});x.stroke();x.lineWidth=1;ins.forEach(function(v,i){x.fillStyle=i+2===K?C.gfp:C.amber;x.beginPath();x.arc(ex(i+2),ey(v),i+2===K?6:4,0,7);x.fill();txt(x,'K='+(i+2),ex(i+2),Y0+Hh+12,C.muted,9,'center');});
   txt(x,'엘보우: 군집 내 거리 제곱합',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'예시 데이터');
   var sizes=[];for(var k=0;k<K;k++)sizes.push(R.lab.filter(function(l){return l===k}).length);var vip=R.cen.map(function(cz,k){return [uy(cz[1]),k]}).sort(function(a,b){return b[0]-a[0]})[0];
-  kpis($('#k1k'),[['i',sizes.join(' · '),'군집별 고객 수'],['a',R.inertia.toFixed(1),'군집 내 거리 제곱합(표준화 단위)'],['g',Math.round(ux(R.cen[vip[1]][0]))+'일 · '+Math.round(vip[0])+'만','구매액이 가장 큰 군집의 중심'],['m',S+'회','반복']]);
+  kpis($('#k1k'),[['i',sizes.join(' · '),'군집별 고객 수'],['a',R.inertia.toFixed(1),'그룹 안 흩어짐(거리 제곱합)'],['g',Math.round(ux(R.cen[vip[1]][0]))+'일 · '+Math.round(vip[0])+'만','구매액이 가장 큰 군집의 중심'],['m',S+'회','반복']]);
   $('#ins1').innerHTML=S===0?'<p class="a">반복 0: 처음 고른 중심(별)만 있고 아직 배정 전입니다. 반복을 올려 보세요.</p>':K===3?'<p class="g">K = 3, 반복 '+S+': 최근에 많이 사는 고객, 중간 고객, 오래 안 온 고객으로 나뉘었습니다. 마케팅이라면 VIP 관리 · 일반 육성 · 이탈 방지 캠페인으로 이어집니다.</p>':'<p class="a">K = '+K+': '+(K<3?'서로 다른 고객이 한 무리에 섞였습니다.':'한 무리가 둘로 쪼개져 의미 차이가 작은 세그먼트가 생겼습니다.')+' 엘보우 그림의 꺾이는 점은 K = 3 근처입니다.</p>';}
 addMod($('#c1'),function(dt){if(!dt)draw1();});
 
@@ -82,7 +82,7 @@ function draw4(){var d=DOCS[dk],cnt={};d.forEach(function(t){cnt[t]=(cnt[t]||0)+
   txt(x,'TF(문서 안 빈도)',X0,Y0-4,C.info,11,'left',700);txt(x,'TF-IDF',X0+Wd+30,Y0-4,C.gfp,11,'left',700);
   T.forEach(function(q,i){var y=Y0+6+i*(bh+6);txt(x,q.t+' (df '+DF[q.t]+')',X0-6,y+bh/2,C.muted,10,'right');x.fillStyle=C.info;x.fillRect(X0,y,q.tf/mxT*(Wd-40),bh);txt(x,q.tf.toFixed(2),X0+q.tf/mxT*(Wd-40)+4,y+bh/2,C.text,10);x.fillStyle=C.gfp;x.fillRect(X0+Wd+30,y,q.ti/mxI*(Wd-40),bh);txt(x,q.ti.toFixed(3),X0+Wd+34+q.ti/mxI*(Wd-40),y+bh/2,C.text,10);});
   stamp(x,W,'예시 VOC');
-  kpis($('#k4k'),[['g',T[0].t,'TF-IDF 1위'],['i',T.slice().sort(function(a,b){return b.tf-a.tf})[0].t,'TF 1위'],['a',DF['배송']+' / 6','"배송"이 나온 문서 수'],['m',Math.log(6/DF['배송']).toFixed(3),'"배송"의 IDF']]);
+  kpis($('#k4k'),[['g',T[0].t,'TF-IDF 1위'],['i',T.slice().sort(function(a,b){return b.tf-a.tf})[0].t,'TF 1위'],['a',DF['배송']+' / 6','"배송"이 나온 문서 수'],['m',Math.log(6/DF['배송']).toFixed(3),'"배송"의 희귀도(IDF)']]);
   var b=cnt['배송'];$('#ins4').innerHTML=b?'<p class="a">이 문서에도 "배송"이 '+b+'번 나오지만 6건 중 '+DF['배송']+'건에 나오는 흔한 단어라 TF-IDF가 낮습니다. 핵심어는 "'+T[0].t+'"입니다.</p>':'<p class="g">이 문서의 핵심어는 "'+T[0].t+'"(TF-IDF '+T[0].ti.toFixed(3)+'). 다른 문서에 거의 없는 단어일수록 위로 올라옵니다.</p>';}
 addMod($('#c4'),function(dt){if(!dt)draw4();});
 
@@ -95,7 +95,7 @@ function draw5(){var f=net(hn),c=$('#c5'),W=fitC(c,320),H=320,x=c.getContext('2d
   var X1=X0+S+40,W1=W-X1-50,lay=[2,hn,1],cols=[C.text,C.amber,C.gfp],lx=function(k){return X1+k*(W1/2)};lay.forEach(function(n,k){if(!n)return;for(var a=0;a<n;a++){var y=Y0+(a+1)*S/(n+1);var nk=k+1<3&&lay[k+1]?k+1:k+2<3?k+2:-1;if(nk>0){for(var b=0;b<lay[nk];b++){x.strokeStyle='rgba(130,184,255,.35)';x.beginPath();x.moveTo(lx(k),y);x.lineTo(lx(nk),Y0+(b+1)*S/(lay[nk]+1));x.stroke();}}x.fillStyle=cols[k];x.beginPath();x.arc(lx(k),y,7,0,7);x.fill();}});
   txt(x,'입력 2',lx(0),Y0+S+14,C.muted,10,'center');if(hn)txt(x,'은닉 '+hn+' (tanh)',lx(1),Y0+S+14,C.amber,10,'center');txt(x,'출력 1',lx(2),Y0+S+14,C.gfp,10,'center');stamp(x,W,'예시 데이터');
   var a=acc(f,RING),nP=hn?hn*3+hn+1:3;
-  kpis($('#k5k'),[[a>.95?'g':a>.7?'a':'r',pct(a,1),'학습 데이터 정확도'],['i',nP+'개','학습한 가중치·편향 수'],['m',hn?hn+'개':'없음','은닉 뉴런'],['a','2,000회','경사하강 반복']]);
+  kpis($('#k5k'),[[a>.95?'g':a>.7?'a':'r',pct(a,1),'학습 데이터 정확도'],['i',nP+'개','배운 숫자 개수'],['m',hn?hn+'개':'없음','은닉 뉴런'],['a','2,000회','고친 횟수(경사 하강)']]);
   $('#ins5').innerHTML=hn===0?'<p class="r">은닉층이 없으면 로지스틱 회귀입니다. 직선 하나로는 원을 가를 수 없어 '+pct(a,1)+'.</p>':hn===2?'<p class="a">뉴런 2개: 직선 두 개를 조합해 띠 모양 경계를 만들었습니다. '+pct(a,1)+'.</p>':'<p class="g">뉴런 '+hn+'개: 원을 감싸는 경계를 스스로 배웠습니다. '+pct(a,1)+'. 가중치 '+nP+'개를 학습했습니다.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 

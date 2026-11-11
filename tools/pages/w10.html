@@ -6,12 +6,12 @@
       <p class="q">특성을 많이 만들수록 모델은 똑똑해질까, 아니면 엉뚱해질까?</p>
       <p class="lead">이번 주는 세 가지 도구를 손에 쥡니다. 회귀식을 확률로 바꾸는 로지스틱 회귀(분류의 옷을 입은 회귀), 예/아니오 질문을 이어 가는 의사결정나무, 그리고 특성을 새로 만드는 특성공학과 그 부작용을 막는 릿지·라쏘입니다. 마지막에는 9주차 농어로 "특성을 다 쓰되 계수를 묶을 것인가"를 겨룹니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
-        <div class="kpi g"><b>σ(z) = 1 ÷ (1 + e<sup>−z</sup>)</b><span>시그모이드: z를 0~1 확률로<sup>[1]</sup></span></div>
-        <div class="kpi i"><b>1 − Σp²</b><span>지니 불순도, 반반이면 0.5<sup>[1]</sup></span></div>
-        <div class="kpi a"><b>3 → 19 → 55</b><span>특성 3개를 3차·5차로 늘리면<sup>[1]</sup></span></div>
-        <div class="kpi r"><b id="heroCoef">–</b><span>규제 없는 8차 회귀의 가장 큰 계수<sup>계산</sup></span></div>
-        <div class="kpi m"><b>Ridge · Lasso</b><span>계수 다이어트 · 특성 선택<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>max_depth</b><span>나무의 깊이 = 질문 횟수<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>0 ~ 1</b><span>점수를 확률로 바꾸는 S자 곡선(시그모이드)<sup>[1]</sup></span></div>
+        <div class="kpi i"><b>0 ~ 0.5</b><span>상자 안이 섞인 정도(지니). 반반이면 0.5<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>3 → 19 → 55</b><span>재료 3개를 세제곱·다섯제곱까지 늘리면 생기는 재료 수<sup>[1]</sup></span></div>
+        <div class="kpi r"><b id="heroCoef">–</b><span>벌점 없이 8제곱까지 쓴 곡선의 가장 큰 계수<sup>계산</sup></span></div>
+        <div class="kpi m"><b>릿지 · 라쏘</b><span>계수에 벌점 주기 · 쓸모없는 재료 빼기<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>질문 횟수</b><span>의사결정나무의 깊이<sup>[1]</sup></span></div>
       </div>
     </div>
     <div class="pixelart">
@@ -52,7 +52,7 @@
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 10주차의 세 교시</h2></div>
-  <div class="flowchips" aria-label="10주차 흐름"><span>1교시: 로지스틱 회귀 · 시그모이드 · 의사결정나무 · 지니 불순도 · 가지치기</span><i>→</i><span>2교시: 실습(Fish Market 다중 분류 · Wine 이진 분류 · 교차 검증 · GridSearchCV)</span><i>→</i><span class="lim">3교시: 특성공학 · PolynomialFeatures · 릿지 · 라쏘</span></div>
+  <div class="flowchips" aria-label="10주차 흐름"><span>1교시: 로지스틱 회귀 · 시그모이드 · 의사결정나무 · 지니 불순도 · 가지치기</span><i>→</i><span>2교시: 실습(생선 종류 여럿 맞히기 · 와인 두 종류 맞히기 · 돌아가며 시험 보기 · 설정값 자동 찾기)</span><i>→</i><span class="lim">3교시: 특성공학(재료 늘리기) · 릿지 · 라쏘(계수에 벌점)</span></div>
   <div class="pair">
     <div><div class="tag fly">로지스틱 회귀</div><p>z = w₀ + w₁x₁ + … 로 점수를 계산하고, 시그모이드로 확률을 만들어 0.5를 기준으로 나눕니다. 이름은 회귀지만 일은 분류입니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">의사결정나무</div><p>스무고개처럼 "특성 ≤ 기준값?"을 묻고 갈라 내려가, 잎(리프)에서 결론을 냅니다. 갈 때마다 섞인 정도(지니 불순도)가 가장 많이 줄어드는 질문을 고릅니다.<sup>[1]</sup></p></div>
@@ -72,8 +72,8 @@
   <section class="panel" aria-label="로지스틱 회귀 실험">
     <h3>w₁과 w₀를 움직여 S자 곡선 맞추기</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="w1">가중치 w₁</label><input type="range" id="w1" min="0" max="3" step="0.1" value="0.5"><span class="val" id="w1v">0.5</span></div>
-      <div class="group"><label class="glabel" for="w0">편향 w₀</label><input type="range" id="w0" min="-12" max="2" step="0.5" value="-2"><span class="val" id="w0v">-2</span></div>
+      <div class="group"><label class="glabel" for="w1">영향력(w₁)</label><input type="range" id="w1" min="0" max="3" step="0.1" value="0.5"><span class="val" id="w1v">0.5</span></div>
+      <div class="group"><label class="glabel" for="w0">기준점 이동(w₀)</label><input type="range" id="w0" min="-12" max="2" step="0.5" value="-2"><span class="val" id="w0v">-2</span></div>
       <div class="group" id="fitBtns" role="group" aria-label="최적화"><span class="glabel">최적화</span></div>
     </div>
     <div class="cwrap"><canvas id="c1" class="wide" aria-label="공부시간에 따른 합격(1)·불합격(0) 점과 시그모이드 곡선, 오른쪽에 z 값의 직선"></canvas></div>
@@ -133,7 +133,7 @@
   </div>
   <section class="panel" aria-label="의사결정나무 깊이 실험">
     <h3>max_depth를 바꿔 보기 — 훈련 300 · 시험 300</h3>
-    <div class="ctrl"><div class="group"><label class="glabel" for="dp">max_depth</label><input type="range" id="dp" min="1" max="10" step="1" value="2"><span class="val" id="dpv">2</span></div></div>
+    <div class="ctrl"><div class="group"><label class="glabel" for="dp">질문 횟수 상한(깊이)</label><input type="range" id="dp" min="1" max="10" step="1" value="2"><span class="val" id="dpv">2</span></div></div>
     <div class="cwrap"><canvas id="c3" class="wide" aria-label="왼쪽은 나무의 결정 영역, 오른쪽은 깊이에 따른 훈련·시험 정확도"></canvas></div>
     <section class="kpis k4" id="k3k"></section>
     <pre class="out" id="rules3" style="max-height:none;font-size:13px;white-space:pre-wrap;word-break:keep-all"></pre>
@@ -151,7 +151,7 @@
 <!-- ④ 특성공학 -->
 <section class="level" id="lv4"><div class="wrap stack">
   <div class="lvhead">
-    <div class="hexrow"><div class="hexno">4<small>재료</small></div><h2>특성공학 — PolynomialFeatures와 커지는 계수</h2></div>
+    <div class="hexrow"><div class="hexno">4<small>재료</small></div><h2>특성공학 — 재료를 늘리면 커지는 계수</h2></div>
     <p class="sub"><span class="lvtag g">설정: 몇 제곱까지 새 특성을 만들지(차수)</span><span class="lvtag">데이터: 농어 56마리(교안)</span></p>
   </div>
   <div class="pair">
@@ -161,8 +161,8 @@
   <section class="panel" aria-label="특성 개수와 계수 크기 실험">
     <h3>특성 개수 계산기 + 농어 길이를 degree차까지 늘린 회귀(규제 없음)</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="nf">원래 특성 수</label><input type="range" id="nf" min="1" max="6" step="1" value="3"><span class="val" id="nfv">3</span></div>
-      <div class="group"><label class="glabel" for="dg4">degree</label><input type="range" id="dg4" min="1" max="8" step="1" value="3"><span class="val" id="dg4v">3</span></div>
+      <div class="group"><label class="glabel" for="nf">원래 재료(특성) 수</label><input type="range" id="nf" min="1" max="6" step="1" value="3"><span class="val" id="nfv">3</span></div>
+      <div class="group"><label class="glabel" for="dg4">몇 제곱까지(차수)</label><input type="range" id="dg4" min="1" max="8" step="1" value="3"><span class="val" id="dg4v">3</span></div>
     </div>
     <div class="cwrap"><canvas id="c4" class="wide" aria-label="왼쪽은 degree에 따른 특성 개수 막대, 오른쪽은 농어 길이 다항 회귀 곡선"></canvas></div>
     <section class="kpis k4" id="k4k"></section>
@@ -189,8 +189,8 @@
   <section class="panel" aria-label="릿지·라쏘 실험">
     <h3>농어 길이 8차 다항 특성(표준화) + 규제</h3>
     <div class="ctrl">
-      <div class="group" id="rgBtns" role="group" aria-label="규제"><span class="glabel">규제</span></div>
-      <div class="group"><label class="glabel" for="al">α</label><input type="range" id="al" min="0" max="5" step="1" value="2"><span class="val" id="alv">0.1</span></div>
+      <div class="group" id="rgBtns" role="group" aria-label="규제"><span class="glabel">벌점 방식(규제)</span></div>
+      <div class="group"><label class="glabel" for="al">벌점 세기(α)</label><input type="range" id="al" min="0" max="5" step="1" value="2"><span class="val" id="alv">0.1</span></div>
     </div>
     <div class="cwrap"><canvas id="c5" class="wide" aria-label="왼쪽은 규제된 곡선과 농어, 오른쪽은 계수 8개의 막대"></canvas></div>
     <section class="kpis k4" id="k5k"></section>
@@ -228,7 +228,7 @@
       <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
       <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
       <p class="muted guessfb"></p>
-      <p class="muted" style="font-size:14px">조건 메모: 시험 14마리에는 훈련 범위(13.7cm~)보다 작은 8.4cm 농어가 들어 있어 규제 없는 고차 곡선이 특히 크게 빗나갑니다. 차수를 2~3으로 낮추면 두 방법의 차이는 거의 사라집니다(9주차 ③칸).</p>
+      <p class="muted" style="font-size:14px">조건 메모: 시험 14마리에는 공부한 범위(13.7cm 이상)보다 작은 8.4cm 농어가 있습니다. 그래서 벌점 없이 구불구불한 곡선이 특히 크게 빗나갑니다. 제곱 횟수를 2~3으로 낮추면 두 방법의 차이는 거의 사라집니다(9주차 ③칸).</p>
     </div>
   </div>
 </div></section>
@@ -246,9 +246,9 @@
       <tr><td><b>⑤ 릿지·라쏘</b></td><td>계수 규제, 특성 선택</td><td>α를 정직하게 골라야</td><td>대결: 교차 검증</td></tr>
     </tbody></table></div>
   <div class="steps">
-    <div><b>교안 정리 1</b><p>로지스틱 회귀(시그모이드, 가중치·편향, 비용함수), 의사결정나무(스무고개, 지니 불순도, 가지치기, 해석가능성).</p></div>
+    <div><b>교안 정리 1</b><p>로지스틱 회귀(S자 곡선, 영향력·기준점, 틀린 정도), 의사결정나무(스무고개, 지니 불순도, 가지치기, 해석가능성).</p></div>
     <div><b>교안 정리 2</b><p>Fish Market(종류 여럿)·Wine(답 둘) 분류 실습, 표준화, 성적표 출력, 나무 그림 그리기, 특성 중요도, 교차 검증, 설정값 자동 찾기.</p></div>
-    <div><b>교안 정리 3</b><p>특성공학, PolynomialFeatures, 차원의 저주, 릿지(L2)·라쏘(L1), RFE·SelectKBest·Pipeline, 도메인 특화 특성.</p></div>
+    <div><b>교안 정리 3</b><p>특성공학(재료 늘리기), 재료가 너무 많을 때의 문제, 릿지·라쏘(계수에 벌점), 쓸 재료를 자동으로 고르는 방법들, 업무 지식으로 만든 재료.</p></div>
   </div>
 </div></section>
 
@@ -257,7 +257,7 @@
   <h2>실험을 마치며</h2>
   <figure class="scene" data-scene="sc_w10_outro" hidden><img alt="고삐 달린 곡선 앞에서 팔짱 낀 초파리 연구원과, 끝이 튀어 오른 곡선 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수"></figure>
   <div class="dialog">
-    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>로지스틱 회귀는 직선 점수를 시그모이드로 확률로 바꾼 분류기다.</li><li>의사결정나무는 불순도를 줄이는 질문을 잇고, 깊이로 과적합을 조절한다.</li><li>특성을 늘리면 규제를 함께, α는 교차 검증으로 고른다.</li></ul></div></div>
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>로지스틱 회귀는 점수를 S자 곡선에 넣어 0~1 확률로 바꾼다.</li><li>의사결정나무는 가장 깔끔하게 가르는 질문을 잇고, 질문 횟수에 상한을 둬 외우기를 막는다.</li><li>재료를 늘리면 계수에 벌점을 함께 주고, 벌점 세기는 돌아가며 시험 봐서 고른다.</li></ul></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="arms" data-img="fly_arms" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>특성 8개를 다 썼는데도 안 무너졌지. 고삐 값은 내가 고른 게 아니라 교차 검증이 고른 거야.</p></div></div>
     <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="sigh" data-img="robo_sigh" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>훈련 점수는 내가 1등이었는데… 계수 하나가 수백만이면 장부가 터지는구나.</p></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>11주차에는 모델 최적화를 마무리하고 시계열로 넘어가요. ②칸에서 "최적 분할 찾기"도 눌러 보세요.</p></div></div>

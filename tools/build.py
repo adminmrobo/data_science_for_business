@@ -16,6 +16,7 @@ from abbr import ABBR
 from plain import PLAIN
 from easy import EASY, ASK
 from talk import DLG
+from take import TAKE
 
 def load(n):
     spec = importlib.util.spec_from_file_location('w' + n, os.path.join(HERE, 'pages', 'w%s.py' % n))
@@ -202,6 +203,16 @@ def add_talk(n, body):
         body = body[:j] + '<div class="dialog lvtalk" aria-label="연구실 대화">' + says + '</div>\n  ' + body[j:]
     return body
 
+def add_take(n, body):
+    for (wk, lv), t in TAKE.items():
+        if wk != n:
+            continue
+        i = body.find('<section class="level" id="%s">' % lv)
+        cands = [k for k in (body.find('<div class="easy"', i), body.find('<div class="pair">', i)) if k > i]
+        j = min(cands)
+        body = body[:j] + '<p class="takeaway"><b>이 칸의 결론</b>%s</p>\n  ' % t + body[j:]
+    return body
+
 def page(n):
     m = load(n)
     slug = m.SLUG
@@ -271,6 +282,7 @@ def page(n):
     body = body.replace('</header>', '</header>\n' + plain_box(n, body), 1)
     body = add_easy(n, body)
     body = add_talk(n, body)
+    body = add_take(n, body)
     out = head + NAVTPL.format(links=links) + '\n' + cover + body + '\n' + KG_SECTION.replace('{ph}', m.SEARCH_PH) + foot + scripts
     p = os.path.join(REPO, fname)
     open(p, 'w', encoding='utf-8').write(out)

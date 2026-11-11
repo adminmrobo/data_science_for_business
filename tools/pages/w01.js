@@ -104,7 +104,7 @@ function draw3(){var c=$('#c3'),W=fitC(c,300),H=300,x=c.getContext('2d');grid(x,
   stamp(x,W,'예시값 · 실제 의학 통계 아님');
   var Y=rate(function(p){return p.li}),N=rate(function(p){return !p.li});
   var sY=rate(function(p){return p.sm&&p.li}),sN=rate(function(p){return p.sm&&!p.li}),nY=rate(function(p){return !p.sm&&p.li}),nN=rate(function(p){return !p.sm&&!p.li});
-  kpis($('#k3'),[['r',(Y.r/N.r).toFixed(1)+'배','전체: 라이터 소지자의 폐암 비율'],['i',phi().toFixed(2),'라이터–폐암 상관(φ)'],['g',pp(sY.r-sN.r),'흡연자 안의 차이'],['g',pp(nY.r-nN.r),'비흡연자 안의 차이']]);
+  kpis($('#k3'),[['r',(Y.r/N.r).toFixed(1)+'배','전체: 라이터 소지자의 폐암 비율'],['i',phi().toFixed(2),'라이터와 폐암이 함께 움직이는 정도(φ)'],['g',pp(sY.r-sN.r),'흡연자 안의 차이'],['g',pp(nY.r-nN.r),'비흡연자 안의 차이']]);
   $('#eq3').innerHTML=split?'흡연자: '+pct(sY.r,1)+' vs '+pct(sN.r,1)+' · 비흡연자: '+pct(nY.r,1)+' vs '+pct(nN.r,1)+' → 층 안에서는 <b>차이가 거의 없다</b>':'P(폐암 | 라이터 있음) = <em>'+pct(Y.r,1)+'</em>,  P(폐암 | 라이터 없음) = <b>'+pct(N.r,1)+'</b>';
   $('#ins3').innerHTML=split?'<p class="g">흡연 여부를 고정하니 라이터 유무에 따른 차이가 흡연자 '+pp(sY.r-sN.r)+', 비흡연자 '+pp(nY.r-nN.r)+'로 거의 0이 되었습니다. 전체에서 보인 '+(Y.r/N.r).toFixed(1)+'배 차이는 흡연이 만든 것입니다.</p>':
     '<p class="r">전체로 보면 라이터 소지자의 폐암 비율이 '+(Y.r/N.r).toFixed(1)+'배 높습니다. 이 표만 보면 "라이터가 위험하다"는 결론이 그럴듯해 보입니다.</p><p class="a">\'흡연 여부로 나눠 보기\'를 눌러 보세요.</p>';}
@@ -127,7 +127,7 @@ function draw4(){var R=ab(nCur),c=$('#c4'),W=fitC(c,300),H=300,x=c.getContext('2
   txt(x,'관측 차이(B − A)의 분포 · 실험 1,000번 · 집단당 '+nCur.toLocaleString('ko-KR')+'명',X,22,C.text,13,'left',700);
   stamp(x,W,'설명용 모형 · 실제 데이터 아님');
   var se=Math.sqrt(PA*(1-PA)/nCur+PB*(1-PB)/nCur);
-  kpis($('#k4'),[['g',pct(R.okB,1),'B(정답)를 고른 비율'],['r',pct(1-R.okB,1),'A를 고르거나 비김(틀림)'],['i',(R.mean*100).toFixed(2)+'%p','관측 차이 평균'],['a',(se*100).toFixed(2)+'%p','차이의 표준오차(이론)']]);
+  kpis($('#k4'),[['g',pct(R.okB,1),'B(정답)를 고른 비율'],['r',pct(1-R.okB,1),'A를 고르거나 비김(틀림)'],['i',(R.mean*100).toFixed(2)+'%p','관측 차이 평균'],['a',(se*100).toFixed(2)+'%p','우연히 생기는 차이의 크기(표준오차)']]);
   $('#eq4').innerHTML='표준오차 = √(0.05×0.95/<i>'+nCur+'</i> + 0.06×0.94/<i>'+nCur+'</i>) = <b>'+(se*100).toFixed(2)+'%p</b>  vs  진짜 차이 <em>1.00%p</em>';
   $('#ins4').innerHTML=R.okB<.7?'<p class="r">집단당 '+nCur+'명이면 표준오차('+(se*100).toFixed(2)+'%p)가 진짜 차이(1%p)보다 큽니다. 실험 '+Math.round((1-R.okB)*1000)+'번이 틀린 쪽을 골랐습니다.</p>':
     (R.okB<.9?'<p class="a">정답률 '+pct(R.okB,1)+'. 나아졌지만 열 번 중 한두 번은 여전히 틀립니다.</p>':'<p class="g">집단당 '+nCur.toLocaleString('ko-KR')+'명이면 정답률 '+pct(R.okB,1)+'. 분포가 0의 오른쪽으로 거의 다 넘어갔습니다.</p>');}

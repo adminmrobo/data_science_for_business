@@ -27,7 +27,7 @@ function draw1(){var w1=fit1?BEST1[1]:+$('#w1').value,w0=fit1?BEST1[0]:+$('#w0')
   x.strokeStyle=C.amber;x.lineWidth=2;x.beginPath();x.moveTo(hx(0),zs(w0));x.lineTo(hx(10),zs(w0+w1*10));x.stroke();x.lineWidth=1;txt(x,'z = w₀ + w₁·시간 (직선, −∞~+∞)',X1,Y0-8,C.amber,11,'left',700);
   stamp(x,W,'예시 데이터 · 40명');
   var acc=mean(ST.map(function(d){return (sig(w0+w1*d.h)>=.5?1:0)===d.y?1:0})),L=lossL(w0,w1),Lb=lossL(BEST1[0],BEST1[1]);
-  kpis($('#k1k'),[[L<=Lb+.005?'g':'a',L.toFixed(3),'비용(로그 손실)'],['i',Lb.toFixed(3),'최소 비용'],['m',pct(acc,1),'정확도(0.5 기준)'],['a',pct(sig(w0+w1*6),0),'6시간 공부한 학생의 합격 확률']]);
+  kpis($('#k1k'),[[L<=Lb+.005?'g':'a',L.toFixed(3),'틀린 정도(비용)'],['i',Lb.toFixed(3),'가장 작은 틀린 정도'],['m',pct(acc,1),'정확도(0.5 기준)'],['a',pct(sig(w0+w1*6),0),'6시간 공부한 학생의 합격 확률']]);
   $('#ins1').innerHTML=L<=Lb+.005?'<p class="g">비용이 가장 작은 곡선입니다: p = σ('+w0.toFixed(2)+' + '+w1.toFixed(2)+' × 시간). 결정 경계는 약 '+(bnd!=null?bnd.toFixed(1):'–')+'시간.</p>':w1<.3?'<p class="a">w₁이 작아 곡선이 거의 평평합니다. 공부시간이 확률을 거의 바꾸지 못하는 모델입니다.</p>':'<p class="a">비용 '+L.toFixed(3)+' (최소 '+Lb.toFixed(3)+'). 슬라이더로 줄여 보거나 "비용 최소화"를 누르세요.</p>';}
 addMod($('#c1'),function(dt){if(!dt)draw1();});
 
@@ -58,7 +58,7 @@ function draw2(){var t=auto2?auto2.t:FR[f2][0]+(+$('#th2').value)/100*(FR[f2][1]
   var X1=X0+Wd+30,W1=W-X1-14;function box(yy,lab,cc,g){var n=cc[0]+cc[1],bw=W1;txt(x,lab+' · '+n+'병 · 지니 '+g.toFixed(3),X1,yy,C.text,11,'left',700);if(n){x.fillStyle=C.eye;x.fillRect(X1,yy+8,bw*cc[1]/n,16);x.fillStyle=C.amber;x.fillRect(X1+bw*cc[1]/n,yy+8,bw*cc[0]/n,16);}txt(x,'레드 '+cc[1]+' · 화이트 '+cc[0],X1,yy+38,C.muted,10);}
   box(Y0+12,'분할 전',cA,g0);box(Y0+82,(f2?'알코올':'잔당')+' ≤ '+t.toFixed(1),cL,gl);box(Y0+152,(f2?'알코올':'잔당')+' > '+t.toFixed(1),cR,gr);
   txt(x,'● 레드(1)  ● 화이트(0)',X1,Y0+222,C.muted,11);stamp(x,W,'예시 데이터 · 300병');
-  kpis($('#k2k'),[['m',g0.toFixed(3),'분할 전 지니'],['i',gw.toFixed(3),'분할 후 가중 평균 지니'],[auto2?'g':'a',(g0-gw).toFixed(3),'정보 이득(줄어든 불순도)'],['a',L.length+' : '+R.length,'왼쪽 : 오른쪽 병 수']]);
+  kpis($('#k2k'),[['m',g0.toFixed(3),'나누기 전 섞임(지니)'],['i',gw.toFixed(3),'나눈 뒤 섞임(지니)'],[auto2?'g':'a',(g0-gw).toFixed(3),'줄어든 섞임(정보 이득)'],['a',L.length+' : '+R.length,'왼쪽 : 오른쪽 병 수']]);
   $('#ins2').innerHTML=auto2?'<p class="g">최적 분할: '+FN[auto2.f]+' ≤ '+auto2.t.toFixed(2)+'. 불순도를 '+(g0-gw).toFixed(3)+'만큼 줄여, 두 특성의 어떤 기준값보다 큽니다. 이것이 나무의 뿌리 질문입니다.</p>':(g0-gw)<.02?'<p class="a">거의 줄지 않았습니다. 이 칸막이로는 양쪽이 여전히 섞여 있습니다.</p>':'<p class="g">불순도가 '+g0.toFixed(3)+' → '+gw.toFixed(3)+'로 줄었습니다. 더 큰 이득을 주는 자리가 있을까요?</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
@@ -73,7 +73,7 @@ function draw3(){var d=+$('#dp').value,T=tree(d),c=$('#c3'),W=fitC(c,320),H=320,
   [['tr',C.info,'훈련'],['te',C.gfp,'시험']].forEach(function(s,k){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();for(var q=1;q<=10;q++){var v=tree(q)[s[0]];q>1?x.lineTo(sx(q),sy(v)):x.moveTo(sx(q),sy(v));}x.stroke();x.lineWidth=1;txt(x,'— '+s[2],X1+6+k*50,Y0+12,s[1],11,'left',700);});
   for(var q=1;q<=10;q+=3)txt(x,'깊이 '+q,sx(q),Y0+Hh+12,C.muted,10,'center');x.setLineDash([3,3]);x.strokeStyle=C.text;x.beginPath();x.moveTo(sx(d),Y0);x.lineTo(sx(d),Y0+Hh);x.stroke();x.setLineDash([]);
   stamp(x,W,'예시 데이터');var bestD=1;for(q=2;q<=10;q++)if(tree(q).te>tree(bestD).te)bestD=q;
-  kpis($('#k3k'),[['i',pct(T.tr,1),'훈련 정확도'],[T.te<tree(bestD).te-.02?'r':'g',pct(T.te,1),'시험 정확도'],['a',nLeaves(T.t)+'개','잎(리프) 수'],['m','잔당 '+pct(T.imp[0],0)+' · 알코올 '+pct(T.imp[1],0),'feature_importances_']]);
+  kpis($('#k3k'),[['i',pct(T.tr,1),'훈련 정확도'],[T.te<tree(bestD).te-.02?'r':'g',pct(T.te,1),'시험 정확도'],['a',nLeaves(T.t)+'개','마지막 칸 수(잎)'],['m','잔당 '+pct(T.imp[0],0)+' · 알코올 '+pct(T.imp[1],0),'재료별 중요도']]);
   var R=[];rules(T.t,[],R,0);$('#rules3').textContent=d<=3?R.map(function(r){return 'if '+r}).join('\n'):'(깊이 '+d+': 규칙 '+R.length+'개 — 사람이 읽기에는 너무 많습니다)';
   $('#ins3').innerHTML=d>=7?'<p class="r">깊이 '+d+': 훈련 '+pct(T.tr,1)+', 시험 '+pct(T.te,1)+'. 일부러 섞어 둔 라벨 잡음(약 8%)까지 외우느라 잎이 '+nLeaves(T.t)+'개로 늘었습니다.</p>':d===bestD?'<p class="g">깊이 '+d+'에서 시험 정확도가 가장 높습니다('+pct(T.te,1)+'). 이 근처가 가지치기의 균형점입니다.</p>':'<p class="a">깊이 '+d+': 훈련 '+pct(T.tr,1)+', 시험 '+pct(T.te,1)+'. 시험 곡선의 꼭대기는 깊이 '+bestD+'입니다.</p>';}
 addMod($('#c3'),function(dt){if(!dt)draw3();});
@@ -117,7 +117,7 @@ function draw4(){var n=+$('#nf').value,d=+$('#dg4').value,cnt=binom(n+d,d)-1,c=$
   XTR.forEach(function(v,i){x.fillStyle=C.info;x.beginPath();x.arc(sx(v),sy(YTR[i]),2.8,0,7);x.fill();});XTE.forEach(function(v,i){x.fillStyle=C.amber;x.beginPath();x.arc(sx(v),sy(YTE[i]),3.2,0,7);x.fill();});x.restore();
   txt(x,'농어 길이 '+d+'차 · 규제 없음',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
   var S=sens(M.f),te=r2(YTE,XTE.map(M.f));
-  kpis($('#k4k'),[['a',cnt.toLocaleString('ko-KR')+'개','특성 '+n+'개 · '+d+'차 → 새 특성 수'],['r',fmtN(maxAbs(M.w)),'가장 큰 계수 |w|(농어 '+d+'차)'],['m',S.d.toFixed(1)+'g','0.1cm 차이에 예측이 가장 크게 변하는 폭'],[te<.9?'r':'g',te.toFixed(3),'시험 R²']]);
+  kpis($('#k4k'),[['a',cnt.toLocaleString('ko-KR')+'개','특성 '+n+'개 · '+d+'차 → 새 특성 수'],['r',fmtN(maxAbs(M.w)),'가장 큰 계수 |w|(농어 '+d+'차)'],['m',S.d.toFixed(1)+'g','0.1cm 차이에 예측이 가장 크게 변하는 폭'],[te<.9?'r':'g',te.toFixed(3),'시험 데이터 설명력(R²)']]);
   $('#ins4').innerHTML=d>=6?'<p class="r">'+d+'차: 계수 절댓값이 '+fmtN(maxAbs(M.w))+'까지 커졌고, 시험 R²는 '+te.toFixed(2)+'입니다. 계수들이 서로 거대한 값으로 상쇄하며 겨우 균형을 맞추고 있어, 범위 끝에서 곡선이 튑니다.</p>':'<p class="g">특성 '+n+'개를 '+d+'차로 늘리면 '+cnt.toLocaleString('ko-KR')+'개. 농어 '+d+'차 회귀의 가장 큰 계수는 '+fmtN(maxAbs(M.w))+', 시험 R² '+te.toFixed(3)+'.</p>';}
 addMod($('#c4'),function(dt){if(!dt)draw4();});
 
@@ -134,7 +134,7 @@ function draw5(){var a=ALS[+$('#al').value],M=reg(rg,a),c=$('#c5'),W=fitC(c,300)
   M.w.forEach(function(w,j){var h=w/mx*(Hh/2-6);x.fillStyle=Math.abs(w)<1e-6?C.muted:w>0?C.info:C.eye;x.fillRect(X1+j*bw+3,Math.min(zy,zy-h),bw-6,Math.abs(h)||1);txt(x,'x'+(j?'^'+(j+1):''),X1+(j+.5)*bw,Y0+Hh+12,C.muted,9,'center');if(Math.abs(w)<1e-6)txt(x,'0',X1+(j+.5)*bw,zy-8,C.muted,10,'center',700);});
   txt(x,'계수 8개 (막대 높이 기준 ±'+fmtN(mx)+')',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
   var tr=r2(YTR,XTR.map(M.f)),te=r2(YTE,XTE.map(M.f)),nz=M.w.filter(function(w){return Math.abs(w)>1e-6}).length;
-  kpis($('#k5k'),[['i',tr.toFixed(4),'훈련 R²'],[te<.9?'r':'g',te.toFixed(4),'시험 R²'],['a',fmtN(maxAbs(M.w)),'가장 큰 계수 |w|'],['m',nz+' / 8','0이 아닌 계수']]);
+  kpis($('#k5k'),[['i',tr.toFixed(4),'공부 데이터 설명력(R²)'],[te<.9?'r':'g',te.toFixed(4),'시험 데이터 설명력(R²)'],['a',fmtN(maxAbs(M.w)),'가장 큰 계수 크기'],['m',nz+' / 8','남은 재료(0이 아닌 계수)']]);
   $('#ins5').innerHTML=rg==='none'?'<p class="r">규제 없음: 훈련 R² '+tr.toFixed(4)+'로 가장 높지만 시험 R²는 '+te.toFixed(2)+'. 계수 '+fmtN(maxAbs(M.w))+'짜리 곡선이 8.4cm 농어에서 크게 빗나갑니다.</p>':a>=100?'<p class="a">α = '+a+': 고삐가 너무 셉니다. 훈련 '+tr.toFixed(3)+', 시험 '+te.toFixed(3)+'로 둘 다 내려갔습니다(과소적합).</p>':rg==='lasso'?'<p class="g">라쏘 α = '+a+': 계수 '+(8-nz)+'개가 정확히 0이 되어 특성 '+nz+'개만 남았습니다. 시험 R² '+te.toFixed(3)+'.</p>':'<p class="g">릿지 α = '+a+': 특성 8개를 모두 쓰되 가장 큰 계수가 '+fmtN(maxAbs(M.w))+'로 줄었습니다. 시험 R² '+te.toFixed(3)+'.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 

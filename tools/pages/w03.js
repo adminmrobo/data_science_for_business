@@ -178,7 +178,7 @@ function draw5(){var D=ST.slice();if(withOut)D.push({ad:2.0,s:140,out:true});
     txt(x,'월 매출(백만 원) 히스토그램',X,16,C.muted,11);}
   stamp(x,W,'설명용 모형 · 실제 데이터 아님');
   var sk=(function(){var m=mean(ys),s=sd(ys),t=0;ys.forEach(function(v){t+=Math.pow((v-m)/s,3)});return t/ys.length;})();
-  kpis($('#k5'),[['i',pr.toFixed(2),'피어슨 상관'],['g',sp.toFixed(2),'스피어만 상관'],['a',mu.toFixed(1)+' / '+md.toFixed(1),'매출 평균 / 중앙값'],['m',sk.toFixed(2),'왜도(0이면 대칭)']]);
+  kpis($('#k5'),[['i',pr.toFixed(2),'직선 관계의 세기(피어슨)'],['g',sp.toFixed(2),'순위 관계의 세기(스피어만)'],['a',mu.toFixed(1)+' / '+md.toFixed(1),'매출 평균 / 중앙값'],['m',sk.toFixed(2),'한쪽 쏠림(왜도, 0이면 대칭)']]);
   $('#ins5').innerHTML=edaV==='uni'?'<p class="a">오른쪽 꼬리가 깁니다(왜도 '+sk.toFixed(2)+'). 평균('+mu.toFixed(1)+')이 중앙값('+md.toFixed(1)+')보다 커서, "평균 매장"은 실제 보통 매장보다 커 보입니다.</p>':
     (withOut?'<p class="r">광고비는 적은데 매출이 큰 매장 하나를 넣자 피어슨이 '+pr.toFixed(2)+'로 흔들렸습니다. 순위만 보는 스피어만은 '+sp.toFixed(2)+'로 거의 그대로입니다.</p>':'<p class="g">광고비가 늘수록 매출도 늘지만 점점 완만해집니다(직선이 아님). 그래서 순위 기반 스피어만('+sp.toFixed(2)+')이 피어슨('+pr.toFixed(2)+')보다 큽니다.</p>');}
 addMod($('#c5'),function(dt){if(!dt)draw5();});

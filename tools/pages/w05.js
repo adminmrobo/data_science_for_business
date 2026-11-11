@@ -63,7 +63,7 @@ function rows3(){var L=lbK==='ok'?FL:SL.concat(BL),Wt=lbK==='ok'?FW:SW.concat(BW
   return L.map(function(l,i){return {l:l,w:Wt[i],lab:FT[i],tru:truth[i]};});}
 function show3(){var R=rows3(),wrong=R.filter(function(r){return r.lab!==r.tru}).length;
   $('#zipTable').innerHTML='<thead><tr><th>#</th><th>fish_data[i]</th><th>fish_target[i]</th><th>실제 종류</th></tr></thead><tbody>'+R.map(function(r,i){var bad=r.lab!==r.tru;return '<tr><td>'+i+'</td><td>['+nf(r.l)+', '+nf(r.w)+']</td><td class="'+(bad?'bad':'')+'">'+r.lab+'</td><td>'+(r.tru?'도미':'빙어')+'</td></tr>';}).join('')+'</tbody>';
-  kpis($('#k3'),[['i',R.length+'개','fish_data 샘플'],['g',FT.filter(function(v){return v}).length+' : '+FT.filter(function(v){return !v}).length,'라벨 1 : 0'],[wrong?'r':'g',wrong+'개','틀린 라벨'],['a',pct(14/49,1),'빙어 비율(불균형 확인)']]);
+  kpis($('#k3'),[['i',R.length+'개','생선 데이터 예'],['g',FT.filter(function(v){return v}).length+' : '+FT.filter(function(v){return !v}).length,'라벨 1 : 0'],[wrong?'r':'g',wrong+'개','틀린 라벨'],['a',pct(14/49,1),'빙어 비율(불균형 확인)']]);
   $('#ins3').innerHTML=wrong?'<p class="r">49개 중 '+wrong+'개의 이름표가 틀렸습니다. 모델은 "작은 생선 = 도미"라고 배우게 됩니다. 라벨은 데이터를 넣은 순서와 똑같이 만들어야 합니다.</p>':'<p class="g">특성과 라벨이 같은 순서로 맞았습니다. 도미 35(라벨 1), 빙어 14(라벨 0)로 빙어가 약 29%라 약간 불균형합니다.</p>';}
 show3();
 
@@ -86,7 +86,7 @@ function draw4(){var k=+$('#kk').value,R=knn(NEW,k),c=$('#c4'),W=fitC(c,330),H=3
   txt(x,'새 생선 ['+NEW.l+', '+NEW.w+'] → '+(R.pred?'도미(1)':'빙어(0)'),px+12,py-12,C.gfp,12,'left',700);
   lg5(x,X0+8,Y0+12,'★ 새 생선 · 노란 선 = 가까운 '+k+'마리 · 그림을 눌러 옮기기');stamp(x,W,'Fish Market 실측값');
   var nB=R.nb.filter(function(t){return FT[t[1]]}).length;
-  kpis($('#k4'),[['g',R.pred?'도미 (1)':'빙어 (0)','predict 결과'],['i','도미 '+nB+' · 빙어 '+(k-nB),'이웃 '+k+'마리의 투표'],['a','['+(1-R.p1).toFixed(1)+', '+R.p1.toFixed(1)+']','predict_proba [빙어, 도미]'],['r','1.0','score(학습 데이터 그대로)']]);
+  kpis($('#k4'),[['g',R.pred?'도미 (1)':'빙어 (0)','판정 결과'],['i','도미 '+nB+' · 빙어 '+(k-nB),'이웃 '+k+'마리의 투표'],['a','['+(1-R.p1).toFixed(1)+', '+R.p1.toFixed(1)+']','확률 [빙어, 도미]'],['r','1.0','정답률(공부한 생선으로 채점)']]);
   $('#pyOut').textContent='>>> from sklearn.neighbors import KNeighborsClassifier\n>>> kn = KNeighborsClassifier(n_neighbors='+k+')\n>>> kn.fit(fish_data, fish_target)\n>>> kn.score(fish_data, fish_target)\n1.0\n>>> kn.predict([['+NEW.l+', '+NEW.w+']])\narray(['+R.pred+'])\n>>> kn.predict_proba([['+NEW.l+', '+NEW.w+']])\narray([['+(1-R.p1).toFixed(1)+', '+R.p1.toFixed(1)+']])';
   var far=R.nb[R.nb.length-1][0];
   $('#ins4').innerHTML=(NEW.l===25&&NEW.w===150)?'<p class="r">25cm·150g: 그림에서는 도미 쪽에 가까워 보이는데, 이웃 5마리 중 '+(5-nB)+'마리가 빙어입니다. 무게 눈금(g)이 길이 눈금(cm)보다 훨씬 커서, 거리가 거의 무게로만 정해지기 때문입니다. 6주차 표준화에서 다시 봅니다.</p>':

@@ -37,7 +37,7 @@ function draw2(){var A=SA.map(function(v){return v/un}),B=SB.map(function(v){ret
   [[A,C.info,'A 회사',0],[B,C.amber,'B 회사',1]].forEach(function(g){var y0=Y0+g[3]*(Hh+30),m=mean(g[0]),s=sdv(g[0]);hist(x,g[0],X0,y0,Wd,Hh,lo,hi,40,g[1]);x.strokeStyle=C.text;x.lineWidth=2;x.beginPath();x.moveTo(sx(m-s),y0+Hh+6);x.lineTo(sx(m+s),y0+Hh+6);x.stroke();x.lineWidth=1;x.fillStyle=C.text;x.beginPath();x.arc(sx(m),y0+Hh+6,4,0,7);x.fill();txt(x,g[2]+' · 평균 '+fmt(m,un>1?1:0)+' ± '+fmt(s,un>1?1:0),X0+4,y0+8,g[1],11,'left',700);});
   [0,35000,70000,105000,140000].forEach(function(v){txt(x,fmt(v/un),sx(v/un),H-6,C.muted,10,'center');});stamp(x,W,'예시 데이터 · 교안의 평균·표준편차');
   var vA=Math.pow(sdv(A),2),vB=Math.pow(sdv(B),2);
-  kpis($('#k2k'),[['m',fmt(vA)+' · '+fmt(vB),'분산 A · B ('+(un>1?'천 달러':'달러')+'²)'],['i',fmt(sdv(A),un>1?1:0)+' · '+fmt(sdv(B),un>1?1:0),'표준편차 A · B'],['a',(sdv(A)/mean(A)).toFixed(3)+' · '+(sdv(B)/mean(B)).toFixed(3),'변동계수 A · B'],['g','0.200 · 0.188','교안 값으로 계산한 CV']]);
+  kpis($('#k2k'),[['m',fmt(vA)+' · '+fmt(vB),'분산 A · B ('+(un>1?'천 달러':'달러')+'²)'],['i',fmt(sdv(A),un>1?1:0)+' · '+fmt(sdv(B),un>1?1:0),'표준편차 A · B'],['a',(sdv(A)/mean(A)).toFixed(3)+' · '+(sdv(B)/mean(B)).toFixed(3),'평균 대비 흩어짐 A · B(CV)'],['g','0.200 · 0.188','교안 값으로 계산한 CV']]);
   $('#ins2').innerHTML='<p class="'+(un>1?'g':'a')+'">'+(un>1?'천 달러로 바꾸자 분산은 100만 분의 1로 줄었지만 변동계수는 그대로입니다.':'달러 단위의 분산은 억 단위라 읽기 어렵습니다. 단위를 바꿔 보세요.')+' 표준편차는 B가 크지만, 자기 평균에 비하면 A가 더 흩어져 있습니다(CV '+(sdv(A)/mean(A)).toFixed(3)+' &gt; '+(sdv(B)/mean(B)).toFixed(3)+').</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
@@ -50,7 +50,7 @@ function draw3(){var sig=+$('#sg').value,raw=spend(sig),v=lg?raw.map(Math.log):r
   x.strokeStyle=C.rule;x.strokeRect(X0,Y0,Wd,Hh);hist(x,v,X0,Y0,Wd,Hh,lo,hi,40,'rgba(130,184,255,.6)');var m=mean(v),md=median(v);vline(x,sx(md),Y0,Hh,C.gfp,'중앙값',0);vline(x,sx(m),Y0,Hh,C.eye,'평균',16);
   [0,.25,.5,.75,1].forEach(function(f){var q=lo+f*(hi-lo);txt(x,lg?q.toFixed(1):fmt(q,1),sx(q),Y0+Hh+12,C.muted,10,'center');});txt(x,lg?'log(결제액)':'결제액(만 원, 상위 1% 밖은 잘림)',X0+Wd/2,H-10,C.muted,11,'center');stamp(x,W,'예시 데이터');
   var sk=mom(v,3),ku=mom(v,4);
-  kpis($('#k3k'),[['r',fmt(mean(raw),1)+'만 원','평균 결제액'],['g',fmt(median(raw),1)+'만 원','중앙값 결제액'],[Math.abs(sk)<.3?'g':'a',sk.toFixed(2),'왜도 '+(lg?'(로그 후)':'')],[ku>4?'r':'i',ku.toFixed(2),'첨도(정규 = 3)']]);
+  kpis($('#k3k'),[['r',fmt(mean(raw),1)+'만 원','평균 결제액'],['g',fmt(median(raw),1)+'만 원','중앙값 결제액'],[Math.abs(sk)<.3?'g':'a',sk.toFixed(2),'왜도 '+(lg?'(로그 후)':'')],[ku>4?'r':'i',ku.toFixed(2),'꼬리 두께(첨도, 보통 = 3)']]);
   $('#ins3').innerHTML=lg?'<p class="g">로그로 바꾸자 왜도가 '+sk.toFixed(2)+'로 0 근처에 왔습니다. 평균과 중앙값이 겹칩니다.</p>':sig<=.2?'<p class="g">거의 대칭: 평균 ≈ 중앙값, 왜도 '+sk.toFixed(2)+', 첨도 '+ku.toFixed(2)+'.</p>':'<p class="a">오른쪽 꼬리: 평균('+fmt(mean(raw),1)+')이 중앙값('+fmt(median(raw),1)+')보다 '+pct(mean(raw)/median(raw)-1,0)+' 큽니다. 왜도 '+sk.toFixed(2)+', 첨도 '+ku.toFixed(2)+'.</p>';}
 addMod($('#c3'),function(dt){if(!dt)draw3();});
 
@@ -66,7 +66,7 @@ function draw4(){var r=+$('#rr').value,P=Z1.map(function(z){var u=z[0],v=r*z[0]+
   P.forEach(function(p,i){x.fillStyle=ol&&i===P.length-1?C.eye:'rgba(130,184,255,.75)';x.beginPath();x.arc(sx(p[0]),sy(p[1]/cu),ol&&i===P.length-1?7:3.5,0,7);x.fill();});
   txt(x,'가로: 월 앱 사용 횟수 · 세로: 월 거래금액('+(cu>1?'만 원':'원')+')',X0+6,Y0+12,C.muted,11);stamp(x,W,'예시 데이터');
   var R0=corr(X.slice(0,120),Y.slice(0,120)),lab=Math.abs(R.r)>=.7?'강함':Math.abs(R.r)>=.3?'중간':'약함';
-  kpis($('#k4k'),[['m',fmt(R.cov),'공분산('+(cu>1?'회·만 원':'회·원')+')'],[Math.abs(R.r)>=.3?'g':'a',R.r.toFixed(3),'상관계수 r'],['i',lab+(R.r<0?'(음)':R.r>0?'(양)':''),'교안 기준 해석'],[ol?'r':'g',ol?R0.r.toFixed(3)+' → '+R.r.toFixed(3):'—','큰손 1명의 영향']]);
+  kpis($('#k4k'),[['m',fmt(R.cov),'공분산('+(cu>1?'회·만 원':'회·원')+')'],[Math.abs(R.r)>=.3?'g':'a',R.r.toFixed(3),'함께 움직이는 정도(r)'],['i',lab+(R.r<0?'(음)':R.r>0?'(양)':''),'교안 기준 해석'],[ol?'r':'g',ol?R0.r.toFixed(3)+' → '+R.r.toFixed(3):'—','큰손 1명의 영향']]);
   $('#ins4').innerHTML=ol?'<p class="r">점 하나(사용 62회, 240만 원)가 상관계수를 '+R0.r.toFixed(3)+' → '+R.r.toFixed(3)+'로 바꿨습니다. 이상치를 빼고 다시 계산해 보세요.</p>':'<p class="g">공분산은 '+fmt(R.cov)+'('+(cu>1?'만 원':'원')+' 단위). 단위를 바꾸면 이 숫자는 크게 달라지지만 r = '+R.r.toFixed(3)+'은 그대로입니다.</p>';}
 addMod($('#c4'),function(dt){if(!dt)draw4();});
 

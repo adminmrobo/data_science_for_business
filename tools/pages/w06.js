@@ -32,7 +32,7 @@ function draw1(){var k=+$('#k1').value,R=knnPred(X3,Y3,Q1,k,3),c=$('#c1'),W=fitC
   X3.forEach(function(p,i){x.fillStyle=COL3[Y3[i]];x.beginPath();x.arc(sx(p[0]),sy(p[1]),3.5,0,7);x.fill();});
   star(x,sx(Q1[0]),sy(Q1[1]));txt(x,'['+Q1[0]+', '+Q1[1]+'] → '+NAMES[R.pred],sx(Q1[0])+12,sy(Q1[1])-12,C.gfp,12,'left',700);
   legend(x,[['도미(0)',C.info],['농어(1)',C.amber],['빙어(2)',C.eye]],X0+8,Y0+12);stamp(x,W,'교안 데이터 · 그림을 눌러 옮기기');
-  kpis($('#k1k'),[['g',NAMES[R.pred],'predict'],['i',R.votes.join(' · '),'투표 (도미·농어·빙어)'],['a','['+R.votes.map(function(v){return (v/k).toFixed(2)}).join(', ')+']','predict_proba'],['m',pct(1,0),'학습 데이터 정확도']]);
+  kpis($('#k1k'),[['g',NAMES[R.pred],'판정'],['i',R.votes.join(' · '),'투표 (도미·농어·빙어)'],['a','['+R.votes.map(function(v){return (v/k).toFixed(2)}).join(', ')+']','확률'],['m',pct(1,0),'학습 데이터 정확도']]);
   var mx=Math.max.apply(0,R.votes);$('#ins1').innerHTML=mx===k?'<p class="g">이웃 '+k+'마리가 모두 '+NAMES[R.pred]+'입니다.</p>':'<p class="a">이웃이 갈렸습니다('+R.votes.map(function(v,i){return NAMES[i]+' '+v}).join(', ')+'). 가장 많은 '+NAMES[R.pred]+'로 정했지만 확신은 '+(mx/k*100).toFixed(0)+'%입니다.</p>';}
 addMod($('#c1'),function(dt){if(!dt)draw1();});
 
@@ -53,7 +53,7 @@ function draw2(){var k=+$('#k2').value,c=$('#c2'),W=fitC(c,300),H=300,x=c.getCon
   [1,11,21,31,41,51].forEach(function(v){txt(x,'K='+v,kx(v),Y0+Hh+12,C.muted,10,'center');});
   stamp(x,W,'예시 데이터 · 설명용 모형');
   var A=kAcc(k),best=K2S.slice().sort(function(a,b){return kAcc(b)[1]-kAcc(a)[1]})[0];
-  kpis($('#k2k'),[['a',pct(A[0],1),'훈련 정확도'],['g',pct(A[1],1),'시험 정확도'],['i','K = '+best,'시험 곡선의 최고점'],['r',((A[0]-A[1])*100).toFixed(1)+'%p','훈련 − 시험 차이']]);
+  kpis($('#k2k'),[['a',pct(A[0],1),'훈련 정확도'],['g',pct(A[1],1),'시험 정확도'],['i','K = '+best,'시험 곡선의 최고점'],['r',((A[0]-A[1])*100).toFixed(1)+'%p','공부 점수 − 시험 점수']]);
   $('#ins2').innerHTML=k===1?'<p class="r">K = 1: 훈련 100%, 시험 '+pct(A[1],1)+'. 교안의 "K = 1일 때 약 60%"와 같은 모습입니다.</p>':k>=31?'<p class="a">K가 크면 경계가 뭉개져 시험 정확도가 내려갑니다.</p>':'<p class="g">K = '+k+': 훈련과 시험의 차이가 '+((A[0]-A[1])*100).toFixed(1)+'%p로 줄었습니다.</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
@@ -75,7 +75,7 @@ function draw3(){var D=svD==='fish'?FISHZ:RING,g=GAM[+$('#gm').value],M=train(D,
   x.strokeStyle=C.rule;x.strokeRect(X0,Y0,Wd,Hh);var lx=X0+Wd+16;
   legend(x,svD==='fish'?[['도미',C.info],['빙어',C.eye]]:[['안쪽 고객',C.info],['바깥 고객',C.eye]],lx,Y0+14);txt(x,'노란 띠 = 여백(|f| < 1)',lx,Y0+32,C.amber,11);txt(x,'흰 테두리 = 서포트 벡터',lx,Y0+50,C.text,11);txt(x,'가로·세로: 표준화한 값',lx,Y0+68,C.muted,11);
   stamp(x,W,'단순화한 학습 규칙(커널 Pegasos)');
-  var acc=ok/D.length;kpis($('#k3k'),[['g',pct(acc,1),'학습 데이터 정확도'],['i',sv+'개','서포트 벡터(여백 위·안)'],['a',svK==='lin'?'선형':'RBF · γ = '+g,'커널'],['m',D.length+'개','점 수']]);
+  var acc=ok/D.length;kpis($('#k3k'),[['g',pct(acc,1),'학습 데이터 정확도'],['i',sv+'개','경계를 정한 점(서포트 벡터)'],['a',svK==='lin'?'선형':'RBF · γ = '+g,'커널'],['m',D.length+'개','점 수']]);
   var msg='';if(svD==='ring'&&svK==='lin')msg='<p class="r">직선으로는 원을 가를 수 없습니다. 정확도 '+pct(acc,1)+'. RBF로 바꿔 보세요.</p>';
   else if(svD==='ring'&&g>=10)msg='<p class="a">γ = 10: 경계가 점 가까이 붙어 구불구불해집니다. 학습 데이터는 잘 맞히지만 새 점에는 불안합니다(과적합 경향).</p>';
   else if(svD==='ring'&&g<=.1)msg='<p class="a">γ = 0.1: 경계가 직선에 가까워져 원을 잘 감싸지 못합니다(과소적합 경향).</p>';
@@ -99,10 +99,10 @@ function draw4(){var seed=+$('#seed').value,S=split(spK,seed),acc=splitAcc(S),c=
   txt(x,'훈련 '+S.tr.length+'마리 (위)',30,38,C.text,12,'left',700);txt(x,'시험 '+S.te.length+'마리 (아래)',30,128,C.text,12,'left',700);txt(x,'0번(왼쪽) → 48번(오른쪽): 원래 입력 순서 · 파랑 도미, 빨강 빙어',30,H-14,C.muted,11);
   stamp(x,W,'교안 데이터');
   var trS=S.tr.filter(function(i){return !Y2[i]}).length,teS=S.te.filter(function(i){return !Y2[i]}).length;
-  kpis($('#k4k'),[['i',(S.tr.length-trS)+' : '+trS,'훈련 도미 : 빙어'],['a',(S.te.length-teS)+' : '+teS,'시험 도미 : 빙어'],['m',pct(teS/S.te.length,0)+' (원본 '+pct(14/49,0)+')','시험의 빙어 비율'],[acc<.5?'r':acc<1?'a':'g',pct(acc,1),'KNN(K=5) 시험 정확도']]);
+  kpis($('#k4k'),[['i',(S.tr.length-trS)+' : '+trS,'훈련 도미 : 빙어'],['a',(S.te.length-teS)+' : '+teS,'시험 도미 : 빙어'],['m',pct(teS/S.te.length,0)+' (원본 '+pct(14/49,0)+')','시험의 빙어 비율'],[acc<.5?'r':acc<1?'a':'g',pct(acc,1),'이웃 5마리 모델의 시험 정답률']]);
   $('#splitOut').textContent=spK==='seq'?'>>> train_input, test_input = fish_data[:36], fish_data[36:]\n>>> kn.fit(train_input, train_target).score(test_input, test_target)\n'+acc.toFixed(1):
     '>>> from sklearn.model_selection import train_test_split\n>>> train_test_split(fish_data, fish_target, test_size=13'+(spK==='strat'?', stratify=fish_target':'')+', random_state='+seed+')\n>>> kn.score(test_input, test_target)\n'+acc.toFixed(4).replace(/0+$/,'').replace(/\.$/,'.0');
-  $('#ins4').innerHTML=spK==='seq'?'<p class="r">훈련에는 빙어가 '+trS+'마리뿐, 시험은 전부 빙어입니다. 모델은 빙어를 모두 도미로 판정해 정확도 '+pct(acc,0)+'입니다.</p>':spK==='rand'?'<p class="a">무작위로 섞으니 두 종류가 다 들어갔습니다. 하지만 random_state에 따라 시험의 빙어가 '+teS+'마리로 원본 비율(약 '+pct(14/49,0)+')과 다를 수 있습니다.</p>':'<p class="g">층화 분할: 훈련과 시험 모두 빙어 비율이 원본과 거의 같습니다. 시험 정확도 '+pct(acc,0)+'.</p>';}
+  $('#ins4').innerHTML=spK==='seq'?'<p class="r">훈련에는 빙어가 '+trS+'마리뿐, 시험은 전부 빙어입니다. 모델은 빙어를 모두 도미로 판정해 정확도 '+pct(acc,0)+'입니다.</p>':spK==='rand'?'<p class="a">무작위로 섞으니 두 종류가 다 들어갔습니다. 하지만 섞는 순서 번호에 따라 시험의 빙어가 '+teS+'마리로 원본 비율(약 '+pct(14/49,0)+')과 다를 수 있습니다.</p>':'<p class="g">층화 분할: 훈련과 시험 모두 빙어 비율이 원본과 거의 같습니다. 시험 정확도 '+pct(acc,0)+'.</p>';}
 addMod($('#c4'),function(dt){if(!dt)draw4();});
 
 /* ---------- ⑤ 표준화 ---------- */
@@ -125,7 +125,7 @@ function draw5(){var R=nbOf(scK,NF,5),t=tf(scK),c=$('#c5'),W=fitC(c,320),H=320,x
   T.forEach(function(p,i){x.fillStyle=Y2[i]?C.info:C.eye;x.beginPath();x.arc(bx(p[0]),by(p[1]),3,0,7);x.fill();});star(x,bx(q[0]),by(q[1]));
   txt(x,(scK==='raw'?'원자료: KNN이 실제로 재는 거리(가로·세로 같은 비율)':scK==='z'?'Z-점수 눈금(가로·세로 같은 비율)':'Min-Max 눈금(가로·세로 같은 비율)'),X1,Y0+side+14,C.text,12,'left',700);
   stamp(x,W,'교안 데이터');
-  var nB=R.votes[1];kpis($('#k5k'),[[R.pred?'g':'r',R.pred?'도미 (1)':'빙어 (0)','New Fish 판정'],['i','도미 '+nB+' · 빙어 '+(5-nB),'이웃 5마리'],['a','['+q[0].toFixed(2)+', '+q[1].toFixed(2)+']','변환한 New Fish'],['m',scK==='z'?'평균 ['+ZF.m[0].toFixed(1)+', '+ZF.m[1].toFixed(1)+'] · 표준편차 ['+ZF.s[0].toFixed(1)+', '+ZF.s[1].toFixed(1)+']':scK==='mm'?'최솟값·최댓값 기준':'—','변환 기준(훈련 데이터)']]);
+  var nB=R.votes[1];kpis($('#k5k'),[[R.pred?'g':'r',R.pred?'도미 (1)':'빙어 (0)','새 생선(25cm·150g) 판정'],['i','도미 '+nB+' · 빙어 '+(5-nB),'이웃 5마리'],['a','['+q[0].toFixed(2)+', '+q[1].toFixed(2)+']','눈금을 맞춘 새 생선'],['m',scK==='z'?'평균 ['+ZF.m[0].toFixed(1)+', '+ZF.m[1].toFixed(1)+'] · 표준편차 ['+ZF.s[0].toFixed(1)+', '+ZF.s[1].toFixed(1)+']':scK==='mm'?'최솟값·최댓값 기준':'—','눈금 기준(공부용 데이터)']]);
   $('#eq5').innerHTML=scK==='z'?'z<sub>길이</sub> = (25 − '+ZF.m[0].toFixed(1)+') ÷ '+ZF.s[0].toFixed(1)+' = <b>'+q[0].toFixed(2)+'</b>,  z<sub>무게</sub> = (150 − '+ZF.m[1].toFixed(1)+') ÷ '+ZF.s[1].toFixed(1)+' = <em>'+q[1].toFixed(2)+'</em>':scK==='mm'?'(값 − 최솟값) ÷ (최댓값 − 최솟값): 길이 <b>'+q[0].toFixed(2)+'</b>, 무게 <em>'+q[1].toFixed(2)+'</em>':'길이 차이 10cm와 무게 차이 10g이 같은 거리로 계산됩니다. 무게의 범위(6.7~1,000g)가 길이(9.8~41cm)보다 약 30배 넓습니다.';
   $('#ins5').innerHTML=scK==='raw'?'<p class="r">오른쪽 그림이 KNN이 보는 세상입니다. 가로(길이)가 거의 한 점으로 눌려, 무게만 비슷한 빙어 4마리가 가장 가까운 이웃이 됩니다. → 빙어.</p>':'<p class="g">눈금을 맞추자 길이 차이도 무게 차이만큼 중요해졌습니다. 이웃 5마리 중 도미 '+nB+'마리 → '+(R.pred?'도미':'빙어')+'.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});

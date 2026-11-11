@@ -82,7 +82,7 @@ function draw5(){var m=+$('#mg').value,r=+$('#rt').value/100,cac=+$('#cac').valu
   x.strokeStyle=C.info;x.lineWidth=2.5;x.beginPath();cum.forEach(function(v,t){t?x.lineTo(sx(t),sy(v)):x.moveTo(sx(t),sy(v));});x.stroke();x.lineWidth=1;cum.forEach(function(v,t){x.fillStyle=C.info;x.beginPath();x.arc(sx(t),sy(v),3,0,7);x.fill();txt(x,(t+1)+'년',sx(t),Y0+Hh+12,C.muted,9,'center');});
   txt(x,'— 고객 한 명의 기대 누적 이익(할인율 10%)',X0+6,Y0+12,C.info,11,'left',700);stamp(x,W,'예시 가정');
   var ratio=V/cac,pb=cum.findIndex(function(v){return v>=cac});
-  kpis($('#k5k'),[['g',fmt(V,1)+'만 원','CLV'],[ratio>=3?'g':ratio>=1?'a':'r',ratio.toFixed(1)+' : 1','CLV : CAC'],['i',pb<0?'10년 안에 못 함':(pb+1)+'년차','획득비 회수 시점'],['m',(1/(1-r)).toFixed(1)+'년','기대 거래 기간(1 ÷ (1 − 유지율))']]);
+  kpis($('#k5k'),[['g',fmt(V,1)+'만 원','고객이 남길 이익(CLV)'],[ratio>=3?'g':ratio>=1?'a':'r',ratio.toFixed(1)+' : 1','CLV : CAC'],['i',pb<0?'10년 안에 못 함':(pb+1)+'년차','획득비 회수 시점'],['m',(1/(1-r)).toFixed(1)+'년','기대 거래 기간(1 ÷ (1 − 유지율))']]);
   $('#ins5').innerHTML=ratio>=3?'<p class="g">CLV : CAC = '+ratio.toFixed(1)+' : 1. 교안의 건강한 기준(3 : 1 이상)을 넘었습니다.</p>':ratio>=1?'<p class="a">CLV : CAC = '+ratio.toFixed(1)+' : 1. 본전은 찾지만 3 : 1에 못 미칩니다. 유지율을 올리거나 획득비를 줄여 보세요.</p>':'<p class="r">CLV가 CAC보다 작습니다. 고객 한 명을 데려올 때마다 손해입니다.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 

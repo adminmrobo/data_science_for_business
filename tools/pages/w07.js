@@ -64,7 +64,7 @@ function draw3(){var t=+$('#th3').value,c=$('#c3'),W=fitC(c,320),H=320,x=c.getCo
   var ms=met(cm(D2,t,'p')),mw=met(cm(D2,t,'w'));[[ms,C.gfp],[mw,C.amber]].forEach(function(s){x.fillStyle=s[1];x.beginPath();x.arc(sx(s[0].fpr),sy(s[0].R),6,0,7);x.fill();x.strokeStyle=C.text;x.stroke();});
   var lx=X0+S+18;txt(x,'— 강한 모델(특성 둘) AUC '+RS.auc.toFixed(3),lx,Y0+14,C.gfp,11,'left',700);txt(x,'— 약한 모델(특성 하나) AUC '+RW.auc.toFixed(3),lx,Y0+32,C.amber,11,'left',700);txt(x,'- - 랜덤 추측선 AUC 0.5',lx,Y0+50,C.muted,11);txt(x,'● 임계값 '+t.toFixed(2)+'의 위치',lx,Y0+68,C.text,11);txt(x,'세로: TPR(재현율)',lx,Y0+86,C.muted,11);
   stamp(x,W,'예시 데이터');
-  kpis($('#k3k'),[['g',RS.auc.toFixed(3),'강한 모델 AUC'],['a',RW.auc.toFixed(3),'약한 모델 AUC'],['i','('+ms.fpr.toFixed(2)+', '+ms.R.toFixed(2)+')','강한 모델 (FPR, TPR)'],['m',PAIR==null?'—':pct(PAIR,1),'쌍 뽑기: 이탈 점수가 더 높은 비율']]);
+  kpis($('#k3k'),[['g',RS.auc.toFixed(3),'강한 모델 AUC'],['a',RW.auc.toFixed(3),'약한 모델 AUC'],['i','('+ms.fpr.toFixed(2)+', '+ms.R.toFixed(2)+')','강한 모델 (헛경보율, 잡아낸 비율)'],['m',PAIR==null?'—':pct(PAIR,1),'쌍 뽑기: 이탈 점수가 더 높은 비율']]);
   $('#ins3').innerHTML=PAIR!=null?'<p class="g">무작위 1,000쌍 중 '+pct(PAIR,1)+'에서 이탈 고객의 점수가 더 높았습니다. AUC '+RS.auc.toFixed(3)+'와 거의 같습니다. AUC는 "줄 세우기 실력"입니다.</p>':'<p class="g">강한 모델의 곡선이 약한 모델보다 왼쪽 위에 있습니다. 같은 FPR에서 더 많은 이탈 고객을 찾습니다. 두 곡선 모두 대각선 위라 동전 던지기보다 낫습니다.</p>';}
 addMod($('#c3'),function(dt){if(!dt)draw3();});
 
@@ -97,7 +97,7 @@ function draw5(){var lr=LRS[+$('#lr').value],R=trainLR(lr,bs),c=$('#c5'),W=fitC(
   x.strokeStyle=C.gfp;x.lineWidth=2.5;x.beginPath();R.L.forEach(function(v,e){e?x.lineTo(sx(e),sy(v)):x.moveTo(sx(e),sy(v));});x.stroke();x.lineWidth=1;
   var best=trainLR(.3,32).L[20];x.setLineDash([3,3]);x.strokeStyle=C.info;x.beginPath();x.moveTo(X0,sy(best));x.lineTo(X0+Wd,sy(best));x.stroke();x.setLineDash([]);txt(x,'도달 가능한 손실 ≈ '+best.toFixed(3),X0+Wd-4,sy(best)-8,C.info,10,'right');
   txt(x,'— 학습률 '+lr+' · 배치 '+bs+' (흐린 선: 다른 학습률)',X0+8,Y0+14,C.gfp,11,'left',700);stamp(x,W,'예시 데이터 · 로지스틱 회귀');
-  var fin=R.L[20],per=Math.ceil(800/bs);kpis($('#k5k'),[['i',per+'번','1에포크의 갱신 횟수(800 ÷ '+bs+')'],['a',R.steps+'번','20에포크 총 갱신'],[fin>best+.05?'r':'g',fin.toFixed(3),'20에포크 후 훈련 손실'],['m',pct(R.acc,1),'시험 정확도(임계값 0.5)']]);
+  var fin=R.L[20],per=Math.ceil(800/bs);kpis($('#k5k'),[['i',per+'번','1에포크의 갱신 횟수(800 ÷ '+bs+')'],['a',R.steps+'번','전체 20바퀴 동안 고친 횟수'],[fin>best+.05?'r':'g',fin.toFixed(3),'20바퀴 뒤 남은 오차(손실)'],['m',pct(R.acc,1),'시험 정확도(임계값 0.5)']]);
   var jumpy=R.L.slice(10).some(function(v,i,a){return i&&v>a[i-1]+.02;});
   $('#ins5').innerHTML=fin>.6&&lr<=.03?'<p class="a">학습률 '+lr+' · 갱신 '+R.steps+'번: 너무 조금씩, 너무 드물게 고쳐 아직 시작점(0.693) 근처입니다.</p>':fin>best+.05||jumpy?'<p class="r">학습률 '+lr+': 한 번에 너무 크게 고쳐 손실이 '+(jumpy?'오르내립니다':'충분히 내려가지 못합니다')+'. 정답 주변을 헤매는 모습입니다.</p>':'<p class="g">학습률 '+lr+' · 배치 '+bs+': 손실이 '+fin.toFixed(3)+'까지 내려갔습니다. 도달 가능한 수준에 가깝습니다.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});

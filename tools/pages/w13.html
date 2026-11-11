@@ -4,14 +4,14 @@
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 13주차 · 비즈니스 인텔리전스와 KPI 설계</span>
       <h1>계기판을 설계하다</h1>
       <p class="q">대시보드에 띄울 숫자 하나를 고르면, 회사는 그 숫자를 향해 달린다. 어떤 숫자를 골라야 할까?</p>
-      <p class="lead">비즈니스 인텔리전스(BI)는 데이터를 모아 경영의 계기판을 만드는 일입니다. 출처마다 다른 데이터를 하나로 맞추는 ETL, 재고회전율과 품절률의 줄다리기, 광고 퍼널의 CPM·CPC·CPA·ROAS, 매출을 채널에 나눠 주는 어트리뷰션, 고객생애가치와 획득비용(CLV : CAC)을 차례로 직접 계산해 봅니다. 대결은 같은 광고비를 CPM과 CPC 중 어디에 걸지입니다.</p>
+      <p class="lead">비즈니스 인텔리전스(BI)는 데이터를 모아 경영의 계기판을 만드는 일입니다. 다섯 가지를 직접 계산해 봅니다. ① 출처마다 다른 데이터 하나로 맞추기 ② 재고와 품절의 줄다리기 ③ 광고비가 매출이 되기까지 ④ 매출을 광고 채널에 나눠 주기 ⑤ 고객 한 명의 가치와 데려온 비용. 대결은 같은 광고비를 "노출당 지불"과 "클릭당 지불" 중 어디에 걸지입니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi i"><b>수집 → 저장 → 분석 → 시각화</b><span>BI의 4단계<sup>[1]</sup></span></div>
-        <div class="kpi a"><b>ETL</b><span>추출 · 변환 · 적재<sup>[1]</sup></span></div>
-        <div class="kpi m"><b>노출 → 클릭 → 전환</b><span>광고 KPI의 3단계 퍼널<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>3 : 1</b><span>건강한 CLV : CAC의 기준<sup>[1]</sup></span></div>
-        <div class="kpi r"><b id="heroEtl">–</b><span>ETL 없이 합친 주간 매출의 오차<sup>계산</sup></span></div>
-        <div class="kpi g"><b>SMART</b><span>KPI 설계 원칙<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>꺼내기·다듬기·넣기</b><span>흩어진 데이터를 한 창고로(ETL)<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>노출 → 클릭 → 전환</b><span>광고를 본 사람이 사기까지 3단계<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>3 : 1</b><span>고객이 남길 돈 : 데려온 비용의 건강한 비율<sup>[1]</sup></span></div>
+        <div class="kpi r"><b id="heroEtl">–</b><span>다듬지 않고 그냥 합친 주간 매출의 오차<sup>계산</sup></span></div>
+        <div class="kpi g"><b>SMART</b><span>구체적·측정 가능·기한이 있는 목표 만들기<sup>[1]</sup></span></div>
       </div>
     </div>
     <div class="pixelart">
@@ -52,7 +52,7 @@
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 13주차의 세 교시</h2></div>
-  <div class="flowchips" aria-label="13주차 흐름"><span>1교시: BI 개념 · 아키텍처(ETL·웨어하우스·클라우드) · 유통 · 재고 · 발주</span><i>→</i><span>2교시: 광고 KPI(CPM·CPC·CPA·CPS·전환율·도달률·AOV·CLV·ROAS) · SMART</span><i>→</i><span class="lim">3교시: 쿠팡 · 배달의민족 · 당근마켓 사례</span></div>
+  <div class="flowchips" aria-label="13주차 흐름"><span>1교시: BI 개념 · 아키텍처(ETL·웨어하우스·클라우드) · 유통 · 재고 · 발주</span><i>→</i><span>2교시: 광고 성적표(노출·클릭·구매당 비용, 전환율, 고객 가치, 광고비 대비 매출) · SMART 목표</span><i>→</i><span class="lim">3교시: 쿠팡 · 배달의민족 · 당근마켓 사례</span></div>
   <div class="pair">
     <div><div class="tag fly">BI 아키텍처</div><p>전통적 BI는 데이터 소스 → ETL → 데이터 웨어하우스 → 프레젠테이션의 계층 구조라 일관성은 좋지만 느립니다. 현대적 BI는 클라우드, 데이터 레이크 + 웨어하우스, 마이크로서비스, 셀프서비스 분석으로 진화했습니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">KPI 설계</div><p>노출 단계(CPM·도달률·빈도) → 클릭 단계(CTR·CPC) → 전환 단계(CPA·CPS·전환율), 그리고 수익성(AOV·CLV·ROAS). 각 단계의 지표는 서로 연결되어 있어 전체 퍼널 관점으로 관리합니다.<sup>[1]</sup></p></div>
@@ -110,7 +110,7 @@
     <li>발주점을 올리면 품절률은 0에 가까워지지만 평균 재고가 늘어 회전율이 떨어집니다. 오른쪽 두 곡선이 엇갈리는 모습이 교안의 "균형점"입니다.<sup>[1]</sup></li>
   </ol><p class="limit">이 칸의 한계: 재고는 들어온 수요에 대응하는 지표입니다. 수요를 만드는 광고는 어떤 숫자로 관리할까요? → ③칸 광고 퍼널</p></div>
   <details class="math"><summary>시뮬레이션 규칙</summary><div>
-    <p class="muted">하루 수요는 평균 20인 포아송 분포(시드 고정), 시작 재고 300, 재고가 발주점 이하이고 주문 중인 물량이 없으면 300개 주문, 5일 뒤 입고. 재고가 수요보다 적은 날을 품절일로 셉니다.</p>
+    <p class="muted">하루 수요는 평균 20개 안팎으로 들쭉날쭉(예시값), 시작 재고 300, 재고가 발주점 이하이고 주문 중인 물량이 없으면 300개 주문, 5일 뒤 입고. 재고가 수요보다 적은 날을 품절일로 셉니다.</p>
   </div></details>
   <div class="quiz" data-quiz="lv2"></div>
 </div></section>
@@ -128,8 +128,8 @@
   <section class="panel" aria-label="광고 퍼널 계산기">
     <h3>광고비 1,000만 원 — 단계별 비율을 바꿔 보기</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="cpm">CPM(원)</label><input type="range" id="cpm" min="2000" max="15000" step="500" value="5000"><span class="val" id="cpmv">5,000</span></div>
-      <div class="group"><label class="glabel" for="ctr">CTR(%)</label><input type="range" id="ctr" min="0.2" max="5" step="0.1" value="1.5"><span class="val" id="ctrv">1.5</span></div>
+      <div class="group"><label class="glabel" for="cpm">1,000번 노출당 비용(CPM, 원)</label><input type="range" id="cpm" min="2000" max="15000" step="500" value="5000"><span class="val" id="cpmv">5,000</span></div>
+      <div class="group"><label class="glabel" for="ctr">클릭률(CTR, %)</label><input type="range" id="ctr" min="0.2" max="5" step="0.1" value="1.5"><span class="val" id="ctrv">1.5</span></div>
       <div class="group"><label class="glabel" for="cvr">전환율(%)</label><input type="range" id="cvr" min="0.5" max="8" step="0.5" value="3"><span class="val" id="cvrv">3</span></div>
       <div class="group"><label class="glabel" for="aov">객단가(만 원)</label><input type="range" id="aov" min="1" max="20" step="1" value="5"><span class="val" id="aovv">5</span></div>
     </div>
@@ -185,7 +185,7 @@
     <div class="ctrl">
       <div class="group"><label class="glabel" for="mg">연간 이익(만 원)</label><input type="range" id="mg" min="2" max="30" step="1" value="10"><span class="val" id="mgv">10</span></div>
       <div class="group"><label class="glabel" for="rt">연간 유지율(%)</label><input type="range" id="rt" min="30" max="95" step="5" value="70"><span class="val" id="rtv">70</span></div>
-      <div class="group"><label class="glabel" for="cac">CAC(만 원)</label><input type="range" id="cac" min="2" max="40" step="1" value="8"><span class="val" id="cacv">8</span></div>
+      <div class="group"><label class="glabel" for="cac">고객 1명 데려오는 비용(CAC, 만 원)</label><input type="range" id="cac" min="2" max="40" step="1" value="8"><span class="val" id="cacv">8</span></div>
     </div>
     <div class="cwrap"><canvas id="c5" class="wide" aria-label="연차별 고객 한 명의 기대 누적 이익 곡선과 CAC 선"></canvas></div>
     <section class="kpis k4" id="k5k"></section>
@@ -197,7 +197,7 @@
     <li>이 계산은 할인율 10%, 매년 같은 이익을 가정한 단순화입니다. 실무에서는 세그먼트별로 따로 계산합니다.</li>
   </ol><p class="limit">이 칸의 한계: 지표는 다 계산했지만, 같은 예산을 어디에 걸지는 "무엇을 목표로 하느냐"에 달려 있습니다. → 대결</p></div>
   <div class="bridges">
-    <div class="bridge field"><h4>현장에 옮기면</h4><p>교안 3교시의 세 사례: 쿠팡은 머신러닝으로 트럭 수량을 예측하고 랜덤 스토우 같은 물류 방식을 쓰며, 배달의민족은 주문 배정 최적화·ETA 예측·동적 가격을 실시간으로 처리하고, 당근마켓은 지역 기반 데이터와 TensorFlow 기반 콘텐츠 관리를 씁니다. 교안은 세 기업의 공통점으로 실시간 데이터 처리, AI의 전략적 활용, 데이터 기반 의사결정 문화를 꼽습니다.<sup>[1]</sup></p><p class="lim">한계: 위 사례 요약은 교안 내용이며, 이 페이지는 각 기업의 실제 수치를 싣지 않았습니다.</p></div>
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>교안 3교시의 세 사례: ① 쿠팡은 머신러닝으로 필요한 트럭 수를 예측하고, 빈 칸에 아무 상품이나 넣는 물류 방식(랜덤 스토우)을 씁니다. ② 배달의민족은 주문 배정, 도착 시간 예측, 상황에 따른 가격을 실시간으로 처리합니다. ③ 당근마켓은 동네 단위 데이터와 AI 기반 게시물 관리를 씁니다. 교안은 세 기업의 공통점으로 실시간 데이터 처리, AI의 전략적 활용, 데이터 기반 의사결정 문화를 꼽습니다.<sup>[1]</sup></p><p class="lim">한계: 위 사례 요약은 교안 내용이며, 이 페이지는 각 기업의 실제 수치를 싣지 않았습니다.</p></div>
     <div class="bridge gen"><h4>생성 AI로 치면</h4><p>"이번 달 ROAS가 왜 떨어졌어?"라고 BI 도구에 자연어로 묻는 기능이 늘고 있습니다. 교안이 말하는 셀프서비스 분석의 다음 단계입니다. 다만 답의 근거가 되는 지표 정의(어트리뷰션 규칙, 귀속 기간)는 사람이 먼저 정해 두어야 합니다.</p><p class="lim">비유의 한계: 자연어 질의 기능은 제품마다 다르며 이 페이지에서 시험하지 않았습니다.</p></div>
   </div>
   <div class="quiz" data-quiz="lv5"></div>
@@ -220,7 +220,7 @@
       <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
       <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
       <p class="muted guessfb"></p>
-      <p class="muted" style="font-size:14px">조건 메모: 단가·CTR·전환율·빈도는 설명용 가정이며 실제 업계 평균이 아닙니다. 막대는 두 목표를 같은 눈금에 놓으려고 "두 캠페인 중 더 나은 쪽 = 100"으로 맞춘 점수입니다. 교안은 신제품·인지도 목표엔 도달률을, 재구매·행동 유도 목표엔 빈도와 성과 지표를 중시하라고 권합니다.</p>
+      <p class="muted" style="font-size:14px">조건 메모: 단가·클릭률(CTR)·전환율·빈도는 설명용 가정이며 실제 업계 평균이 아닙니다. 막대는 두 목표를 같은 눈금에 놓으려고 "두 캠페인 중 더 나은 쪽 = 100"으로 맞춘 점수입니다. 교안은 신제품·인지도 목표엔 도달률을, 재구매·행동 유도 목표엔 빈도와 성과 지표를 중시하라고 권합니다.</p>
     </div>
   </div>
 </div></section>
@@ -239,7 +239,7 @@
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>BI의 4단계(수집·저장·분석·시각화), 전통적·현대적 아키텍처, 유통 BI 4영역, 재고 KPI(회전율·품절률·과잉재고·정확도), 지능형 발주.</p></div>
-    <div><b>교안 정리 2</b><p>광고 퍼널(노출·클릭·전환), CPC·CPM·CPA·CPS, 전환율·도달률·빈도, AOV·CLV·ROAS, SMART 원칙, 대시보드 설계(시각적 계층, 드릴다운, 알림).</p></div>
+    <div><b>교안 정리 2</b><p>광고 퍼널(노출·클릭·전환), 클릭·노출·구매당 광고비, 전환율·도달률·빈도, 객단가·고객 가치·광고비 대비 매출, SMART 원칙, 대시보드 설계(중요한 것을 크게, 눌러서 자세히 보기, 알림).</p></div>
     <div><b>교안 정리 3</b><p>쿠팡·배달의민족·당근마켓의 데이터 기반 의사결정 사례와 공통 성공 요인.</p></div>
   </div>
 </div></section>
@@ -249,7 +249,7 @@
   <h2>실험을 마치며</h2>
   <figure class="scene" data-scene="sc_w13_outro" hidden><img alt="두 개의 계기판을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수"></figure>
   <div class="dialog">
-    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>ETL이 틀리면 대시보드의 첫 숫자부터 틀린다.</li><li>KPI는 서로 줄다리기한다. 하나만 밀지 말고 균형을 본다.</li><li>"좋은 숫자"는 목표가 정한다. 목표부터 SMART하게 적는다.</li></ul></div></div>
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>데이터를 합치고 다듬는 단계(ETL)가 틀리면 대시보드의 첫 숫자부터 틀린다.</li><li>성과 지표(KPI)는 서로 줄다리기한다. 하나만 밀지 말고 균형을 본다.</li><li>"좋은 숫자"는 목표가 정한다. 목표부터 SMART하게 적는다.</li></ul></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>도달은 CPM이, ROAS는 CPC가 앞섰어요. 캠페인 목표가 정답을 정해요.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>신제품 출시 첫 달엔 내가 맞지. 알아야 클릭도 하니까.</p></div></div>
     <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>둘째 달부턴 내 장부야. 인지도도 결국 매출로 갚아야 하니까.</p></div></div>

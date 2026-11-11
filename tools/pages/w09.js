@@ -32,7 +32,7 @@ function draw1(){var k=+$('#k1').value,q=+$('#q1').value,c=$('#c1'),W=fitC(c,320
   txt(x,q+'cm → '+Math.round(R.pred)+'g',sx(q)+(q>45?-10:10),sy(R.pred)-12,C.gfp,12,q>45?'right':'left',700);
   legend(x,X0+8,Y0+12,[['훈련 42',C.info],['시험 14',C.amber],['예측선',C.eye]]);stamp(x,W,'교안 데이터');
   var ptr=XTR.map(function(v){return knnR(v,k).pred}),pte=XTE.map(function(v){return knnR(v,k).pred});
-  kpis($('#k1k'),[['i',r2(YTR,ptr).toFixed(4),'훈련 R²'],['g',r2(YTE,pte).toFixed(4),'시험 R²'],['a',Math.round(R.pred)+'g',q+'cm 농어 예측'],['m',Math.round(knnR(44,k).pred)+'g','44cm 농어 예측(비교)']]);
+  kpis($('#k1k'),[['i',r2(YTR,ptr).toFixed(4),'공부 데이터 설명력(R²)'],['g',r2(YTE,pte).toFixed(4),'시험 데이터 설명력(R²)'],['a',Math.round(R.pred)+'g',q+'cm 농어 예측'],['m',Math.round(knnR(44,k).pred)+'g','44cm 농어 예측(비교)']]);
   $('#ins1').innerHTML=q>44?'<p class="r">'+q+'cm 농어도 '+Math.round(R.pred)+'g. 훈련 데이터의 가장 긴 농어(44cm) 근처 '+k+'마리 평균에서 멈춥니다. 이웃이 바뀌지 않으니 예측도 바뀌지 않습니다.</p>':k===1?'<p class="a">K = 1: 예측선이 훈련 점마다 꺾입니다. 노이즈까지 따라가는 과적합 모습입니다.</p>':'<p class="g">K = '+k+', '+q+'cm → '+Math.round(R.pred)+'g. 가장 가까운 '+k+'마리(초록 테두리)의 무게 평균입니다.</p>';}
 addMod($('#c1'),function(dt){if(!dt)draw1();});
 
@@ -48,7 +48,7 @@ function draw2(exact){var b1=exact?LIN[1]:+$('#b1').value,b0=exact?LIN[0]:+$('#b
   x.setLineDash([4,4]);x.strokeStyle=C.amber;x.beginPath();x.moveTo(sx(0),sy(LIN[0]));x.lineTo(sx(50),sy(LIN[0]+LIN[1]*50));x.stroke();x.setLineDash([]);
   txt(x,'— 지금 직선  - - 최소제곱 직선  ▮ 잔차²',X0+8,Y0+12,C.muted,11);stamp(x,W,'교안 데이터 · 훈련 42마리');
   var best=0;XTR.forEach(function(v,i){var e=YTR[i]-(LIN[0]+LIN[1]*v);best+=e*e;});
-  kpis($('#k2k'),[['g','무게 = '+b1.toFixed(1)+' × 길이 '+(b0<0?'− ':'+ ')+Math.abs(Math.round(b0)),'지금 직선'],[sse<=best*1.001?'g':'r',Math.round(sse).toLocaleString('ko-KR'),'SSE(잔차 제곱합)'],['a',Math.round(best).toLocaleString('ko-KR'),'최소제곱 SSE(가장 작은 값)'],['i',Math.round(b0+b1*8.4)+'g','8.4cm 농어 예측']]);
+  kpis($('#k2k'),[['g','무게 = '+b1.toFixed(1)+' × 길이 '+(b0<0?'− ':'+ ')+Math.abs(Math.round(b0)),'지금 직선'],[sse<=best*1.001?'g':'r',Math.round(sse).toLocaleString('ko-KR'),'빗나간 거리 제곱의 합(SSE)'],['a',Math.round(best).toLocaleString('ko-KR'),'가장 잘 맞는 직선의 SSE'],['i',Math.round(b0+b1*8.4)+'g','8.4cm 농어 예측']]);
   $('#ins2').innerHTML=sse<=best*1.001?'<p class="g">최소제곱 직선입니다. 어떤 직선도 SSE를 '+Math.round(best).toLocaleString('ko-KR')+'보다 작게 만들 수 없습니다. 그런데 8.4cm 농어는 '+Math.round(b0+b1*8.4)+'g으로 예측됩니다.</p>':'<p class="a">지금 SSE는 최소제곱의 '+(sse/best).toFixed(2)+'배입니다. 슬라이더로 줄여 보거나 "최소제곱으로"를 누르세요.</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2(false);});
 
@@ -63,7 +63,7 @@ function draw3(){var d=+$('#dg').value,f=pf(d),S=polyScores(d),c=$('#c3'),W=fitC
   var X1=X0+Wd+50,W1=W-X1-16,bw=W1/8,by=function(v){return Y0+Hh-Math.max(0,v)*Hh};x.strokeStyle=C.rule;x.strokeRect(X1,Y0,W1,Hh);[0,.5,1].forEach(function(v){txt(x,v.toFixed(1),X1-4,by(v),C.muted,10,'right');});
   for(var q=1;q<=8;q++){var s=polyScores(q);x.fillStyle=q===d?C.info:'rgba(130,184,255,.4)';x.fillRect(X1+(q-1)*bw+2,by(s[0]),bw/2-2,Y0+Hh-by(s[0]));x.fillStyle=q===d?C.amber:'rgba(241,182,70,.4)';x.fillRect(X1+(q-1)*bw+bw/2,by(s[1]),bw/2-2,Y0+Hh-by(s[1]));if(s[1]<0)txt(x,'↓',X1+(q-.25)*bw,Y0+Hh-6,C.eye,12,'center',700);txt(x,String(q),X1+(q-.5)*bw,Y0+Hh+12,C.muted,10,'center');}
   txt(x,'차수별 R² (파랑 훈련 · 주황 시험)',X1,Y0-8,C.text,11,'left',700);stamp(x,W,'교안 데이터');
-  kpis($('#k3k'),[['i',S[0].toFixed(4),'훈련 R²'],[S[1]<.9?'r':'g',S[1].toFixed(4),'시험 R²'],['a',Math.round(f(8.4))+'g','8.4cm 농어 예측(실제 5.9g)'],['m',Math.round(f(50))+'g','50cm 농어 예측']]);
+  kpis($('#k3k'),[['i',S[0].toFixed(4),'공부 데이터 설명력(R²)'],[S[1]<.9?'r':'g',S[1].toFixed(4),'시험 데이터 설명력(R²)'],['a',Math.round(f(8.4))+'g','8.4cm 농어 예측(실제 5.9g)'],['m',Math.round(f(50))+'g','50cm 농어 예측']]);
   $('#ins3').innerHTML=d===1?'<p class="a">차수 1은 ②칸의 직선과 같습니다. 시험 R² '+S[1].toFixed(3)+'.</p>':d>=6?'<p class="r">차수 '+d+': 훈련 R² '+S[0].toFixed(3)+'로 더 올랐지만 시험 R²는 '+S[1].toFixed(2)+'. 곡선이 훈련 점 사이를 억지로 지나가며 범위 끝에서 크게 휘었습니다.</p>':'<p class="g">차수 '+d+': 훈련 '+S[0].toFixed(3)+', 시험 '+S[1].toFixed(3)+'. 직선보다 작은 농어와 큰 농어를 함께 잘 따라갑니다.</p>';}
 addMod($('#c3'),function(dt){if(!dt)draw3();});
 
@@ -77,7 +77,7 @@ function draw4(){var f=MODELS[md],Y=YTE.slice();if(ol==='on')Y[8]+=600;var P=XTE
   ord.forEach(function(i,j){var e=E[i];x.fillStyle=e>=0?C.info:C.eye;x.fillRect(X0+j*bw+3,Math.min(zy,sy(e)),bw-6,Math.abs(sy(e)-zy)||1);txt(x,XTE[i]+'',X0+j*bw+bw/2,Y0+Hh+12,C.muted,9,'center');if(ol==='on'&&i===8)txt(x,'오기',X0+j*bw+bw/2,sy(e)-8,C.amber,10,'center',700);});
   txt(x,'시험 농어 14마리 (가로: 길이 cm 순) · 위 = 실제가 더 무거움',X0+6,Y0+12,C.muted,11);stamp(x,W,ol==='on'?'오기는 일부러 넣은 값':'교안 데이터');
   var mse=mean(E.map(function(e){return e*e})),mae=mean(E.map(Math.abs));
-  kpis($('#k4k'),[['r',Math.round(mse).toLocaleString('ko-KR'),'MSE (g²)'],['a',Math.round(Math.sqrt(mse))+'g','RMSE'],['g',Math.round(mae)+'g','MAE'],['m',Math.round(mean(E))+'g','오차를 그냥 평균하면']]);
+  kpis($('#k4k'),[['r',Math.round(mse).toLocaleString('ko-KR'),'빗나간 거리 제곱의 평균(MSE, g²)'],['a',Math.round(Math.sqrt(mse))+'g','평균적으로 빗나간 g(RMSE)'],['g',Math.round(mae)+'g','빗나간 g의 평균(MAE)'],['m',Math.round(mean(E))+'g','오차를 그냥 평균하면']]);
   $('#ins4').innerHTML=ol==='on'?'<p class="r">오기 한 마리로 MSE는 '+Math.round(mse).toLocaleString('ko-KR')+'까지 뛰었고, RMSE('+Math.round(Math.sqrt(mse))+'g)와 MAE('+Math.round(mae)+'g)의 차이가 크게 벌어졌습니다. 큰 오차 하나에 MSE가 가장 민감합니다.</p>':'<p class="g">'+{knn:'KNN',lin:'선형',poly:'2차'}[md]+' 모델: 시험 농어 한 마리당 평균 '+Math.round(mae)+'g(MAE), 제곱 평균의 제곱근으로는 '+Math.round(Math.sqrt(mse))+'g(RMSE) 빗나갑니다. 오차를 그냥 평균하면 '+Math.round(mean(E))+'g — 부호가 상쇄됩니다.</p>';}
 addMod($('#c4'),function(dt){if(!dt)draw4();});
 
@@ -90,9 +90,9 @@ function draw5(){var k=+$('#kn').value,S=r2k(k),c=$('#c5'),W=fitC(c,280),H=280,x
   txt(x,'SST = SSR + SSE',X0,Y0-12,C.text,12,'left',700);var f=S.ssr/S.sst;x.fillStyle=C.gfp;x.fillRect(X0,Y0+10,Wd*f,bh);x.fillStyle=C.eye;x.fillRect(X0+Wd*f,Y0+10,Wd*(1-f)+1,bh);x.strokeStyle=C.rule;x.strokeRect(X0,Y0+10,Wd,bh);
   txt(x,'SSR '+pct(f,1),X0,Y0+bh+28,C.gfp,11,'left',700);txt(x,'SSE '+pct(1-f,1),X0+Wd,Y0+bh+28,C.eye,11,'right',700);txt(x,'SST = '+Math.round(S.sst/1000).toLocaleString('ko-KR')+'천 g²',X0,Y0+bh+50,C.muted,11);
   var X1=X0+Wd+60,W1=W-X1-20,Hh=H-70,lo=.90,hi=.96,sx=function(q){return X1+q/12*W1},sy=function(v){return Y0+Hh-(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*Hh};x.strokeStyle=C.rule;x.strokeRect(X1,Y0,W1,Hh);[.90,.92,.94,.96].forEach(function(v){txt(x,v.toFixed(2),X1-4,sy(v),C.muted,10,'right');});[0,3,6,9,12].forEach(function(q){txt(x,'+'+q,sx(q),Y0+Hh+12,C.muted,10,'center');});
-  [['R',C.info,'R²'],['A',C.amber,'수정 R²']].forEach(function(s,j){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();for(var q=0;q<=12;q++){var v=r2k(q)[s[0]];q?x.lineTo(sx(q),sy(v)):x.moveTo(sx(q),sy(v));}x.stroke();x.lineWidth=1;x.fillStyle=s[1];x.beginPath();x.arc(sx(k),sy(S[s[0]]),5,0,7);x.fill();txt(x,'— '+s[2],X1+8+j*60,Y0+12,s[1],11,'left',700);});
+  [['R',C.info,'설명력(R²)'],['A',C.amber,'칸 수만큼 깎은 설명력(수정 R²)']].forEach(function(s,j){x.strokeStyle=s[1];x.lineWidth=2;x.beginPath();for(var q=0;q<=12;q++){var v=r2k(q)[s[0]];q?x.lineTo(sx(q),sy(v)):x.moveTo(sx(q),sy(v));}x.stroke();x.lineWidth=1;x.fillStyle=s[1];x.beginPath();x.arc(sx(k),sy(S[s[0]]),5,0,7);x.fill();txt(x,'— '+s[2],X1+8+j*60,Y0+12,s[1],11,'left',700);});
   txt(x,'난수 변수 개수',X1+W1/2,H-14,C.muted,11,'center');stamp(x,W,'교안 데이터 + 난수 열');
-  kpis($('#k5k'),[['i',S.R.toFixed(4),'R²'],['a',S.A.toFixed(4),'수정 R²'],['m',(k+1)+'개','독립변수 수(길이 + 난수 '+k+')'],[S.A<r2k(0).A?'r':'g',(S.A-r2k(0).A>=0?'+':'')+((S.A-r2k(0).A)*100).toFixed(2)+'%p','길이만 쓸 때 대비 수정 R²']]);
+  kpis($('#k5k'),[['i',S.R.toFixed(4),'설명력(R²)'],['a',S.A.toFixed(4),'칸 수만큼 깎은 설명력(수정 R²)'],['m',(k+1)+'개','독립변수 수(길이 + 난수 '+k+')'],[S.A<r2k(0).A?'r':'g',(S.A-r2k(0).A>=0?'+':'')+((S.A-r2k(0).A)*100).toFixed(2)+'%p','길이만 쓸 때보다 달라진 수정 R²']]);
   $('#eq5').innerHTML='Adj. R² = 1 − (1 − <b>'+S.R.toFixed(4)+'</b>) × (42 − 1) ÷ (42 − '+(k+1)+' − 1) = <em>'+S.A.toFixed(4)+'</em>';
   $('#ins5').innerHTML=k===0?'<p class="g">길이 하나로 무게 변동의 '+pct(S.R,1)+'를 설명합니다(훈련 데이터). 난수 변수를 더해 보세요.</p>':'<p class="'+(S.A<r2k(0).A?'r':'a')+'">쓸모없는 변수 '+k+'개를 더하자 R²는 '+r2k(0).R.toFixed(4)+' → '+S.R.toFixed(4)+'로 올랐지만, 수정 R²는 '+r2k(0).A.toFixed(4)+' → '+S.A.toFixed(4)+'. 겉보기 성능에 속지 않게 해 줍니다.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});

@@ -34,7 +34,7 @@ function draw1(){var k=+$('#iq').value,c=$('#c1'),W=fitC(c,300),H=300,x=c.getCon
   var wl=Math.min.apply(0,inn),wh=Math.max.apply(0,inn);x.strokeStyle=C.text;x.beginPath();x.moveTo(bx,by(q3));x.lineTo(bx,by(wh));x.moveTo(bx-bw/4,by(wh));x.lineTo(bx+bw/4,by(wh));x.moveTo(bx,by(q1));x.lineTo(bx,by(wl));x.moveTo(bx-bw/4,by(wl));x.lineTo(bx+bw/4,by(wl));x.stroke();
   out.forEach(function(v){x.fillStyle=C.eye;x.beginPath();x.arc(bx,by(v),5,0,7);x.fill();});txt(x,'일매출 90일(만 원)',X1,Y0-12,C.text,11,'left',700);
   stamp(x,W,'예시 데이터');
-  kpis($('#k1k'),[['i',Math.round(q1)+' · '+Math.round(q2)+' · '+Math.round(q3),'Q1 · 중앙값 · Q3'],['a',Math.round(iqr),'IQR = Q3 − Q1'],['m',Math.round(lw)+' ~ '+Math.round(hw),'정상 범위(Q ± '+k+'·IQR)'],[out.length?'r':'g',out.length+'일','이상값으로 찍힌 날']]);
+  kpis($('#k1k'),[['i',Math.round(q1)+' · '+Math.round(q2)+' · '+Math.round(q3),'Q1 · 중앙값 · Q3'],['a',Math.round(iqr),'가운데 50% 폭(IQR)'],['m',Math.round(lw)+' ~ '+Math.round(hw),'정상 범위(Q ± '+k+'·IQR)'],[out.length?'r':'g',out.length+'일','이상값으로 찍힌 날']]);
   $('#ins1').innerHTML=(ch==='pie'?'<p class="r">파이 차트: 8조각이 비슷한 크기라 성장 추세가 보이지 않고, 1년 1Q에서 2년 4Q로 가는 순서도 읽히지 않습니다.</p>':ch==='bar'?'<p class="a">막대: 분기별 값 비교는 정확하지만, 흐름은 선보다 덜 눈에 띕니다.</p>':'<p class="g">선: 2년 동안 꾸준히 오르고 매년 3Q에 살짝 꺾이는 흐름이 한눈에 보입니다.</p>')+'<p class="'+(out.length?'a':'g')+'">상자수염: '+k+'·IQR 기준으로 '+out.length+'일이 이상값 후보입니다'+(out.length?' ('+out.join(', ')+'만 원)':'')+'.</p>';}
 addMod($('#c1'),function(dt){if(!dt)draw1();});
 
@@ -46,7 +46,7 @@ function draw2(){var p1=+$('#p1').value,p2=+$('#p2').value,c=$('#c2'),W=fitC(c,3
   var y=ar2(p1,p2),X0=40,Y0=20,Wd=W-60,h1=90,mx=Math.max.apply(0,y.map(Math.abs))||1,sx=function(i){return X0+i/199*Wd},sy=function(v){return Y0+h1/2-v/mx*(h1/2)};x.strokeStyle=C.rule;x.strokeRect(X0,Y0,Wd,h1);line(x,y,sx,sy,C.gfp,1.5);txt(x,'시계열 200개 시점',X0,Y0-6,C.text,11,'left',700);
   var A=acf(y,12),P=pacf(y,12),Y1=Y0+h1+40,h2=H-Y1-30,w2=(Wd-40)/2;bars(x,A,X0,Y1,w2,h2,200,'ACF (시차 1~12)');bars(x,P,X0+w2+40,Y1,w2,h2,200,'PACF (시차 1~12)');
   stamp(x,W,'예시 데이터 · AR(2)');var ci=1.96/Math.sqrt(200),cut=0;P.forEach(function(v,i){if(Math.abs(v)>ci)cut=i+1;});
-  kpis($('#k2k'),[['i',A[0].toFixed(2)+' · '+A[1].toFixed(2)+' · '+A[2].toFixed(2),'ACF 시차 1·2·3'],['g',P[0].toFixed(2)+' · '+P[1].toFixed(2)+' · '+P[2].toFixed(2),'PACF 시차 1·2·3'],['a','±'+ci.toFixed(3),'95% 신뢰구간'],['m',cut?'시차 '+cut:'없음','PACF가 마지막으로 구간을 넘는 시차']]);
+  kpis($('#k2k'),[['i',A[0].toFixed(2)+' · '+A[1].toFixed(2)+' · '+A[2].toFixed(2),'1·2·3달 전과 닮음(ACF)'],['g',P[0].toFixed(2)+' · '+P[1].toFixed(2)+' · '+P[2].toFixed(2),'1·2·3달 전과 직접 닮음(PACF)'],['a','±'+ci.toFixed(3),'우연 범위(95%)'],['m',cut?'시차 '+cut:'없음','직접 닮음이 끊기는 시차']]);
   $('#ins2').innerHTML=!st?'<p class="r">이 조합(φ₁ = '+p1+', φ₂ = '+p2+')은 정상 조건을 벗어나 값이 계속 커지거나 흔들립니다. 정상 AR(2)는 φ₁ + φ₂ &lt; 1, φ₂ − φ₁ &lt; 1, |φ₂| &lt; 1이어야 합니다.</p>':Math.abs(p1)<.05&&Math.abs(p2)<.05?'<p class="a">백색잡음: ACF·PACF 막대가 거의 모두 점선 안입니다. 과거로 미래를 맞힐 단서가 없습니다.</p>':'<p class="g">ACF는 서서히 줄고, PACF는 시차 '+(cut||'–')+' 뒤로 점선 안에 들어옵니다. AR('+(Math.abs(p2)>=.05?2:1)+')의 전형적인 모양입니다.</p>';}
 addMod($('#c2'),function(dt){if(!dt)draw2();});
 
@@ -61,7 +61,7 @@ function draw3(){var y=sales(72,+$('#tr3').value,+$('#am3').value,11),D=decompos
     x.strokeStyle=r[2];x.lineWidth=1.8;x.beginPath();var st=false;r[1].forEach(function(q,i){if(q==null){st=false;return;}st?x.lineTo(sx(i),sy(q)):x.moveTo(sx(i),sy(q));st=true;});x.stroke();x.lineWidth=1;});
   for(var yr=0;yr<=6;yr++)txt(x,(yr+1)+'년',X0+(yr*12+6)/71*Wd,H-8,C.muted,9,'center');stamp(x,W,'예시 데이터');
   var dec=D.idx[11],peak=D.idx.indexOf(Math.max.apply(0,D.idx)),low=D.idx.indexOf(Math.min.apply(0,D.idx)),tv=D.tr.filter(function(q){return q!=null});
-  kpis($('#k3k'),[['g',((tv[tv.length-1]-tv[0])/(tv.length-1)).toFixed(2),'추정한 추세(월당)'],['a',MON[peak]+' +'+D.idx[peak].toFixed(1),'가장 높은 계절 지수'],['i',MON[low]+' '+D.idx[low].toFixed(1),'가장 낮은 계절 지수'],['m',sd(D.R.filter(function(q){return q!=null})).toFixed(1),'불규칙성의 표준편차']]);
+  kpis($('#k3k'),[['g',((tv[tv.length-1]-tv[0])/(tv.length-1)).toFixed(2),'추정한 추세(월당)'],['a',MON[peak]+' +'+D.idx[peak].toFixed(1),'가장 잘 팔리는 달'],['i',MON[low]+' '+D.idx[low].toFixed(1),'가장 안 팔리는 달'],['m',sd(D.R.filter(function(q){return q!=null})).toFixed(1),'우연한 흔들림의 크기']]);
   $('#ins3').innerHTML=+$('#am3').value===0?'<p class="a">계절 진폭 0: 계절성 줄이 거의 평평합니다(잡음에서 나온 작은 흔들림만 남음).</p>':'<p class="g">분해 결과 '+MON[peak]+'이 평균보다 약 '+D.idx[peak].toFixed(1)+' 높고, '+MON[low]+'이 약 '+Math.abs(D.idx[low]).toFixed(1)+' 낮습니다. 추세는 월당 약 '+((tv[tv.length-1]-tv[0])/(tv.length-1)).toFixed(2)+'로 추정됐습니다(설정값 '+$('#tr3').value+').</p>';}
 addMod($('#c3'),function(dt){if(!dt)draw3();});
 
@@ -75,7 +75,7 @@ function draw4(){var y=diff(SER[srK],dK),c=$('#c4'),W=fitC(c,300),H=300,x=c.getC
   txt(x,(dK?dK+'차 차분':'원 시계열')+' · 주황 = 네 구간의 평균',X0,Y0-8,C.text,11,'left',700);txt(x,Math.round(hi),X0-4,sy(hi),C.muted,9,'right');txt(x,Math.round(lo),X0-4,sy(lo),C.muted,9,'right');
   var A=acf(y,10);bars(x,A,X0+Wd+40,Y0+10,W-X0-Wd-60,Hh-20,y.length,'ACF');stamp(x,W,'예시 데이터');
   var spread=Math.max.apply(0,ms.map(function(m){return m[0]}))-Math.min.apply(0,ms.map(function(m){return m[0]})),avgSd=mean(ms.map(function(m){return m[1]})),ok=spread<avgSd*.6;
-  kpis($('#k4k'),[['i',ms.map(function(m){return m[0].toFixed(1)}).join(' · '),'네 구간 평균'],['a',ms.map(function(m){return m[1].toFixed(1)}).join(' · '),'네 구간 표준편차'],[A[0]<-.35?'r':ok?'g':'r',A[0].toFixed(2),'ACF 시차 1'],[ok?'g':'r',ok?'평균이 거의 일정':'평균이 움직임','정상성(눈으로 본 판정)']]);
+  kpis($('#k4k'),[['i',ms.map(function(m){return m[0].toFixed(1)}).join(' · '),'네 구간 평균'],['a',ms.map(function(m){return m[1].toFixed(1)}).join(' · '),'네 구간 표준편차'],[A[0]<-.35?'r':ok?'g':'r',A[0].toFixed(2),'1달 전과 닮음(ACF)'],[ok?'g':'r',ok?'평균이 거의 일정':'평균이 움직임','잔잔한가(정상성)']]);
   $('#ins4').innerHTML=A[0]<-.35&&dK>0?'<p class="r">ACF 시차 1이 '+A[0].toFixed(2)+'로 크게 음수입니다. 필요 이상으로 차분해 오히려 새 패턴을 만들었습니다(과도한 차분).</p>':ok?'<p class="g">d = '+dK+': 네 구간 평균이 비슷하고 ACF가 빨리 줄어듭니다. 정상 시계열로 볼 만합니다.</p>':'<p class="a">d = '+dK+': 구간 평균이 '+ms[0][0].toFixed(1)+' → '+ms[3][0].toFixed(1)+'로 움직입니다. 아직 비정상입니다. 차분을 한 번 더 해 보세요.</p>';}
 addMod($('#c4'),function(dt){if(!dt)draw4();});
 
@@ -96,7 +96,7 @@ function draw5(){var p=+$('#pp').value,R=arima(TRN,p,d5,12),c=$('#c5'),W=fitC(c,
   var X1=X0+Wd+40,W1=W-X1-14,aics=[];for(var q=1;q<=12;q++)aics.push(arima(TRN,q,d5,1).aic);var amin=Math.min.apply(0,aics),amax=Math.max.apply(0,aics),bw=W1/12;x.strokeStyle=C.rule;x.strokeRect(X1,Y0,W1,Hh);
   aics.forEach(function(a,i){var h=8+(a-amin)/(amax-amin||1)*(Hh-16);x.fillStyle=i+1===p?C.amber:a===amin?C.gfp:'rgba(157,155,184,.45)';x.fillRect(X1+i*bw+1,Y0+Hh-h,bw-2,h);if(i%3===0||i===11)txt(x,String(i+1),X1+(i+.5)*bw,Y0+Hh+12,C.muted,9,'center');});txt(x,'p별 AIC(낮을수록 좋음)',X1,Y0-8,C.text,11,'left',700);
   stamp(x,W,'예시 데이터');var M=mape(TST,R.f),bestP=aics.indexOf(amin)+1;
-  kpis($('#k5k'),[[M<3?'g':M<6?'a':'r',M.toFixed(2)+'%','시험 12개월 MAPE'],['i',R.aic.toFixed(1),'AIC (p = '+p+')'],['m','p = '+bestP,'AIC가 가장 낮은 p(1~12)'],['a',Math.round(R.f[11])+' / '+Math.round(TST[11]),'12월 예측 / 실제']]);
+  kpis($('#k5k'),[[M<3?'g':M<6?'a':'r',M.toFixed(2)+'%','12개월 예측이 빗나간 %(MAPE)'],['i',R.aic.toFixed(1),'AIC (p = '+p+')'],['m','p = '+bestP,'점수(AIC)가 가장 좋은 p'],['a',Math.round(R.f[11])+' / '+Math.round(TST[11]),'12월 예측 / 실제']]);
   $('#ins5').innerHTML=d5===0?'<p class="r">d = 0: 추세를 지우지 않고 AR을 맞춰, 예측이 평균 쪽으로 눌립니다. MAPE '+M.toFixed(2)+'%.</p>':p>=12?'<p class="g">p = 12: 12개월 전 값이 들어와 12월의 솟음을 따라갑니다. MAPE '+M.toFixed(2)+'%.</p>':'<p class="a">ARIMA('+p+', 1, 0): 추세는 따라가지만 12월 계절성은 '+(Math.abs(R.f[11]-TST[11])>8?'놓칩니다':'어느 정도 따라갑니다')+'. MAPE '+M.toFixed(2)+'%.</p>';}
 addMod($('#c5'),function(dt){if(!dt)draw5();});
 

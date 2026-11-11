@@ -7,11 +7,11 @@
       <p class="lead">6주차까지는 정확도 하나로 모델을 채점했습니다. 이번 주는 그 점수를 의심합니다. 이탈 고객이 5%뿐인 데이터에서 혼동행렬을 그리고, 정밀도·재현율·F1, 임계값과 ROC·AUC를 직접 움직여 봅니다. 이어서 모델을 더 좋게 만드는 두 가지 손잡이(앙상블, 학습률·배치)를 돌리고, 마지막에는 "정확도가 높은 모델"과 "돈을 버는 모델"이 같은지 겨룹니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi r"><b id="heroLazy">–</b><span>"아무도 이탈 안 함"이라고만 답하는 모델의 정확도<sup>계산</sup></span></div>
-        <div class="kpi i"><b>TP · TN · FP · FN</b><span>혼동행렬의 네 칸<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>2PR ÷ (P + R)</b><span>F1: 정밀도와 재현율의 조화평균<sup>[1]</sup></span></div>
-        <div class="kpi a"><b>0.5 → 1</b><span>AUC: 무작위 추측 → 완벽<sup>[1]</sup></span></div>
-        <div class="kpi m"><b>배깅 · 부스팅 · 스태킹</b><span>앙상블 세 갈래<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>5~25배</b><span>신규 획득 대비 유지 비용이 싸다는 원칙<sup>[1]</sup></span></div>
+        <div class="kpi i"><b>4칸</b><span>맞힘·놓침·헛경보를 나눠 세는 표(혼동행렬)<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>F1</b><span>헛짚지 않기와 빠짐없이 잡기를 함께 보는 점수<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>0.5 → 1</b><span>동전 던지기 → 완벽(AUC)<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>3가지</b><span>모델 여럿을 묶는 방법(앙상블)<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>5~25배</b><span>새 고객 데려오기보다 있는 고객 붙잡기가 싼 정도<sup>[1]</sup></span></div>
       </div>
     </div>
     <div class="pixelart">
@@ -93,12 +93,12 @@
     <p class="sub"><span class="lvtag g">정밀도 = TP ÷ (TP + FP) · 재현율 = TP ÷ (TP + FN)</span><span class="lvtag">일상: 공항 수하물 검사</span></p>
   </div>
   <div class="pair">
-    <div><div class="tag fly">일상으로 치면</div><p>교안의 공항 검색대입니다. 수상한 물건을 모두 추가 검사하면 밀수품은 덜 놓치지만(재현율↑) 멀쩡한 짐도 많이 열어 민원이 늘고(정밀도↓), 검사를 느슨하게 하면 민원은 줄지만 위험물이 빠져나갑니다(재현율↓).<sup>[1]</sup></p></div>
+    <div><div class="tag fly">일상으로 치면</div><p>교안의 공항 검색대입니다. 수상한 짐을 모두 열면 밀수품은 덜 놓칩니다(재현율↑). 대신 멀쩡한 짐도 많이 열어 민원이 늘어납니다(정밀도↓). 검사를 느슨하게 하면 민원은 줄지만 위험물이 빠져나갑니다(재현율↓).<sup>[1]</sup></p></div>
     <div><div class="tag nn">머신러닝에서는</div><p>모델은 고객마다 "떠날 확률"을 내고, 그 확률이 기준선(임계값)을 넘으면 "이탈"로 판정합니다. 기준선을 낮추면 더 많이 잡아내지만(재현율↑) 헛짚는 경우도 늘어납니다(정밀도↓). F1은 두 점수를 함께 보는 평균이라, 한쪽만 높으면 낮게 나옵니다.<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="임계값 실험">
     <h3>이탈 확률 분포와 임계값 — 고객 2,000명 · 이탈 10%</h3>
-    <div class="ctrl"><div class="group"><label class="glabel" for="th">임계값</label><input type="range" id="th" min="0.05" max="0.95" step="0.05" value="0.5"><span class="val" id="thv">0.50</span></div></div>
+    <div class="ctrl"><div class="group"><label class="glabel" for="th">판정 기준선(임계값)</label><input type="range" id="th" min="0.05" max="0.95" step="0.05" value="0.5"><span class="val" id="thv">0.50</span></div></div>
     <div class="cwrap"><canvas id="c2" class="wide" aria-label="왼쪽은 이탈·유지 고객의 예측 확률 막대그림과 임계값 선, 오른쪽은 임계값에 따른 정밀도·재현율·F1 곡선"></canvas></div>
     <section class="kpis k4" id="k2k"></section>
     <div class="insight" id="ins2" aria-live="polite"></div>
@@ -128,7 +128,7 @@
   <section class="panel" aria-label="ROC 실험">
     <h3>두 모델의 ROC — 특성 둘(강한 모델) vs 특성 하나(약한 모델)</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="th3">임계값</label><input type="range" id="th3" min="0.02" max="0.98" step="0.02" value="0.5"><span class="val" id="th3v">0.50</span></div>
+      <div class="group"><label class="glabel" for="th3">판정 기준선(임계값)</label><input type="range" id="th3" min="0.02" max="0.98" step="0.02" value="0.5"><span class="val" id="th3v">0.50</span></div>
       <div class="group" id="pairBtns" role="group" aria-label="AUC 확인"><span class="glabel">AUC 확인</span></div>
     </div>
     <div class="cwrap"><canvas id="c3" class="wide" aria-label="ROC 곡선 두 개와 대각선, 현재 임계값의 점"></canvas></div>
@@ -152,14 +152,14 @@
   </div>
   <div class="pair">
     <div><div class="tag fly">일상으로 치면</div><p>중요한 결정은 여러 전문가에게 묻습니다. 단, 같은 배경의 사람만 모이면 같은 실수를 함께 합니다. 의견이 다양해야 서로의 실수가 상쇄됩니다.<sup>[1]</sup></p></div>
-    <div><div class="tag nn">머신러닝에서는</div><p>모델 여럿을 묶는 방법은 셋입니다. 데이터를 조금씩 다르게 뽑아 여러 모델을 따로 공부시켜 투표하기(배깅, 대표: 랜덤 포레스트), 앞 모델이 틀린 문제를 다음 모델이 집중해 공부하기(부스팅), 여러 모델의 답을 다른 모델이 다시 종합하기(스태킹).<sup>[1]</sup></p></div>
+    <div><div class="tag nn">머신러닝에서는</div><p>모델 여럿을 묶는 방법은 셋입니다. ① 데이터를 조금씩 다르게 뽑아 따로 공부시킨 뒤 투표하기(배깅, 예: 랜덤 포레스트) ② 앞 모델이 틀린 문제를 다음 모델이 집중해 공부하기(부스팅) ③ 여러 모델의 답을 다른 모델이 종합하기(스태킹).<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="다수결 앙상블 실험">
     <h3>정확도 p인 모델 N개의 다수결 — 서로 닮은 정도 ρ</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="nm">모델 수 N</label><input type="range" id="nm" min="1" max="51" step="2" value="15"><span class="val" id="nmv">15</span></div>
-      <div class="group"><label class="glabel" for="pm">개별 정확도 p</label><input type="range" id="pm" min="0.55" max="0.8" step="0.05" value="0.65"><span class="val" id="pmv">65%</span></div>
-      <div class="group"><label class="glabel" for="rho">닮은 정도 ρ</label><input type="range" id="rho" min="0" max="0.9" step="0.1" value="0"><span class="val" id="rhov">0.0</span></div>
+      <div class="group"><label class="glabel" for="nm">모델 수(N)</label><input type="range" id="nm" min="1" max="51" step="2" value="15"><span class="val" id="nmv">15</span></div>
+      <div class="group"><label class="glabel" for="pm">모델 하나의 정확도(p)</label><input type="range" id="pm" min="0.55" max="0.8" step="0.05" value="0.65"><span class="val" id="pmv">65%</span></div>
+      <div class="group"><label class="glabel" for="rho">모델끼리 닮은 정도(ρ)</label><input type="range" id="rho" min="0" max="0.9" step="0.1" value="0"><span class="val" id="rhov">0.0</span></div>
     </div>
     <div class="cwrap"><canvas id="c4" class="wide" aria-label="모델 수에 따른 다수결 정확도 곡선. 서로 독립일 때와 닮았을 때를 비교"></canvas></div>
     <section class="kpis k4" id="k4k"></section>
@@ -190,8 +190,8 @@
   <section class="panel" aria-label="학습률과 배치 실험">
     <h3>로지스틱 회귀로 이탈 예측 학습 — 훈련 800명, 20에포크</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="lr">학습률</label><input type="range" id="lr" min="0" max="4" step="1" value="2"><span class="val" id="lrv">0.3</span></div>
-      <div class="group" id="bsBtns" role="group" aria-label="배치 크기"><span class="glabel">배치</span></div>
+      <div class="group"><label class="glabel" for="lr">한 번에 고치는 폭(학습률)</label><input type="range" id="lr" min="0" max="4" step="1" value="2"><span class="val" id="lrv">0.3</span></div>
+      <div class="group" id="bsBtns" role="group" aria-label="배치 크기"><span class="glabel">한 번에 보는 데이터 수(배치)</span></div>
     </div>
     <div class="cwrap"><canvas id="c5" class="wide" aria-label="에포크에 따른 훈련 손실 곡선. 현재 설정과 다른 학습률들의 흐린 곡선"></canvas></div>
     <section class="kpis k4" id="k5k"></section>
@@ -213,7 +213,7 @@
 <!-- 대결 -->
 <section class="level" id="duel"><div class="wrap stack">
   <div class="lvhead"><h2>대결 — 정확도로 고른 임계값 vs 장부로 고른 임계값</h2><p class="lead">같은 이탈 예측 모델을 씁니다. 검증 고객 3,000명으로 임계값을 하나씩 정한 뒤, 처음 보는 시험 고객 3,000명에게 쿠폰 캠페인을 했을 때 남는 돈을 겨룹니다.</p></div>
-  <div class="eq" style="white-space:normal">쿠폰 한 장 = 2만 원(이탈로 판정한 고객 모두에게) · 이탈 고객이 쿠폰을 받으면 절반이 남아 고객 가치 30만 원의 절반 = 15만 원 회수 · 순이익 = TP × 15 − (TP + FP) × 2 (만 원)</div>
+  <div class="eq" style="white-space:normal">쿠폰 한 장 = 2만 원(이탈로 판정한 고객 모두에게) · 이탈 고객이 쿠폰을 받으면 절반이 남아 고객 가치 30만 원의 절반 = 15만 원 회수 · 순이익 = (제대로 잡은 이탈 고객 수 × 15만 원) − (쿠폰을 준 고객 수 × 2만 원)</div>
   <div class="duel" id="duelBox">
     <div class="vs">
       <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · 정확도가 가장 높은 임계값</b><p>"제일 많이 맞히는 기준이 제일 좋은 기준이지."</p></div>
@@ -227,7 +227,7 @@
       <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
       <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
       <p class="muted guessfb"></p>
-      <p class="muted" style="font-size:14px">조건 메모: 고객·비용은 설명용 예시값입니다(이탈 비율 10%, 검증 시드 21, 시험 시드 22). 쿠폰값이 회수액에 가까워지면(예: 쿠폰 12만 원) 두 기준의 차이는 줄어듭니다.</p>
+      <p class="muted" style="font-size:14px">조건 메모: 고객·비용은 설명용 예시값입니다(이탈 고객은 10명 중 1명꼴). 쿠폰값이 회수액에 가까워지면(예: 쿠폰 12만 원) 두 기준의 차이는 줄어듭니다.</p>
     </div>
   </div>
 </div></section>
@@ -246,8 +246,8 @@
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>혼동행렬(TP·TN·FP·FN), 정확도·정밀도·재현율·F1, ROC 곡선과 AUC, 그리고 이를 계산하는 파이썬 도구.</p></div>
-    <div><b>교안 정리 2</b><p>KNN의 K, SVM의 커널·C·gamma, 표준화·정규화, 배깅·부스팅·스태킹, 배치·에포크·학습률, K-폴드 교차검증(4주차 ③칸).</p></div>
-    <div><b>교안 정리 3</b><p>고객 세분화(RFM), 이탈 예측(조기 경고 신호·CLV), 추천(콜드 스타트), 캠페인 최적화(데이터 유출 주의), 공정성·개인정보·설명 가능한 AI.</p></div>
+    <div><b>교안 정리 2</b><p>모델 설정값 고르기(이웃 수, 경계 모양), 눈금 맞추기, 모델 여럿 묶기(배깅·부스팅·스태킹), 학습 속도 조절(배치·에포크·학습률), 돌아가며 시험 보기(4주차 ③칸).</p></div>
+    <div><b>교안 정리 3</b><p>고객 세분화(RFM), 이탈 예측(조기 경고 신호·CLV), 추천(신규 고객은 기록이 없다는 문제), 캠페인 최적화(시험 답이 공부에 섞이지 않게 주의), 공정성·개인정보·설명 가능한 AI.</p></div>
   </div>
 </div></section>
 
@@ -256,7 +256,7 @@
   <h2>실험을 마치며</h2>
   <figure class="scene" data-scene="sc_w07_outro" hidden><img alt="주판을 높이 든 주판봇이 기뻐하고, 커피를 든 초파리 연구원이 고개를 끄덕이며, 박사가 엄지를 세우고 조수가 웃는 장면"></figure>
   <div class="dialog">
-    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>소수 클래스가 중요하면 정확도 대신 혼동행렬·정밀도·재현율을 본다.</li><li>모델의 실력은 AUC로, 쓰는 기준은 임계값으로 따로 정한다.</li><li>임계값은 틀림의 값(비용)으로 정한다.</li></ul></div></div>
+    <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>드문 경우(이탈·사기)가 중요하면 정확도 대신 맞힘·놓침·헛경보를 나눠 본다.</li><li>모델의 실력(AUC)과 실제로 쓰는 판정 기준선은 따로 정한다.</li><li>기준선은 틀렸을 때 드는 돈으로 정한다.</li></ul></div></div>
     <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>쿠폰은 좀 헛쐈지만 장부는 흑자! 틀림에도 가격표가 붙어 있다니까.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>정확도는 내가 더 높았는데… 떠나는 고객을 그냥 보낸 값이었군.</p></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>8주차는 중간고사예요. 9주차에는 분류에서 회귀로 넘어가 숫자 자체를 예측해 볼게요. ①칸 이탈 비율을 1%로도 바꿔 보세요.</p></div></div>

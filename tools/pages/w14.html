@@ -4,14 +4,14 @@
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 14주차 · 비즈니스를 위한 고급 분석 기법</span>
       <h1>정답 없이, 글 속에서, 층을 쌓아</h1>
       <p class="q">정답 라벨이 없을 때, 숫자가 아니라 글일 때, 경계가 직선이 아닐 때 — 데이터 과학은 어떻게 할까?</p>
-      <p class="lead">마지막 주는 세 갈래의 고급 기법입니다. 정답 없이 고객을 묶는 군집 분석과 상품 짝을 찾는 연관 규칙(비지도학습), 고객의 글을 읽는 감성 분석과 TF-IDF(자연어 처리), 그리고 층을 쌓아 곡선 경계를 스스로 배우는 신경망(딥러닝). 대결은 "직선이면 충분한 문제에 딥러닝이 필요할까"입니다.</p>
+      <p class="lead">마지막 주는 세 갈래의 고급 기법입니다. ① 정답 없이 비슷한 고객끼리 묶고, 함께 팔리는 상품을 찾기(비지도학습) ② 고객의 글에서 칭찬·불만과 핵심 단어 찾기(자연어 처리) ③ 층을 쌓아 곡선 경계를 스스로 배우는 신경망(딥러닝). 대결은 "직선이면 충분한 문제에 딥러닝이 필요할까"입니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
-        <div class="kpi i"><b>군집 · 연관 · 차원 축소</b><span>비지도학습의 세 유형<sup>[1]</sup></span></div>
-        <div class="kpi a"><b>지지도 · 신뢰도 · 향상도</b><span>연관 규칙의 세 지표<sup>[1]</sup></span></div>
-        <div class="kpi g"><b>규칙 · 머신러닝 · 딥러닝</b><span>감성 분석의 세 방식<sup>[1]</sup></span></div>
-        <div class="kpi m"><b>TF × IDF</b><span>자주, 그러나 여기서만 나오는 단어<sup>[1]</sup></span></div>
-        <div class="kpi r"><b>CNN · RNN · LSTM</b><span>이미지 · 순서 · 긴 기억<sup>[1]</sup></span></div>
-        <div class="kpi g"><b id="heroRing">–</b><span>원형 고객 데이터: 로지스틱 → 은닉 뉴런 4개<sup>계산</sup></span></div>
+        <div class="kpi i"><b>3가지</b><span>정답 없이 패턴 찾기: 묶기·함께 팔림·줄이기<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>숫자 3개</b><span>흔한가·믿을 만한가·우연보다 강한가<sup>[1]</sup></span></div>
+        <div class="kpi g"><b>3가지</b><span>리뷰가 칭찬인지 불만인지 읽는 방식<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>핵심 단어</b><span>이 글에 자주, 다른 글엔 드물게(TF-IDF)<sup>[1]</sup></span></div>
+        <div class="kpi r"><b>사진·순서·긴 기억</b><span>딥러닝 구조 셋(CNN·RNN·LSTM)<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroRing">–</b><span>고리 모양 데이터: 직선 하나 → 뉴런 4개 신경망의 정답률<sup>계산</sup></span></div>
       </div>
     </div>
     <div class="pixelart">
@@ -52,7 +52,7 @@
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 14주차의 세 교시</h2></div>
-  <div class="flowchips" aria-label="14주차 흐름"><span>1교시: 비지도학습 · 군집(고객 세분화) · 연관 규칙(장바구니)</span><i>→</i><span>2교시: 자연어 처리 · VOC · 감성 분석 · TF-IDF · N-gram · LDA</span><i>→</i><span class="lim">3교시: 딥러닝(MLP · CNN · RNN · LSTM) · 비즈니스 적용</span></div>
+  <div class="flowchips" aria-label="14주차 흐름"><span>1교시: 비지도학습 · 군집(고객 세분화) · 연관 규칙(장바구니)</span><i>→</i><span>2교시: 글 읽는 AI · 고객의 소리 · 칭찬/불만 가리기 · 핵심 단어 찾기 · 주제 찾기</span><i>→</i><span class="lim">3교시: 딥러닝(기본 신경망 · 사진용 · 순서용) · 비즈니스 적용</span></div>
   <div class="pair">
     <div><div class="tag fly">지도학습</div><p>입력과 정답의 쌍으로 학습해 예측 정확도를 잴 수 있습니다. 5~10주차의 분류·회귀가 여기에 속합니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">비지도학습</div><p>입력만 있고 정답이 없습니다. 성능을 객관적으로 평가하기 어렵지만 새로운 발견의 가능성이 높고, 두 방법은 서로 보완적으로 쓰입니다.<sup>[1]</sup></p></div>
@@ -190,7 +190,7 @@
     <li>6주차 SVM의 RBF 커널도 원형 데이터를 갈랐습니다. 커널은 사람이 고른 "거리의 모양", 신경망은 데이터에서 배운 "특성의 조합"이라는 점이 다릅니다.</li>
   </ol><p class="limit">이 칸의 한계: 신경망은 강력하지만 데이터·계산·해석 비용이 큽니다. 직선이면 충분한 문제에서도 이득이 있을까요? → 대결</p></div>
   <div class="bridges">
-    <div class="bridge field"><h4>현장에 옮기면</h4><p>교안의 활용 분야: 제조업의 딥러닝 품질 검사와 예측 유지보수, 금융의 신용평가·사기 탐지·알고리즘 트레이딩, 의료 영상 진단과 신약 개발, 자율주행과 물류 최적화, 이커머스의 개인화 추천·수요 예측·가격 최적화. 도입은 ROI와 성공 지표를 정하고, 데이터 품질을 평가하고, 파일럿부터 단계적으로 확산하며, 규제 분야에서는 설명 가능한 AI를 고려합니다.<sup>[1]</sup></p><p class="lim">한계: 위 분야 목록은 교안의 정리이며, 이 페이지는 각 분야의 실제 성과 수치를 싣지 않았습니다.</p></div>
+    <div class="bridge field"><h4>현장에 옮기면</h4><p>교안의 활용 분야: ① 제조 — 불량 검사, 고장 미리 알기 ② 금융 — 신용평가, 사기 탐지 ③ 의료 — 영상 진단, 신약 개발 ④ 물류 — 자율주행, 배송 최적화 ⑤ 온라인 쇼핑 — 맞춤 추천, 수요 예측. 도입은 순서대로 합니다. 투자 대비 효과(ROI)와 성공 기준을 정하고, 데이터 품질을 보고, 작은 시범(파일럿)부터 넓힙니다. 규제 분야에서는 이유를 설명할 수 있는 AI를 고려합니다.<sup>[1]</sup></p><p class="lim">한계: 위 분야 목록은 교안의 정리이며, 이 페이지는 각 분야의 실제 성과 수치를 싣지 않았습니다.</p></div>
     <div class="bridge gen"><h4>생성 AI로 치면</h4><p>지금의 생성 AI는 이 칸의 신경망을 아주 깊고 넓게 쌓은 트랜스포머입니다. ③④칸의 감성 사전·TF-IDF 없이 "이 리뷰의 불만 요점을 세 줄로"라고 시키면 문맥까지 읽어 답합니다. 교안이 딥러닝 기반 감성 분석으로 소개한 BERT도 트랜스포머 계열입니다.<sup>[1]</sup></p><p class="lim">비유의 한계: 생성 AI의 답도 틀릴 수 있어, 대량 VOC 분류에 쓸 때는 일부를 사람이 검수해 정확도를 재야 합니다(7주차 평가).</p></div>
   </div>
   <div class="quiz" data-quiz="lv5"></div>
@@ -212,7 +212,7 @@
       <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
       <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
       <p class="muted guessfb"></p>
-      <p class="muted" style="font-size:14px">조건 메모: 데이터는 설명용 예시(시드 1·2)이며, 실제 경계가 직선이 되도록 만들었습니다. ⑤칸처럼 경계가 곡선인 문제라면 결과가 크게 달라집니다.</p>
+      <p class="muted" style="font-size:14px">조건 메모: 데이터는 설명용 예시값이며, 실제 경계가 직선이 되도록 만들었습니다. ⑤칸처럼 경계가 곡선인 문제라면 결과가 크게 달라집니다.</p>
     </div>
   </div>
 </div></section>
@@ -230,9 +230,9 @@
       <tr><td><b>⑤ 신경망</b></td><td>특성을 스스로 배워 곡선 경계</td><td>비용·해석의 부담</td><td>대결</td></tr>
     </tbody></table></div>
   <div class="steps">
-    <div><b>교안 정리 1</b><p>비지도학습(군집·연관 규칙·차원 축소), 지도학습과의 차이, RFM 고객 세분화, 장바구니 분석(지지도·신뢰도·향상도), 추천 시스템, 유통·금융 사례.</p></div>
-    <div><b>교안 정리 2</b><p>자연어 처리와 비정형 데이터, VOC 수집·전처리, 감성 분석(규칙·머신러닝·딥러닝), TF-IDF·N-gram·LDA, 고객 여정 분석, 제조·서비스 사례.</p></div>
-    <div><b>교안 정리 3</b><p>머신러닝 vs 딥러닝(특성 공학 vs 표현 학습), MLP·CNN·RNN·LSTM, 스마트 팩토리·금융·의료·모빌리티·리테일 적용, 도입 전략.</p></div>
+    <div><b>교안 정리 1</b><p>비지도학습(군집·연관 규칙·차원 축소), 지도학습과의 차이, 최근성·빈도·금액(RFM)으로 고객 나누기, 장바구니 분석(지지도·신뢰도·향상도), 추천 시스템, 유통·금융 사례.</p></div>
+    <div><b>교안 정리 2</b><p>글 데이터 다루기, 고객의 소리 모으기·다듬기, 칭찬/불만 가리기(규칙·머신러닝·딥러닝), 핵심 단어·단어 묶음·주제 찾기, 고객 여정 분석, 제조·서비스 사례.</p></div>
+    <div><b>교안 정리 3</b><p>머신러닝 vs 딥러닝(특성 공학 vs 표현 학습), 기본 신경망·사진용·순서용 신경망, 스마트 팩토리·금융·의료·모빌리티·리테일 적용, 도입 전략.</p></div>
   </div>
 </div></section>
 

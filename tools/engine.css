@@ -314,3 +314,5 @@ body{line-height:1.8}
 .dialog .say p{margin:2px 0 0;line-height:1.7}
 details.code,details.abbr,details.math{margin-top:4px}
 @media (max-width:700px){.level{padding-block:64px}.level>.wrap.stack{gap:30px}.pair>div,.easy>div,.explain{padding:16px 16px}.dialog.lvtalk{padding:14px}}
+.takeaway{margin:0;padding:14px 18px;border-radius:10px;background:rgba(127,209,139,.08);border:1px solid rgba(127,209,139,.35);font-size:16px;line-height:1.7;word-break:keep-all}
+.takeaway b{display:inline-block;margin-right:10px;padding:1px 10px;border-radius:999px;background:var(--gfp,#7fd18b);color:#10131a;font-size:12px;font-weight:700;vertical-align:2px}

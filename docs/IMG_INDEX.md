@@ -9,7 +9,7 @@
 |---|---|---|
 | 새로 그릴 그림 | **42장** | 표지 16(목차 + 15주차) · 히어로 무대 13 · 아웃트로 13 |
 | 표지에서 자르는 그림 | 31장 | 목차 카드(thumb, 3:2) 15 · 공유 미리보기(og, 1200×630) 16 — 따로 그리지 않음 |
-| 재사용(캐릭터 팩) | 표정 19종 | 이미 모든 페이지에 들어 있음. 새로 그리지 않음 |
+| 재사용(캐릭터 팩) | 표정 21종 | 이미 모든 페이지에 들어 있음. 새로 그리지 않음 |
 | 지금 들어간 그림 | 73장 / 73장 | 표지·장면은 페이지 안에(WebP), 목차 카드·공유 미리보기는 `img/` 폴더에 |
 
 연습 페이지(8·15주차)는 대결이 없어서 히어로 무대·아웃트로 자리가 없고 표지만 필요합니다.
@@ -107,20 +107,20 @@
 | 페이지 | 표정 키 |
 |---|---|
 | 목차 | `asst_smile` · `doc_front` · `fly_point` · `robo_coin` |
-| 1주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_magnify` · `fly_point` · `robo_coin` · `robo_sigh` · `robo_smile` |
-| 2주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_smile` |
-| 3주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_board` · `doc_front` · `doc_judge` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_coin` · `robo_happy` · `robo_smile` |
-| 4주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_board` · `doc_front` · `doc_judge` · `fly_clip` · `fly_cry` · `fly_magnify` · `fly_point` · `robo_coin` · `robo_happy` · `robo_smile` |
-| 5주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_coin` · `robo_meh` · `robo_smile` |
-| 6주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_point` · `robo_calc` · `robo_coin` · `robo_sigh` · `robo_smile` |
-| 7주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_point` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 1주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_sigh` · `robo_smile` |
+| 2주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 3주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 4주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_cry` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 5주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_coin` · `robo_happy` · `robo_meh` · `robo_smile` |
+| 6주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_sigh` · `robo_smile` |
+| 7주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
 | 8주차 | `asst_report` · `asst_smile` · `doc_front` · `doc_think` · `fly_point` · `robo_calc` · `robo_coin` |
-| 9주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_point` · `robo_calc` · `robo_coin` · `robo_smile` |
-| 10주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_point` · `robo_coin` · `robo_sigh` · `robo_smile` |
-| 11주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_point` · `robo_coin` · `robo_happy` · `robo_smile` |
-| 12주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_point` · `robo_coin` · `robo_sigh` · `robo_smile` |
-| 13주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_point` · `robo_calc` · `robo_coin` · `robo_smile` |
-| 14주차 | `asst_firm` · `asst_report` · `asst_smile` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_point` · `robo_coin` · `robo_meh` · `robo_smile` |
+| 9주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 10주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_sigh` · `robo_smile` |
+| 11주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 12주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_arms` · `fly_clip` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_sigh` · `robo_smile` |
+| 13주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_smile` |
+| 14주차 | `asst_firm` · `asst_report` · `asst_shock` · `asst_smile` · `asst_spark` · `doc_board` · `doc_front` · `doc_judge` · `doc_think` · `fly_clip` · `fly_coffee` · `fly_magnify` · `fly_point` · `robo_calc` · `robo_coin` · `robo_happy` · `robo_meh` · `robo_smile` |
 | 15주차 | `asst_report` · `asst_smile` · `doc_front` · `doc_think` · `fly_point` · `robo_calc` · `robo_coin` |
 
 ## 5. 넘겨주실 때

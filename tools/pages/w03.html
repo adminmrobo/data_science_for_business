@@ -4,14 +4,14 @@
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 3주차 · 데이터 분석을 위한 준비</span>
       <h1>분석 전에 데이터를 손보다</h1>
       <p class="q">분석에 들어가기 전, 무엇을 정하고 데이터를 얼마나 손봐야 할까?</p>
-      <p class="lead">모델을 돌리기 전에 할 일이 더 많습니다. 교안은 전처리가 분석 프로젝트 시간의 약 80%를 차지한다고 말합니다.<sup>[1]</sup> 이 페이지에서는 문제를 SMART 목표로 바꾸고, 빠진 값(결측값)과 튀는 값(이상값)과 겹친 기록(중복)을 직접 손본 뒤, 품질 점수를 매기고, 탐색적 데이터 분석(EDA)으로 데이터를 처음 들여다봅니다.</p>
+      <p class="lead">모델을 돌리기 전에 할 일이 더 많습니다. 교안은 전처리가 분석 프로젝트 시간의 약 80%를 차지한다고 말합니다.<sup>[1]</sup> 이 페이지에서는 순서대로 해 봅니다. ① 막연한 문제를 잴 수 있는 목표로 바꾸기 ② 빠진 값·튀는 값·겹친 기록 손보기 ③ 품질 점수 매기기 ④ 그림으로 데이터 처음 들여다보기(탐색적 데이터 분석).</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi a"><b>약 80%</b><span>전처리가 차지하는 시간<sup>[1]</sup></span></div>
         <div class="kpi i"><b>4가지</b><span>문제 유형: 분류·예측·최적화·탐색<sup>[1]</sup></span></div>
-        <div class="kpi m"><b>3가지</b><span>결측 메커니즘 MCAR·MAR·MNAR<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>3가지</b><span>빈칸이 생기는 이유<sup>[1]</sup></span></div>
         <div class="kpi g"><b>6차원</b><span>데이터 품질<sup>[1]</sup></span></div>
-        <div class="kpi r"><b>3가지</b><span>무결성: 개체·참조·도메인<sup>[1]</sup></span></div>
-        <div class="kpi g"><b id="heroMiss">–</b><span>MAR에서 행 삭제의 평균 소득 오차<sup>예시</sup></span></div>
+        <div class="kpi r"><b>3가지</b><span>데이터끼리 어긋나지 않게 지키는 규칙(무결성)<sup>[1]</sup></span></div>
+        <div class="kpi g"><b id="heroMiss">–</b><span>빈칸 있는 줄을 지웠을 때 평균 소득이 틀어진 정도<sup>예시</sup></span></div>
       </div>
     </div>
     <div class="pixelart">
@@ -38,7 +38,7 @@
     <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">의심하는 쪽. 의심스러운 줄은 지우고 단순하게 갑니다.</p></div>
     <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">확신하는 쪽. 한 줄도 버리지 않고 채워서 씁니다.</p></div>
   </div>
-  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 숫자 옆 <sup>[n]</sup>은 바닥글 출처 번호이고, 고객·구매·주문·매장 데이터는 모두 시드를 고정해 만든 장난감 데이터입니다.</p>
+  <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 숫자 옆 <sup>[n]</sup>은 바닥글 출처 번호이고, 고객·구매·주문·매장 데이터는 모두 설명을 위해 만든 연습용 예시 데이터입니다.</p>
 </div></section>
 
 <section class="level" id="why"><div class="wrap stack">
@@ -70,7 +70,7 @@
   </div>
   <div class="pair">
     <div><div class="tag fly">회사에서는</div><p>"고객 만족도를 높이자"는 회의는 쉽게 끝나지만, 석 달 뒤 성공했는지 아무도 모릅니다. 무엇을, 얼마나, 언제까지, 어떻게 잴지 빠져 있기 때문입니다.</p></div>
-    <div><div class="tag nn">데이터 과학에서는</div><p>목표를 구체적이고(Specific), 잴 수 있고(Measurable), 해낼 수 있고(Achievable), 사업과 관련 있고(Relevant), 기한이 있게(Time-bound) 바꾸면, 어떤 데이터를 모으고 무엇으로 성공을 잴지(KPI)가 저절로 정해집니다. 교안의 예: "3개월 안에 고객 이탈률을 15%에서 10%로 줄여 연간 매출 5% 늘리기".<sup>[1]</sup></p></div>
+    <div><div class="tag nn">데이터 과학에서는</div><p>좋은 목표는 다섯 가지를 갖춥니다(SMART). ① 구체적 ② 잴 수 있음 ③ 해낼 수 있음 ④ 사업과 관련 ⑤ 기한. 이렇게 바꾸면 어떤 데이터를 모으고 무엇으로 성공을 잴지(KPI)가 저절로 정해집니다. 교안의 예: "3개월 안에 고객 이탈률을 15%에서 10%로 줄여 연간 매출 5% 늘리기".<sup>[1]</sup></p></div>
   </div>
   <section class="panel" aria-label="SMART 목표 조립기">
     <h3>목표 조립기 — 조각을 골라 SMART 다섯 글자를 모두 켜 보기</h3>
@@ -114,7 +114,7 @@
     <div class="ctrl">
       <div class="group" id="mechBtns" role="group" aria-label="결측 메커니즘"><span class="glabel">누가 비웠나</span></div>
       <div class="group" id="impBtns" role="group" aria-label="처리 방법"><span class="glabel">처리</span></div>
-      <div class="group"><label class="glabel" for="kk">KNN의 k</label><input type="range" id="kk" min="1" max="25" step="1" value="5"><span class="val" id="kkv">5</span></div>
+      <div class="group"><label class="glabel" for="kk">비슷한 사람 몇 명을 볼지(k)</label><input type="range" id="kk" min="1" max="25" step="1" value="5"><span class="val" id="kkv">5</span></div>
     </div>
     <div class="cwrap"><canvas id="c2" class="wide" aria-label="나이와 연소득 산점도. 관측된 점, 빠진 점(진짜 값), 채운 값이 다른 색으로 표시되고 오른쪽에 참값 평균과 추정 평균 막대가 있다"></canvas></div>
     <section class="kpis k4" id="k2"></section>
@@ -245,7 +245,7 @@
       <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
       <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
       <p class="muted guessfb"></p>
-      <p class="muted" style="font-size:14px">조건 메모: 이 결과는 MAR(나이에 따라 빠짐)에서의 결과입니다. ②칸에서 MCAR로 바꾸면 두 방법의 차이가 거의 없고, MNAR에서는 둘 다 크게 틀립니다.</p>
+      <p class="muted" style="font-size:14px">조건 메모: 이 결과는 "나이에 따라 빈칸이 생긴" 경우(MAR)입니다. ②칸에서 "아무렇게나 빈칸"(MCAR)으로 바꾸면 두 방법의 차이가 거의 없습니다. "답하기 싫은 사람만 빈칸"(MNAR)이면 둘 다 크게 틀립니다.</p>
     </div>
   </div>
 </div></section>

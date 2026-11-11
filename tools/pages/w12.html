@@ -4,13 +4,13 @@
       <span class="eyebrow">비즈니스를 위한 데이터 과학 연구실 · 12주차 · 효과적인 비즈니스 데이터 시각화</span>
       <h1>숫자의 얼굴</h1>
       <p class="q">"평균 월급 450만 원"은 이 회사 직원의 얼굴일까?</p>
-      <p class="lead">차트를 그리기 전에 숫자부터 읽어야 합니다. 대표값(평균·중앙값·최빈값), 흩어짐(분산·표준편차·변동계수), 기울어짐(왜도·첨도), 함께 움직임(공분산·상관계수)을 차례로 손으로 움직여 보고, 마지막에 데이터와 목적에 맞는 차트를 고릅니다. 대결은 "고객 한 명의 결제액을 숫자 하나로 말한다면 평균이냐 중앙값이냐"입니다.</p>
+      <p class="lead">차트를 그리기 전에 숫자부터 읽어야 합니다. 숫자 읽기는 네 가지입니다. ① 대표값(평균·중앙값) ② 흩어짐 ③ 한쪽으로 기울어짐 ④ 함께 움직임. 차례로 손으로 움직여 본 뒤, 마지막에 목적에 맞는 차트를 고릅니다. 대결은 "고객 한 명의 결제액을 숫자 하나로 말한다면 평균이냐 중앙값이냐"입니다.</p>
       <div class="kpis k3" aria-label="숫자 요약">
         <div class="kpi r"><b id="heroMean">–</b><span>월급 200·300·350·400·1,000의 평균<sup>[1]</sup></span></div>
         <div class="kpi g"><b>350만 원</b><span>같은 다섯 명의 중앙값<sup>[1]</sup></span></div>
-        <div class="kpi i"><b>σ ÷ μ</b><span>변동계수: 단위·규모와 무관한 흩어짐<sup>[1]</sup></span></div>
-        <div class="kpi a"><b>평균 &gt; 중앙값</b><span>오른쪽 꼬리(양의 왜도)의 신호<sup>[1]</sup></span></div>
-        <div class="kpi m"><b>−1 ~ +1</b><span>상관계수의 범위<sup>[1]</sup></span></div>
+        <div class="kpi i"><b>평균 대비 흩어짐</b><span>규모가 다른 두 집단 비교(변동계수)<sup>[1]</sup></span></div>
+        <div class="kpi a"><b>평균 &gt; 중앙값</b><span>소수의 큰 값이 평균을 끌어올렸다는 신호<sup>[1]</sup></span></div>
+        <div class="kpi m"><b>−1 ~ +1</b><span>두 숫자가 함께 움직이는 정도(상관계수)<sup>[1]</sup></span></div>
         <div class="kpi g"><b>5초</b><span>대시보드가 핵심을 전해야 하는 시간<sup>[1]</sup></span></div>
       </div>
     </div>
@@ -52,7 +52,7 @@
 
 <section class="level" id="big"><div class="wrap stack">
   <div class="lvhead"><h2>큰 그림 — 교안 12주차의 세 교시</h2></div>
-  <div class="flowchips" aria-label="12주차 흐름"><span>1교시: 집중화 · 분산도 · 왜도·첨도 · 상관 · 인과</span><i>→</i><span>2교시: 목적별 차트(막대·선·산점도·버블·파이·트리맵·박스·캔들·히트맵·네트워크)</span><i>→</i><span class="lim">3교시: Matplotlib · Seaborn · 대시보드</span></div>
+  <div class="flowchips" aria-label="12주차 흐름"><span>1교시: 집중화 · 분산도 · 왜도·첨도 · 상관 · 인과</span><i>→</i><span>2교시: 목적별 차트(막대·선·산점도·버블·파이·트리맵·박스·캔들·히트맵·네트워크)</span><i>→</i><span class="lim">3교시: 파이썬 그림 도구 · 대시보드</span></div>
   <div class="pair">
     <div><div class="tag fly">숫자 읽기</div><p>중심은 어디인가, 얼마나 흩어졌나, 어느 쪽으로 기울었나, 다른 변수와 함께 움직이나. 네 질문에 답하는 통계량이 차트의 설계도가 됩니다.<sup>[1]</sup></p></div>
     <div><div class="tag nn">그림 고르기</div><p>비교는 막대, 추세는 선, 비율은 파이(5개 이하)·트리맵(많을 때), 두 수치의 관계는 산점도, 분포와 이상치는 박스 플롯, 행렬은 히트맵.<sup>[1]</sup></p></div>
@@ -124,7 +124,7 @@
   <section class="panel" aria-label="왜도·첨도 실험">
     <h3>결제액 1,000건(예시) — 꼬리 길이와 로그 변환</h3>
     <div class="ctrl">
-      <div class="group"><label class="glabel" for="sg">꼬리 길이(σ)</label><input type="range" id="sg" min="0.1" max="1.4" step="0.1" value="0.9"><span class="val" id="sgv">0.9</span></div>
+      <div class="group"><label class="glabel" for="sg">꼬리 길이(퍼짐 σ)</label><input type="range" id="sg" min="0.1" max="1.4" step="0.1" value="0.9"><span class="val" id="sgv">0.9</span></div>
       <div class="group" id="lgBtns" role="group" aria-label="변환"><span class="glabel">눈금</span></div>
     </div>
     <div class="cwrap"><canvas id="c3" class="wide" aria-label="결제액 히스토그램과 평균·중앙값 선"></canvas></div>
@@ -216,7 +216,7 @@
       <div class="say asst" data-who="asst"><img class="who" data-who="asst" data-mood="firm" data-img="asst_firm" alt="" aria-hidden="true"><div><b class="name">조수</b><p></p></div></div>
       <div class="say verdict" data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_judge" alt="" aria-hidden="true"><div><b class="name">박사</b><p></p></div></div>
       <p class="muted guessfb"></p>
-      <p class="muted" style="font-size:14px">조건 메모: 결제액은 설명용 예시(로그정규분포, 시드 51·52)입니다. 오차를 제곱해 재는 RMSE로 겨루면 평균이 이기며, 조수의 발표에 그 값도 함께 적었습니다. "총매출 예산"처럼 합계가 중요하면 평균이, "전형적인 고객"을 말할 때는 중앙값이 맞습니다.</p>
+      <p class="muted" style="font-size:14px">조건 메모: 결제액은 설명용 예시값으로, 오른쪽 꼬리가 긴 모양입니다. 큰 실수에 벌점을 더 주는 자(RMSE)로 재면 평균이 이깁니다. 조수의 발표에 그 값도 함께 적었습니다. "총매출 예산"처럼 합계가 중요하면 평균이, "전형적인 고객"을 말할 때는 중앙값이 맞습니다.</p>
     </div>
   </div>
 </div></section>
@@ -235,7 +235,7 @@
     </tbody></table></div>
   <div class="steps">
     <div><b>교안 정리 1</b><p>평균·중앙값·최빈값, 분산·표준편차·변동계수, 왜도·첨도, 공분산·상관계수, 상관과 인과(제3변수, 우연한 상관).</p></div>
-    <div><b>교안 정리 2</b><p>범주형 → 막대·파이, 수치형 → 히스토그램·선, 관계 → 산점도·버블, 비율 → 파이·트리맵, 분포 → 박스, 금융 → 캔들·OHLC, 행렬 → 히트맵, 관계망 → 네트워크.</p></div>
+    <div><b>교안 정리 2</b><p>범주형 → 막대·파이, 수치형 → 히스토그램·선, 관계 → 산점도·버블, 비율 → 파이·트리맵, 분포 → 박스, 주가 → 캔들(하루 네 가격), 행렬 → 히트맵, 관계망 → 네트워크.</p></div>
     <div><b>교안 정리 3</b><p>파이썬 그림 도구(Matplotlib·Seaborn)로 파이 차트·히트맵 그리기, 한 화면에 여러 그림 놓기, 대시보드 5초 규칙·자동화·피드백·보안.</p></div>
   </div>
 </div></section>
