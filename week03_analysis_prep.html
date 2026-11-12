@@ -778,7 +778,7 @@ window.SPRITE=window.SPRITE||{};Object.assign(window.SPRITE,{"cover_w03":"data:i
 <script type="application/json" id="refs-csl">[{"id":"ahn_dsb_w03","type":"report","title":"비즈니스를위한데이터과학 강의 교안: 03. 데이터 분석을 위한 준비","author":[{"family":"안","given":"상선"}],"lab":{"work":"lab:work/ahn-dsb-w03","role":"primary","supports":["lab:claim/prep-80","lab:claim/smart-example","lab:concept/missing-mechanism","lab:concept/data-quality-6","lab:framework/smart"],"locs":[{"claim":"lab:claim/prep-80","loc":"2교시 1. 데이터 전처리 개요"},{"claim":"lab:claim/smart-example","loc":"1교시 14. 분석 목표의 설정"}],"verified":{"title":true,"authors":true,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"저자 원고(교안 PDF)로 확인 2026-11-09","note":"연도 표기 없음"},"publisher":"인공지능융합학과 강의자료"},{"id":"hyndman2018fpp","type":"book","title":"Forecasting: principles and practice","author":[{"family":"Hyndman","given":"Rob J."},{"family":"Athanasopoulos","given":"George"}],"lab":{"work":"lab:work/hyndman2018","role":"figure","supports":["lab:metric/pearson"],"locs":[],"verified":{"title":true,"authors":true,"year":true,"venue":true,"doi":false,"pages":false},"checkedBy":"교안의 인용 서지로 확인","note":"교안은 OTexts 한국어판 페이지를 인용"},"issued":{"date-parts":[[2018]]},"publisher":"OTexts","URL":"https://otexts.com/fppkr/graphics-scatterplots.html"}]</script>
 <script type="application/json" id="page-meta">{"title":"분석 전에 데이터를 손보다 — 문제 정의, 전처리, 품질 평가","series":"비즈니스를 위한 데이터 과학 연구실","number":"03","creator":[{"name":"안상선","role":"author","affiliation":"(주)M-Robo 대표","url":"https://www.ahnboat.xyz"}],"date":"2026-11-09","version":"1.1","language":["ko"],"license":"","url":"https://adminmrobo.github.io/data_science_for_business/week03_analysis_prep.html","domain":["ai","stats","biz"],"about":["lab:framework/smart","lab:concept/missing-mechanism","lab:method/knn-imputation","lab:method/outlier-detection","lab:concept/data-quality-6","lab:method/eda"],"educationalLevel":"입문~중급","learningResourceType":"interactive explainer","basedOn":["ahn_dsb_w03"],"suggestedCitation":"안상선 (2026). 분석 전에 데이터를 손보다 — 문제 정의, 전처리, 품질 평가. 비즈니스를 위한 데이터 과학 연구실 03주차, v1.1. https://adminmrobo.github.io/data_science_for_business/week03_analysis_prep.html","todo":["페이지 서지: 라이선스 빈칸 (저자가 정할 것)","교안 [1]의 발행 연도·학기 표기 확인","전처리가 프로젝트 시간의 약 80%라는 수치는 교안의 서술 — 1차 출처 확인 필요"]}</script>
 <script>
-/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.9 규격)
+/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.13 규격)
    페이지 스크립트가 LAB.* 도우미를 쓰고, 마지막에 LAB.boot(cfg)를 부른다. */
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
   t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -1484,9 +1484,9 @@ LAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:["framework/smart","limitation/missing-va
     slots.slice(nTop).forEach(function (s, i) { room(s, i, 1, nBot, nTop + i); });
     /* 대결 회의실의 네 캐릭터(그림이 있으면) */
     function chars(T, g, w) {
-      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'];
+      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'], HR = [.41, 1.0, .9, .72]; /* 캐릭터 팩 C3 키 비율 */
       ks.forEach(function (k, i) { var src = SP[k] || SP[AL[k]]; if (!src) return; var t = new T.TextureLoader().load(src, function () { st.dirtyNow(); }); t.colorSpace = T.SRGBColorSpace;
-        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); sp.scale.set(1.05, 1.05, 1); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, 1.05, .9); g.add(sp); });
+        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); var h = 1.45 * HR[i]; sp.scale.set(h, h, 1); sp.center.set(.5, 0); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, .1, .9); g.add(sp); });
     }
     if (!narrow()) st.label('<b>' + cur + 'F</b> ' + F.dept, new T.Vector3(-W / 2 + .2, 3.0, -D / 2), 'flname');
     var hover = null;

@@ -40,9 +40,9 @@
 ```
 
 ### 3-3. `sc_w11_outro` — 아웃트로 (대결 후)
-표정 기준(캐릭터 팩 5-8): 초파리 `fly_coffee`, 주판봇 `robo_happy`. 대체 글: 작년 장부를 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수
+표정 기준(캐릭터 팩 5-8): 초파리 `fly_coffee`, 주판봇 `robo_happy`. 대체 글: 작년 매출 기록을 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수
 ```
-16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the robot cheering with last year's ledger open, the fruit fly researcher sipping coffee and looking at the calendar, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
+16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the robot cheering with last year's sales record book open, the fruit fly researcher sipping coffee and looking at the calendar, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
 ```
 
 ## 4. 일관성 지침
@@ -100,7 +100,7 @@
    "priority": "P2",
    "slot": "outro",
    "fallback": "none",
-   "alt": "작년 장부를 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수"
+   "alt": "작년 매출 기록을 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수"
   },
   {
    "key": "thumb_w11",

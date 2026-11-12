@@ -5,7 +5,7 @@
 | 키 · 판 | cover_w01 · L (16:9, 가로 1920 이상) |
 | 장소 (앵커) | B 연구실 + D 일상(우산 판매, 돌아온 비행기) |
 | 주제 은유 | four stacked steps of increasing brightness (data to wisdom) and a small toy airplane model with scattered white dots on its wings and body but none on its engines |
-| 네 캐릭터 포즈 | 박사: at the back center with a hand on his chin, looking up the four steps / 조수: beside the monitor holding a striped blank ledger / 초파리 연구원: on the left facing right, examining the toy airplane with a magnifier / 주판봇: on the right facing left, proudly pushing a cart piled with blank data cards |
+| 네 캐릭터 포즈 | 박사: at the back center with a hand on his chin, looking up the four steps / 조수: beside the monitor holding a striped blank sales record / 초파리 연구원: on the left facing right, examining the toy airplane with a magnifier / 주판봇: on the right facing left, proudly pushing a cart piled with blank data cards |
 | 대체 글 (alt) | 네 캐릭터가 데이터·정보·지식·지혜 네 계단과 돌아온 비행기 모형을 둘러싼 밤의 연구실 표지 |
 | 앞 표지와 다른 점 | 앞 표지: 목차: 복도와 문들. 장소·소품·포즈를 겹치지 않게 함 |
 | 결과 암시 | 없음 (대결 전 장면) · 이 페이지 대결 결과: F(초파리 승, 91.7% 대 56.8%) — 표지에는 드러내지 않음 |
@@ -28,7 +28,7 @@ cozy night laboratory mood, purple light, soft magenta and green fluorescent acc
 Scene: wide night laboratory with a large monitor showing a blank bar chart and four glowing stair blocks rising beside it.
 All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center with a hand on his chin, looking up the four steps;
-  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, beside the monitor holding a striped blank ledger;
+  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, beside the monitor holding a striped blank sales record;
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, examining the toy airplane with a magnifier;
   boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, proudly pushing a cart piled with blank data cards.
 Visual metaphor of the topic: four stacked steps of increasing brightness (data to wisdom) and a small toy airplane model with scattered white dots on its wings and body but none on its engines.

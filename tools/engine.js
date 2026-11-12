@@ -1,4 +1,4 @@
-/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.9 규격)
+/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.13 규격)
    페이지 스크립트가 LAB.* 도우미를 쓰고, 마지막에 LAB.boot(cfg)를 부른다. */
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
   t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}

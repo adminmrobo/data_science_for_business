@@ -695,7 +695,7 @@ button.bld-lb{cursor:pointer;font-family:inherit}
     <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>회귀는 맞음·틀림이 아니라 빗나간 거리로 평가한다.</li><li>빗나간 정도(RMSE·MAE)는 "몇 g"으로, 설명력(R²)은 비율로 읽는다. 재료를 늘릴 땐 수정 R²를 본다.</li><li>데이터 범위 안과 밖에서 강한 모델이 다를 수 있다.</li></ul></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="report" data-img="asst_report" alt="" aria-hidden="true"><div><b class="name">조수</b><p>범위 안에서는 주판봇, 범위 밖에서는 초파리 연구원이 이겼어요. 어떤 생선이 들어올지가 답을 정해요.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>곡선이 큰 농어를 따라간 건 좋았는데, 차수를 욕심내면 나도 무너지더라.</p></div></div>
-    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>내 장부에 없는 생선은 내가 모르는 생선. 장부를 늘려야겠어.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="calc" data-img="robo_calc" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>내 기록에 없는 생선은 내가 모르는 생선. 기록을 늘려야겠어.</p></div></div>
   </div>
 </div></section>
 
@@ -759,7 +759,7 @@ window.SPRITE=window.SPRITE||{};Object.assign(window.SPRITE,{"cover_w09":"data:i
 <script type="application/json" id="refs-csl">[{"id":"ahn_dsb_w09","type":"report","title":"비즈니스를위한데이터과학 강의 교안: 09. 데이터 분석 모형: 회귀모형(1)","author":[{"family":"안","given":"상선"}],"lab":{"work":"lab:work/ahn-dsb-w09","role":"primary","supports":["lab:claim/knn-r2","lab:claim/r2-scale","lab:method/knn-regression","lab:method/linear-regression","lab:metric/mse-rmse-mae","lab:metric/r2"],"locs":[{"claim":"lab:claim/knn-r2","loc":"1교시 5. KNN 회귀 모델 생성 및 성능 평가"},{"claim":"lab:claim/r2-scale","loc":"2교시 3. 결정계수의 해석"}],"verified":{"title":true,"authors":true,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"저자 원고(교안 PDF)로 확인 2026-11-09","note":"연도 표기 없음"},"publisher":"인공지능융합학과 강의자료"},{"id":"fishmarket","type":"dataset","title":"Fish Market","author":[{"literal":"Kaggle 공개 데이터셋"}],"lab":{"work":"lab:work/fish-market","role":"data","supports":["lab:dataset/perch-56"],"locs":[],"verified":{"title":true,"authors":false,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"교안 실습 데이터 값으로 확인","note":"원 출처·이용 조건 확인 필요"},"publisher":"Kaggle"},{"id":"sklearn_docs","type":"webpage","title":"scikit-learn User Guide: Linear Models, Nearest Neighbors","author":[{"literal":"scikit-learn developers"}],"lab":{"work":"lab:work/sklearn-docs","role":"background","supports":["lab:method/linear-regression","lab:method/knn-regression"],"locs":[],"verified":{"title":true,"authors":true,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"공식 문서 URL 확인","note":""},"URL":"https://scikit-learn.org/stable/"}]</script>
 <script type="application/json" id="page-meta">{"title":"숫자를 맞히는 선 — 회귀모형(1): KNN·선형·다항 회귀와 평가 지표","series":"비즈니스를 위한 데이터 과학 연구실","number":"09","creator":[{"name":"안상선","role":"author","affiliation":"(주)M-Robo 대표","url":"https://www.ahnboat.xyz"}],"date":"2026-11-09","version":"1.1","language":["ko"],"license":"","url":"https://adminmrobo.github.io/data_science_for_business/week09_regression_1.html","domain":["ai","stats","biz"],"about":["lab:method/knn-regression","lab:method/linear-regression","lab:method/polynomial-regression","lab:metric/mse-rmse-mae","lab:metric/r2"],"educationalLevel":"입문~중급","learningResourceType":"interactive explainer","basedOn":["ahn_dsb_w09"],"suggestedCitation":"안상선 (2026). 숫자를 맞히는 선 — 회귀모형(1): KNN·선형·다항 회귀와 평가 지표. 비즈니스를 위한 데이터 과학 연구실 09주차, v1.1. https://adminmrobo.github.io/data_science_for_business/week09_regression_1.html","todo":["페이지 서지: 라이선스 빈칸 (저자가 정할 것)","교안 [1]의 발행 연도·학기 표기 확인"]}</script>
 <script>
-/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.9 규격)
+/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.13 규격)
    페이지 스크립트가 LAB.* 도우미를 쓰고, 마지막에 LAB.boot(cfg)를 부른다. */
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
   t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -1382,9 +1382,9 @@ LAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:["method/knn-regression","limitation/no-e
     slots.slice(nTop).forEach(function (s, i) { room(s, i, 1, nBot, nTop + i); });
     /* 대결 회의실의 네 캐릭터(그림이 있으면) */
     function chars(T, g, w) {
-      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'];
+      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'], HR = [.41, 1.0, .9, .72]; /* 캐릭터 팩 C3 키 비율 */
       ks.forEach(function (k, i) { var src = SP[k] || SP[AL[k]]; if (!src) return; var t = new T.TextureLoader().load(src, function () { st.dirtyNow(); }); t.colorSpace = T.SRGBColorSpace;
-        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); sp.scale.set(1.05, 1.05, 1); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, 1.05, .9); g.add(sp); });
+        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); var h = 1.45 * HR[i]; sp.scale.set(h, h, 1); sp.center.set(.5, 0); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, .1, .9); g.add(sp); });
     }
     if (!narrow()) st.label('<b>' + cur + 'F</b> ' + F.dept, new T.Vector3(-W / 2 + .2, 3.0, -D / 2), 'flname');
     var hover = null;

@@ -21,7 +21,7 @@ PAGES = {
  '01': dict(title='1주차 · 데이터는 많은데, 결정은 왜 틀릴까', key='w01', anchor='B 연구실 + D 일상(우산 판매, 돌아온 비행기)',
    place='wide night laboratory with a large monitor showing a blank bar chart and four glowing stair blocks rising beside it',
    meta='four stacked steps of increasing brightness (data to wisdom) and a small toy airplane model with scattered white dots on its wings and body but none on its engines',
-   pose=('at the back center with a hand on his chin, looking up the four steps', 'beside the monitor holding a striped blank ledger', 'on the left facing right, examining the toy airplane with a magnifier', 'on the right facing left, proudly pushing a cart piled with blank data cards'),
+   pose=('at the back center with a hand on his chin, looking up the four steps', 'beside the monitor holding a striped blank sales record', 'on the left facing right, examining the toy airplane with a magnifier', 'on the right facing left, proudly pushing a cart piled with blank data cards'),
    alt='네 캐릭터가 데이터·정보·지식·지혜 네 계단과 돌아온 비행기 모형을 둘러싼 밤의 연구실 표지', duel='F(초파리 승, 91.7% 대 56.8%)', prev='목차: 복도와 문들'),
  '02': dict(title='2주차 · 데이터는 어디서 오는가', key='w02', anchor='D 현장: 데이터 출처 → 연구실 서버',
    place='the night lab opened up like a map: a tiny bank counter, a factory sensor pole, a convenience store checkout and a smartphone, each sending streams of small glowing dots into a server rack',
@@ -66,7 +66,7 @@ PAGES = {
  '11': dict(title='11주차 · 시간이 기억하는 숫자', key='w11', anchor='B 연구실: 긴 달력과 물결 그래프',
    place='a night lab with a very long wall calendar spanning six years and a glowing wavy sales line above it that peaks every December',
    meta='the same month in consecutive years connected by thin glowing threads, showing that this December remembers last December',
-   pose=('at the back center tracing the wavy line with a pointer', 'cutting the long calendar strip into a training part and a test part', 'on the left facing right, studying a bar chart of correlations with a magnifier', 'on the right facing left, flipping open last year\'s ledger to the December page'),
+   pose=('at the back center tracing the wavy line with a pointer', 'cutting the long calendar strip into a training part and a test part', 'on the left facing right, studying a bar chart of correlations with a magnifier', 'on the right facing left, flipping open last year\'s sales record to the December page'),
    alt='네 캐릭터가 벽에 걸린 긴 달력과 물결치는 매출 그래프 앞에서 작년 같은 달을 손가락으로 짚는 표지', duel='R(주판봇 승, 시험 12개월 MAPE 2.76% 대 4.47%)', prev='10주차: S자 칠판과 질문 나무'),
  '12': dict(title='12주차 · 숫자의 얼굴', key='w12', anchor='B 연구실: 꼬리 긴 막대그래프와 시소',
    place='a night lab with a big histogram on the wall whose right tail stretches far, and a seesaw on the desk with two weights labeled only by color',
@@ -138,7 +138,7 @@ def cover_md(k, p):
 '''.format(t=p['title'], key=key, anc=p['anchor'], meta=p['meta'], p0=p['pose'][0], p1=p['pose'][1], p2=p['pose'][2], p3=p['pose'][3], alt=p['alt'], prev=p['prev'],
            duel=(' · 이 페이지 대결 결과: ' + p['duel'] + ' — 표지에는 드러내지 않음') if p['duel'] else '', pr=prompt(p))
 
-OUTRO = {'01': ('fly_arms', 'robo_sigh', 'a relaxed fruit fly researcher with arms crossed in quiet satisfaction on the left, a sheepish robot with a sweat drop on the right, the scientist giving a thumbs-up, the girl smiling with a striped ledger', '대결 후 팔짱 낀 초파리 연구원과 식은땀 흘리는 주판봇, 엄지를 세운 박사와 웃는 조수'),
+OUTRO = {'01': ('fly_arms', 'robo_sigh', 'a relaxed fruit fly researcher with arms crossed in quiet satisfaction on the left, a sheepish robot with a sweat drop on the right, the scientist giving a thumbs-up, the girl smiling with a striped sales record sheet', '대결 후 팔짱 낀 초파리 연구원과 식은땀 흘리는 주판봇, 엄지를 세운 박사와 웃는 조수'),
          '02': ('fly_coffee', 'robo_calc', 'two task cards on a table between them, the fruit fly researcher holding a coffee cup calmly, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both cards', '두 업무 카드를 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수'),
          '03': ('fly_coffee', 'robo_happy', 'a big table whose blank cells are now filled with green light, the robot cheering in front, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling', '빈칸이 채워진 표 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
          '04': ('fly_cry', 'robo_happy', 'the map table with a curved glowing boundary, the robot cheering beside it, the fruit fly researcher with teary eyes holding his straight ruler, the scientist giving a thumbs-up, the girl smiling', '곡선 경계 앞에서 기뻐하는 주판봇과 직선 자를 든 채 눈물 맺힌 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
@@ -147,7 +147,7 @@ OUTRO = {'01': ('fly_arms', 'robo_sigh', 'a relaxed fruit fly researcher with ar
          '07': ('fly_coffee', 'robo_happy', 'the robot cheering with a stack of coins in front of the 2x2 board, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling', '동전 더미 앞에서 기뻐하는 주판봇과 커피를 든 초파리 연구원, 엄지를 세운 박사와 웃는 조수'),
          '09': ('fly_coffee', 'robo_calc', 'two archery targets side by side, one for small fish and one for big fish, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both targets', '두 과녁을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수'),
          '10': ('fly_arms', 'robo_sigh', 'a calm curve on the chalkboard behind the fruit fly researcher with arms crossed, a wildly spiking curve behind the sighing robot, the scientist giving a thumbs-up, the girl smiling', '차분한 곡선 앞에서 팔짱 낀 초파리 연구원과 튀어 오른 곡선 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수'),
-         '11': ('fly_coffee', 'robo_happy', 'the robot cheering with last year\'s ledger open, the fruit fly researcher sipping coffee and looking at the calendar, the scientist giving a thumbs-up, the girl smiling', '작년 장부를 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수'),
+         '11': ('fly_coffee', 'robo_happy', 'the robot cheering with last year\'s sales record book open, the fruit fly researcher sipping coffee and looking at the calendar, the scientist giving a thumbs-up, the girl smiling', '작년 매출 기록을 펼친 주판봇이 기뻐하고 커피를 든 초파리 연구원이 달력을 보며, 엄지를 세운 박사와 웃는 조수'),
          '12': ('fly_arms', 'robo_sigh', 'the fruit fly researcher with arms crossed beside the middle figurine, the robot sighing as the seesaw tips under the heavy weight, the scientist giving a thumbs-up, the girl smiling', '가운데 인형 옆에서 팔짱 낀 초파리 연구원과 기운 시소 앞에서 한숨 쉬는 주판봇, 엄지를 세운 박사와 웃는 조수'),
          '13': ('fly_coffee', 'robo_calc', 'two dashboards side by side, one showing reach and one showing coins, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both', '두 계기판을 사이에 두고 커피를 든 초파리 연구원과 주판을 튕기는 주판봇, 턱을 괸 박사와 설명하는 조수'),
          '14': ('fly_coffee', 'robo_meh', 'two identical score cards side by side, one beside the layered tower and one beside a single ruler, the fruit fly researcher sipping coffee, the robot shrugging, the scientist nodding, the girl smiling', '같은 점수 카드 두 장 앞에서 커피를 든 초파리 연구원과 어깨를 으쓱하는 주판봇, 고개를 끄덕이는 박사와 웃는 조수')}
@@ -389,6 +389,39 @@ def prompts_md():
 
 {body}'''.format(series=SERIES, body='\n'.join(out))
 
+
+def manifest():
+    """cover_manifest.json (연구실 스킬 v1.13 · 18-16) — 표지 현황판 연결."""
+    from PIL import Image
+    import datetime
+    art = os.path.join(REPO, 'tools', 'art'); items = []
+    def sz(p):
+        try: return list(Image.open(p).size)
+        except Exception: return None
+    for k in ORDER:
+        p = PAGES[k]; n = p['key'] if k != 'index' else 'index'; html = FILES[k]
+        cid = 'cover_' + n
+        items.append(dict(id=cid, role='cover', embedded_in=html, key='.cover[data-img="%s"]' % cid, size=sz(os.path.join(art, cid + '.webp')),
+                          characters=['doc', 'asst', 'fly', 'jupanbot'], robot='jupanbot-v2', prompt_en=prompt(p), source_of=None, status='ok'))
+        if k not in PRACTICE and k != 'index':
+            hero, outro, alt, fo, ro = scene_prompts(k, p)
+            for role, sc, pr in (('hero', 'sc_%s_hero' % n, hero), ('outro', 'sc_%s_outro' % n, outro)):
+                items.append(dict(id=sc, role=role, embedded_in=html, key='figure.scene[data-scene="%s"]' % sc, size=sz(os.path.join(art, sc + '.webp')),
+                                  characters=['doc', 'asst', 'fly', 'jupanbot'], robot='jupanbot-v2', prompt_en=pr, source_of=None, status='ok'))
+        if k != 'index':
+            t = 'img/thumb_%s.webp' % n
+            items.append(dict(id='thumb_' + n, role='thumb', path=t, size=sz(os.path.join(REPO, t)), characters=['doc', 'asst', 'fly', 'jupanbot'], robot='jupanbot-v2', prompt_en=None, source_of=cid, status='ok'))
+        o = 'img/og_%s.jpg' % n
+        items.append(dict(id='og_' + n, role='og', path=o, size=sz(os.path.join(REPO, o)), characters=['doc', 'asst', 'fly', 'jupanbot'], robot='jupanbot-v2', prompt_en=None, source_of=cid, status='ok'))
+    pages = [{'path': FILES[k], 'kg': k not in PRACTICE and k != 'index', 'export': k not in PRACTICE and k != 'index'} for k in ORDER]
+    m = {'series_ko': '비즈니스를 위한 데이터 과학', 'title_ko': '비즈니스를 위한 데이터 과학 연구실',
+         'site_url': 'https://adminmrobo.github.io/data_science_for_business/',
+         'ontology': {'pages': pages, 'files': ['data/KG_00_registry.json']},
+         'i18n': {'langs': ['ko'], 'pages': {'ko': len(ORDER)}, 'readme_langs': ['ko']}, 'languages': ['ko'],
+         'items': items, 'updated': datetime.date.today().isoformat()}
+    open(os.path.join(REPO, 'cover_manifest.json'), 'w', encoding='utf-8').write(json.dumps(m, ensure_ascii=False, indent=2) + '\n')
+    return len(items)
+
 def main():
     d = os.path.join(REPO, 'docs'); os.makedirs(d, exist_ok=True)
     for k, p in PAGES.items():
@@ -399,7 +432,7 @@ def main():
             open(os.path.join(d, 'IMG_%s.md' % k), 'w', encoding='utf-8').write(img_md(k, p))
     open(os.path.join(d, 'IMG_INDEX.md'), 'w', encoding='utf-8').write(index_md())
     open(os.path.join(d, 'IMG_PROMPTS.md'), 'w', encoding='utf-8').write(prompts_md())
-    print('docs written')
+    print('docs written, manifest items', manifest())
 
 if __name__ == '__main__':
     main()

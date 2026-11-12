@@ -5,7 +5,7 @@
 | 키 · 판 | cover_w11 · L (16:9, 가로 1920 이상) |
 | 장소 (앵커) | B 연구실: 긴 달력과 물결 그래프 |
 | 주제 은유 | the same month in consecutive years connected by thin glowing threads, showing that this December remembers last December |
-| 네 캐릭터 포즈 | 박사: at the back center tracing the wavy line with a pointer / 조수: cutting the long calendar strip into a training part and a test part / 초파리 연구원: on the left facing right, studying a bar chart of correlations with a magnifier / 주판봇: on the right facing left, flipping open last year's ledger to the December page |
+| 네 캐릭터 포즈 | 박사: at the back center tracing the wavy line with a pointer / 조수: cutting the long calendar strip into a training part and a test part / 초파리 연구원: on the left facing right, studying a bar chart of correlations with a magnifier / 주판봇: on the right facing left, flipping open last year's sales record to the December page |
 | 대체 글 (alt) | 네 캐릭터가 벽에 걸린 긴 달력과 물결치는 매출 그래프 앞에서 작년 같은 달을 손가락으로 짚는 표지 |
 | 앞 표지와 다른 점 | 앞 표지: 10주차: S자 칠판과 질문 나무. 장소·소품·포즈를 겹치지 않게 함 |
 | 결과 암시 | 없음 (대결 전 장면) · 이 페이지 대결 결과: R(주판봇 승, 시험 12개월 MAPE 2.76% 대 4.47%) — 표지에는 드러내지 않음 |
@@ -30,7 +30,7 @@ All four characters together:
   chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center tracing the wavy line with a pointer;
   girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, cutting the long calendar strip into a training part and a test part;
   anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, studying a bar chart of correlations with a magnifier;
-  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, flipping open last year's ledger to the December page.
+  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, flipping open last year's sales record to the December page.
 Visual metaphor of the topic: the same month in consecutive years connected by thin glowing threads, showing that this December remembers last December.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner dark and simple; the light falls on the main prop.

@@ -750,7 +750,7 @@ window.SPRITE=window.SPRITE||{};Object.assign(window.SPRITE,{"cover_w04":"data:i
 <script type="application/json" id="refs-csl">[{"id":"ahn_dsb_w04","type":"report","title":"비즈니스를위한데이터과학 강의 교안: 04. 데이터 분석 개념의 이해","author":[{"family":"안","given":"상선"}],"lab":{"work":"lab:work/ahn-dsb-w04","role":"primary","supports":["lab:claim/lift-125","lab:claim/split-ratio","lab:concept/analysis-tools","lab:concept/rule-vs-ml","lab:method/cross-validation"],"locs":[{"claim":"lab:claim/lift-125","loc":"3교시 2. 연관성 분석"},{"claim":"lab:claim/split-ratio","loc":"2교시 2. 교차 검증과 과적합"}],"verified":{"title":true,"authors":true,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"저자 원고(교안 PDF)로 확인 2026-11-09","note":"연도 표기 없음"},"publisher":"인공지능융합학과 강의자료"}]</script>
 <script type="application/json" id="page-meta">{"title":"도구와 알고리즘의 지도 — 데이터 분석 개념의 이해","series":"비즈니스를 위한 데이터 과학 연구실","number":"04","creator":[{"name":"안상선","role":"author","affiliation":"(주)M-Robo 대표","url":"https://www.ahnboat.xyz"}],"date":"2026-11-09","version":"1.1","language":["ko"],"license":"","url":"https://adminmrobo.github.io/data_science_for_business/week04_analysis_concepts.html","domain":["ai","stats","biz"],"about":["lab:concept/analysis-tools","lab:concept/rule-vs-ml","lab:concept/overfitting","lab:method/cross-validation","lab:method/association-rules"],"educationalLevel":"입문~중급","learningResourceType":"interactive explainer","basedOn":["ahn_dsb_w04"],"suggestedCitation":"안상선 (2026). 도구와 알고리즘의 지도 — 데이터 분석 개념의 이해. 비즈니스를 위한 데이터 과학 연구실 04주차, v1.1. https://adminmrobo.github.io/data_science_for_business/week04_analysis_concepts.html","todo":["페이지 서지: 라이선스 빈칸 (저자가 정할 것)","교안 [1]의 발행 연도·학기 표기 확인"]}</script>
 <script>
-/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.9 규격)
+/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.13 규격)
    페이지 스크립트가 LAB.* 도우미를 쓰고, 마지막에 LAB.boot(cfg)를 부른다. */
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
   t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -1371,9 +1371,9 @@ LAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:["concept/analysis-tools","limitation/who
     slots.slice(nTop).forEach(function (s, i) { room(s, i, 1, nBot, nTop + i); });
     /* 대결 회의실의 네 캐릭터(그림이 있으면) */
     function chars(T, g, w) {
-      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'];
+      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'], HR = [.41, 1.0, .9, .72]; /* 캐릭터 팩 C3 키 비율 */
       ks.forEach(function (k, i) { var src = SP[k] || SP[AL[k]]; if (!src) return; var t = new T.TextureLoader().load(src, function () { st.dirtyNow(); }); t.colorSpace = T.SRGBColorSpace;
-        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); sp.scale.set(1.05, 1.05, 1); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, 1.05, .9); g.add(sp); });
+        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); var h = 1.45 * HR[i]; sp.scale.set(h, h, 1); sp.center.set(.5, 0); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, .1, .9); g.add(sp); });
     }
     if (!narrow()) st.label('<b>' + cur + 'F</b> ' + F.dept, new T.Vector3(-W / 2 + .2, 3.0, -D / 2), 'flname');
     var hover = null;

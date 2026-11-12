@@ -1,0 +1,1538 @@
+{
+  "series_ko": "비즈니스를 위한 데이터 과학",
+  "title_ko": "비즈니스를 위한 데이터 과학 연구실",
+  "site_url": "https://adminmrobo.github.io/data_science_for_business/",
+  "ontology": {
+    "pages": [
+      {
+        "path": "index.html",
+        "kg": false,
+        "export": false
+      },
+      {
+        "path": "week01_business_data_science.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week02_data_collection.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week03_analysis_prep.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week04_analysis_concepts.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week05_classification_1.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week06_classification_2.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week07_model_evaluation.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week08_practice_1.html",
+        "kg": false,
+        "export": false
+      },
+      {
+        "path": "week09_regression_1.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week10_regression_2.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week11_time_series.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week12_visualization.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week13_bi_kpi.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week14_advanced_analytics.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "week15_practice_2.html",
+        "kg": false,
+        "export": false
+      }
+    ],
+    "files": [
+      "data/KG_00_registry.json"
+    ]
+  },
+  "i18n": {
+    "langs": [
+      "ko"
+    ],
+    "pages": {
+      "ko": 16
+    },
+    "readme_langs": [
+      "ko"
+    ]
+  },
+  "languages": [
+    "ko"
+  ],
+  "items": [
+    {
+      "id": "cover_index",
+      "role": "cover",
+      "embedded_in": "index.html",
+      "key": ".cover[data-img=\"cover_index\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a long night laboratory corridor with a row of doors, each door leaking a different colored light (one door per week).\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, standing at the back center, pointing at the open glowing door;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, holding a blank clipboard, smiling toward the viewer;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, peering at the nearest door with a magnifier;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, rolling forward eagerly with the abacus raised.\nVisual metaphor of the topic: the doors themselves stand for the weeks of the course; a glowing open doorway in the middle.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "og_index",
+      "role": "og",
+      "path": "img/og_index.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_index",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w01",
+      "role": "cover",
+      "embedded_in": "week01_business_data_science.html",
+      "key": ".cover[data-img=\"cover_w01\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: wide night laboratory with a large monitor showing a blank bar chart and four glowing stair blocks rising beside it.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center with a hand on his chin, looking up the four steps;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, beside the monitor holding a striped blank sales record;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, examining the toy airplane with a magnifier;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, proudly pushing a cart piled with blank data cards.\nVisual metaphor of the topic: four stacked steps of increasing brightness (data to wisdom) and a small toy airplane model with scattered white dots on its wings and body but none on its engines.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w01_hero",
+      "role": "hero",
+      "embedded_in": "week01_business_data_science.html",
+      "key": "figure.scene[data-scene=\"sc_w01_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, wide night laboratory with a large monitor showing a blank bar chart and four glowing stair blocks rising beside it, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w01_outro",
+      "role": "outro",
+      "embedded_in": "week01_business_data_science.html",
+      "key": "figure.scene[data-scene=\"sc_w01_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, a relaxed fruit fly researcher with arms crossed in quiet satisfaction on the left, a sheepish robot with a sweat drop on the right, the scientist giving a thumbs-up, the girl smiling with a striped sales record sheet; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w01",
+      "role": "thumb",
+      "path": "img/thumb_w01.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w01",
+      "status": "ok"
+    },
+    {
+      "id": "og_w01",
+      "role": "og",
+      "path": "img/og_w01.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w01",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w02",
+      "role": "cover",
+      "embedded_in": "week02_data_collection.html",
+      "key": ".cover[data-img=\"cover_w02\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: the night lab opened up like a map: a tiny bank counter, a factory sensor pole, a convenience store checkout and a smartphone, each sending streams of small glowing dots into a server rack.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center gesturing toward the server rack;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, kneeling by the checkout, labeling blank cards;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, covering some dots with a translucent privacy sheet;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, opening a big funnel to catch the fastest stream.\nVisual metaphor of the topic: streams of colored light dots flowing from four sources into one server rack, one stream fast and one slow.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w02_hero",
+      "role": "hero",
+      "embedded_in": "week02_data_collection.html",
+      "key": "figure.scene[data-scene=\"sc_w02_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, the night lab opened up like a map: a tiny bank counter, a factory sensor pole, a convenience store checkout and a smartphone, each sending streams of small glowing dots into a server rack, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w02_outro",
+      "role": "outro",
+      "embedded_in": "week02_data_collection.html",
+      "key": "figure.scene[data-scene=\"sc_w02_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, two task cards on a table between them, the fruit fly researcher holding a coffee cup calmly, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both cards; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w02",
+      "role": "thumb",
+      "path": "img/thumb_w02.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w02",
+      "status": "ok"
+    },
+    {
+      "id": "og_w02",
+      "role": "og",
+      "path": "img/og_w02.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w02",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w03",
+      "role": "cover",
+      "embedded_in": "week03_analysis_prep.html",
+      "key": ".cover[data-img=\"cover_w03\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a big workbench in the night lab with a huge paper table spread out, some cells blank, some cells glowing red, a few duplicate cards stacked.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center pointing at a red cell with a pointer finger;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, filling a blank cell with a glowing green block;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, holding scissors over a row with a blank cell, hesitating;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, carrying a basket of glowing filler blocks.\nVisual metaphor of the topic: a giant table with holes being filled with green light, one oddly tall bar sticking out of the table, and a broom sweeping duplicate cards.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w03_hero",
+      "role": "hero",
+      "embedded_in": "week03_analysis_prep.html",
+      "key": "figure.scene[data-scene=\"sc_w03_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a big workbench in the night lab with a huge paper table spread out, some cells blank, some cells glowing red, a few duplicate cards stacked, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w03_outro",
+      "role": "outro",
+      "embedded_in": "week03_analysis_prep.html",
+      "key": "figure.scene[data-scene=\"sc_w03_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, a big table whose blank cells are now filled with green light, the robot cheering in front, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w03",
+      "role": "thumb",
+      "path": "img/thumb_w03.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w03",
+      "status": "ok"
+    },
+    {
+      "id": "og_w03",
+      "role": "og",
+      "path": "img/og_w03.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w03",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w04",
+      "role": "cover",
+      "embedded_in": "week04_analysis_concepts.html",
+      "key": ".cover[data-img=\"cover_w04\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with a tall tool shelf of glowing instruments and a large map table showing a scatter of red and green dots split by a curved line, a shopping basket on the corner.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center unrolling the big map;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, checking items off a blank clipboard beside the shelf;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, drawing a curved boundary with a glowing pen;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, laying a straight ruler across the dots.\nVisual metaphor of the topic: a hand-drawn treasure map whose paths branch to different tools, and a straight ruler laid next to a curved glowing boundary between dots.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w04_hero",
+      "role": "hero",
+      "embedded_in": "week04_analysis_concepts.html",
+      "key": "figure.scene[data-scene=\"sc_w04_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with a tall tool shelf of glowing instruments and a large map table showing a scatter of red and green dots split by a curved line, a shopping basket on the corner, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w04_outro",
+      "role": "outro",
+      "embedded_in": "week04_analysis_concepts.html",
+      "key": "figure.scene[data-scene=\"sc_w04_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the map table with a curved glowing boundary, the robot cheering beside it, the fruit fly researcher with teary eyes holding his straight ruler, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w04",
+      "role": "thumb",
+      "path": "img/thumb_w04.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w04",
+      "status": "ok"
+    },
+    {
+      "id": "og_w04",
+      "role": "og",
+      "path": "img/og_w04.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w04",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w05",
+      "role": "cover",
+      "embedded_in": "week05_classification_1.html",
+      "key": ".cover[data-img=\"cover_w05\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab workbench with a ruler, a kitchen scale, two buckets of fish (large silvery bream and small slim smelt) and a laptop showing a blank scatter plot.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center holding up a large bream to look at it;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, writing blank labels and sticking them on small cards;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, measuring a small smelt with a ruler;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, placing a bream on the scale.\nVisual metaphor of the topic: fish being measured and turned into glowing dots that fly into the scatter plot on the laptop screen.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w05_hero",
+      "role": "hero",
+      "embedded_in": "week05_classification_1.html",
+      "key": "figure.scene[data-scene=\"sc_w05_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab workbench with a ruler, a kitchen scale, two buckets of fish (large silvery bream and small slim smelt) and a laptop showing a blank scatter plot, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w05_outro",
+      "role": "outro",
+      "embedded_in": "week05_classification_1.html",
+      "key": "figure.scene[data-scene=\"sc_w05_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, two identical score cards on the bench between the fish buckets, the fruit fly researcher sipping coffee, the robot shrugging, the scientist nodding, the girl holding up both cards; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w05",
+      "role": "thumb",
+      "path": "img/thumb_w05.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w05",
+      "status": "ok"
+    },
+    {
+      "id": "og_w05",
+      "role": "og",
+      "path": "img/og_w05.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w05",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w06",
+      "role": "cover",
+      "embedded_in": "week06_classification_2.html",
+      "key": ".cover[data-img=\"cover_w06\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with a glowing aquarium of three kinds of fish (big, medium, tiny), two baskets labeled only by color (one blue, one orange) and a long ruler and a scale side by side.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center tapping the aquarium glass;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, sorting fish into the blue and orange baskets;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, stretching the rubber ruler to match the scale dial;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, weighing a fish and squinting at the big number.\nVisual metaphor of the topic: a stretched rubber ruler being pulled to the same length as a scale dial, showing two different units brought to one common scale.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w06_hero",
+      "role": "hero",
+      "embedded_in": "week06_classification_2.html",
+      "key": "figure.scene[data-scene=\"sc_w06_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with a glowing aquarium of three kinds of fish (big, medium, tiny), two baskets labeled only by color (one blue, one orange) and a long ruler and a scale side by side, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w06_outro",
+      "role": "outro",
+      "embedded_in": "week06_classification_2.html",
+      "key": "figure.scene[data-scene=\"sc_w06_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the aquarium glowing behind, the fruit fly researcher with arms crossed holding the matched rubber ruler, the robot sighing over its scale, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w06",
+      "role": "thumb",
+      "path": "img/thumb_w06.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w06",
+      "status": "ok"
+    },
+    {
+      "id": "og_w06",
+      "role": "og",
+      "path": "img/og_w06.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w06",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w07",
+      "role": "cover",
+      "embedded_in": "week07_model_evaluation.html",
+      "key": ".cover[data-img=\"cover_w07\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with a huge 2x2 grid board on the wall, each cell glowing a different color (green, red, amber, blue), a balance scale on the desk with two different weights.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center pointing at the top-right cell of the board;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, counting tally marks on a blank clipboard;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, holding a magnifier up to the biggest cell;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, putting coins on the balance scale.\nVisual metaphor of the topic: a balance scale weighing two kinds of mistakes, one heavy coin and one light coin, in front of the four-cell board.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w07_hero",
+      "role": "hero",
+      "embedded_in": "week07_model_evaluation.html",
+      "key": "figure.scene[data-scene=\"sc_w07_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with a huge 2x2 grid board on the wall, each cell glowing a different color (green, red, amber, blue), a balance scale on the desk with two different weights, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w07_outro",
+      "role": "outro",
+      "embedded_in": "week07_model_evaluation.html",
+      "key": "figure.scene[data-scene=\"sc_w07_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the robot cheering with a stack of coins in front of the 2x2 board, the fruit fly researcher sipping coffee and nodding, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w07",
+      "role": "thumb",
+      "path": "img/thumb_w07.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w07",
+      "status": "ok"
+    },
+    {
+      "id": "og_w07",
+      "role": "og",
+      "path": "img/og_w07.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w07",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w08",
+      "role": "cover",
+      "embedded_in": "week08_practice_1.html",
+      "key": ".cover[data-img=\"cover_w08\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a cozy night study corner of the laboratory with a long desk covered in blank answer sheets, seven small glowing folders stacked in a row, a desk lamp and a big wall chalkboard left blank.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, standing at the chalkboard holding a piece of chalk, looking back at the desk;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, holding a blank score sheet and a red pencil, cheerful;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, scratching his helmet over an answer sheet with a pencil;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, working fast on a wooden abacus beside a stack of sheets.\nVisual metaphor of the topic: seven small glowing folders lined up like a staircase (one per week reviewed), a red pencil and a stack of blank answer sheets with tick boxes.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w08",
+      "role": "thumb",
+      "path": "img/thumb_w08.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w08",
+      "status": "ok"
+    },
+    {
+      "id": "og_w08",
+      "role": "og",
+      "path": "img/og_w08.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w08",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w09",
+      "role": "cover",
+      "embedded_in": "week09_regression_1.html",
+      "key": ".cover[data-img=\"cover_w09\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with an archery target on the wall, a kitchen scale with a medium fish on it, and a chalkboard full of dots with a smooth curve drawn through them.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center drawing a smooth curve through dots on the chalkboard;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, reading the scale and writing a number on a blank card;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, measuring a fish with a long ruler;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, averaging five small fish cards with the abacus.\nVisual metaphor of the topic: arrows stuck around the bullseye at different distances, with faint lines measuring how far each one missed.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w09_hero",
+      "role": "hero",
+      "embedded_in": "week09_regression_1.html",
+      "key": "figure.scene[data-scene=\"sc_w09_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with an archery target on the wall, a kitchen scale with a medium fish on it, and a chalkboard full of dots with a smooth curve drawn through them, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w09_outro",
+      "role": "outro",
+      "embedded_in": "week09_regression_1.html",
+      "key": "figure.scene[data-scene=\"sc_w09_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, two archery targets side by side, one for small fish and one for big fish, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both targets; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w09",
+      "role": "thumb",
+      "path": "img/thumb_w09.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w09",
+      "status": "ok"
+    },
+    {
+      "id": "og_w09",
+      "role": "og",
+      "path": "img/og_w09.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w09",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w10",
+      "role": "cover",
+      "embedded_in": "week10_regression_2.html",
+      "key": ".cover[data-img=\"cover_w10\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with a chalkboard showing a smooth S-shaped curve, a small potted tree whose branches end in colored marble jars, and a spice rack on the side.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center trimming a branch of the tree with small scissors;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, sorting colored marbles into two jars;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, holding a spice jar and pouring just a pinch;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, dumping a whole armful of spice jars into a pot.\nVisual metaphor of the topic: a tree whose every branch split sorts marbles by color, next to a spice rack where some jars are almost empty.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w10_hero",
+      "role": "hero",
+      "embedded_in": "week10_regression_2.html",
+      "key": "figure.scene[data-scene=\"sc_w10_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with a chalkboard showing a smooth S-shaped curve, a small potted tree whose branches end in colored marble jars, and a spice rack on the side, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w10_outro",
+      "role": "outro",
+      "embedded_in": "week10_regression_2.html",
+      "key": "figure.scene[data-scene=\"sc_w10_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, a calm curve on the chalkboard behind the fruit fly researcher with arms crossed, a wildly spiking curve behind the sighing robot, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w10",
+      "role": "thumb",
+      "path": "img/thumb_w10.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w10",
+      "status": "ok"
+    },
+    {
+      "id": "og_w10",
+      "role": "og",
+      "path": "img/og_w10.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w10",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w11",
+      "role": "cover",
+      "embedded_in": "week11_time_series.html",
+      "key": ".cover[data-img=\"cover_w11\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with a very long wall calendar spanning six years and a glowing wavy sales line above it that peaks every December.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center tracing the wavy line with a pointer;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, cutting the long calendar strip into a training part and a test part;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, studying a bar chart of correlations with a magnifier;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, flipping open last year's sales record to the December page.\nVisual metaphor of the topic: the same month in consecutive years connected by thin glowing threads, showing that this December remembers last December.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w11_hero",
+      "role": "hero",
+      "embedded_in": "week11_time_series.html",
+      "key": "figure.scene[data-scene=\"sc_w11_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with a very long wall calendar spanning six years and a glowing wavy sales line above it that peaks every December, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w11_outro",
+      "role": "outro",
+      "embedded_in": "week11_time_series.html",
+      "key": "figure.scene[data-scene=\"sc_w11_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the robot cheering with last year's sales record book open, the fruit fly researcher sipping coffee and looking at the calendar, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w11",
+      "role": "thumb",
+      "path": "img/thumb_w11.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w11",
+      "status": "ok"
+    },
+    {
+      "id": "og_w11",
+      "role": "og",
+      "path": "img/og_w11.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w11",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w12",
+      "role": "cover",
+      "embedded_in": "week12_visualization.html",
+      "key": ".cover[data-img=\"cover_w12\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with a big histogram on the wall whose right tail stretches far, and a seesaw on the desk with two weights labeled only by color.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center pointing at the long right tail of the histogram;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, lining up small figurines in order of height;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, standing next to the middle figurine with arms open;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, pushing the heavy weight further out on the seesaw.\nVisual metaphor of the topic: a seesaw tipped by one heavy weight far out on the right, while a small flag stands at the middle of the line of people.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w12_hero",
+      "role": "hero",
+      "embedded_in": "week12_visualization.html",
+      "key": "figure.scene[data-scene=\"sc_w12_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with a big histogram on the wall whose right tail stretches far, and a seesaw on the desk with two weights labeled only by color, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w12_outro",
+      "role": "outro",
+      "embedded_in": "week12_visualization.html",
+      "key": "figure.scene[data-scene=\"sc_w12_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, the fruit fly researcher with arms crossed beside the middle figurine, the robot sighing as the seesaw tips under the heavy weight, the scientist giving a thumbs-up, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w12",
+      "role": "thumb",
+      "path": "img/thumb_w12.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w12",
+      "status": "ok"
+    },
+    {
+      "id": "og_w12",
+      "role": "og",
+      "path": "img/og_w12.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w12",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w13",
+      "role": "cover",
+      "embedded_in": "week13_bi_kpi.html",
+      "key": ".cover[data-img=\"cover_w13\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab arranged like an airplane cockpit, with three round gauges, a glowing funnel diagram and a small warehouse shelf with boxes.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center in the pilot seat looking at the gauges;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, plugging three different cables into one hub;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, scattering many small light dots into the top of the funnel;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, catching coins at the bottom of the funnel with the abacus.\nVisual metaphor of the topic: three gauge needles pulling against each other, and a funnel narrowing from many dots at the top to a few coins at the bottom.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w13_hero",
+      "role": "hero",
+      "embedded_in": "week13_bi_kpi.html",
+      "key": "figure.scene[data-scene=\"sc_w13_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab arranged like an airplane cockpit, with three round gauges, a glowing funnel diagram and a small warehouse shelf with boxes, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w13_outro",
+      "role": "outro",
+      "embedded_in": "week13_bi_kpi.html",
+      "key": "figure.scene[data-scene=\"sc_w13_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, two dashboards side by side, one showing reach and one showing coins, the fruit fly researcher with a coffee cup, the robot tapping its abacus, the scientist with a hand on his chin, the girl pointing at both; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w13",
+      "role": "thumb",
+      "path": "img/thumb_w13.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w13",
+      "status": "ok"
+    },
+    {
+      "id": "og_w13",
+      "role": "og",
+      "path": "img/og_w13.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w13",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w14",
+      "role": "cover",
+      "embedded_in": "week14_advanced_analytics.html",
+      "key": ".cover[data-img=\"cover_w14\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a night lab with three clusters of glowing marbles on a table, a pile of speech-bubble cards on the floor, and a tower of connected glowing circles in layers.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center looking up at the layered tower;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, sorting speech-bubble cards into green and red trays;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, stacking one more layer of glowing circles on the tower;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, drawing one straight line with a ruler across a sheet.\nVisual metaphor of the topic: marbles gathering by themselves into colored groups, speech bubbles sorted into a green tray and a red tray, and a layered tower of circles drawing a round boundary.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w14_hero",
+      "role": "hero",
+      "embedded_in": "week14_advanced_analytics.html",
+      "key": "figure.scene[data-scene=\"sc_w14_hero\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a night lab with three clusters of glowing marbles on a table, a pile of speech-bubble cards on the floor, and a tower of connected glowing circles in layers, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie at the back center, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings on the left facing right, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus on the right facing left, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans at the side, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "sc_w14_outro",
+      "role": "outro",
+      "embedded_in": "week14_advanced_analytics.html",
+      "key": "figure.scene[data-scene=\"sc_w14_outro\"]",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, inside the same night lab, two identical score cards side by side, one beside the layered tower and one beside a single ruler, the fruit fly researcher sipping coffee, the robot shrugging, the scientist nodding, the girl smiling; chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings; boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus; no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w14",
+      "role": "thumb",
+      "path": "img/thumb_w14.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w14",
+      "status": "ok"
+    },
+    {
+      "id": "og_w14",
+      "role": "og",
+      "path": "img/og_w14.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w14",
+      "status": "ok"
+    },
+    {
+      "id": "cover_w15",
+      "role": "cover",
+      "embedded_in": "week15_practice_2.html",
+      "key": ".cover[data-img=\"cover_w15\"]",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\ncozy night laboratory mood, purple light, soft magenta and green fluorescent accents.\nScene: a round review table in the night laboratory at the end of the season, six glowing folders arranged in a circle, a calculator-like wooden abacus, colorful sticky notes on a corkboard behind, a window showing a winter night.\nAll four characters together:\n  chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, at the back center holding up a blank finished answer sheet proudly;\n  girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, pinning a blank sticky note on the corkboard;\n  anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, flipping through a glowing folder with a magnifying glass;\n  boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus, on the right facing left, tapping the abacus with one arm raised.\nVisual metaphor of the topic: six glowing folders in a circle (one per week reviewed) around a single lit candle-like lamp, sticky notes without writing, a finished stack of answer sheets tied with ribbon.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);\n  keep the bottom-left corner dark and simple; the light falls on the main prop.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "thumb_w15",
+      "role": "thumb",
+      "path": "img/thumb_w15.webp",
+      "size": [
+        600,
+        400
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w15",
+      "status": "ok"
+    },
+    {
+      "id": "og_w15",
+      "role": "og",
+      "path": "img/og_w15.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_w15",
+      "status": "ok"
+    }
+  ],
+  "updated": "2026-11-12"
+}

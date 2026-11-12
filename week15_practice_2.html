@@ -764,9 +764,9 @@ score();
     slots.slice(nTop).forEach(function (s, i) { room(s, i, 1, nBot, nTop + i); });
     /* 대결 회의실의 네 캐릭터(그림이 있으면) */
     function chars(T, g, w) {
-      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'];
+      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'], HR = [.41, 1.0, .9, .72]; /* 캐릭터 팩 C3 키 비율 */
       ks.forEach(function (k, i) { var src = SP[k] || SP[AL[k]]; if (!src) return; var t = new T.TextureLoader().load(src, function () { st.dirtyNow(); }); t.colorSpace = T.SRGBColorSpace;
-        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); sp.scale.set(1.05, 1.05, 1); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, 1.05, .9); g.add(sp); });
+        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); var h = 1.45 * HR[i]; sp.scale.set(h, h, 1); sp.center.set(.5, 0); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, .1, .9); g.add(sp); });
     }
     if (!narrow()) st.label('<b>' + cur + 'F</b> ' + F.dept, new T.Vector3(-W / 2 + .2, 3.0, -D / 2), 'flname');
     var hover = null;

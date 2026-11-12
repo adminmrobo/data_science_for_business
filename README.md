@@ -42,6 +42,7 @@
 
 ```
 index.html                         목차 (3D 본사 건물)
+cover_manifest.json                표지 목록 (표지 현황판 연결, 연구실 스킬 v1.13 · 18-16)
 week01_business_data_science.html  1주차 (한 파일, 그림·데이터·코드 포함)
 week02_data_collection.html        2주차
 week03_analysis_prep.html          3주차

@@ -25,7 +25,7 @@
       <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘은 점수표 자체를 채점합니다. 무엇을 맞혔는지보다 무엇을 틀렸는지가 더 비쌀 때가 있어요.</p></div></div>
       <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>구독 서비스 고객 2,000명의 이탈 예측 결과를 준비했어요. 설명을 위해 만든 예시 데이터예요.</p></div></div>
       <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>정확도가 제일 높은 모델을 고르면 끝 아냐? 맞힌 비율이 곧 실력이잖아.</p></div></div>
-      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>나는 맞힌 개수보다 쿠폰값이랑 떠난 고객값을 셀래. 장부는 원 단위로 끝나야지.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>나는 맞힌 개수보다 쿠폰값이랑 떠난 고객값을 셀래. 매출 기록은 원 단위로 끝나야지.</p></div></div>
     </div>
   </div>
 </header>
@@ -212,7 +212,7 @@
 
 <!-- 대결 -->
 <section class="level" id="duel"><div class="wrap stack">
-  <div class="lvhead"><h2>대결 — 정확도로 고른 기준선 vs 장부로 고른 기준선</h2><p class="lead">같은 이탈 예측 모델을 씁니다. 검증 고객 3,000명으로 기준선을 하나씩 정한 뒤, 처음 보는 시험 고객 3,000명에게 쿠폰 캠페인을 했을 때 남는 돈을 겨룹니다.</p></div>
+  <div class="lvhead"><h2>대결 — 정확도로 고른 기준선 vs 매출 기록으로 고른 기준선</h2><p class="lead">같은 이탈 예측 모델을 씁니다. 검증 고객 3,000명으로 기준선을 하나씩 정한 뒤, 처음 보는 시험 고객 3,000명에게 쿠폰 캠페인을 했을 때 남는 돈을 겨룹니다.</p></div>
   <div class="eq" style="white-space:normal">쿠폰 한 장 = 2만 원(이탈로 판정한 고객 모두에게) · 이탈 고객이 쿠폰을 받으면 절반이 남아 고객 가치 30만 원의 절반 = 15만 원 회수 · 순이익 = (제대로 잡은 이탈 고객 수 × 15만 원) − (쿠폰을 준 고객 수 × 2만 원)</div>
   <div class="duel" id="duelBox">
     <div class="vs">
@@ -257,7 +257,7 @@
   <figure class="scene" data-scene="sc_w07_outro" hidden><img alt="주판을 높이 든 주판봇이 기뻐하고, 커피를 든 초파리 연구원이 고개를 끄덕이며, 박사가 엄지를 세우고 조수가 웃는 장면"></figure>
   <div class="dialog">
     <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>드문 경우(이탈·사기)가 중요하면 정확도 대신 맞힘·놓침·헛경보를 나눠 본다.</li><li>모델의 실력(AUC)과 실제로 쓰는 판정 기준선은 따로 정한다.</li><li>기준선은 틀렸을 때 드는 돈으로 정한다.</li></ul></div></div>
-    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>쿠폰은 좀 헛쐈지만 장부는 흑자! 틀림에도 가격표가 붙어 있다니까.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>쿠폰은 좀 헛쐈지만 매출 기록은 흑자! 틀림에도 가격표가 붙어 있다니까.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>정확도는 내가 더 높았는데… 떠나는 고객을 그냥 보낸 값이었군.</p></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>8주차는 중간고사예요. 9주차에는 분류에서 회귀로 넘어가 숫자 자체를 예측해 볼게요. ①칸 이탈 비율을 1%로도 바꿔 보세요.</p></div></div>
   </div>

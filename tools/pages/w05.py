@@ -89,7 +89,7 @@ NODES = [
  N('analogy/friends', 'Analogy', '새 친구의 동아리 맞히기 ↔ KNN', 'guessing a new friend\'s club ↔ KNN', '#lv4', anchorType='D'),
  N('analogy/containers', 'Analogy', '시약 용기 ↔ 데이터 구조', 'lab containers ↔ data structures', '#lv1', anchorType='B'),
  N('sim/w05-ds', 'Simulation', '데이터 구조 실험대', 'data structure bench', '#lv1'),
- N('sim/w05-check', 'Simulation', '측정 장부 실수 점검', 'input check', '#lv2'),
+ N('sim/w05-check', 'Simulation', '측정 기록 실수 점검', 'input check', '#lv2'),
  N('sim/w05-zip', 'Simulation', 'zip·라벨 표', 'zip and label table', '#lv3'),
  N('sim/w05-knn', 'Simulation', '새 생선 KNN 예측', 'KNN prediction', '#lv4'),
  N('work/ahn-dsb-w05', 'Work', '안상선, 비즈니스를위한데이터과학 교안 5주차', 'Ahn, DSB lecture notes week 5', '#footer'),

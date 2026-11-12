@@ -449,7 +449,7 @@ button.bld-lb{cursor:pointer;font-family:inherit}
       <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="think" data-img="doc_think" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘의 데이터는 줄을 서 있습니다. 순서를 섞는 순간 가장 중요한 정보가 사라져요.</p></div></div>
       <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>6년(72개월)치 월매출 예시 데이터를 만들었어요. 해마다 조금씩 오르고, 12월에 가장 많이 팔려요.</p></div></div>
       <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>차분하고, ACF·PACF 보고, AIC로 차수 고르고. 정석대로 ARIMA를 세우면 돼.</p></div></div>
-      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>그렇게 복잡하게? 작년 같은 달 장부에 올해 늘어난 만큼만 더하면 끝인데.</p></div></div>
+      <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>그렇게 복잡하게? 작년 같은 달 매출 기록에 올해 늘어난 만큼만 더하면 끝인데.</p></div></div>
     </div>
   </div>
 </header>
@@ -462,7 +462,7 @@ button.bld-lb{cursor:pointer;font-family:inherit}
     <div><img data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><b style="color:var(--c-doc)">박사</b><p class="muted">해설과 판정. 판정은 계산한 숫자대로 내립니다.</p></div>
     <div><img data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><b style="color:var(--c-asst)">조수(하루)</b><p class="muted">시계열을 자르고 차분합니다.</p></div>
     <div><img data-who="fly" data-mood="clip" data-img="fly_clip" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원</b><p class="muted">정석 ARIMA 편.</p></div>
-    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">작년 같은 달 장부 편.</p></div>
+    <div><img data-who="robo" data-mood="smile" data-img="robo_smile" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇</b><p class="muted">작년 같은 달 매출 기록 편.</p></div>
   </div>
   <p class="lead">노란 점선 밑줄 낱말에 손가락이나 마우스를 올리면 뜻이 나옵니다. 이 페이지의 매출·일매출·시계열은 모두 교안의 개념을 보여 주려고 만든 예시 데이터입니다(교안 실습의 PayPal 주가 데이터는 싣지 않았습니다). ARIMA는 MA 항 없이 AR 부분만(ARIMA(p, d, 0)) 최소제곱으로 단순화해 계산합니다.</p>
 </div></section>
@@ -655,7 +655,7 @@ button.bld-lb{cursor:pointer;font-family:inherit}
     <div class="vs">
       <div class="side fly"><img data-who="fly" data-mood="point" data-img="fly_point" alt="" aria-hidden="true"><b style="color:var(--c-fly)">초파리 연구원 · ARIMA(p, 1, 0), AIC로 p 선택</b><p>"차분하고 차수를 고르는 게 정석이야."</p></div>
       <div class="mid">VS</div>
-      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 작년 같은 달 + 연간 증가분</b><p>"12월은 12월끼리. 장부 한 줄이면 돼."</p></div>
+      <div class="side robo"><img data-who="robo" data-mood="coin" data-img="robo_coin" alt="" aria-hidden="true"><b style="color:var(--c-robo)">주판봇 · 작년 같은 달 + 연간 증가분</b><p>"12월은 12월끼리. 기록 한 줄이면 돼."</p></div>
     </div>
     <div class="guess" role="group" aria-label="먼저 맞혀 보기"><span class="glabel">먼저 맞혀 보기</span><button class="bt" type="button" data-guess="F" aria-pressed="false" id="gF">초파리가 이길 것 같다</button><button class="bt" type="button" data-guess="R" aria-pressed="false" id="gR">주판봇이 이길 것 같다</button></div>
     <div style="display:flex;justify-content:center"><button class="bt primary reveal" type="button" id="reveal">결과 보기</button></div>
@@ -691,10 +691,10 @@ button.bld-lb{cursor:pointer;font-family:inherit}
 <!-- 아웃트로 -->
 <section class="level" id="outro"><div class="wrap stack">
   <h2>실험을 마치며</h2>
-  <figure class="scene" data-scene="sc_w11_outro" hidden><img alt="작년 장부를 펼친 주판봇이 기뻐하고, 커피를 든 초파리 연구원이 달력을 바라보며, 박사가 엄지를 세우고 조수가 웃는 장면"></figure>
+  <figure class="scene" data-scene="sc_w11_outro" hidden><img alt="작년 매출 기록을 펼친 주판봇이 기뻐하고, 커피를 든 초파리 연구원이 달력을 바라보며, 박사가 엄지를 세우고 조수가 웃는 장면"></figure>
   <div class="dialog">
     <div class="say" data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_front" alt="" aria-hidden="true"><div><b class="name">박사</b><p>오늘 확인한 것은 세 가지예요.</p><ul style="margin:4px 0 0;padding-left:20px"><li>시간 순서 데이터는 순서 자체가 정보다. 시험 기간은 언제나 학습 기간 뒤에 둔다.</li><li>과거와 얼마나 닮았는지, 계절 반복이 있는지 먼저 본다.</li><li>복잡한 모델은 단순한 기준선(작년 같은 달)과 반드시 비교한다.</li></ul></div></div>
-    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>12월은 12월끼리! 장부 한 줄이 이렇게 셀 줄이야.</p></div></div>
+    <div class="say" data-who="robo"><img class="who" data-who="robo" data-mood="happy" data-img="robo_happy" alt="" aria-hidden="true"><div><b class="name">주판봇</b><p>12월은 12월끼리! 기록 한 줄이 이렇게 셀 줄이야.</p></div></div>
     <div class="say" data-who="fly"><img class="who" data-who="fly" data-mood="coffee" data-img="fly_coffee" alt="" aria-hidden="true"><div><b class="name">초파리 연구원</b><p>p를 6까지로 묶은 게 패인이군. 계절 항을 넣었어야 했어.</p></div></div>
     <div class="say" data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_smile" alt="" aria-hidden="true"><div><b class="name">조수</b><p>12주차에는 평균·분산·왜도·상관부터 차트 고르기까지 시각화를 더 깊이 봐요. ⑤칸에서 p = 12도 눌러 보세요.</p></div></div>
   </div>
@@ -760,7 +760,7 @@ window.SPRITE=window.SPRITE||{};Object.assign(window.SPRITE,{"cover_w11":"data:i
 <script type="application/json" id="refs-csl">[{"id":"ahn_dsb_w11","type":"report","title":"비즈니스를위한데이터과학 강의 교안: 11. 데이터 모델 최적화와 시계열 모형","author":[{"family":"안","given":"상선"}],"lab":{"work":"lab:work/ahn-dsb-w11","role":"primary","supports":["lab:claim/acf-pacf-rule","lab:claim/pie-time","lab:concept/autocorrelation","lab:method/differencing","lab:method/arima"],"locs":[{"claim":"lab:claim/acf-pacf-rule","loc":"3교시 3. ARIMA 파라미터 결정"},{"claim":"lab:claim/pie-time","loc":"1교시 1. 분기별 매출현황"}],"verified":{"title":true,"authors":true,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"저자 원고(교안 PDF)로 확인 2026-11-09","note":"연도 표기 없음"},"publisher":"인공지능융합학과 강의자료"},{"id":"step_fintech","type":"webpage","title":"핀테크데이터분석","author":[{"literal":"한국기술교육대학교"}],"lab":{"work":"lab:work/step-fintech","role":"background","supports":["lab:concept/ts-decomposition"],"locs":[],"verified":{"title":true,"authors":true,"year":false,"venue":true,"doi":false,"pages":false},"checkedBy":"교안 인용 서지 그대로","note":""},"publisher":"STEP 온라인평생교육원","URL":"https://www.step.or.kr"},{"id":"fpp3","type":"book","title":"Forecasting: Principles and Practice (3rd ed.)","author":[{"family":"Hyndman","given":"Rob J."},{"family":"Athanasopoulos","given":"George"}],"lab":{"work":"lab:work/fpp3","role":"background","supports":["lab:method/seasonal-naive"],"locs":[],"verified":{"title":true,"authors":true,"year":true,"venue":true,"doi":false,"pages":false},"checkedBy":"서지 기억 기반 — 확인 권장","note":""},"issued":{"date-parts":[[2021]]},"publisher":"OTexts","URL":"https://otexts.com/fpp3/"}]</script>
 <script type="application/json" id="page-meta">{"title":"시간이 기억하는 숫자 — 데이터 모델 최적화와 시계열 모형","series":"비즈니스를 위한 데이터 과학 연구실","number":"11","creator":[{"name":"안상선","role":"author","affiliation":"(주)M-Robo 대표","url":"https://www.ahnboat.xyz"}],"date":"2026-11-09","version":"1.1","language":["ko"],"license":"","url":"https://adminmrobo.github.io/data_science_for_business/week11_time_series.html","domain":["ai","stats","biz"],"about":["lab:concept/autocorrelation","lab:concept/ts-decomposition","lab:method/differencing","lab:method/arima","lab:method/seasonal-naive"],"educationalLevel":"입문~중급","learningResourceType":"interactive explainer","basedOn":["ahn_dsb_w11"],"suggestedCitation":"안상선 (2026). 시간이 기억하는 숫자 — 데이터 모델 최적화와 시계열 모형. 비즈니스를 위한 데이터 과학 연구실 11주차, v1.1. https://adminmrobo.github.io/data_science_for_business/week11_time_series.html","todo":["페이지 서지: 라이선스 빈칸 (저자가 정할 것)","교안 [1]의 발행 연도·학기 표기 확인","교안의 ACF(0.8·0.65·0.52)·PACF(0.6·0.4·0.1) 그림이 실제 기온 데이터인지 예시인지 확인","교안 실습의 PayPal 주가 데이터 출처 확인 — 이 페이지에는 싣지 않음"]}</script>
 <script>
-/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.9 규격)
+/* 연구실 공용 엔진 — 비즈니스를 위한 데이터 과학 연구실 (ai-lab-explainer v1.13 규격)
    페이지 스크립트가 LAB.* 도우미를 쓰고, 마지막에 LAB.boot(cfg)를 부른다. */
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
   t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -1384,9 +1384,9 @@ LAB.boot({GL:GL,CORE:CORE,QZ:QZ,kgPath:["method/chart-choice","limitation/order-
     slots.slice(nTop).forEach(function (s, i) { room(s, i, 1, nBot, nTop + i); });
     /* 대결 회의실의 네 캐릭터(그림이 있으면) */
     function chars(T, g, w) {
-      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'];
+      var SP = window.SPRITE || {}, AL = window.SPRITE_ALIAS || {}, ks = ['fly_point', 'doc_front', 'asst_smile', 'robo_coin'], HR = [.41, 1.0, .9, .72]; /* 캐릭터 팩 C3 키 비율 */
       ks.forEach(function (k, i) { var src = SP[k] || SP[AL[k]]; if (!src) return; var t = new T.TextureLoader().load(src, function () { st.dirtyNow(); }); t.colorSpace = T.SRGBColorSpace;
-        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); sp.scale.set(1.05, 1.05, 1); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, 1.05, .9); g.add(sp); });
+        var sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true })); var h = 1.45 * HR[i]; sp.scale.set(h, h, 1); sp.center.set(.5, 0); sp.position.set(-w / 2 + .7 + i * (w - 1.4) / 3, .1, .9); g.add(sp); });
     }
     if (!narrow()) st.label('<b>' + cur + 'F</b> ' + F.dept, new T.Vector3(-W / 2 + .2, 3.0, -D / 2), 'flname');
     var hover = null;
